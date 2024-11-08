@@ -9,7 +9,7 @@ import fr.gamehub.gamehub.model.AppUser;
 import fr.gamehub.gamehub.repository.AppUserRepository;
 
 @Service
-public class UserService {
+public class AppUserService {
 
     @Autowired
     private AppUserRepository userRepository;
