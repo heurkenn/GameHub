@@ -1,23 +1,24 @@
 package fr.gamehub.gamehub.service;
 
-import fr.gamehub.gamehub.model.User;
-import fr.gamehub.gamehub.repository.UserRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import fr.gamehub.gamehub.model.AppUser;
+import fr.gamehub.gamehub.repository.AppUserRepository;
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private AppUserRepository userRepository;
 
-    public List<User> getAllUsers() {
+    public List<AppUser> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public User saveUser(User user) {
+    public AppUser saveUser(AppUser user) {
         return userRepository.save(user);
     }
 }
