@@ -1,6 +1,6 @@
 package fr.gamehub.gamehub.service;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    // Ajoute cette méthode pour récupérer un utilisateur par son ID
+    public User getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.orElse(null);
     }
 
+    // Ajoute aussi une méthode pour enregistrer ou mettre à jour un utilisateur
     public User saveUser(User user) {
         return userRepository.save(user);
     }
