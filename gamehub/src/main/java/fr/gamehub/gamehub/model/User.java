@@ -1,10 +1,15 @@
 package fr.gamehub.gamehub.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -13,11 +18,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users")  // Utilise un autre nom pour la table pour éviter le conflit avec le mot-clé "AppUser"
 @Getter
 @Setter
 @NoArgsConstructor
-public class AppUser {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +38,14 @@ public class AppUser {
     @NotBlank(message = "Le mot de passe ne peut pas être vide")
     @Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères")
     private String password;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_games",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "game_id")
+    )
+    private Set<Game> games = new HashSet<>();
 
     // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
 }
