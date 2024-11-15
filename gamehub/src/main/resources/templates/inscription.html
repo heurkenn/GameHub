@@ -10,29 +10,29 @@
 </head>
 <body>
 
-    <form action="/submitForm" method="get">
+    <form action="/submitFormUser" method="get">
         
         <label for="prenom">Prénom : </label>
-        <input type="text" name="name" required />
+        <input type="text" name="name" minlength="2" maxlength="50" required />
 
         <label for="nom">Nom : </label>
-        <input type="text" name="surname" required/>
+        <input type="text" name="surname" minlength="2" maxlength="50" required/>
         
         <label for="pseudonyme">Username : </label>
-        <input type="text" name="username" required />
+        <input type="text" name="username" minlength="3" maxlength="50"required />
 
         <label for="email">Email : </label>
         <input type="email" name="email" required>
 
-        <label for ="Password"> Passeword : </label>
-        <input type="password" name ="password" required>
+        <label for ="Password"> Password : </label>
+        <input type="password" name ="password" minlength="8" required>
 
 
         <label for="dateNaissance">Date de naissance : </label>
         <input type="date" name="birthdate" min ="1920-01-01" required/>
         <!-- Faire le truc avec les PP mais il faut avoir accès à la BDD donc chaud mtn -->
 
-        <button type="submit"> Envoyer</button>
+        <a th:href = @{login}><button type="submit"> Envoyer</button></a> 
     </form>
 
 

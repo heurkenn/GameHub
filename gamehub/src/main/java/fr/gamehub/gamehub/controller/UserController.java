@@ -17,7 +17,7 @@ public class UserController {
 		return "userForm";
 	}
 
-	@PostMapping("/submitForm")
+	@PostMapping("/submitFormUser")
 	public String submitForm(@ModelAttribute User user, Model model){
 		
 		model.addAttribute("user", user);
