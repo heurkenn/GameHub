@@ -8,12 +8,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "Tournament") 
@@ -42,9 +44,7 @@ public class Tournament {
     @NotBlank(message = "La date de debut ne doit pas être vide")
     private Date dateStart;
 
-    @NotNull
-    @NotEmpty
-    @NotBlank(message = "La date de fin ne doit pas être vide")
+    
     private Date dateEnd;
 
     
@@ -67,6 +67,25 @@ public class Tournament {
     @ManyToOne
     @JoinColumn(name="game_id", nullable=false)
     private Game jeu;
+
+    @NotBlank(message = "Le tournoi est soi privé, soi public")
+    @NotEmpty
+    @NotNull
+    private boolean privé;
+
+    @NotBlank(message = "Le nombre de joueur limite ne doit pas être vide ")
+    @NotEmpty
+    @NotNull
+    private int nbJoueurLimite;
+
+    
+    @NotBlank(message = "Le nombre de joueur ne doit pas être vide ")
+    @NotEmpty
+    @NotNull
+    private int nbJoueur;
+
+    @OneToMany(mappedBy = "tournament")
+    private Set<Fight> combats; 
 
 }
 

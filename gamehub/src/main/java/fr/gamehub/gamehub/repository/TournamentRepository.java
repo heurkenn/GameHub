@@ -9,7 +9,7 @@ import fr.gamehub.gamehub.model.Game;
 import fr.gamehub.gamehub.model.Tournament;
 
 public interface TournamentRepository extends JpaRepository<Tournament, Long>{
-    Optional<Tournament> findByGame(Game jeu);    
+    Optional<Tournament> findByJeu(Game jeu);    
 }
 
 

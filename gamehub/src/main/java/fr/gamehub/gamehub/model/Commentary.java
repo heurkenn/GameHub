@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
@@ -34,4 +36,9 @@ public class Commentary {
     @Min(value=0)
     @Max(value=5)
     private double rate;
+
+    @NotBlank(message = "Le propriétaire du commentaire ne peut pas être vide")
+        @ManyToOne
+        @JoinColumn(name="user_id", nullable=false)
+        private User user;
 }
