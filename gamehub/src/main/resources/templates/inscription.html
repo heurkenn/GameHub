@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GameHub - Inscription</title>
+    <!-- Lien vers le fichier CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Lien vers Bootstrap (CDN) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <form action="/submitForm" method="get">
+        
+        <label for="prenom">Prénom : </label>
+        <input type="text" name="name" required />
+
+        <label for="nom">Nom : </label>
+        <input type="text" name="surname" required/>
+        
+        <label for="pseudonyme">Username : </label>
+        <input type="text" name="username" required />
+
+        <label for="email">Email : </label>
+        <input type="email" name="email" required>
+
+        <label for ="Password"> Passeword : </label>
+        <input type="password" name ="password" required>
+
+
+        <label for="dateNaissance">Date de naissance : </label>
+        <input type="date" name="birthdate" min ="1920-01-01" required/>
+        <!-- Faire le truc avec les PP mais il faut avoir accès à la BDD donc chaud mtn -->
+
+        <button type="submit"> Envoyer</button>
+    </form>
+
+
+</body>
