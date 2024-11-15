@@ -13,19 +13,23 @@
     <form action="/submitForm" method="get">
         
         <label for="prenom">Prénom : </label>
-        <input type="text" name="prenom" required />
+        <input type="text" name="name" required />
 
         <label for="nom">Nom : </label>
-        <input type="text" name="nom" required/>
+        <input type="text" name="surname" required/>
         
-        <label for="pseudonyme">Pseudonyme : </label>
-        <input type="text" name="pseudonyme" required />
+        <label for="pseudonyme">Username : </label>
+        <input type="text" name="username" required />
 
         <label for="email">Email : </label>
         <input type="email" name="email" required>
 
+        <label for ="Password"> Passeword : </label>
+        <input type="hidden" name ="password" required>
+
+
         <label for="dateNaissance">Date de naissance : </label>
-        <input type="date" name="dateNaissance" min ="1920-01-01" required/>
+        <input type="date" name="birthdate" min ="1920-01-01" required/>
         <!-- Faire le truc avec les PP mais il faut avoir accès à la BDD donc chaud mtn -->
 
         <button type="submit"> Envoyer</button>

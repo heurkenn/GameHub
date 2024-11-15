@@ -29,6 +29,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message= "Le prénom ne peut être vide")
+    @Size (min=2, max = 50, message = "Le prénom de l'utilisateur doit être compris entre 2 et 50 caractères")
+    private String name;
+
+    @NotBlank(message= "Le nom ne peut être vide")
+    @Size (min=2, max = 50, message = "Le nom de l'utilisateur doit être compris entre 2 et 50 caractères")
+    private String surname;
+
+    @NotBlank(message = "La date de naissance ne peut être vide")
+    private String birthdate;
+
     @NotBlank(message = "Le nom d'utilisateur ne peut pas être vide")
     @Size(min = 3, max = 50, message = "Le nom d'utilisateur doit être compris entre 3 et 50 caractères")
     private String username;
