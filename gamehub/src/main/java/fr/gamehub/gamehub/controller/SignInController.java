@@ -24,7 +24,7 @@ public class SignInController {
     @GetMapping("/sign-in")
     public String signInPage(Model model) {
         model.addAttribute("user", new User());
-        return "sign_in";
+        return "inscription";
     }
 
     // Traiter l'inscription d'un nouvel utilisateur
