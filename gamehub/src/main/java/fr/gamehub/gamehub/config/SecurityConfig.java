@@ -20,7 +20,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/","/sign-in", "/index", "/css/**", "/js/**", "/images/**").permitAll() // Permettre l'accès public à l'index
+                .requestMatchers("/", "/index", "/css/**", "/js/**", "/images/**").permitAll() // Permettre l'accès public à l'index
                 .anyRequest().authenticated() // Toute autre requête nécessite une authentification
             )
             .formLogin((form) -> form
