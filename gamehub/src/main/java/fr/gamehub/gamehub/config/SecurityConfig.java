@@ -39,7 +39,7 @@ public class SecurityConfig {
             http
             .authorizeHttpRequests((requests) -> requests
                 // Autoriser explicitement les ressources publiques et la page d'accueil
-                .requestMatchers("/", "/index", "/sign-in", "/css/**", "/js/**", "/images/**", "/h2-console/**").permitAll()
+                .requestMatchers("/", "/index", "/sign-in", "/users", "/css/**", "/js/**", "/images/**", "/h2-console/**").permitAll()
                 // Toute autre requête nécessite une authentification
                 .anyRequest().authenticated()
             )
