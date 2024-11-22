@@ -50,7 +50,7 @@ public class User {
     private Set<Game> games = new HashSet<>();
 
     @ManyToMany(mappedBy = "participants") // Indique que la relation est gérée par la classe Tournoi
-    private Set<Tournoi> tournois = new HashSet<>();
+    private Set<Tournament> tournaments = new HashSet<>();
 
     // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
 }

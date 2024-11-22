@@ -18,7 +18,7 @@ public class Fight {
 
     @ManyToOne
     @JoinColumn(name="tournament_id", nullable=false)
-    private Tournament tournoi;
+    private Tournament tournament;
 
 
     private User joueur1;
