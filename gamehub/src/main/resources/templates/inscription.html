@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <title>GameHub - Inscription</title>
     <!-- Lien vers le fichier CSS -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <!-- Lien vers Bootstrap (CDN) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="navbar navbar-expand-lg">
-        <a class="navbar-brand" th:href="@{/}">GameHub</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" th:href="@{/register}">Inscription</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Connexion</a></li>
-            </ul>
-        </div>
-    </header>
 
     <form action="/submitForm" method="get">
         
