@@ -25,7 +25,7 @@ public class LoginController {
     // Afficher la page de connexion
     @GetMapping("/login")
     public String loginPage() {
-        return "login";
+        return "index";
     }
 
     // Vérifier les identifiants fournis par l'utilisateur

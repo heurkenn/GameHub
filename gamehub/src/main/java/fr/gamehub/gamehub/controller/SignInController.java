@@ -33,12 +33,12 @@ public class SignInController {
         // Vérifier si l'email est déjà utilisé
         if (userService.findByEmail(user.getEmail()).isPresent()) {
             model.addAttribute("error", "L'adresse e-mail est déjà utilisée");
-            return "sign_in";
+            return "inscription";
         }
 
         // Chiffrer le mot de passe avec BCrypt avant de le sauvegarder
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.saveUser(user);
-        return "redirect:/login"; // Rediriger vers la page de connexion après inscription
+        return "redirect:/";
     }
 }
