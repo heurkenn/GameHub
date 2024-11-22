@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>GameHub - Inscription</title>
     <!-- Lien vers le fichier CSS -->
-    <link rel="stylesheet" href="@{/static/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <!-- Lien vers Bootstrap (CDN) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <form action="/submitForm" method="get">
+    <form action="/sign-in" method="post">
         
         <label for="prenom">Prénom : </label>
         <input type="text" name="name" required />
