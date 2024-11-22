@@ -11,9 +11,6 @@ public class PageController {
         return "index"; // Retourne la vue 'index.html' qui se trouve dans le dossier 'templates'
     }
     
-    @GetMapping("/inscription")
-    public String inscription(){
-        return "inscription";
-    }
+    
     
 }

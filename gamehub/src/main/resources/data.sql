@@ -1,7 +1,6 @@
 -- Insérer des utilisateurs dans la table app_user
-INSERT INTO app_user (username, email, password) VALUES ('JohnDoe', 'johndoe@example.com', 'password123');
-INSERT INTO app_user (username, email, password) VALUES ('JaneSmith', 'janesmith@example.com', 'password456');
-
+INSERT INTO app_user (name,surname,birthdate, email, password,username) VALUES ('John','Doe','1990-05-29','johndoe@example.com', 'password123', 'JohnDoe');
+INSERT INTO app_user (name,surname,birthdate, email, password,username) VALUES ('Jane','Smith','2005-11-07','janesmith@example.com','password456', 'JaneSmith');
 -- Insérer des plateformes dans la table platform
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo');
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation 4', '2013-11-15', 'Sony');
