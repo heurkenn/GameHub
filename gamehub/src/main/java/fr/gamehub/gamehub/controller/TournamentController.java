@@ -11,7 +11,7 @@ public class TournamentController {
     @Autowired
     TournamentRepository tournamentrepository;
 
-    @GetMapping("/Tournament")
+    @GetMapping("/tournament")
     public void JoinTournament(@ModelAttribute("user") User user, Model model){
         if 
     }
