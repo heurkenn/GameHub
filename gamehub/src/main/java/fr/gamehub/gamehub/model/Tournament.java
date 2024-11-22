@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -15,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -61,17 +64,17 @@ public class Tournament {
     @NotNull
     @NotEmpty
     @NotBlank(message = "La categorie ne peut être vide")
-    private Category categorie;
+    private Category category;
 
     @NotBlank(message = "Le jeu ne peut pas être vide")
     @ManyToOne
     @JoinColumn(name="game_id", nullable=false)
     private Game jeu;
 
-    @NotBlank(message = "Le tournoi est soi privé, soi public")
+    @NotBlank(message = "Le tournoi est soit privé, soit public")
     @NotEmpty
     @NotNull
-    private boolean privé;
+    private boolean isPrivate;
 
     @NotBlank(message = "Le nombre de joueur limite ne doit pas être vide ")
     @NotEmpty
@@ -89,8 +92,8 @@ public class Tournament {
 
     @ManyToMany
     @JoinTable(
-        name = "tournoi_user", // Nom de la table de jointure
-        joinColumns = @JoinColumn(name = "tournoi_id"), // Clé étrangère vers Tournoi
+        name = "tournament_user", // Nom de la table de jointure
+        joinColumns = @JoinColumn(name = "tournament_id"), // Clé étrangère vers Tournoi
         inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
     )
     private Set<User> participants = new HashSet<>();
