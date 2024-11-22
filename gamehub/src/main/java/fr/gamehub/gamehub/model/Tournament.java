@@ -87,5 +87,12 @@ public class Tournament {
     @OneToMany(mappedBy = "tournament")
     private Set<Fight> combats; 
 
+    @ManyToMany
+    @JoinTable(
+        name = "tournoi_user", // Nom de la table de jointure
+        joinColumns = @JoinColumn(name = "tournoi_id"), // Clé étrangère vers Tournoi
+        inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
+    )
+    private Set<User> participants = new HashSet<>();
 }
 
