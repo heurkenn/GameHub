@@ -10,12 +10,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name = "game")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,10 +30,10 @@ public class Game {
     @NotBlank(message = "Le nom du jeu ne peut pas être vide")
     private String name;
 
-    private int releaseYear;
+    private int release_year;
 
     @NotBlank(message = "Le studio de développement ne peut pas être vide")
-    private String developerStudio;
+    private String developer_studio;
 
     @NotBlank(message = "Le genre ne peut pas être vide")
     private String genre;

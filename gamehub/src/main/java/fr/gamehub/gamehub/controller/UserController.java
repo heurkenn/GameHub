@@ -31,7 +31,7 @@ public class UserController {
 		
 		if (bindingResult.hasErrors()){
 			// peut etre mettre un truc dans le model
-			return "formUser";
+			return "inscription";
 		}
 		userRepository.save(user);
 		return "redirect:/";  // Redirige vers la page d'acceuil

@@ -9,15 +9,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
-<form action="/submitFormTournament" method="get">
-	<label for= "nameTournament"> Nom du tournoi </label>
-	<input type="text" name="nameTournament" minlength="5" required />
+<form th:action="@{/tournament/creation}" th:object="${tournament}" method="POST">
+	
+	<label for= "nameTournament"> Nom du tournoi : </label>
+	<input type="text" name="nameTournament" th:field="*{name}"  required />
+	<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 
 	<label for="limitNbrPlayer" > Nombre maximum de joueur</label>
-	<input type="number" name="limitNbrPlayer" min="2" />
+	<input type="number" name="nbJoueurLimite" th:field="*{nbJoueurLimite}" min="2" />
+	<div th:if="${#fields.hasErrors('nbJoueurLimite')}" th:errors="*{nbJoueurLimite}"></div>
 
 	<label for="private"> Tournoi privé : </label>
-	<input type="checkbox" name="isPrivate" />
+	<input type="checkbox" name="isPrivate" th:field="*{isPrivate}" />
+	<div th:if="${#fields.hasErrors('isPrivate')}" th:errors="*{isPrivate}"></div>
 
 
 
