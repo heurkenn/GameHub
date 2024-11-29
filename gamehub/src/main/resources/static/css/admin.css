@@ -9,7 +9,7 @@
 
 /* Barre Latérale */
 .sidebar {
-    width: 250px;
+    width: 280px;
     background-color: #2a2f40;
     color: #e3e3e3;
     padding: 20px;
@@ -48,10 +48,32 @@
     border-radius: 8px;
 }
 
-.sidebar-link:hover, .sidebar-link:focus {
+.sidebar-link:hover,
+.sidebar-link:focus {
     background-color: #ff3c7e;
     color: #1e2333;
     text-shadow: 0px 0px 8px rgba(255, 60, 126, 0.6);
+}
+
+/* Sous-menus */
+.collapse .sub-menu {
+    padding-left: 15px;
+    margin-top: 10px;
+}
+
+.sub-link {
+    font-family: 'Grandstander', sans-serif;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 0;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.sub-link:hover {
+    color: #00ff88;
+    padding-left: 5px;
+    text-shadow: 0px 0px 6px #00ff88;
 }
 
 /* Contenu Principal */
@@ -118,3 +140,4 @@
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
 }
+
