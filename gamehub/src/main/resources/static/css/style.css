@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@400;700&family=Press+Start+2P&display=swap');
+
 /* Style Global */
 body {
-    font-family: 'Arial', sans-serif;
-    color: #4a4a4a;
+    font-family: 'Grandstander', sans-serif; /* Police lisible pour les paragraphes */
+    color: #e3e3e3;
+    background-color: #1e2333; /* Fond sombre mais pas trop agressif */
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,27 +12,47 @@ body {
     min-height: 100vh;
 }
 
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Press Start 2P', cursive; /* Police rétro pour les titres */
+    color: #00ff88; /* Couleur néon pour garder l'aspect jeu vidéo */
+    text-shadow: 0px 0px 10px rgba(0, 255, 136, 0.6);
+}
+
+/* Navigation Bar */
 .navbar {
-    background-color: #3a4a5d; 
+    background-color: #2a2f40; /* Couleur différente du body et complémentaire */
     padding: 1rem 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #ff3c7e; /* Petite touche subtile de rose */
+
 }
 
 .navbar-brand {
-    font-size: 1.5rem;
-    color: #ffffff !important;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.8rem;
+    color: #00ff88 !important; /* Vert néon pour donner un effet plus jeu vidéo */
     font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.navbar-brand:hover {
+    text-shadow: 0px 0px 10px #00ff88;
+    transform: scale(1.05);
 }
 
 .navbar-nav .nav-link {
+    font-family: 'Grandstander', sans-serif; /* Texte lisible */
     color: #ffffff !important;
     position: relative;
     overflow: hidden;
     transition: color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.nav-link{
-    padding-right: 0.7rem !important;
+.nav-link {
+    padding-right: 1rem !important;
 }
 
 .navbar-nav .nav-link::after {
@@ -38,8 +61,8 @@ body {
     left: -100%;
     bottom: 0;
     width: 100%;
-    height: 2px;
-    background-color: #2ecc71; 
+    height: 3px;
+    background-color: #ff3c7e; /* Couleur néon rose */
     transition: all 0.3s ease;
 }
 
@@ -48,72 +71,82 @@ body {
 }
 
 .navbar-nav .nav-link:hover {
-    color: #2ecc71 !important;
+    color: #ff3c7e !important; /* Couleur néon rose */
 }
 
 /* Jumbotron */
 .jumbotron {
-    background-color: #edf2f7; 
-    color: #3a4a5d; 
+    background: linear-gradient(135deg, #1e2333, #252b3f); /* Utilisation du gris-bleu pour le fond dégradé */
+    color: #ffffff;
     padding: 4rem 2rem;
     margin-top: 20px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
     position: relative;
     overflow: hidden;
 }
 
 .jumbotron h1 {
-    font-size: 2.8rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3.2rem;
     font-weight: bold;
-    color: #3a4a5d;
+    color: #00ff88;
     margin-bottom: 1rem;
-    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.05);
 }
 
 .jumbotron p.lead {
-    font-size: 1.2rem;
-    color: #4a4a4a;
+    font-family: 'Grandstander', sans-serif;
+    font-size: 1.4rem;
+    color: #e3e3e3;
     margin-bottom: 2rem;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
 }
 
 .jumbotron .btn {
     margin: 5px;
     border-radius: 5px;
-    padding: 0.6rem 1.5rem;
+    padding: 0.8rem 1.8rem;
     font-weight: bold;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-    font-size: 1rem;
-    transition: transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .jumbotron .btn-primary {
-    background-color: #2ecc71;
+    background-color: #00ff88;
     border: none;
+    color: #1b1f2f;
 }
 
 .jumbotron .btn-primary:hover {
-    background-color: #27ae60;
+    background-color: #00e67a;
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 255, 136, 0.6);
 }
 
 .jumbotron .btn-secondary {
-    background-color: #7a869a;
+    background-color: #ff3c7e;
     border: none;
+    color: #1b1f2f;
 }
 
 .jumbotron .btn-secondary:hover {
-    background-color: #5d6d7e;
+    background-color: #e63670;
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 60, 126, 0.6);
 }
+
+/* Cards */
 .card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    background-color: #2c303b !important; /* Carte avec un fond contrastant légèrement */
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
@@ -121,42 +154,48 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
 }
 
 .card-header {
-    background: linear-gradient(135deg, #5d6d7e, #34495e); 
-    height: 100px;
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(135deg, #ff3c7e, #2c303b); /* Utilisation du gris-bleu pour une distinction nette */
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #ffffff;
     font-size: 2rem;
+    text-shadow: 0px 0px 15px rgba(255, 60, 126, 0.6);
 }
 
 .card-content {
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 .card h2 {
-    font-size: 1.25rem;
-    color: #34495e;
-    margin-bottom: 0.5rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    color: #00ff88;
+    margin-bottom: 0.8rem;
 }
 
 .card p {
-    font-size: 0.9rem;
-    color: #666;
+    font-family: 'Grandstander', sans-serif;
+    font-size: 1rem;
+    color: #d3d3d3;
     margin-bottom: 1rem;
 }
 
-
+/* Footer */
 footer {
     margin-top: auto;
-    padding: 1rem;
-    background-color: #3a4a5d;
-    color: #ffffff;
+    padding: 1.5rem;
+    background-color: #2a2f40; /* Footer pour se différencier du body et du jumbotron */
+    color: #00ff88;
     text-align: center;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    text-shadow: 0px 0px 10px #00ff88;
+    border-top: 3px solid #ff3c7e; /* Petite touche subtile de rose */
 }

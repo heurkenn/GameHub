@@ -1,67 +1,87 @@
 /* Styles pour les formulaires de connexion et d'inscription */
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@400;700&family=Press+Start+2P&display=swap');
+
 .form-container {
     max-width: 450px;
-    margin: 3rem auto;
-    background-color: #ffffff;
+    margin: 5rem auto;  /* Centrage horizontal + espace vertical */
+    background-color: #2a2f40; /* Couleur de fond légèrement différente du body */
     border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 2.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Ombre plus marquée pour le contraste */
+    text-align: center; /* Alignement du titre et du contenu du formulaire */
+    border: 2px solid #ff3c7e; /* Bordure rose néon autour du formulaire */
 }
 
+/* Titre du formulaire */
 .form-container h3 {
-    text-align: center;
+    font-family: 'Press Start 2P', cursive;
     font-size: 1.8rem;
-    color: #3a4a5d;
+    color: #00ff88; /* Vert néon pour rester cohérent */
     margin-bottom: 1.5rem;
     font-weight: bold;
+    text-shadow: 0px 0px 8px rgba(0, 255, 136, 0.6);
 }
 
+/* Groupe de champs du formulaire */
 .form-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: left; /* Pour aligner le label et l'input */
 }
 
+/* Labels des champs */
 .form-group label {
+    font-family: 'Grandstander', sans-serif;
     font-weight: bold;
-    color: #3a4a5d;
+    color: #e3e3e3; /* Couleur claire mais contrastée */
     margin-bottom: 0.5rem;
     display: block;
 }
 
+/* Champs de saisie */
 .form-control {
     width: 100%;
     padding: 0.8rem;
     font-size: 1rem;
-    border: 1px solid #ccc;
+    font-family: 'Grandstander', sans-serif;
+    border: 2px solid #ff3c7e; /* Bordure rose pour une touche de néon */
     border-radius: 5px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #1e2333; /* Fond similaire au body */
+    color: #e3e3e3;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Focus sur les champs */
 .form-control:focus {
-    border-color: #2ecc71;
-    box-shadow: 0 0 6px rgba(46, 204, 113, 0.5);
+    border-color: #00ff88; /* Bordure verte néon au focus */
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
     outline: none;
 }
 
+/* Bouton principal */
 .btn-primary {
-    background-color: #2ecc71;
-    color: #ffffff;
+    background-color: #00ff88; /* Vert néon */
+    color: #1b1f2f;
     padding: 0.8rem;
     font-size: 1rem;
     font-weight: bold;
     border: none;
     border-radius: 5px;
     width: 100%;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .btn-primary:hover {
-    background-color: #27ae60;
+    background-color: #00e67a;
     transform: scale(1.03);
+    box-shadow: 0 8px 15px rgba(0, 255, 136, 0.6);
 }
 
+/* Message d'erreur */
 .text-danger {
-    color: #e74c3c;
+    color: #ff3c7e; /* Utilisation du rose néon pour les erreurs */
     font-size: 0.875rem;
 }
 
@@ -70,15 +90,16 @@
     text-align: center;
     margin-top: 1.5rem;
     font-size: 0.9rem;
+    color: #e3e3e3;
 }
 
 .form-footer a {
-    color: #2ecc71;
+    color: #00ff88; /* Vert néon */
     font-weight: bold;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .form-footer a:hover {
-    color: #27ae60;
+    color: #00e67a; /* Teinte plus claire au hover */
 }
