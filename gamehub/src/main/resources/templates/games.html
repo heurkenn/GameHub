@@ -37,12 +37,12 @@
                     <!-- Bouton pour voir plus de détails -->
                     <button class="btn btn-primary btn-details" onclick="toggleDetails(this)">Voir Détails</button>
                     <!-- Bouton pour aller à la page du jeu -->
-                    <a th:href="@{/game/} + ${game.id}" class="btn btn-primary btn-page">Page du Jeu</a>
+                    <a th:href="@{/game/} + ${game.name}" class="btn btn-primary btn-page">Page du Jeu</a>
                 </div>
                 <!-- Détails du jeu, à développer avec l'animation -->
                 <div class="game-card-details">
                     <p><strong>Description:</strong> <span th:text="${game.description}"></span></p>
-                    <p><strong>Plateformes:</strong> <span th:text="${game.platforms}"></span></p>
+                    <p><strong>Plateformes :</strong><span th:each="platform : ${game.platforms}" th:text="${platform.name}" class="badge bg-secondary mx-1"></span></p>
                 </div>
             </div>
         </div>
