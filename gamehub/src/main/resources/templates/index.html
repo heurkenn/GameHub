@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>GameHub - Accueil</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -24,31 +25,47 @@
             <h1 class="jumbotron-heading">Bienvenue sur GameHub</h1>
             <p class="lead">Rejoignez des communautés, formez des équipes, et participez à des tournois passionnants.</p>
             <p>
-                <a href="#" class="btn btn-primary">Découvrir les Jeux</a>
+                <a th:href="@{/games}" class="btn btn-primary">Découvrir les Jeux</a>
                 <a href="#" class="btn btn-secondary">Participer à un Tournoi</a>
             </p>
         </div>
     </section>
-    <!-- Section des jeux aléatoires -->
-    <div class="container my-4">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-center mb-4">Jeux à Découvrir</h2>
-            </div>
-            <div class="d-flex justify-content-center">
-                <!-- Boucle Thymeleaf pour les jeux aléatoires -->
-                <div th:each="game : ${randomGames}" class="card mx-2" style="width: 18rem;">
-                    <!-- Lien vers la page du jeu -->
-                    <a th:href="@{/game/} + ${game.name}" style="text-decoration: none; color: inherit;">
-                        <img th:src="@{/image/} + ${game.image_url}" class="card-img-top" alt="Image du jeu" style="height: 180px; object-fit: cover;">
-                        <div class="card-body text-center">
-                            <h5 class="card-title" th:text="${game.name}"></h5>
-                        </div>
-                    </a>
+    <!-- Section des jeux à découvrir -->
+<section class="games-section container">
+    <h2 class="text-center mt-4 mb-5">Jeux à Découvrir</h2>
+    <div class="row">
+        <!-- Boucle Thymeleaf pour afficher les jeux aléatoires -->
+        <div th:each="game : ${randomGames}" class="col-md-4 mb-4">
+            <div class="game-card">
+                <!-- Image de couverture du jeu -->
+                <div class="game-card-image"><img th:src="@{/image/} + ${game.image_url}" class="img-fluid rounded" alt="Image du jeu" style="max-width: 100%; height: auto;"></div>
+                <div class="game-card-content">
+                    <!-- Titre du jeu -->
+                    <h3 th:text="${game.name}">Nom du Jeu</h3>
+                    <!-- Genre du jeu -->
+                    <p th:text="'Genre: ' + ${game.genre}">Genre: Action</p>
+                    <!-- Bouton pour voir plus de détails -->
+                    <button class="btn btn-primary btn-details" onclick="toggleDetails(this)">Voir Détails</button>
+                    <!-- Bouton pour aller à la page du jeu -->
+                    <a th:href="@{/game/} + ${game.name}" class="btn btn-primary btn-page">Page du Jeu</a>
+                </div>
+                <!-- Détails du jeu, à développer avec l'animation -->
+                <div class="game-card-details">
+                    <p><strong>Description:</strong> <span th:text="${game.description}"></span></p>
+                   <p><strong></strong><span th:each="platform : ${game.platforms}" th:text="${platform.name}" class="badge bg-secondary mx-1"></span></p>
                 </div>
             </div>
         </div>
     </div>
+</section>
+
+<script>
+    function toggleDetails(button) {
+        const card = button.closest('.game-card');
+        card.classList.toggle('expanded');
+    }
+</script>
+
     
 
     <!-- Section principale avec des cartes modernes -->

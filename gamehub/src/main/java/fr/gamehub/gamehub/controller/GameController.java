@@ -27,4 +27,12 @@ public class GameController {
         model.addAttribute("game", game.get()); // Passe le jeu trouvé au modèle
         return "game";
     }
+
+    @GetMapping("/games")
+    public String getAllames(Model model) {
+        // Ajouter trois jeux aléatoires au modèle
+        model.addAttribute("allGames", gameService.getAllGames());
+        return "games"; 
+    }
+
 }
