@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GameHub - Connexion</title>
+    <!-- Lien vers le fichier CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+
+    <!-- Lien vers Bootstrap (CDN) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Connexion à GameHub</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/login}" method="POST">
+                            
+                            <div class="form-group">
+                                <label for="username">Username : </label>
+                                <input type="text" class="form-control" id="username" name="username" th:field="*{username}" required />
+                                <div th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password : </label>
+                                <input type="password" class="form-control" id="password" name="password" th:field="*{password}" required />
+                                <div th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></div>
+                            </div>
+
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">Se connecter</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p>Pas encore inscrit ? <a th:href="@{/register}">Créer un compte</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
