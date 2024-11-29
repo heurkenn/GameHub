@@ -53,7 +53,7 @@ public class SignInController {
 
         // Vérifier si l'username est déjà utilisée
         if (userService.findByUsername(user.getUsername()).isPresent()) {
-            model.addAttribute("error", "L'username' est déjà utilisée");
+            model.addAttribute("error", "L'username est déjà utilisée");
             return "inscription";
         }
 
