@@ -23,8 +23,8 @@ public class GameService {
         return gameRepository.save(game);
     }
 
-    public Game getGameById(Long id) {
-        return gameRepository.findById(id).orElse(null);
+    public Optional<Game> getGameById(Long id) {
+        return gameRepository.findById(id);
     }
 
     public void deleteGame(Long id) {
