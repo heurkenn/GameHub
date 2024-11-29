@@ -34,3 +34,7 @@ build/
 
 testdb.mv.db
 testdb.trace.db
+
+gamehub/testdb.mv.db
+gamehub/testdb.mv.db
+
