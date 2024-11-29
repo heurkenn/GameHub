@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "app_user")  // Changement du nom de la table pour éviter le conflit avec le mot réservé 'user'
+@Table(name = "app_user")  // Pour éviter le conflit avec le mot réservé "user"
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,6 +28,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Le prénom ne peut pas être vide")
+    @Size(min = 2, max = 50, message = "Le prénom doit être compris entre 2 et 50 caractères")
+    private String name;
+
+    @NotBlank(message = "Le nom de famille ne peut pas être vide")
+    @Size(min = 2, max = 50, message = "Le nom doit être compris entre 2 et 50 caractères")
+    private String surname;
 
     @NotBlank(message = "Le nom d'utilisateur ne peut pas être vide")
     @Size(min = 3, max = 50, message = "Le nom d'utilisateur doit être compris entre 3 et 50 caractères")
@@ -48,6 +56,4 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "game_id")
     )
     private Set<Game> games = new HashSet<>();
-
-    // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
 }

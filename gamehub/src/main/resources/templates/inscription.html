@@ -12,7 +12,16 @@
 </head>
 <body>
 
-    <form th:action="@{/sign-in}" th:object="${user}"  method="POST">
+    <header class="navbar navbar-expand-lg">
+        <a class="navbar-brand" th:href="@{/}">GameHub</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/signin}">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Connexion</a></li>
+            </ul>
+        </div>
+    </header>
+    <form th:action="@{/signin}" th:object="${user}"  method="POST">
         
         <label for="prenom">Prénom : </label>
         <input type="text" name="name" th:field="*{name}"  />
@@ -34,9 +43,6 @@
         <input type="password" name ="password" th:field="*{password}"  required>
         <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
 
-        <label for="dateNaissance">Date de naissance : </label>
-        <input type="date" name="birthdate" th:field="*{birthdate}" min ="1920-01-01" required/>
-        <div th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"></div>
 
         <!-- Faire le truc avec les PP mais il faut avoir accès à la BDD donc chaud mtn -->
 

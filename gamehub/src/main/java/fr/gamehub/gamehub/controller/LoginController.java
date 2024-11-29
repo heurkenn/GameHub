@@ -24,7 +24,8 @@ public class LoginController {
 
     // Afficher la page de connexion
     @GetMapping("/login")
-    public String loginPage() {
+    public String loginPage(Model model) {
+        model.addAttribute("user",new User());
         return "login";
     }
 
