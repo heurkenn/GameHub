@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${game.name} + ' - GameHub'">GameHub - Jeu</title>
+    <!-- CSS global pour le style général -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/static/css/game.css}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar navbar-expand-lg">
+        <a class="navbar-brand" th:href="@{/}">GameHub</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/signin}">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Connexion</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="container mt-5">
+        <div class="text-center">
+            <!-- Nom du jeu -->
+            <h1 class="mb-4" th:text="${game.name}">Nom du Jeu</h1>
+
+            <!-- Image du jeu -->
+            <div class="mb-4">
+                <img th:src="@{/image/} + ${game.image_url}" class="img-fluid rounded" alt="Image du jeu" style="max-width: 100%; height: auto;">
+            </div>
+
+            <!-- Détails du jeu -->
+            <div class="details">
+                <p><strong>Année de sortie :</strong> <span th:text="${game.releaseYear}"></span></p>
+                <p><strong>Développeur :</strong> <span th:text="${game.developerStudio}"></span></p>
+                <p><strong>Genre :</strong> <span th:text="${game.genre}"></span></p>
+                <p>
+                    <strong>Plateformes :</strong>
+                    <span th:each="platform : ${game.platforms}" th:text="${platform.name}" class="badge bg-secondary mx-1"></span>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5">
+        <p>© 2023 GameHub - Tous droits réservés</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
