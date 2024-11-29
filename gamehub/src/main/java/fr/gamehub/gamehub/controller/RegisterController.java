@@ -14,7 +14,7 @@ import fr.gamehub.gamehub.service.UserService;
 import jakarta.validation.Valid;
 
 @Controller
-public class SignInController {
+public class RegisterController {
 
     @Autowired
     private UserService userService;
@@ -25,8 +25,8 @@ public class SignInController {
     /**
      * Affiche la page d'inscription avec un objet utilisateur vide.
      */
-    @GetMapping("/signin")
-    public String signInPage(Model model) {
+    @GetMapping("/register")
+    public String registerPage(Model model) {
         model.addAttribute("user", new User());
         return "inscription";
     }
@@ -34,8 +34,8 @@ public class SignInController {
     /**
      * Gère la soumission du formulaire d'inscription.
      */
-    @PostMapping("/signin")
-    public String signIn(
+    @PostMapping("/register")
+    public String register(
             @Valid @ModelAttribute("user") User user, // Validation de l'objet User
             BindingResult result, // Pour capturer les erreurs de validation
             Model model
