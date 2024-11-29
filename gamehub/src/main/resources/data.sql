@@ -29,7 +29,7 @@ VALUES (
     2017,
     'Epic Games',
     'Battle Royale',
-    'fortnite.jpeg',
+    'fortnite.jpg',
     'Fortnite est un jeu d’action et de construction où 100 joueurs s’affrontent pour être le dernier survivant dans un mode Battle Royale.'
 );
 
@@ -39,7 +39,7 @@ VALUES (
     2016,
     'Blizzard Entertainment',
     'FPS',
-    'overwatch.png',
+    'overwatch.jpg',
     'Overwatch est un jeu de tir à la première personne en équipe, avec des héros uniques dotés de capacités spéciales.'
 );
 
