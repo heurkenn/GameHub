@@ -92,3 +92,7 @@
     transform: scale(1.05); /* Effet d'agrandissement */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
+
+.mx-1{
+    color: #ffffff;
+}

@@ -150,6 +150,9 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     position: relative;
+    border: 2px solid #ff3c7e !important; /* Bordure rose pour une touche de néon */
+    margin-bottom: 2em;
+
     
 }
 
@@ -198,4 +201,33 @@ footer {
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
     text-shadow: 0px 0px 10px #00ff88;
     border-top: 3px solid #ff3c7e; /* Petite touche subtile de rose */
+}
+
+
+/* Flèche Précédente */
+.slick-prev {
+    background-color: #ff3c7e !important;  /* Couleur rose pour rester cohérent avec le thème */
+    color: #000000 !important;  /* Couleur du symbole de la flèche */
+    border-radius: 50% !important;  /* Rond pour un style moderne */
+    text-align: center !important;
+    z-index: 2 !important;  /* Assurez-vous que la flèche est toujours visible */
+    transition: background-color 0.3s ease !important;
+}
+
+.slick-prev:hover {
+    background-color: #e63670 !important;  /* Couleur légèrement plus sombre quand la souris survole */
+}
+
+/* Flèche Suivante */
+.slick-next {
+    background-color: #ff3c7e !important;  /* Même couleur que la flèche précédente */
+    color: #000000 !important;  /* Couleur du symbole de la flèche */
+    border-radius: 50% !important;  /* Rond pour un style moderne */
+    z-index: 2 !important;  /* Assurez-vous que la flèche est toujours visible */
+    transition: background-color 0.3s ease !important;
+    right: 12px !important;  /* Position de la flèche */
+}
+
+.slick-next:hover {
+    background-color: #e63670 !important;  /* Couleur légèrement plus sombre quand la souris survole */
 }
