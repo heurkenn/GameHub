@@ -70,7 +70,7 @@
             <div id="addGames" class="admin-section d-none">
                 <h3>Ajouter un Jeu</h3>
                 <!-- Formulaire pour ajouter un jeu -->
-                <form action="/admin/add-game" method="POST" enctype="multipart/form-data">
+                <form th:action="@{/admin-dashboard}" th:object="${game}" method="POST">
                     <div class="form-group">
                         <label for="gameName">Nom du jeu:</label>
                         <input type="text" class="form-control" id="gameName" name="gameName" required>

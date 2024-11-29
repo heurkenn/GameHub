@@ -1,5 +1,7 @@
 package fr.gamehub.gamehub.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import fr.gamehub.gamehub.model.Game;
 import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.service.GameService;
 import fr.gamehub.gamehub.service.UserService;
+
 
 @Controller
 public class UserGameController {
@@ -34,8 +37,9 @@ public class UserGameController {
     @PostMapping("/user-games/add")
     public String addGameToUser(@RequestParam Long userId, @RequestParam Long gameId) {
         User user = userService.getUserById(userId);
-        Game game = gameService.getGameById(gameId);
-        if (user != null && game != null) {
+        Optional<Game> gameOptional = gameService.getGameById(gameId);
+        if (user != null && gameOptional.isPresent()) {
+            Game game = gameOptional.get(); // Extraire la valeur de l'Optional
             user.getGames().add(game);  // Cette méthode devrait être disponible si l'entité User est correctement configurée
             userService.saveUser(user);
         }
