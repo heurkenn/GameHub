@@ -19,7 +19,6 @@
 }
 
 .game-card:hover {
-    transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -28,12 +27,8 @@
     height: 200px;
     background-size: cover;
     background-position: center;
-    transition: transform 0.3s ease;
 }
 
-.game-card.expanded .game-card-image {
-    transform: scale(1.1); /* Zoom de l'image en mode agrandi */
-}
 
 /* Contenu principal de la carte */
 .game-card-content {
@@ -90,7 +85,6 @@
 }
 
 .game-card.expanded {
-    transform: scale(1.05); /* Effet d'agrandissement */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
