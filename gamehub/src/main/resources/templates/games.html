@@ -42,7 +42,7 @@
                 <!-- Détails du jeu, à développer avec l'animation -->
                 <div class="game-card-details">
                     <p><strong>Description:</strong> <span th:text="${game.description}"></span></p>
-                    <p><strong>Plateformes:</strong> <span th:text="${game.platforms}"></span></p>
+                    <p><strong>Plateformes :</strong><span th:each="platform : ${game.platforms}" th:text="${platform.name}" class="badge bg-secondary mx-1"></span></p>
                 </div>
             </div>
         </div>

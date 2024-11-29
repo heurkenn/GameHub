@@ -34,7 +34,7 @@ public class SecurityConfig {
                     "/", "/game/**", "/signin", "/users", "/login", "/h2-console/**", "/games/**"
                 ).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/image/**", "/webjars/**", "/favicon.ico").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             )
             .formLogin((form) -> form
                 .loginPage("/login")

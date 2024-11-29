@@ -207,11 +207,14 @@ footer {
 /* Flèche Précédente */
 .slick-prev {
     background-color: #ff3c7e !important;  /* Couleur rose pour rester cohérent avec le thème */
+    height: 25px !important;  /* Hauteur de la flèche */
+    width: 25px !important;  /* Largeur de la flèche */
     color: #000000 !important;  /* Couleur du symbole de la flèche */
     border-radius: 50% !important;  /* Rond pour un style moderne */
     text-align: center !important;
     z-index: 2 !important;  /* Assurez-vous que la flèche est toujours visible */
     transition: background-color 0.3s ease !important;
+    left: -3% !important;  /* Position de la flèche */
 }
 
 .slick-prev:hover {
@@ -221,11 +224,13 @@ footer {
 /* Flèche Suivante */
 .slick-next {
     background-color: #ff3c7e !important;  /* Même couleur que la flèche précédente */
+    height: 25px !important;  /* Hauteur de la flèche */
+    width: 25px !important;  /* Largeur de la flèche */
     color: #000000 !important;  /* Couleur du symbole de la flèche */
     border-radius: 50% !important;  /* Rond pour un style moderne */
     z-index: 2 !important;  /* Assurez-vous que la flèche est toujours visible */
     transition: background-color 0.3s ease !important;
-    right: 12px !important;  /* Position de la flèche */
+    right: 2px !important;  /* Position de la flèche */
 }
 
 .slick-next:hover {
