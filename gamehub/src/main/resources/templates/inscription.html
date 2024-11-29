@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <form th:action="@{/submitFormUser}" th:object="${user}"  method="POST">
+    <form th:action="@{/sign-in}" th:object="${user}"  method="POST">
         
         <label for="prenom">Prénom : </label>
         <input type="text" name="name" th:field="*{name}"  />
