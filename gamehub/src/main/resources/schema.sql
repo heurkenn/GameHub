@@ -8,9 +8,11 @@ DROP TABLE IF EXISTS app_user;
 -- Créer la table app_user
 CREATE TABLE app_user (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    username VARCHAR(50) NOT NULL
+    name VARCHAR(50),
+    surname VARCHAR(50),
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL
 );
 
 -- Créer la table game

@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+     <!-- Header -->
+     <header class="navbar navbar-expand-lg">
+        <a class="navbar-brand" th:href="@{/}">GameHub</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/signin}">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Connexion</a></li>
+            </ul>
+        </div>
+    </header>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -19,7 +29,7 @@
                         <h3>Connexion à GameHub</h3>
                     </div>
                     <div class="card-body">
-                        <form th:action="@{/login}" method="POST">
+                        <form th:action="@{/login}" method="POST" th:object="${user}">
                             
                             <div class="form-group">
                                 <label for="username">Username : </label>

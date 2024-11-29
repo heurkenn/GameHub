@@ -25,14 +25,16 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // Déterminer le profil actif
         boolean isDev = env.getProperty("spring.profiles.active", "").equals("dev");
         System.out.println("Security configuration active: " + (isDev ? "dev" : "prod"));
 
         http
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/", "/index", "/sign-in", "/users", "/css/**", "/favicon.ico", "/js/**", "/images/**", "/h2-console/**").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers(
+                    "/", "/index", "/signin", "/users", "/login", "/h2-console/**"
+                ).permitAll()
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.ico").permitAll()
+                .anyRequest().permitAll()
             )
             .formLogin((form) -> form
                 .loginPage("/login")
@@ -43,9 +45,10 @@ public class SecurityConfig {
 
         if (isDev) {
             http.csrf((csrf) -> csrf.disable())
-                .headers((headers) -> headers.frameOptions((frame) -> frame.sameOrigin())); // Pour H2 Console
+                .headers((headers) -> headers.frameOptions((frame) -> frame.sameOrigin()));
         }
 
         return http.build();
     }
+
 }
