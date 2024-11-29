@@ -21,32 +21,33 @@
             </ul>
         </div>
     </header>
-    <form th:action="@{/signin}" th:object="${user}"  method="POST">
-        
-        <label for="prenom">Prénom : </label>
-        <input type="text" name="name" th:field="*{name}"  />
-        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-                                                            
-        <label for="nom">Nom : </label>
-        <input type="text" name="surname" th:field="*{surname}" required/>
-        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
-        
-        <label for="pseudonyme">Username : </label>
-        <input type="text" name="username" th:field="*{username}" required />
-        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+    <form th:action="@{/signin}" th:object="${user}" method="POST">
+        <!-- Message d'erreur général -->
+        <div th:if="${error}" style="color: red;">
+            <p th:text="${error}"></p>
+        </div>
 
-        <label for="email">Email : </label>
-        <input type="email" name="email" th:field="*{email}" required>
-        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="name" th:field="*{name}" />
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></div>
 
-        <label for ="Password"> Password : </label>
-        <input type="password" name ="password" th:field="*{password}"  required>
-        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="surname" th:field="*{surname}" />
+        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color: red;"></div>
 
+        <label for="pseudonyme">Nom d'utilisateur :</label>
+        <input type="text" id="pseudonyme" name="username" th:field="*{username}" />
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color: red;"></div>
 
-        <!-- Faire le truc avec les PP mais il faut avoir accès à la BDD donc chaud mtn -->
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" th:field="*{email}" />
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;"></div>
 
-        <button type="submit"> Envoyer</button>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" th:field="*{password}" />
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red;"></div>
+
+        <button type="submit">Envoyer</button>
     </form>
 
 
