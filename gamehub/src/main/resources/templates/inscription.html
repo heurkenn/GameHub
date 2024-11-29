@@ -38,15 +38,19 @@
             </div>
 
             <div class="form-group">
-                <label for="pseudonyme">Nom d'utilisateur :</label>
-                <input type="text" class="form-control" id="pseudonyme" name="username" th:field="*{username}" required />
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" class="form-control" id="username" name="username" th:field="*{username}" required />
                 <div th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></div>
+                <div id="usernameError" class="text-danger" style="display: none;">Ce nom d'utilisateur est déjà pris.</div>
+
+
             </div>
 
             <div class="form-group">
                 <label for="email">Email :</label>
                 <input type="email" class="form-control" id="email" name="email" th:field="*{email}" required />
                 <div th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></div>
+                <div id="emailError" class="text-danger" style="display: none;">Cet email est déjà pris.</div>
             </div>
 
             <div class="form-group">
@@ -65,7 +69,47 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const usernameError = document.getElementById('usernameError');
+        const emailError = document.getElementById('emailError');
+    
+        // Vérifier le username
+        usernameInput.addEventListener('input', function () {
+            const username = usernameInput.value;
+            if (username) {
+                fetch(`/api/validate/username?username=${username}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        usernameError.style.display = data ? 'block' : 'none';
+                    })
+                    .catch(err => console.error('Erreur:', err));
+            } else {
+                usernameError.style.display = 'none';
+            }
+        });
+    
+        // Vérifier l'email
+        emailInput.addEventListener('input', function () {
+            const email = emailInput.value;
+            if (email) {
+                fetch(`/api/validate/email?email=${email}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        emailError.style.display = data ? 'block' : 'none';
+                    })
+                    .catch(err => console.error('Erreur:', err));
+            } else {
+                emailError.style.display = 'none';
+            }
+        });
+    });
+    </script>
+    
 
    <!-- Footer fixe en bas -->
    <div th:insert="~{fragments :: footer}"></div>
 </body>
+</html>

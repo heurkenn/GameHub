@@ -36,12 +36,14 @@
                 </div>
             </form>
             <div class="form-footer">
-                <p>Pas encore inscrit ? <a th:href="@{/sign-in}">Créer un compte</a></p>
+                <p>Pas encore inscrit ? <a th:href="@{/register}">Créer un compte</a></p>
             </div>
         </div>
     </div>
 
     <!-- Footer fixe en bas -->
-    <div th:insert="~{fragments :: footer}"></div>
+    <footer>
+        <p>© 2024 GameHub - Tous droits réservés</p>
+    </footer>
 </body>
 </html>
