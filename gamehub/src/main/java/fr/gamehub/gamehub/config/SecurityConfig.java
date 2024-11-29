@@ -31,7 +31,7 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests((requests) -> requests
                 .requestMatchers(
-                    "/", "/game/**", "/signin", "/users", "/login", "/h2-console/**", "/games/**"
+                    "/", "/game/**", "/register", "/users", "/login", "/h2-console/**", "/games/**"
                 ).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/image/**", "/webjars/**", "/favicon.ico").permitAll()
                 .anyRequest().authenticated()

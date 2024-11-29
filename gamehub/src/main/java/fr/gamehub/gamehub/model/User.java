@@ -3,10 +3,13 @@ package fr.gamehub.gamehub.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -19,6 +22,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Stratégie par défaut
+@DiscriminatorColumn(name = "dtype") // Colonne discriminante
 @Table(name = "app_user")  // Pour éviter le conflit avec le mot réservé "user"
 @Getter
 @Setter
