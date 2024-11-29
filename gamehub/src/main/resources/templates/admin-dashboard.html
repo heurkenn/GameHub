@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GameHub</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+    <!-- Conteneur principal -->
+    <div class="admin-container d-flex">
+        <!-- Barre latérale -->
+        <nav class="sidebar">
+            <h2 class="sidebar-title">GameHub Admin</h2>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="#" onclick="showSection('addGames')" class="sidebar-link">Ajouter/Modifier/Supprimer Jeux</a></li>
+                <li class="sidebar-item"><a href="#" onclick="showSection('manageTournaments')" class="sidebar-link">Ajouter/Modifier/Supprimer Tournois</a></li>
+                <li class="sidebar-item"><a href="#" onclick="showSection('manageAdmins')" class="sidebar-link">Gérer les Admins</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenu Principal -->
+        <div class="main-content">
+            <!-- Section Ajouter Jeux -->
+            <div id="addGames" class="admin-section">
+                <h3>Gestion des Jeux</h3>
+                <p>Ici, vous pouvez ajouter, modifier ou supprimer des jeux de la plateforme.</p>
+
+                <!-- Formulaire pour ajouter ou modifier un jeu -->
+                <form action="/admin/add-game" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="gameName">Nom du jeu:</label>
+                        <input type="text" class="form-control" id="gameName" name="gameName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="releaseYear">Année de sortie:</label>
+                        <input type="number" class="form-control" id="releaseYear" name="releaseYear" min="1950" max="2025" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="developerStudio">Studio de développement:</label>
+                        <input type="text" class="form-control" id="developerStudio" name="developerStudio" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="genre">Genre:</label>
+                        <input type="text" class="form-control" id="genre" name="genre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image du jeu (ratio 2:1):</label>
+                        <input type="file" class="form-control-file" id="image" name="image" accept="image/*" onchange="checkImageRatio(event)" required>
+                        <small class="form-text text-muted">Veuillez choisir une image au format 2:1.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ajouter le Jeu</button>
+                </form>
+
+                <!-- Section de visualisation des jeux existants (modification ou suppression) -->
+                <div class="existing-games mt-5">
+                    <h4>Jeux Existants</h4>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action" th:each="game : ${games}" th:text="${game.name}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fonction pour afficher la section sélectionnée
+        function showSection(sectionId) {
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.classList.add('d-none');
+            });
+            document.getElementById(sectionId).classList.remove('d-none');
+        }
+
+        // Vérifier le ratio de l'image pour qu'il soit 2:1
+        function checkImageRatio(event) {
+            const file = event.target.files[0];
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+            img.onload = function() {
+                const width = img.width;
+                const height = img.height;
+                if (width / height !== 2) {
+                    alert("Veuillez choisir une image au ratio 2:1.");
+                    event.target.value = ""; // Réinitialiser le fichier sélectionné
+                }
+            }
+        }
+    </script>
+</body>
+</html>
