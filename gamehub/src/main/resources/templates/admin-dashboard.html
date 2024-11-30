@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GameHub</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <!-- Conteneur principal -->
+    <div class="admin-container d-flex">
+        <!-- Barre latérale -->
+        <nav class="sidebar">
+            <h2 class="sidebar-title">GameHub Admin</h2>
+            <ul class="sidebar-menu">
+                <!-- Gestion des Jeux MegaMenu -->
+                <li class="sidebar-item">
+                    <a href="#gamesSubMenu" class="sidebar-link" data-toggle="collapse" aria-expanded="false"
+                        aria-controls="gamesSubMenu">
+                        Gestion des Jeux
+                    </a>
+                    <div class="collapse" id="gamesSubMenu">
+                        <ul class="sub-menu">
+                            <li class="sub-item"><a href="#" onclick="showSection('addGames'); return false;" class="sub-link">Ajouter un Jeu</a></li>
+                            <li class="sub-item"><a href="#" onclick="showSection('modifyGames'); return false;" class="sub-link">Modifier un Jeu</a></li>
+                            <li class="sub-item"><a href="#" onclick="showSection('deleteGames'); return false;" class="sub-link">Supprimer un Jeu</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Gestion des Tournois MegaMenu -->
+                <li class="sidebar-item">
+                    <a href="#tournamentsSubMenu" class="sidebar-link" data-toggle="collapse" aria-expanded="false"
+                        aria-controls="tournamentsSubMenu">
+                        Gestion des Tournois
+                    </a>
+                    <div class="collapse" id="tournamentsSubMenu">
+                        <ul class="sub-menu">
+                            <li class="sub-item"><a href="#" onclick="showSection('addTournament'); return false;" class="sub-link">Ajouter un Tournoi</a></li>
+                            <li class="sub-item"><a href="#" onclick="showSection('modifyTournament'); return false;" class="sub-link">Modifier un Tournoi</a></li>
+                            <li class="sub-item"><a href="#" onclick="showSection('deleteTournament'); return false;" class="sub-link">Supprimer un Tournoi</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Gestion des Admins MegaMenu -->
+                <li class="sidebar-item">
+                    <a href="#adminsSubMenu" class="sidebar-link" data-toggle="collapse" aria-expanded="false"
+                        aria-controls="adminsSubMenu">
+                        Gestion des Admins
+                    </a>
+                    <div class="collapse" id="adminsSubMenu">
+                        <ul class="sub-menu">
+                            <li class="sub-item"><a href="#" onclick="showSection('addAdmin'); return false;" class="sub-link">Ajouter un Admin</a></li>
+                            <li class="sub-item"><a href="#" onclick="showSection('modifyAdmin'); return false;" class="sub-link">Modifier un Admin</a></li>
+                            <li class="sub-item"><a href="#" onclick="showSection('deleteAdmin'); return false;" class="sub-link">Supprimer un Admin</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Contenu Principal -->
+        <div class="main-content p-4">
+            <!-- Section Ajouter Jeux -->
+            <div id="addGames" class="admin-section d-none">
+                <h3>Ajouter un Jeu</h3>
+                <!-- Formulaire pour ajouter un jeu -->
+                <form th:action="@{/admin-dashboard}" th:object="${game}" method="POST">
+                    <div class="form-group">
+                        <label for="gameName">Nom du jeu:</label>
+                        <input type="text" class="form-control" id="gameName" name="gameName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="releaseYear">Année de sortie:</label>
+                        <input type="number" class="form-control" id="releaseYear" name="releaseYear" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="developerStudio">Studio de développement:</label>
+                        <input type="text" class="form-control" id="developerStudio" name="developerStudio" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="genre">Genre:</label>
+                        <input type="text" class="form-control" id="genre" name="genre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUrl">Image du jeu:</label>
+                        <input type="file" class="form-control-file" id="imageUrl" name="imageUrl" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ajouter le Jeu</button>
+                </form>
+            </div>
+
+            <!-- Autres sections (modifier/supprimer jeux, tournois, etc.)... -->
+            <div id="modifyGames" class="admin-section d-none">
+                <h3>Modifier un Jeu</h3>
+                <p>Section pour modifier un jeu existant.</p>
+            </div>
+
+            <div id="deleteGames" class="admin-section d-none">
+                <h3>Supprimer un Jeu</h3>
+                <p>Section pour supprimer un jeu existant.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript pour afficher la bonne section -->
+    <script>
+        function showSection(sectionId) {
+            // Cacher toutes les sections
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.classList.add('d-none');
+            });
+            // Afficher la section sélectionnée
+            document.getElementById(sectionId).classList.remove('d-none');
+        }
+    </script>
+</body>
+
+</html>

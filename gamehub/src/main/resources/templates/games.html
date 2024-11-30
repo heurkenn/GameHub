@@ -6,50 +6,51 @@
     <!-- CSS global pour le style général -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <!-- CSS spécifique pour la page des jeux -->
-    <link rel="stylesheet" th:href="@{/static/css/game.css}">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <!-- Header -->
-    <header class="navbar navbar-expand-lg">
-        <a class="navbar-brand" th:href="@{/}">GameHub</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" th:href="@{/register}">Inscription</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Connexion</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Section des jeux -->
+    <div th:insert="~{fragments :: header}"></div>
+    <!-- Section du catalogue des jeux -->
     <section class="games-section container">
         <h2 class="text-center mt-4 mb-5">Catalogue des Jeux</h2>
         <div class="row">
-            <!-- Exemple de carte de jeu -->
-            <div class="col-md-4">
+            <!-- Boucle Thymeleaf pour afficher tous les jeux -->
+            <div th:each="game : ${allGames}" class="col-md-4 mb-4">
                 <div class="game-card">
-                    <div class="game-card-image" style="background-image: url('https://source.unsplash.com/300x200/?game');"></div>
+                    <!-- Image de couverture du jeu -->
+                    <div class="game-card-image"><img th:src="@{/image/} + ${game.image_url}" class="img-fluid rounded" alt="Image du jeu" style="max-width: 100%; height: auto;"></div>
                     <div class="game-card-content">
-                        <h3>Nom du Jeu</h3>
-                        <p>Genre: Action</p>
+                        <!-- Titre du jeu -->
+                        <h3 th:text="${game.name}">Nom du Jeu</h3>
+                        <!-- Genre du jeu -->
+                        <p th:text="'Genre: ' + ${game.genre}">Genre: Action</p>
+                        <!-- Bouton pour voir plus de détails -->
                         <button class="btn btn-primary btn-details" onclick="toggleDetails(this)">Voir Détails</button>
-                        <button class="btn btn-primary btn-details" onclick="">Page du jeu</button>
-
+                        <!-- Bouton pour aller à la page du jeu -->
+                        <a th:href="@{/game/} + ${game.name}" class="btn btn-primary btn-page">Page du Jeu</a>
                     </div>
+                    <!-- Détails du jeu, à développer avec l'animation -->
                     <div class="game-card-details">
-                        <p><strong>Description:</strong> Un jeu d'action passionnant avec des graphismes époustouflants.</p>
-                        <p><strong>Plateforme:</strong> PC, Console</p>
+                        <p><strong>Description:</strong> <span th:text="${game.description}"></span></p>
+                        <p><strong>Plateformes :</strong><span th:each="platform : ${game.platforms}" th:text="${platform.name}" class="badge bg-secondary mx-1"></span></p>
                     </div>
                 </div>
             </div>
-            <!-- Ajoutez d'autres cartes de jeu ici en utilisant la même structure -->
         </div>
     </section>
 
+    <script>
+        function toggleDetails(button) {
+            const card = button.closest('.game-card');
+            card.classList.toggle('expanded');
+        }
+    </script>
+
+
     <!-- Footer -->
-    <footer>
-        <p>© 2023 GameHub - Tous droits réservés</p>
-    </footer>
+    <div th:insert="~{fragments :: footer}"></div>
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
