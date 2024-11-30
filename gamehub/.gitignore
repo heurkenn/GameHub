@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ### DataBase ###
-testdb.mv.db
-testdb.trace.db
+gamehub/testdb.mv.db
+gamehub/testdb.trace.db
