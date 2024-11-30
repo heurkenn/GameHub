@@ -53,9 +53,10 @@
 
 /* Focus sur les champs */
 .form-control:focus {
-    border-color: #00ff88; /* Bordure verte néon au focus */
     box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
     outline: none;
+    border-color: #ff3c7e;
+
 }
 
 /* Bouton principal */
