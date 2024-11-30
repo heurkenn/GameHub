@@ -21,38 +21,42 @@
 
 .sidebar-title {
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #00ff88;
-    text-shadow: 0px 0px 8px rgba(0, 255, 136, 0.6);
-    margin-bottom: 1.5rem;
+    text-shadow: 0px 0px 10px #00ff88;
+    margin-bottom: 2rem;
 }
 
 .sidebar-menu {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    width: 100%;
+}
+
+.sidebar-category {
+    font-family: 'Grandstander', sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    padding-left: 0.5rem;
+    border-left: 3px solid #ff3c7e; /* Barre rose néon pour séparer les sections */
 }
 
 .sidebar-item {
-    margin: 15px 0;
+    margin-bottom: 0.5rem;
 }
 
-.sidebar-link {
+.sidebar-item a {
     font-family: 'Grandstander', sans-serif;
-    color: #ffffff;
+    color: #00ff88;
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    display: block;
-    padding: 10px;
-    border-radius: 8px;
+    font-size: 1rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.sidebar-link:hover,
-.sidebar-link:focus {
-    background-color: #ff3c7e;
-    color: #1e2333;
-    text-shadow: 0px 0px 8px rgba(255, 60, 126, 0.6);
+.sidebar-item a:hover {
+    color: #ff3c7e; /* Changement de couleur au survol */
+    text-shadow: 0px 0px 5px #ff3c7e;
 }
 
 /* Sous-menus */
@@ -93,13 +97,6 @@
     text-shadow: 0px 0px 8px rgba(0, 255, 136, 0.6);
 }
 
-.admin-section {
-    display: none;
-}
-
-.admin-section.d-none {
-    display: none !important;
-}
 
 .admin-section .form-group label {
     font-family: 'Grandstander', sans-serif;
