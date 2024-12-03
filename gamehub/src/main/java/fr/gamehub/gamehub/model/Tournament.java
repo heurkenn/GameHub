@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -90,12 +91,13 @@ public class Tournament {
     @OneToMany(mappedBy = "tournament")
     private Set<Fight> combats; 
 
-    @ManyToMany
-    @JoinTable(
-        name = "tournament_user", // Nom de la table de jointure
-        joinColumns = @JoinColumn(name = "tournament_id"), // Clé étrangère vers Tournoi
-        inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
-    )
+    @Transient
+    // @ManyToMany
+    // @JoinTable(
+    //     name = "tournament_user", // Nom de la table de jointure
+    //     joinColumns = @JoinColumn(name = "tournament_id"), // Clé étrangère vers Tournoi
+    //     inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
+    // )
     private Set<User> participants = new HashSet<>();
 }
 

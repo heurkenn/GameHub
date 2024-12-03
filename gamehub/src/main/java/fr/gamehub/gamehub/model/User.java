@@ -11,18 +11,13 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Entity
-@Table(name = "users")  // Utilise un autre nom pour la table pour éviter le conflit avec le mot-clé "AppUser"
-@Getter
-@Setter
-@NoArgsConstructor
+@Entity @Data
 public class User {
 
     @Id
@@ -41,15 +36,17 @@ public class User {
     @Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères")
     private String password;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_games",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "game_id")
-    )
+    @Transient
+    // @ManyToMany
+    // @JoinTable(
+    //         name = "user_games",
+    //         joinColumns = @JoinColumn(name = "user_id"),
+    //         inverseJoinColumns = @JoinColumn(name = "game_id")
+    // )
     private Set<Game> games = new HashSet<>();
 
-    @ManyToMany(mappedBy = "participants") // Indique que la relation est gérée par la classe Tournoi
+    @Transient
+    // @ManyToMany(mappedBy = "participants") // Indique que la relation est gérée par la classe Tournoi
     private Set<Tournament> tournaments = new HashSet<>();
 
     // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
