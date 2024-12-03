@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
+
 @Controller
 @RequestMapping("/tournament")
 public class TournamentController {
@@ -24,7 +25,8 @@ public class TournamentController {
     @GetMapping("/creation")
     public String Tournament(Model model){
         model.addAttribute("tournament", new Tournament());
-        return "creation";
+        model.addAttribute("categorie", Category.values());
+        return "creationTournament";
     }
     @PostMapping(value = "/submitFormTournament")
     public String submitFormTournament(@Valid @ModelAttribute("tournament") Tournament tournament, BindingResult bindingResult) {

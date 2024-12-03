@@ -1,29 +1,22 @@
 package fr.gamehub.gamehub.model;
 
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.HashSet;
-
+import fr.gamehub.gamehub.validator.*;
 
 @Entity
 @Table(name = "Tournament") 
 @Getter
 @Setter
 @NoArgsConstructor
+@ValidateDate
 public class Tournament {
 
     @Id
@@ -39,28 +32,28 @@ public class Tournament {
     @NotNull
     @NotEmpty
     @NotBlank(message = "La date de création ne doit pas être vide")
-    private Date datecreation;
+    private LocalDateTime datecreation = LocalDateTime.now();
 
     @NotNull
     @NotEmpty
     @NotBlank(message = "La date de debut ne doit pas être vide")
-    private Date dateStart;
+    private LocalDateTime dateStart;
 
     @NotNull
     @NotEmpty
     @NotBlank(message = "La date de fin ne doit pas être vide")
-    private Date dateEnd;
+    private LocalDateTime dateEnd;
 
     
     @NotNull
     @NotEmpty
     @NotBlank(message = "La date de fin des inscriptions ne doit pas être vide")
-    private Date dateEndInscription;
+    private LocalDateTime dateEndInscription;
 
     @NotNull
     @NotEmpty
     @NotBlank(message = "La date de début des inscriptions ne doit pas être vide")
-    private Date dateStartInscription;
+    private LocalDateTime dateStartInscription;
 
     @NotNull
     @NotEmpty

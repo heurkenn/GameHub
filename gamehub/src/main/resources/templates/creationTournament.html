@@ -11,11 +11,11 @@
 
 <form th:action="@{/tournament/creation}" th:object="${tournament}" method="POST">
 	
-	<label for= "nameTournament"> Nom du tournoi : </label>
+	<label for= "nameTournament">Nom du tournoi : </label>
 	<input type="text" name="nameTournament" th:field="*{name}"  required />
 	<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 
-	<label for="limitNbrPlayer" > Nombre maximum de joueur</label>
+	<label for="limitNbrPlayer">Nombre maximum de joueur :</label>
 	<input type="number" name="nbJoueurLimite" th:field="*{nbJoueurLimite}" min="2" />
 	<div th:if="${#fields.hasErrors('nbJoueurLimite')}" th:errors="*{nbJoueurLimite}"></div>
 
@@ -23,6 +23,38 @@
 	<input type="checkbox" name="isPrivate" th:field="*{isPrivate}" />
 	<div th:if="${#fields.hasErrors('isPrivate')}" th:errors="*{isPrivate}"></div>
 
+	<div class = "date">
+		<label for ="dateStartInscription">Date de début d'inscription :</label>
+		<input type="datetime-local" th:field="*{dateStartInscription}" />
+		<div th:if="${#fields.hasErrors('dateStartInscription')}" th:errors="*{dateStartInscription}"></div>
+	</div>
+	<div class = "date">
+		<label for ="dateEndInscription">Date de fin d'inscription :</label>
+		<input type="datetime-local" th:field="*{dateEndInscription}" />
+		<div th:if="${#fields.hasErrors('dateEndInscription')}" th:errors="*{dateEndInscription}"></div>
+	</div>
+	<div class = "date">
+		<label for ="dateStartTournament">Date de début de tournoi :</label>
+		<input type="datetime-local" th:field="*{dateStart}" />
+		<div th:if="${#fields.hasErrors('dateStart')}" th:errors="*{dateStart}"></div>
+	</div>
+	<div class = "date">
+		<label for ="dateEndTournament">Date de fin de tournoi :</label>
+		<input type="datetime-local" th:field="*{dateEnd}" />
+		<div th:if="${#fields.hasErrors('dateEnd')}" th:errors="*{dateEnd}"></div>
+	</div>
+
+	<label for="categorie">Catégorie :</label>
+	<select th:field="*categorie">
+		<option value="" disabled selected dz></option>
+		<option th:each="cat : ${categorie}"
+				th:value="${cat}"
+				th:text="${cat}">
+		</option>
+	</select>
+	</select>
+
+	
 
 
 </form>
