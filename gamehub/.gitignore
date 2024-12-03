@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### DataBase ###
+gamehub/testdb.mv.db
+gamehub/testdb.trace.db

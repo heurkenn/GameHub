@@ -24,7 +24,8 @@ public class LoginController {
 
     // Afficher la page de connexion
     @GetMapping("/login")
-    public String loginPage() {
+    public String loginPage(Model model) {
+        model.addAttribute("user",new User());
         return "login";
     }
 
@@ -36,7 +37,7 @@ public class LoginController {
         if (user.isPresent() && passwordEncoder.matches(password, user.get().getPassword())) {
             // Si les identifiants sont corrects, rediriger vers la page d'accueil
             model.addAttribute("user", user.get());
-            return "redirect:/dashboard";
+            return "redirect:/";
         } else {
             // Si les identifiants sont incorrects, afficher un message d'erreur
             model.addAttribute("error", "Email ou mot de passe incorrect");

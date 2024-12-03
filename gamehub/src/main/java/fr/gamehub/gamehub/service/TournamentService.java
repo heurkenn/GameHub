@@ -1,7 +1,7 @@
 package fr.gamehub.gamehub.service;
 
 import java.util.Optional;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +15,19 @@ public class TournamentService {
     @Autowired
     private TournamentRepository tournamentRepository;
 
+    public List<Tournament> getAllTournaments() {
+        return tournamentRepository.findAll();
+    }
 
-
+    public Optional<Tournament> getTournamentById(Long id) {
+        return tournamentRepository.findById(id);
+    }
     public Optional<Tournament> findByCategory(Category category) {
         return tournamentRepository.findByCategory(category);
     }
 
-    public Optional<Tournament> findById(Long id) {
-        return tournamentRepository.findById(id);
-    }
-
      // Ajoute aussi une méthode pour enregistrer ou mettre à jour un tournoi
-    public Tournament saveTournament(Tournament tournament) {
+     public Tournament saveTournament(Tournament tournament) {
         return tournamentRepository.save(tournament);
     }
 
