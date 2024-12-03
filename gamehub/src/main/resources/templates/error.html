@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur 404 - Page Non Trouvée</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        /* Style de base */
+        body {
+            font-family: 'Grandstander', sans-serif;
+            color: #e3e3e3;
+            background-color: #1e2333;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3rem;
+            color: #ff3c7e;
+            text-shadow: 0px 0px 10px rgba(255, 60, 126, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        .game-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 3px solid #ff3c7e;
+            background-color: #2c303b;
+            overflow: hidden;
+        }
+
+        #gameCanvas {
+            display: block;
+            margin: 0 auto;
+            background: #1e2333;
+        }
+
+        #score {
+            color: #00ff88;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            text-shadow: 0px 0px 10px rgba(0, 255, 136, 0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .back-link {
+            margin-top: 2rem;
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: #ff3c7e;
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #e63670;
+            text-shadow: 0px 0px 8px rgba(255, 60, 126, 0.6);
+        }
+
+        .color-selection {
+            margin-bottom: 20px;
+            font-family: 'Press Start 2P', cursive;
+            color: #00ff88;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        select {
+            padding: 5px;
+            font-family: 'Grandstander', sans-serif;
+            border-radius: 8px;
+            border: 2px solid #ff3c7e;
+            background-color: #1e2333;
+            color: #e3e3e3;
+            box-shadow: 0 0 10px rgba(255, 60, 126, 0.6);
+        }
+
+        .start-button {
+            margin-left: 10px;
+            padding: 0.5rem 1rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            background-color: #00ff88;
+            border: none;
+            color: #1e2333;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .start-button:hover {
+            background-color: #00e67a;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Message d'erreur 404 -->
+    <h1>Erreur 404 - Page Non Trouvée</h1>
+
+    <!-- Score du jeu -->
+    <div id="score">Score: 0</div>
+
+    <!-- Sélection de la couleur du serpent -->
+    <div class="color-selection">
+        <label for="snakeColor">Choisissez la couleur de votre serpent :</label>
+        <select id="snakeColor">
+            <option value="#00ff88">Vert Néon</option>
+            <option value="#ff3c7e">Rose Néon</option>
+            <option value="#ffcc00">Jaune</option>
+            <option value="#1e90ff">Bleu</option>
+            <option value="#ffffff">Blanc</option>
+        </select>
+        <button class="start-button" onclick="startGame()">Démarrer le Jeu</button>
+    </div>
+
+    <!-- Conteneur de jeu -->
+    <div class="game-container">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Lien retour -->
+    <a th:href="@{/}" class="back-link">Retour à l'Accueil</a>
+
+    <!-- Script du jeu Snake -->
+    <script>
+        let canvas, ctx, game;
+        let box = 20;
+        let snake = [];
+        let direction = "";
+        let food;
+        let score = 0;
+        let snakeColor = "#00ff88"; // Couleur par défaut du serpent
+
+        function startGame() {
+            // Récupérer la couleur choisie par l'utilisateur
+            snakeColor = document.getElementById("snakeColor").value;
+
+            // Initialisation du serpent et de la nourriture
+            snake = [{ x: 9 * box, y: 10 * box }];
+            food = {
+                x: Math.floor(Math.random() * 19) * box,
+                y: Math.floor(Math.random() * 19) * box,
+            };
+            direction = "";
+            score = 0;
+
+            // Affichage du score initial
+            document.getElementById("score").innerText = "Score: 0";
+
+            // Lancer le jeu
+            clearInterval(game);
+            game = setInterval(draw, 100);
+        }
+
+        function init() {
+            canvas = document.getElementById("gameCanvas");
+            ctx = canvas.getContext("2d");
+
+            // Gestion des contrôles
+            document.addEventListener("keydown", changeDirection);
+        }
+
+        function changeDirection(event) {
+            if (event.key === "ArrowUp" && direction !== "DOWN") {
+                direction = "UP";
+            } else if (event.key === "ArrowDown" && direction !== "UP") {
+                direction = "DOWN";
+            } else if (event.key === "ArrowLeft" && direction !== "RIGHT") {
+                direction = "LEFT";
+            } else if (event.key === "ArrowRight" && direction !== "LEFT") {
+                direction = "RIGHT";
+            }
+        }
+
+        function draw() {
+            // Dessiner le fond du canvas
+            ctx.fillStyle = "#1e2333";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Dessiner le serpent
+            for (let i = 0; i < snake.length; i++) {
+                ctx.fillStyle = snakeColor;
+                ctx.fillRect(snake[i].x, snake[i].y, box, box);
+
+                ctx.strokeStyle = "#252b3f";
+                ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+            }
+
+            // Dessiner la nourriture
+            ctx.fillStyle = "#ff3c7e";
+            ctx.fillRect(food.x, food.y, box, box);
+
+            // Position de la tête du serpent
+            let snakeX = snake[0].x;
+            let snakeY = snake[0].y;
+
+            // Changer la direction de la tête
+            if (direction === "UP") snakeY -= box;
+            if (direction === "DOWN") snakeY += box;
+            if (direction === "LEFT") snakeX -= box;
+            if (direction === "RIGHT") snakeX += box;
+
+            // Si le serpent mange la nourriture
+            if (snakeX === food.x && snakeY === food.y) {
+                score++;
+                document.getElementById("score").innerText = "Score: " + score;
+                food = {
+                    x: Math.floor(Math.random() * 19) * box,
+                    y: Math.floor(Math.random() * 19) * box,
+                };
+            } else {
+                // Supprimer la dernière cellule
+                snake.pop();
+            }
+
+            // Ajouter une nouvelle tête
+            let newHead = {
+                x: snakeX,
+                y: snakeY,
+            };
+
+            // Game over - si le serpent se mord lui-même ou s'il sort du canvas
+            if (
+                snakeX < 0 ||
+                snakeX >= canvas.width ||
+                snakeY < 0 ||
+                snakeY >= canvas.height ||
+                collision(newHead, snake)
+            ) {
+                clearInterval(game);
+                setTimeout(() => alert("Game Over! Score final: " + score), 10);
+                return;
+            }
+
+            snake.unshift(newHead);
+        }
+
+        function collision(head, array) {
+            for (let i = 0; i < array.length; i++) {
+                if (head.x === array[i].x && head.y === array[i].y) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

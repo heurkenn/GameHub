@@ -1,13 +1,4 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic",
-    "maven.excludedFolders": [
-
-
-        "**/.*",
-        "**/node_modules",
-        "**/target",
-        "**/bin",
-        "**/archetype-resources"
-    ],
-    
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic"
 }

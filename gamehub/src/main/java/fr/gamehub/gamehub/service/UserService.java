@@ -1,5 +1,6 @@
 package fr.gamehub.gamehub.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,12 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
+    }
 }
