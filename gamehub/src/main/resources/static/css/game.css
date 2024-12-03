@@ -1,0 +1,93 @@
+/* Section des jeux */
+.games-section {
+    padding: 2rem 0;
+}
+
+/* Style de la carte de jeu */
+.game-card {
+    background-color: #2c303b !important; /* Carte avec un fond contrastant légèrement */
+    border-radius: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    width: 90%;
+    border: 2px solid #ff3c7e; /* Bordure rose pour une touche de néon */
+    max-height: 600px;
+
+}
+
+.game-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image du jeu */
+.game-card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Contenu principal de la carte */
+.game-card-content {
+    padding: 1rem;
+    text-align: center;
+    height: 10em;
+}
+
+.game-card-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.game-card-content p {
+    font-size: 0.9rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+/* Bouton "Voir Détails" */
+.btn-details {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    color: #ffffff;
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-details:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+}
+
+/* Détails du jeu, masqué par défaut */
+.game-card-details {
+    display: none;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #4a4a4a;
+    background-color: #f5f7fa;
+}
+
+.game-card.expanded .game-card-details {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.game-card.expanded {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mx-1{
+    color: #ffffff;
+}

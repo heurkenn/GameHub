@@ -12,50 +12,75 @@ INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo 3DS
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation Vita', '2011-12-17', 'Sony');
 
 -- Insérer des jeux dans la table game
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('The Legend of Zelda: Breath of the Wild', 2017, 'Nintendo', 'Action/Aventure');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('God of War', 2018, 'Santa Monica Studio', 'Action');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('The Witcher 3: Wild Hunt', 2015, 'CD Projekt Red', 'RPG');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Red Dead Redemption 2', 2018, 'Rockstar Games', 'Action/Aventure');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Super Mario Odyssey', 2017, 'Nintendo', 'Platformer');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Horizon Zero Dawn', 2017, 'Guerrilla Games', 'Action/RPG');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Spider-Man', 2018, 'Insomniac Games', 'Action');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Bloodborne', 2015, 'FromSoftware', 'Action/RPG');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Persona 5', 2016, 'Atlus', 'JRPG');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('The Elder Scrolls V: Skyrim', 2011, 'Bethesda', 'RPG');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Minecraft', 2011, 'Mojang', 'Sandbox');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Grand Theft Auto V', 2013, 'Rockstar Games', 'Action');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Final Fantasy XV', 2016, 'Square Enix', 'RPG');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Assassin''s Creed Odyssey', 2018, 'Ubisoft', 'Action/RPG');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Fortnite', 2017, 'Epic Games', 'Battle Royale');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Overwatch', 2016, 'Blizzard Entertainment', 'FPS');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Stardew Valley', 2016, 'ConcernedApe', 'Simulation');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Animal Crossing: New Horizons', 2020, 'Nintendo', 'Simulation');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Cyberpunk 2077', 2020, 'CD Projekt', 'RPG');
-INSERT INTO game (name, release_year, developer_studio, genre) VALUES ('Hades', 2020, 'Supergiant Games', 'Roguelike');
+
+
+INSERT INTO game (name, release_year, developer_studio, genre, image_url, description)
+VALUES (
+    'Minecraft',
+    2011,
+    'Mojang',
+    'Sandbox',
+    'minecraft.jpg',
+    'Minecraft est un jeu bac à sable où les joueurs peuvent explorer, construire et survivre dans un monde généré de manière procédurale.'
+);
+
+INSERT INTO game (name, release_year, developer_studio, genre, image_url, description)
+VALUES (
+    'Fortnite',
+    2017,
+    'Epic Games',
+    'Battle Royale',
+    'fortnite.jpg',
+    'Fortnite est un jeu d’action et de construction où 100 joueurs s’affrontent pour être le dernier survivant dans un mode Battle Royale.'
+);
+
+INSERT INTO game (name, release_year, developer_studio, genre, image_url, description)
+VALUES (
+    'Overwatch',
+    2016,
+    'Blizzard Entertainment',
+    'FPS',
+    'overwatch.jpg',
+    'Overwatch est un jeu de tir à la première personne en équipe, avec des héros uniques dotés de capacités spéciales.'
+);
+
+INSERT INTO game (name, release_year, developer_studio, genre, image_url, description)
+VALUES (
+    'Super Smash Bros Ultimate',
+    2018,
+    'Nintendo',
+    'Fighting',
+    'ssbu.jpg',
+    'Super Smash Bros. est un jeu de combat où des personnages emblématiques de Nintendo et d’autres franchises s’affrontent dans des arènes dynamiques.'
+);
+
+INSERT INTO game (name, release_year, developer_studio, genre, image_url, description)
+VALUES (
+    'Hades',
+    2020,
+    'Supergiant Games',
+    'Roguelike',
+    'hades.jpg',
+    'Hades est un roguelike d’action rapide où vous incarnez Zagreus, le fils d’Hadès, cherchant à échapper aux Enfers.'
+);
+
+
 
 -- Associer des jeux aux plateformes dans la table game_platforms
-INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 1); -- Zelda sur Nintendo Switch
-INSERT INTO game_platforms (game_id, platform_id) VALUES (2, 2); -- God of War sur PS4
-INSERT INTO game_platforms (game_id, platform_id) VALUES (2, 3); -- God of War sur PS5
-INSERT INTO game_platforms (game_id, platform_id) VALUES (3, 5); -- The Witcher 3 sur PC
-INSERT INTO game_platforms (game_id, platform_id) VALUES (4, 4); -- Red Dead Redemption 2 sur Xbox One
-INSERT INTO game_platforms (game_id, platform_id) VALUES (4, 6); -- Red Dead Redemption 2 sur PC
-INSERT INTO game_platforms (game_id, platform_id) VALUES (5, 1); -- Super Mario Odyssey sur Nintendo Switch
-INSERT INTO game_platforms (game_id, platform_id) VALUES (6, 2); -- Horizon Zero Dawn sur PS4
-INSERT INTO game_platforms (game_id, platform_id) VALUES (7, 2); -- Spider-Man sur PS4
-INSERT INTO game_platforms (game_id, platform_id) VALUES (8, 2); -- Bloodborne sur PS4
-INSERT INTO game_platforms (game_id, platform_id) VALUES (9, 2); -- Persona 5 sur PS4
-INSERT INTO game_platforms (game_id, platform_id) VALUES (10, 6); -- Skyrim sur PC
-INSERT INTO game_platforms (game_id, platform_id) VALUES (11, 6); -- Minecraft sur PC
-INSERT INTO game_platforms (game_id, platform_id) VALUES (11, 4); -- Minecraft sur Xbox One
-INSERT INTO game_platforms (game_id, platform_id) VALUES (12, 4); -- GTA V sur Xbox One
-INSERT INTO game_platforms (game_id, platform_id) VALUES (12, 6); -- GTA V sur PC
-INSERT INTO game_platforms (game_id, platform_id) VALUES (13, 2); -- Final Fantasy XV sur PS4
-INSERT INTO game_platforms (game_id, platform_id) VALUES (14, 4); -- Assassin's Creed Odyssey sur Xbox One
-INSERT INTO game_platforms (game_id, platform_id) VALUES (15, 6); -- Fortnite sur PC
-INSERT INTO game_platforms (game_id, platform_id) VALUES (16, 6); -- Overwatch sur PC
-INSERT INTO game_platforms (game_id, platform_id) VALUES (17, 6); -- Stardew Valley sur PC
-INSERT INTO game_platforms (game_id, platform_id) VALUES (18, 1); -- Animal Crossing sur Nintendo Switch
-INSERT INTO game_platforms (game_id, platform_id) VALUES (19, 6); -- Cyberpunk 2077 sur PC
-INSERT INTO game_platforms (game_id, platform_id) VALUES (20, 1); -- Hades sur Nintendo Switch
+INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 6); -- Minecraft sur PC
+INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 4); -- Minecraft sur Xbox One
+INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 1); -- Minecraft sur Nintendo Switch
+
+INSERT INTO game_platforms (game_id, platform_id) VALUES (2, 6); -- Fortnite sur PC
+INSERT INTO game_platforms (game_id, platform_id) VALUES (2, 4); -- Fortnite sur Xbox One
+INSERT INTO game_platforms (game_id, platform_id) VALUES (2, 5); -- Fortnite sur Xbox Series X
+
+INSERT INTO game_platforms (game_id, platform_id) VALUES (3, 6); -- Overwatch sur PC
+INSERT INTO game_platforms (game_id, platform_id) VALUES (3, 4); -- Overwatch sur Xbox One
+INSERT INTO game_platforms (game_id, platform_id) VALUES (3, 2); -- Overwatch sur PlayStation 4
+
+INSERT INTO game_platforms (game_id, platform_id) VALUES (4, 1); -- Super Smash Bros. sur Nintendo Switch
+
+INSERT INTO game_platforms (game_id, platform_id) VALUES (5, 1); -- Hades sur Nintendo Switch
+INSERT INTO game_platforms (game_id, platform_id) VALUES (5, 6); -- Hades sur PC
 

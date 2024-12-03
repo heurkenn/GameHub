@@ -3,6 +3,7 @@ package fr.gamehub.gamehub.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,13 +31,20 @@ public class Game {
     @NotBlank(message = "Le nom du jeu ne peut pas être vide")
     private String name;
 
-    private int release_year;
+    @Column(name = "release_year") // Ajoutez cette annotation pour mapper correctement à la colonne
+    private int releaseYear;
 
+    
+    @Column(name = "developer_studio") // Mappage explicite pour éviter les erreurs
     @NotBlank(message = "Le studio de développement ne peut pas être vide")
-    private String developer_studio;
+    private String developerStudio;
 
     @NotBlank(message = "Le genre ne peut pas être vide")
     private String genre;
+
+    private String image_url;
+
+    private String description;
 
     @ManyToMany
     @JoinTable(

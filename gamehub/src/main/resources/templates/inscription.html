@@ -5,41 +5,111 @@
     <title>GameHub - Inscription</title>
     <!-- Lien vers le fichier CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+
     <!-- Lien vers Bootstrap (CDN) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
-    <form th:action="@{/submitFormUser}" th:object="${user}"  method="POST">
-        
-        <label for="prenom">Prénom : </label>
-        <input type="text" name="name" th:field="*{name}"  />
-        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-                                                            
-        <label for="nom">Nom : </label>
-        <input type="text" name="surname" th:field="*{surname}" required/>
-        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
-        
-        <label for="pseudonyme">Username : </label>
-        <input type="text" name="username" th:field="*{username}" required />
-        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+    <!-- Header -->
+    <div th:insert="~{fragments :: header}"></div>
 
-        <label for="email">Email : </label>
-        <input type="email" name="email" th:field="*{email}" required>
-        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+    <!-- Conteneur d'inscription -->
+<div class="container">
+    <div class="form-container">
+        <h3>Inscription à GameHub</h3>
+        <form th:action="@{/register}" th:object="${user}" method="POST">
+            <!-- Message d'erreur général -->
+            <div th:if="${error}" class="text-danger">
+                <p th:text="${error}"></p>
+            </div>
 
-        <label for ="Password"> Password : </label>
-        <input type="password" name ="password" th:field="*{password}"  required>
-        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            <div class="form-group">
+                <label for="prenom">Prénom :</label>
+                <input type="text" class="form-control" id="prenom" name="name" th:field="*{name}" required />
+                <div th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{name}"></div>
+            </div>
 
-        <label for="dateNaissance">Date de naissance : </label>
-        <input type="date" name="birthdate" th:field="*{birthdate}" min ="1920-01-01" required/>
-        <div th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"></div>
+            <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" class="form-control" id="nom" name="surname" th:field="*{surname}" required />
+                <div th:if="${#fields.hasErrors('surname')}" class="text-danger" th:errors="*{surname}"></div>
+            </div>
 
-        <!-- Faire le truc avec les PP mais il faut avoir accès à la BDD donc chaud mtn -->
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" class="form-control" id="username" name="username" th:field="*{username}" required />
+                <div th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></div>
+                <div id="usernameError" class="text-danger" style="display: none;">Ce nom d'utilisateur est déjà pris.</div>
 
-        <button type="submit"> Envoyer</button>
-    </form>
 
+            </div>
 
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" class="form-control" id="email" name="email" th:field="*{email}" required />
+                <div th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></div>
+                <div id="emailError" class="text-danger" style="display: none;">Cet email est déjà pris.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe :</label>
+                <input type="password" class="form-control" id="password" name="password" th:field="*{password}" required />
+                <div th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></div>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </div>
+        </form>
+        <div class="form-footer">
+            <p>Déjà inscrit ? <a th:href="@{/login}">Connectez-vous</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const usernameError = document.getElementById('usernameError');
+        const emailError = document.getElementById('emailError');
+    
+        // Vérifier le username
+        usernameInput.addEventListener('input', function () {
+            const username = usernameInput.value;
+            if (username) {
+                fetch(`/api/validate/username?username=${username}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        usernameError.style.display = data ? 'block' : 'none';
+                    })
+                    .catch(err => console.error('Erreur:', err));
+            } else {
+                usernameError.style.display = 'none';
+            }
+        });
+    
+        // Vérifier l'email
+        emailInput.addEventListener('input', function () {
+            const email = emailInput.value;
+            if (email) {
+                fetch(`/api/validate/email?email=${email}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        emailError.style.display = data ? 'block' : 'none';
+                    })
+                    .catch(err => console.error('Erreur:', err));
+            } else {
+                emailError.style.display = 'none';
+            }
+        });
+    });
+    </script>
+    
+
+   <!-- Footer fixe en bas -->
+   <div th:insert="~{fragments :: footer}"></div>
 </body>
+</html>

@@ -28,7 +28,9 @@ CREATE TABLE game (
     name VARCHAR(255) NOT NULL,
     release_year INT NOT NULL,
     developer_studio VARCHAR(255) NOT NULL,
-    genre VARCHAR(255) NOT NULL
+    genre VARCHAR(255) NOT NULL,
+    image_url VARCHAR(255),
+    description TEXT
 );
 
 -- Créer la table platform

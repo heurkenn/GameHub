@@ -23,7 +23,7 @@ public class Tournament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "Le nom est obligatoire")
     @NotEmpty
     @NotBlank(message = "Le nom du jeu ne peut pas être vide")
     @Size(min = 3, max = 50, message = "Le nom du jeu doit être compris entre 3 et 50 caractères")
