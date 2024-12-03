@@ -13,7 +13,6 @@ import fr.gamehub.gamehub.model.Tournament;
 import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.repository.*;
 import fr.gamehub.gamehub.service.TournamentService;
-import fr.gamehub.gamehub.service.UserService;
 import jakarta.transaction.Transactional;
 
 @Controller
@@ -38,8 +37,6 @@ public class TournamentController {
 
         // Ajouter l'utilisateur au tournoi (bidirectionnel)
         TournamentService.addParticipant(tournament, user);
-        // Ajouter le tournoi à l'utilisateur (bidirectionnel)
-        UserService.addTournament(user, tournament);
 
         // Sauvegarder les entités mises à jour
         tournamentRepository.save(tournament);

@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.gamehub.gamehub.model.Tournament;
 import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.repository.UserRepository;
 
@@ -30,8 +29,5 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    //Ajoute un tournoi à la liste des tournois auquel l'utilisateur participe
-    public static  void addTournament(User user,Tournament tournament){
-        user.getTournaments().add(tournament);
-    }
+    
 }
