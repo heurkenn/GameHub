@@ -9,7 +9,7 @@ import fr.gamehub.gamehub.service.GameService;
 import fr.gamehub.gamehub.service.UserService;
 
 @Controller
-public class IndexController {
+public class PageController {
 
     @Autowired
     private UserService userService;
@@ -32,4 +32,7 @@ public class IndexController {
         model.addAttribute("users", userService.findAllUsers());
         return "users"; // Nom du fichier HTML pour afficher les utilisateurs
     }
+    
+    
+    
 }

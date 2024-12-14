@@ -2,37 +2,30 @@ package fr.gamehub.gamehub.model;
 
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.Date;
-import java.util.HashSet;
+import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.HashSet;
+import fr.gamehub.gamehub.validator.*;
 
 @Entity
 @Table(name = "Tournament") 
 @Getter
 @Setter
 @NoArgsConstructor
+@ValidateDate
 public class Tournament {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "Le nom est obligatoire")
     @NotEmpty
     @NotBlank(message = "Le nom du jeu ne peut pas être vide")
     @Size(min = 3, max = 50, message = "Le nom du jeu doit être compris entre 3 et 50 caractères")
@@ -41,31 +34,33 @@ public class Tournament {
     @NotNull
     @NotEmpty
     @NotBlank(message = "La date de création ne doit pas être vide")
-    private Date datecréation;
+    private LocalDateTime datecreation = LocalDateTime.now();
 
     @NotNull
     @NotEmpty
     @NotBlank(message = "La date de debut ne doit pas être vide")
-    private Date dateStart;
+    private LocalDateTime dateStart;
 
-    
-    private Date dateEnd;
+    @NotNull
+    @NotEmpty
+    @NotBlank(message = "La date de fin ne doit pas être vide")
+    private LocalDateTime dateEnd;
 
     
     @NotNull
     @NotEmpty
-    @NotBlank(message = "La date de fin des inscirptions ne doit pas être vide")
-    private Date dateEndInscription;
+    @NotBlank(message = "La date de fin des inscriptions ne doit pas être vide")
+    private LocalDateTime dateEndInscription;
 
     @NotNull
     @NotEmpty
     @NotBlank(message = "La date de début des inscriptions ne doit pas être vide")
-    private Date dateStartInscription;
+    private LocalDateTime dateStartInscription;
 
     @NotNull
     @NotEmpty
     @NotBlank(message = "La categorie ne peut être vide")
-    private Category category;
+    private Category categorie;
 
     @NotBlank(message = "Le jeu ne peut pas être vide")
     @ManyToOne
@@ -83,21 +78,18 @@ public class Tournament {
     private int nbJoueurLimite;
 
     
-    @NotBlank(message = "Le nombre de joueur ne doit pas être vide ")
-    @NotEmpty
-    @NotNull
-    private int nbJoueur;
+    private int nbJoueur =0;
 
+    // 1VS1
     @OneToMany(mappedBy = "tournament")
     private Set<Fight> combats; 
 
-    @Transient
-    // @ManyToMany
-    // @JoinTable(
-    //     name = "tournament_user", // Nom de la table de jointure
-    //     joinColumns = @JoinColumn(name = "tournament_id"), // Clé étrangère vers Tournoi
-    //     inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
-    // )
+    @ManyToMany
+    @JoinTable(
+        name = "tournament_user", // Nom de la table de jointure
+        joinColumns = @JoinColumn(name = "tournament_id"), // Clé étrangère vers Tournoi
+        inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
+    )
     private Set<User> participants = new HashSet<>();
 }
 
