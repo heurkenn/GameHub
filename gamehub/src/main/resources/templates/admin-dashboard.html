@@ -13,115 +13,231 @@
 </head>
 
 <body>
-    <!-- Conteneur principal -->
     <div class="admin-container d-flex">
         <!-- Barre latérale -->
         <nav class="sidebar">
             <h2 class="sidebar-title">GameHub Admin</h2>
             <ul class="sidebar-menu">
-                <!-- Gestion des Jeux MegaMenu -->
                 <li class="sidebar-item">
-                    <a href="#gamesSubMenu" class="sidebar-link" data-toggle="collapse" aria-expanded="false"
-                        aria-controls="gamesSubMenu">
-                        Gestion des Jeux
-                    </a>
-                    <div class="collapse" id="gamesSubMenu">
-                        <ul class="sub-menu">
-                            <li class="sub-item"><a href="#" onclick="showSection('addGames'); return false;" class="sub-link">Ajouter un Jeu</a></li>
-                            <li class="sub-item"><a href="#" onclick="showSection('modifyGames'); return false;" class="sub-link">Modifier un Jeu</a></li>
-                            <li class="sub-item"><a href="#" onclick="showSection('deleteGames'); return false;" class="sub-link">Supprimer un Jeu</a></li>
-                        </ul>
-                    </div>
+                    <a href="#" class="sidebar-link" onclick="showSection('gamesSection'); return false;">Gestion des Jeux</a>
                 </li>
-                <!-- Gestion des Tournois MegaMenu -->
                 <li class="sidebar-item">
-                    <a href="#tournamentsSubMenu" class="sidebar-link" data-toggle="collapse" aria-expanded="false"
-                        aria-controls="tournamentsSubMenu">
-                        Gestion des Tournois
-                    </a>
-                    <div class="collapse" id="tournamentsSubMenu">
-                        <ul class="sub-menu">
-                            <li class="sub-item"><a href="#" onclick="showSection('addTournament'); return false;" class="sub-link">Ajouter un Tournoi</a></li>
-                            <li class="sub-item"><a href="#" onclick="showSection('modifyTournament'); return false;" class="sub-link">Modifier un Tournoi</a></li>
-                            <li class="sub-item"><a href="#" onclick="showSection('deleteTournament'); return false;" class="sub-link">Supprimer un Tournoi</a></li>
-                        </ul>
-                    </div>
+                    <a href="#" class="sidebar-link" onclick="showSection('tournamentsSection'); return false;">Gestion des Tournois</a>
                 </li>
-                <!-- Gestion des Admins MegaMenu -->
                 <li class="sidebar-item">
-                    <a href="#adminsSubMenu" class="sidebar-link" data-toggle="collapse" aria-expanded="false"
-                        aria-controls="adminsSubMenu">
-                        Gestion des Admins
-                    </a>
-                    <div class="collapse" id="adminsSubMenu">
-                        <ul class="sub-menu">
-                            <li class="sub-item"><a href="#" onclick="showSection('addAdmin'); return false;" class="sub-link">Ajouter un Admin</a></li>
-                            <li class="sub-item"><a href="#" onclick="showSection('modifyAdmin'); return false;" class="sub-link">Modifier un Admin</a></li>
-                            <li class="sub-item"><a href="#" onclick="showSection('deleteAdmin'); return false;" class="sub-link">Supprimer un Admin</a></li>
-                        </ul>
-                    </div>
+                    <a href="#" class="sidebar-link" onclick="showSection('adminsSection'); return false;">Gestion des Admins</a>
                 </li>
             </ul>
         </nav>
 
         <!-- Contenu Principal -->
         <div class="main-content p-4">
-            <!-- Section Ajouter Jeux -->
-            <div id="addGames" class="admin-section d-none">
-                <h3>Ajouter un Jeu</h3>
-                <!-- Formulaire pour ajouter un jeu -->
-                <form th:action="@{/admin-dashboard}" th:object="${game}" method="POST">
-                    <div class="form-group">
-                        <label for="gameName">Nom du jeu:</label>
-                        <input type="text" class="form-control" id="gameName" name="gameName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="releaseYear">Année de sortie:</label>
-                        <input type="number" class="form-control" id="releaseYear" name="releaseYear" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="developerStudio">Studio de développement:</label>
-                        <input type="text" class="form-control" id="developerStudio" name="developerStudio" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="genre">Genre:</label>
-                        <input type="text" class="form-control" id="genre" name="genre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="imageUrl">Image du jeu:</label>
-                        <input type="file" class="form-control-file" id="imageUrl" name="imageUrl" accept="image/*" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description:</label>
-                        <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Ajouter le Jeu</button>
-                </form>
+            <!-- Section Gestion des Jeux -->
+            <div id="gamesSection" class="admin-section d-none">
+                <h3>Gestion des Jeux</h3>
+                <button class="btn btn-success mb-3" onclick="showForm('addGameForm');">Ajouter un Jeu</button>
+                <div id="addGameForm" class="form-section d-none">
+                    <form th:action="@{/games/create}" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="gameName">Nom du jeu</label>
+                            <input type="text" id="gameName" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="releaseYear">Année de sortie</label>
+                            <input type="number" id="releaseYear" name="releaseYear" class="form-control" required min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="developerStudio">Studio de développement</label>
+                            <input type="text" id="developerStudio" name="developerStudio" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="genre">Genre</label>
+                            <input type="text" id="genre" name="genre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="genre">Descrption</label>
+                            <input type="textarea" id="descrption" name="descrption" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageUrl">Image</label>
+                            <input type="file" id="imageUrl" name="imageUrl" class="form-control" accept="image/jpeg" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+                <table class="table table-dark mt-4">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="game : ${games}">
+                        <tr>
+                            <td th:text="${game.id}"></td>
+                            <td th:text="${game.name}"></td>
+                            <td>
+                                <button class="btn btn-warning" onclick="showForm('modifyGameForm-${game.id}');">Modifier</button>
+                                <form th:action="@{/games/delete}" method="POST" class="d-inline">
+                                    <input type="hidden" th:value="${game.id}" name="id">
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr id="modifyGameForm-${game.id}" class="form-section d-none">
+                            <td colspan="3">
+                                <form th:action="@{/games/update}" method="POST">
+                                    <input type="hidden" th:value="${game.id}" name="id">
+                                    <div class="form-group">
+                                        <label for="gameName-${game.id}">Nom</label>
+                                        <input type="text" id="gameName-${game.id}" name="name" th:value="${game.name}" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- Autres sections (modifier/supprimer jeux, tournois, etc.)... -->
-            <div id="modifyGames" class="admin-section d-none">
-                <h3>Modifier un Jeu</h3>
-                <p>Section pour modifier un jeu existant.</p>
+            <!-- Section Gestion des Tournois -->
+            <div id="tournamentsSection" class="admin-section d-none">
+                <h3>Gestion des Tournois</h3>
+                <button class="btn btn-success mb-3" onclick="showForm('addTournamentForm');">Ajouter un Tournoi</button>
+                <div id="addTournamentForm" class="form-section d-none">
+                    <form th:action="@{/tournaments/add}" method="POST">
+                        <div class="form-group">
+                            <label for="tournamentName">Nom du tournoi</label>
+                            <input type="text" id="tournamentName" name="name" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+                <table class="table table-dark mt-4">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="tournament : ${tournaments}">
+                        <tr>
+                            <td th:text="${tournament.id}"></td>
+                            <td th:text="${tournament.name}"></td>
+                            <td>
+                                <button class="btn btn-warning" onclick="showForm('modifyTournamentForm-${tournament.id}');">Modifier</button>
+                                <form th:action="@{/tournaments/delete}" method="POST" class="d-inline">
+                                    <input type="hidden" th:value="${tournament.id}" name="id">
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr id="modifyTournamentForm-${tournament.id}" class="form-section d-none">
+                            <td colspan="3">
+                                <form th:action="@{/tournaments/update}" method="POST">
+                                    <input type="hidden" th:value="${tournament.id}" name="id">
+                                    <div class="form-group">
+                                        <label for="tournamentName-${tournament.id}">Nom</label>
+                                        <input type="text" id="tournamentName-${tournament.id}" name="name" th:value="${tournament.name}" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div id="deleteGames" class="admin-section d-none">
-                <h3>Supprimer un Jeu</h3>
-                <p>Section pour supprimer un jeu existant.</p>
+            <!-- Section Gestion des Admins -->
+            <div id="adminsSection" class="admin-section d-none">
+                <h3>Gestion des Admins</h3>
+                <button class="btn btn-success mb-3" onclick="showForm('addAdminForm');">Ajouter un Admin</button>
+                <div id="addAdminForm" class="form-section d-none">
+                    <form th:action="@{/admins/add}" method="POST">
+                        <div class="form-group">
+                            <label for="adminName">Nom</label>
+                            <input type="text" id="adminName" name="name" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+                <table class="table table-dark mt-4">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="admin : ${admins}">
+                        <tr>
+                            <td th:text="${admin.id}"></td>
+                            <td th:text="${admin.name}"></td>
+                            <td>
+                                <button class="btn btn-warning" onclick="showForm('modifyAdminForm-${admin.id}');">Modifier</button>
+                                <form th:action="@{/admins/delete}" method="POST" class="d-inline">
+                                    <input type="hidden" th:value="${admin.id}" name="id">
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr id="modifyAdminForm-${admin.id}" class="form-section d-none">
+                            <td colspan="3">
+                                <form th:action="@{/admins/update}" method="POST">
+                                    <input type="hidden" th:value="${admin.id}" name="id">
+                                    <div class="form-group">
+                                        <label for="adminName-${admin.id}">Nom</label>
+                                        <input type="text" id="adminName-${admin.id}" name="name" th:value="${admin.name}" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript pour afficher la bonne section -->
     <script>
         function showSection(sectionId) {
-            // Cacher toutes les sections
-            document.querySelectorAll('.admin-section').forEach(section => {
-                section.classList.add('d-none');
-            });
-            // Afficher la section sélectionnée
+            document.querySelectorAll('.admin-section').forEach(section => section.classList.add('d-none'));
             document.getElementById(sectionId).classList.remove('d-none');
         }
+
+        function showForm(formId) {
+            document.getElementById(formId).classList.toggle('d-none');
+        }
+        
+        document.getElementById('imageFile').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        // Vérifier le type MIME
+        if (!['image/jpeg', 'image/jpg'].includes(file.type)) {
+            alert("Le fichier doit être un JPG.");
+            event.target.value = "";
+            return;
+        }
+
+        const img = new Image();
+        img.onload = function() {
+            if (img.width === 2000 && img.height === 1000) {
+                console.log("Dimensions OK");
+            } else {
+                alert("L'image doit avoir une résolution de 2000x1000.");
+                event.target.value = "";
+            }
+        };
+        img.onerror = function() {
+            alert("Impossible de charger l'image. Veuillez sélectionner un fichier image JPG valide.");
+            event.target.value = "";
+        };
+        img.src = URL.createObjectURL(file);
+    });
+
     </script>
 </body>
 

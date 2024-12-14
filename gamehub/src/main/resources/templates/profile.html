@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Profil - GameHub</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<style>.profile-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+}</style>
+<body>
+    <div th:insert="~{fragments :: header}"></div>
+    <div class="container mt-5">
+        <!-- Message de bienvenue -->
+        <div class="text-center mb-4">
+            <h3>Bonjour, <span th:text="${username}"></span> !</h3>
+        </div>
+        <div class="profile-container">
+            <!-- Section pour modifier le nom d'utilisateur -->
+            <div class="form-container">
+                <h3>Modifier mon nom d'utilisateur</h3>
+                <form th:action="@{/profile/update-username}" method="POST">
+                    <div class="form-group">
+                        <label for="newUsername">Nouveau nom d'utilisateur :</label>
+                        <input type="text" class="form-control" id="newUsername" name="newUsername" placeholder="Entrez un nouveau nom d'utilisateur" required>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Enregistrer le nouveau nom</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Section pour modifier le mot de passe -->
+            <div class="form-container">
+                <h3>Modifier mon mot de passe</h3>
+                <form th:action="@{/profile/update-password}" method="POST">
+                    <div class="form-group">
+                        <label for="currentPassword">Mot de passe actuel :</label>
+                        <input type="password" class="form-control" id="currentPassword" name="currentPassword" placeholder="Entrez votre mot de passe actuel" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Nouveau mot de passe :</label>
+                        <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Entrez un nouveau mot de passe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmez le nouveau mot de passe :</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmez le nouveau mot de passe" required>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Enregistrer le nouveau mot de passe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div th:insert="~{fragments :: footer}"></div>
+</body>
+</html>

@@ -18,32 +18,57 @@
     <div class="container">
         <div class="form-container">
             <h3>Connexion à GameHub</h3>
-            <form th:action="@{/login}" method="POST" th:object="${user}">
+            <form th:action="@{/login}" method="POST" th:object="${user}" class="needs-validation" novalidate>
                 <div class="form-group">
-                    <label for="username">Username : </label>
-                    <input type="text" class="form-control" id="username" name="username" th:field="*{username}" required />
+                    <label for="username">Username :</label>
+                    <input type="text" class="form-control" id="username" name="username" th:field="*{username}" placeholder="Entrez votre username" required>
+                    <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
                     <div th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></div>
                 </div>
-
+            
                 <div class="form-group">
-                    <label for="password">Password : </label>
-                    <input type="password" class="form-control" id="password" name="password" th:field="*{password}" required />
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" class="form-control" id="password" name="password" th:field="*{password}" placeholder="Entrez votre mot de passe" required>
+                    <div class="invalid-feedback">Veuillez entrer votre mot de passe.</div>
                     <div th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></div>
                 </div>
-
+            
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary">Se connecter</button>
                 </div>
+            
+                <!-- Section pour afficher un message d'erreur global -->
+                <div class="form-group">
+                    <p th:if="${error}" class="text-danger" th:text="${error}"></p>
+                </div>
             </form>
+            
             <div class="form-footer">
-                <p>Pas encore inscrit ? <a th:href="@{/register}">Créer un compte</a></p>
+                <p>Pas encore inscrit ? <a th:href="@{/sign-in}">Créer un compte</a></p>
             </div>
         </div>
     </div>
 
     <!-- Footer fixe en bas -->
-    <footer>
-        <p>© 2024 GameHub - Tous droits réservés</p>
-    </footer>
+    <div th:insert="~{fragments :: footer}"></div>
 </body>
+<script>
+    // Validation Bootstrap pour afficher les messages d'erreur côté client
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
 </html>

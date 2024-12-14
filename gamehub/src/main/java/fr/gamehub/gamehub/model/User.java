@@ -25,7 +25,7 @@ import java.io.Serializable;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Stratégie par défaut
 @DiscriminatorColumn(name = "dtype") // Colonne discriminante
-@Table(name = "app_user")  // Pour éviter le conflit avec le mot réservé "user"
+@Table(name = "APP_USER")  // Pour éviter le conflit avec le mot réservé "user"
 @Getter
 @Setter
 @NoArgsConstructor
@@ -66,5 +66,3 @@ public class User implements Serializable {
     private Set<Tournament> tournois = new HashSet<>();
     // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
 }
-
-
