@@ -147,9 +147,14 @@ public class GameController {
     }
 
     // Supprimer un jeu
-    @PostMapping("/delete")
-    public String deleteGame(@RequestParam Long gameId) {
-        gameService.deleteGame(gameId);
-        return "redirect:/games";
+    @PostMapping("/games/delete")
+    public String deleteGame(@RequestParam("id") Long gameId, Model model) {
+        try {
+            gameService.deleteGame(gameId); // Méthode pour supprimer un jeu
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Erreur lors de la suppression du jeu.");
+            return "admin-dashboard";
+        }
+        return "redirect:/admin-dashboard";
     }
 }
