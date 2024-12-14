@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -147,14 +148,19 @@ public class GameController {
     }
 
     // Supprimer un jeu
-    @PostMapping("/games/delete")
-    public String deleteGame(@RequestParam("id") Long gameId, Model model) {
-        try {
-            gameService.deleteGame(gameId); // Méthode pour supprimer un jeu
-        } catch (Exception e) {
-            model.addAttribute("errorMessage", "Erreur lors de la suppression du jeu.");
-            return "admin-dashboard";
-        }
-        return "redirect:/admin-dashboard";
+    @PostMapping("/delete")
+    public String deleteGame(@RequestParam Long gameId) {
+        gameService.deleteGame(gameId);
+        return "redirect:/games";
     }
+
+    @GetMapping("/admin-dashboard")
+public String getAdminDashboard(Model model) {
+    List<Game> games = gameService.getAllGames();
+    games.forEach(game -> System.out.println("Game ID: " + game.getId() + ", Name: " + game.getName())); // Log pour vérifier
+    model.addAttribute("games", games);
+    return "admin-dashboard";
+}
+
+
 }
