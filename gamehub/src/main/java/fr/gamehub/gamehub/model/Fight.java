@@ -21,4 +21,5 @@ public class Fight {
     private Tournament tournament;
     private User joueur1;
     private User joueur2;
+    private User winner;
 }
