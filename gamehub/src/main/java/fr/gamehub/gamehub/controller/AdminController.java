@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.gamehub.gamehub.model.Admin;
 import fr.gamehub.gamehub.service.AdminService;
+import fr.gamehub.gamehub.service.GameService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -22,12 +23,15 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private GameService gameService;
 
     /**
      * Affiche la page d'administration avec la liste des administrateurs.
      */
     @GetMapping
-    public String adminDashboard(Model model) {
+    public String adminDashboard(Model model) { 
+        model.addAttribute("games", gameService.getAllGames()); // Ajoutez la liste des jeux au modèle.
         model.addAttribute("admins", adminService.getAllAdmins());
         model.addAttribute("newAdmin", new Admin()); // Prépare un objet Admin vide pour le formulaire
         return "admin-dashboard"; // Vue : admin-dashboard.html
