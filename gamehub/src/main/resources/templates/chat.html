@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de la Communauté</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Chat de la communauté</h2>
+
+        <!-- Liste des commentaires -->
+        <div id="comments">
+            <!-- Les commentaires seront insérés ici via AJAX -->
+        </div>
+
+        <!-- Formulaire pour ajouter un commentaire -->
+        <form id="commentForm">
+            <div class="form-group">
+                <textarea class="form-control" id="commentContent" placeholder="Écrivez un commentaire..." rows="3"
+                    required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Poster</button>
+        </form>
+    </div>
+
+    <script>
+        const communityId = 1; // ID de la communauté (remplacer dynamiquement si besoin)
+        const userId = 1; // ID de l'utilisateur connecté (remplacer dynamiquement si besoin)
+
+        // Charger les commentaires
+        function loadComments() {
+            $.ajax({
+                url: `/games/gameName/chat/${communityId}/comments`,
+                method: 'GET',
+                success: function (comments) {
+                    $('#comments').empty();
+                    comments.forEach(comment => {
+                        $('#comments').append(`
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">${comment.user.name}</h5>
+                                    <p class="card-text">${comment.content}</p>
+                                    <p class="text-muted small">${new Date(comment.timestamp).toLocaleString()}</p>
+                                </div>
+                            </div>
+                        `);
+                    });
+                }
+            });
+        }
+
+        // Poster un commentaire
+        $('#commentForm').submit(function (e) {
+            e.preventDefault();
+            const content = $('#commentContent').val();
+            if (!content) return;
+
+            $.ajax({
+                url: `/games/gameName/chat/${communityId}/comments?userId=${userId}`,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ content }),
+                success: function () {
+                    $('#commentContent').val(''); // Réinitialiser le champ
+                    loadComments(); // Recharger les commentaires
+                }
+            });
+        });
+
+        // Charger les commentaires au démarrage
+        loadComments();
+    </script>
+</body>
+
+</html>
