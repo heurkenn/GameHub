@@ -1,6 +1,8 @@
 package fr.gamehub.gamehub.service;
 
 import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,18 @@ public class TournamentService {
 
     public List<Tournament> getAllTournaments() {
         return tournamentRepository.findAll();
+    }
+
+    public List<Tournament> getAllTournamentsInProgress() {
+        List<Tournament> tournaments = tournamentRepository.findAll();
+        List<Tournament> tournamentsInProgress = new ArrayList<>();
+        LocalDateTime curLocalDateTime = LocalDateTime.now();
+        for (Tournament tournament : tournaments){
+            if((tournament.getDateStart().isBefore(curLocalDateTime))&&(tournament.getDateEnd().isAfter(curLocalDateTime))){
+                tournamentsInProgress.add(tournament);
+            }
+        }
+        return tournamentsInProgress;
     }
 
     public Optional<Tournament> getTournamentById(Long id) {

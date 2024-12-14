@@ -4,9 +4,11 @@ package fr.gamehub.gamehub.controller;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import fr.gamehub.gamehub.repository.*;
@@ -14,6 +16,7 @@ import jakarta.validation.Valid;
 import fr.gamehub.gamehub.model.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
@@ -71,6 +74,13 @@ public class TournamentController {
         return "creationTournament";
     }
 
+    @GetMapping("/users/{id}")
+    public ResponseEntity<Tournament> getById(@PathVariable long id) {
+        Optional<Tournament> tournament = tournamentService.getTournamentById(id);
+        return tournament.map(ResponseEntity::ok)
+            .orElseThrow();
+    }
+
     @PostMapping(value = "/submitFormTournament")
     public String submitFormTournament(@Valid @ModelAttribute("tournament") Tournament tournament, BindingResult bindingResult) {
         
@@ -105,30 +115,30 @@ public class TournamentController {
         for (Fight combat : combats){
             if (nbJoueurRestant==1){ // S'il n'y avait qu'un combat en cour avant alors on a le gagnant ici
                 if (combat.getWinner() != null){ // regarde si le combat a pu être gagné par un des deux joueurs
-                    tournament.getClassment().add(combat.getWinner());// dans le cas oui on prend le gagnant et l'autre joueur pour le top 2
+                    tournament.getClassment().setPremier(combat.getWinner());// dans le cas oui on prend le gagnant et l'autre joueur pour le top 2
                     if (combat.getWinner().equals(combat.getJoueur1())){
-                        tournament.getClassment().add(combat.getJoueur2());
+                        tournament.getClassment().setDeuxi(combat.getJoueur2());
                     }else{
-                        tournament.getClassment().add(combat.getJoueur1());
+                        tournament.getClassment().setDeuxi(combat.getJoueur1());
                     }
                 }else{ // cas non alors on prends le joueur1 pour le top1 et le joueur 2 pour le top 2
-                    tournament.getClassment().add(combat.getJoueur1());
-                    tournament.getClassment().add(combat.getJoueur2());
+                    tournament.getClassment().setPremier(combat.getJoueur1());
+                    tournament.getClassment().setDeuxi(combat.getJoueur2());
                 }
             }else{
-                if (combat.getWinner() != null){
+                if (combat.getWinner() != null){//de même si il y a un gagnant
                     joueurRestants.add(combat.getWinner());
                     if (nbJoueurRestant==2){ // meme procédé et permet d'ajouter un top 3 et 4
                         if (combat.getWinner().equals(combat.getJoueur1())){
-                            tournament.getClassment().add(combat.getJoueur2());
+                            tournament.getClassment().setTroisi(combat.getJoueur2());
                         }else{
-                            tournament.getClassment().add(combat.getJoueur1());
+                            tournament.getClassment().setTroisi(combat.getJoueur1());
                         }
                     }
-                }else{
+                }else{ // si y'en a pas de gagnant
                     joueurRestants.add(combat.getJoueur1());
                     if (nbJoueurRestant==2){
-                        tournament.getClassment().add(combat.getJoueur2());
+                        tournament.getClassment().setTroisi(combat.getJoueur2()); // le perdant prend la troisième place
                     }
                 }
             }
@@ -162,6 +172,11 @@ public class TournamentController {
         }
     }
 
-
-
+    @Scheduled(fixedDelay = 300000, initialDelay = 300000)
+    public void checkNextRound(){
+        List<Tournament> tournaments = tournamentService.getAllTournamentsInProgress();
+        for(Tournament tournament : tournaments){
+            nextRound(tournament);
+        }
+    }
 }

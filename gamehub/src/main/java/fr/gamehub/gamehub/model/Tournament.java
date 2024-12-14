@@ -110,7 +110,7 @@ public class Tournament {
         joinColumns = @JoinColumn(name = "tournament_id"), // Clé étrangère vers Tournoi
         inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
     )
-    private Set<User> classment = new HashSet<>();
+    private Classement classment = new Classement();
 
 }
 
