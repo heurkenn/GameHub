@@ -22,8 +22,8 @@ public class TournamentService {
     public Optional<Tournament> getTournamentById(Long id) {
         return tournamentRepository.findById(id);
     }
-    public Optional<Tournament> findByCategory(Category category) {
-        return tournamentRepository.findByCategory(category);
+    public Optional<Tournament> findByCategorie(Category categorie) {
+        return tournamentRepository.findByCategorie(categorie);
     }
 
      // Ajoute aussi une méthode pour enregistrer ou mettre à jour un tournoi
