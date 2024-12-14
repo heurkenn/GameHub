@@ -19,7 +19,16 @@ public class Fight {
     @ManyToOne
     @JoinColumn(name="tournament_id", nullable=false)
     private Tournament tournament;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
     private User joueur1;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
     private User joueur2;
-    private User winner;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private User winner = null;
 }
