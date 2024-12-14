@@ -37,14 +37,14 @@
                 <h3>Gestion des Jeux</h3>
                 <button class="btn btn-success mb-3" onclick="showForm('addGameForm');">Ajouter un Jeu</button>
                 <div id="addGameForm" class="form-section d-none">
-                    <form th:action="@{/games/add}" method="POST">
+                    <form th:action="@{/games/create}" method="POST">
                         <div class="form-group">
                             <label for="gameName">Nom du jeu</label>
                             <input type="text" id="gameName" name="name" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="releaseYear">Année de sortie</label>
-                            <input type="number" id="releaseYear" name="releaseYear" class="form-control" required>
+                            <input type="number" id="releaseYear" name="releaseYear" class="form-control" required min="1">
                         </div>
                         <div class="form-group">
                             <label for="developerStudio">Studio de développement</label>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label for="imageUrl">Image</label>
-                            <input type="file" id="imageUrl" name="imageUrl" class="form-control" accept="image/*" required>
+                            <input type="file" id="imageUrl" name="imageUrl" class="form-control" accept="image/jpeg" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
@@ -206,6 +206,34 @@
         function showForm(formId) {
             document.getElementById(formId).classList.toggle('d-none');
         }
+        
+        document.getElementById('imageUrl').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+    
+            // Vérifier d'abord que c'est un fichier JPEG
+            if (!file.type === 'image/jpeg' && !file.type === 'image/jpg') {
+                alert("Le fichier doit être un JPG.");
+                event.target.value = "";
+                return;
+            }
+    
+            const img = new Image();
+            img.onload = function() {
+                if (img.width === 2000 && img.height === 1000) {
+                    // Dimensions correctes
+                    console.log("Dimensions OK");
+                } else {
+                    alert("L'image doit avoir une résolution de 2000x1000.");
+                    event.target.value = "";
+                }
+            };
+            img.onerror = function() {
+                alert("Impossible de charger l'image. Veuillez sélectionner un fichier image JPG valide.");
+                event.target.value = "";
+            };
+            img.src = URL.createObjectURL(file);
+        });
     </script>
 </body>
 
