@@ -29,7 +29,7 @@
                 <p><strong>Année de sortie :</strong> <span th:text="${game.releaseYear}"></span></p>
                 <p><strong>Développeur :</strong> <span th:text="${game.developerStudio}"></span></p>
                 <p><strong>Genre :</strong> <span th:text="${game.genre}"></span></p>
-                <p>
+                <p style="color: antiquewhite;">
                     <strong>Plateformes :</strong>
                     <span th:each="platform : ${game.platforms}" th:text="${platform.name}" class="badge bg-secondary mx-1"></span>
                 </p>
