@@ -38,57 +38,33 @@
                 <button class="btn btn-success mb-3" onclick="toggleAddForm('addGameForm');">Ajouter un Jeu</button>
                 <div id="addGameForm" class="form-section d-none">
                     <form th:action="@{/games/create}" method="POST" enctype="multipart/form-data">
-                        <!-- Champ : Nom du Jeu -->
                         <div class="form-group">
                             <label for="gameName">Nom du jeu</label>
                             <input type="text" id="gameName" name="name" class="form-control" required>
                         </div>
-                
-                        <!-- Champ : Année de sortie -->
                         <div class="form-group">
                             <label for="releaseYear">Année de sortie</label>
-                            <input type="number" id="releaseYear" name="releaseYear" class="form-control" required min="1900">
+                            <input type="number" id="releaseYear" name="releaseYear" class="form-control" required min="1">
                         </div>
-                
-                        <!-- Champ : Studio de développement -->
                         <div class="form-group">
                             <label for="developerStudio">Studio de développement</label>
                             <input type="text" id="developerStudio" name="developerStudio" class="form-control" required>
                         </div>
-                
-                        <!-- Champ : Genre (Liste déroulante) -->
                         <div class="form-group">
                             <label for="genre">Genre</label>
-                            <select id="genre" name="genre" class="form-control" required>
-                                <option value="">-- Sélectionner un genre --</option>
-                                <option value="Action">Action</option>
-                                <option value="Aventure">Aventure</option>
-                                <option value="RPG">RPG</option>
-                                <option value="Simulation">Simulation</option>
-                                <option value="Stratégie">Stratégie</option>
-                                <option value="Sports">Sports</option>
-                                <option value="Puzzle">Puzzle</option>
-                                <option value="Autres">Autres</option>
-                            </select>
+                            <input type="text" id="genre" name="genre" class="form-control" required>
                         </div>
-                
-                        <!-- Champ : Description -->
                         <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea id="description" name="description" class="form-control" rows="5" required></textarea>
+                            <label for="genre">Descrption</label>
+                            <input type="textarea" id="descrption" name="descrption" class="form-control" required>
                         </div>
-                
-                        <!-- Champ : Image -->
                         <div class="form-group">
                             <label for="imageUrl">Image</label>
                             <input type="file" id="imageUrl" name="imageUrl" class="form-control" accept="image/jpeg" required>
                         </div>
-                
-                        <!-- Bouton Ajouter -->
                         <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
                 </div>
-                
                 <table class="table table-dark mt-4">
                     <thead>
                         <tr>

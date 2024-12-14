@@ -1,8 +1,10 @@
 package fr.gamehub.gamehub.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -28,7 +31,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,7 +56,7 @@ public class User {
     @NotBlank(message = "Le mot de passe ne peut pas être vide")
     @Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères")
     private String password;
-
+ 
     @ManyToMany
     @JoinTable(
             name = "user_games",
@@ -61,4 +64,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "game_id")
     )
     private Set<Game> games = new HashSet<>();
+    @ManyToMany(mappedBy = "participants")
+    private Set<Tournament> tournois = new HashSet<>();
+    
 }
