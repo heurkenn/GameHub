@@ -91,7 +91,7 @@ public class AdminController {
      */
     @PostMapping("/tournaments/delete")
     public String deleteTournament(@RequestParam Long tournamentId) {
-        tournamentService.deleteTournamentById(tournamentId);
+        tournamentService.deleteTournament(tournamentId);
         return "redirect:/admin-dashboard";
     }
 

@@ -13,9 +13,7 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -69,5 +67,4 @@ public class User implements Serializable {
     // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
 }
 
-    // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
-}
+
