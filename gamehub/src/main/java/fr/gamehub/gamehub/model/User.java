@@ -1,8 +1,10 @@
 package fr.gamehub.gamehub.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -20,7 +23,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Stratégie par défaut
@@ -64,5 +66,5 @@ public class User implements Serializable {
     private Set<Game> games = new HashSet<>();
     @ManyToMany(mappedBy = "participants")
     private Set<Tournament> tournois = new HashSet<>();
-    // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
+    
 }

@@ -3,15 +3,29 @@ package fr.gamehub.gamehub.model;
 
 
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
+import fr.gamehub.gamehub.validator.ValidateDate;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDateTime;
-import java.util.Set;
-import java.util.HashSet;
-import fr.gamehub.gamehub.validator.*;
 
 @Entity
 @Table(name = "Tournament") 
@@ -112,13 +126,17 @@ public class Tournament {
         return this.participants;
     }
 
-    @ManyToMany
-    @JoinTable(
-        name = "classement",
-        joinColumns = @JoinColumn(name = "tournament_id"), // Clé étrangère vers Tournoi
-        inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
-    )
-    private Classement classment = new Classement();
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Classement> classements = new HashSet<>();
+
+    public void setClassement(Classement classement) {
+        this.classements.clear();
+        this.classements.add(classement);
+    }
+
+    public Classement getClassement() {
+        return classements.isEmpty() ? null : classements.iterator().next();
+    }
 
 }
 
