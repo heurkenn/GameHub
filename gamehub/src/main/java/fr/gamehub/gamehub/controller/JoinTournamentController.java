@@ -29,7 +29,10 @@ public class JoinTournamentController {
 	@GetMapping("/join")
 	public String Join(Model model){
 		List<List< Tournament>> l = new LinkedList<>();
-		l.add(service.searchTournamentNameStartBy(""));
+		l.add(service.getAllTournaments());
+		System.out.println("uhfehfuiheufeziufguiezgfez");
+		System.out.println(service.getAllTournaments());
+		System.out.println("uhfehfuiheufeziufguiezgfez");
 		model.addAttribute("tournamentFilter", intersectionTournaments(l));
 		return "JoinTournament";
 	}
@@ -55,23 +58,19 @@ public class JoinTournamentController {
 	private static List<Tournament> intersectionTournaments(List<List <Tournament>> lTournament ){
 		List <Tournament> tournaments = lTournament.get(0);
 		LocalDateTime ldt = LocalDateTime.now();
-		System.out.println("idhzauhduizagfduiazhoiduzahofiazhoifhaziohfioazhfoiazhifhzaoihfaziohfioazh");
-		System.out.println(ldt.getHour());
-		System.out.println(ldt.toString());
+		
 		List <Tournament> lTournamentsTmp = new LinkedList<>();
 		for (List<Tournament> lt : lTournament){
 			for (Tournament tournament : tournaments){
 				if (!tournament.getDateStartInscription().isBefore(ldt) || !tournament.getDateEndInscription().isAfter(ldt) || !lt.contains(tournament)) {
-					System.out.println(tournament.getName()+ " :");
-					System.out.println(tournament.getDateStartInscription().isBefore(ldt));
-					System.out.println(tournament.getDateEndInscription().isAfter(ldt));
+					
 					lTournamentsTmp.add(tournament);
 				}
 			}
 			for (Tournament t : lTournamentsTmp) tournaments.remove(t);
 			lTournamentsTmp.clear();
 		}
-		System.out.println(tournaments);
+		
 		return tournaments;
 	}
 	
