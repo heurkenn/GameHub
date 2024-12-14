@@ -37,7 +37,7 @@
                 <h3>Gestion des Jeux</h3>
                 <button class="btn btn-success mb-3" onclick="showForm('addGameForm');">Ajouter un Jeu</button>
                 <div id="addGameForm" class="form-section d-none">
-                    <form th:action="@{/games/create}" method="POST">
+                    <form th:action="@{/games/create}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="gameName">Nom du jeu</label>
                             <input type="text" id="gameName" name="name" class="form-control" required>
@@ -53,6 +53,10 @@
                         <div class="form-group">
                             <label for="genre">Genre</label>
                             <input type="text" id="genre" name="genre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="genre">Descrption</label>
+                            <input type="textarea" id="descrption" name="descrption" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="imageUrl">Image</label>
@@ -207,33 +211,33 @@
             document.getElementById(formId).classList.toggle('d-none');
         }
         
-        document.getElementById('imageUrl').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-    
-            // Vérifier d'abord que c'est un fichier JPEG
-            if (!file.type === 'image/jpeg' && !file.type === 'image/jpg') {
-                alert("Le fichier doit être un JPG.");
+        document.getElementById('imageFile').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        // Vérifier le type MIME
+        if (!['image/jpeg', 'image/jpg'].includes(file.type)) {
+            alert("Le fichier doit être un JPG.");
+            event.target.value = "";
+            return;
+        }
+
+        const img = new Image();
+        img.onload = function() {
+            if (img.width === 2000 && img.height === 1000) {
+                console.log("Dimensions OK");
+            } else {
+                alert("L'image doit avoir une résolution de 2000x1000.");
                 event.target.value = "";
-                return;
             }
-    
-            const img = new Image();
-            img.onload = function() {
-                if (img.width === 2000 && img.height === 1000) {
-                    // Dimensions correctes
-                    console.log("Dimensions OK");
-                } else {
-                    alert("L'image doit avoir une résolution de 2000x1000.");
-                    event.target.value = "";
-                }
-            };
-            img.onerror = function() {
-                alert("Impossible de charger l'image. Veuillez sélectionner un fichier image JPG valide.");
-                event.target.value = "";
-            };
-            img.src = URL.createObjectURL(file);
-        });
+        };
+        img.onerror = function() {
+            alert("Impossible de charger l'image. Veuillez sélectionner un fichier image JPG valide.");
+            event.target.value = "";
+        };
+        img.src = URL.createObjectURL(file);
+    });
+
     </script>
 </body>
 

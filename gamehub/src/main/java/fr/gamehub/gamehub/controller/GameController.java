@@ -23,8 +23,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import fr.gamehub.gamehub.model.Game;
 import fr.gamehub.gamehub.service.GameService;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.validation.Valid;
 
+@MultipartConfig
 @Controller
 @RequestMapping("/games")
 public class GameController {
@@ -52,37 +54,38 @@ public class GameController {
 
     @PostMapping("/create")
     public String createGame(@Valid Game game, BindingResult result,
-                            @RequestParam("imageFile") MultipartFile imageFile,
+                            @RequestParam("imageUrl") MultipartFile imageUrl,
                             Model model) {
         if (result.hasErrors()) {
             model.addAttribute("errorMessage", "Erreur lors de l'ajout du jeu.");
-            return "game_form";
+            return "admin-dashboard";
         }
 
         // Vérifier que le fichier n'est pas vide
-        if (imageFile.isEmpty()) {
+        if (imageUrl.isEmpty()) {
             model.addAttribute("errorMessage", "L'image est requise.");
-            return "game_form";
+            return "admin-dashboard";
         }
 
-        // Vérifier le type MIME (doit être JPEG)
-        if (!imageFile.getContentType().equals("image/jpeg")) {
+        // Vérifier que le type MIME n'est pas nul et qu'il s'agit bien de JPEG
+        String contentType = imageUrl.getContentType();
+        if (contentType == null || !contentType.equals("image/jpeg")) {
             model.addAttribute("errorMessage", "Le fichier doit être un JPG.");
-            return "game_form";
+            return "admin-dashboard";
         }
 
         // Vérifier les dimensions de l'image
         BufferedImage img;
         try {
-            img = ImageIO.read(imageFile.getInputStream());
+            img = ImageIO.read(imageUrl.getInputStream());
         } catch (IOException e) {
             model.addAttribute("errorMessage", "Impossible de lire l'image.");
-            return "game_form";
+            return "admin-dashboard";
         }
 
         if (img == null || img.getWidth() != 2000 || img.getHeight() != 1000) {
             model.addAttribute("errorMessage", "L'image doit avoir une résolution de 2000x1000.");
-            return "game_form";
+            return "admin-dashboard";
         }
 
         // Générer un nom de fichier à partir du nom du jeu
@@ -90,13 +93,13 @@ public class GameController {
         String fileName = safeName + ".jpg";
 
         // Définir le répertoire de stockage (par exemple "images" à la racine du projet)
-        Path imagesDir = Paths.get("images"); 
+        Path imagesDir = Paths.get("src/main/resources/static/image");
         if (!Files.exists(imagesDir)) {
             try {
                 Files.createDirectories(imagesDir);
             } catch (IOException e) {
                 model.addAttribute("errorMessage", "Impossible de créer le répertoire d'images.");
-                return "game_form";
+                return "admin-dashboard";
             }
         }
 
@@ -104,20 +107,21 @@ public class GameController {
         Path filePath = imagesDir.resolve(fileName);
         try {
             // Sauvegarder l'image sur disque
-            Files.copy(imageFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(imageUrl.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             model.addAttribute("errorMessage", "Erreur lors de l'enregistrement de l'image.");
-            return "game_form";
+            return "admin-dashboard";
         }
 
-        // Mettre à jour l'attribut image_url du game avec le nom de fichier
+        // Mettre à jour l'attribut image_url du jeu avec le nom de fichier
         game.setImage_url(fileName);
 
         // Enregistrer le jeu dans la base
         gameService.saveGame(game);
 
-        return "redirect:/games";
+        return "redirect:/admin-dashboard";
     }
+
 
     // Afficher le formulaire d'édition pour un jeu existant
     @GetMapping("/edit/{id}")
