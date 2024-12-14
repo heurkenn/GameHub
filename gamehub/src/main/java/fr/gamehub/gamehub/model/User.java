@@ -19,7 +19,10 @@ import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Stratégie par défaut
@@ -28,7 +31,7 @@ import lombok.Data;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,13 +56,18 @@ public class User {
     @NotBlank(message = "Le mot de passe ne peut pas être vide")
     @Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères")
     private String password;
-
-    @Transient
-    // @ManyToMany
-    // @JoinTable(
-    //         name = "user_games",
-    //         joinColumns = @JoinColumn(name = "user_id"),
-    //         inverseJoinColumns = @JoinColumn(name = "game_id")
-    // )
+ 
+    @ManyToMany
+    @JoinTable(
+            name = "user_games",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "game_id")
+    )
     private Set<Game> games = new HashSet<>();
+    @ManyToMany(mappedBy = "participants")
+    private Set<Tournament> tournois = new HashSet<>();
+    // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
+}
+
+    // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
 }
