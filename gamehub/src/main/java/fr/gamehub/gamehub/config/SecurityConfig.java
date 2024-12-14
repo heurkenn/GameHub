@@ -29,19 +29,12 @@ public class SecurityConfig {
         System.out.println("Security configuration active: " + (isDev ? "dev" : "prod"));
 
         http
-            .authorizeHttpRequests((requests) -> requests
-                .requestMatchers(
-                    "/", "/game/**", "/register", "/users", "/login", "/h2-console/**", "/games/**"
-                ).permitAll()
-                .requestMatchers("/css/**", "/js/**", "/image/**", "/webjars/**", "/favicon.ico").permitAll()
-                .anyRequest().authenticated()
-            )
-            .formLogin((form) -> form
-                .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .permitAll()
-            )
-            .logout((logout) -> logout.permitAll());
+        .authorizeHttpRequests((requests) -> requests
+            .requestMatchers("/", "/game/**", "/register", "/login", "/h2-console/**", "/css/**", "/js/**", "/images/**").permitAll()
+            .requestMatchers("/admin/**").hasRole("ADMIN")  // Exemples d'accès selon les rôles
+            .anyRequest().permitAll()
+        );
+        
 
         if (isDev) {
             http.csrf((csrf) -> csrf.disable())

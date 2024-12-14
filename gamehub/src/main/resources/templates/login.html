@@ -20,9 +20,9 @@
             <h3>Connexion à GameHub</h3>
             <form th:action="@{/login}" method="POST" th:object="${user}">
                 <div class="form-group">
-                    <label for="username">Username : </label>
-                    <input type="text" class="form-control" id="username" name="username" th:field="*{username}" required />
-                    <div th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></div>
+                    <label for="email">Email : </label>
+                    <input type="text" class="form-control" id="email" name="email" th:field="*{email}" required />
+                    <div th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></div>
                 </div>
 
                 <div class="form-group">

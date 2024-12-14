@@ -48,7 +48,7 @@ public class AdminController {
     /**
      * Ajouter un nouveau jeu.
      */
-    @PostMapping("/admin-dashboard")
+    @PostMapping("/games")
     public String addGame(
             @Valid @ModelAttribute("newGame") Game game,
             BindingResult result,

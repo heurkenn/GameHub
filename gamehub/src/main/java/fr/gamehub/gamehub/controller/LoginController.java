@@ -9,11 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.service.UserService;
 
 @Controller
+@SessionAttributes("loggedInUser")
 public class LoginController {
 
     @Autowired
@@ -32,16 +35,32 @@ public class LoginController {
     // Vérifier les identifiants fournis par l'utilisateur
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password, Model model) {
+        System.out.println("Tentative de connexion pour l'email : " + email);
         Optional<User> user = userService.findByEmail(email);
 
-        if (user.isPresent() && passwordEncoder.matches(password, user.get().getPassword())) {
-            // Si les identifiants sont corrects, rediriger vers la page d'accueil
-            model.addAttribute("user", user.get());
-            return "redirect:/";
+        if (user.isPresent()) {
+            System.out.println("Utilisateur trouvé : " + user.get());
+            if (passwordEncoder.matches(password, user.get().getPassword())) {
+                System.out.println("Mot de passe correct.");
+                model.addAttribute("user", user.get());
+                return "redirect:/";
+            } else {
+                System.out.println("Mot de passe incorrect.");
+            }
         } else {
-            // Si les identifiants sont incorrects, afficher un message d'erreur
-            model.addAttribute("error", "Email ou mot de passe incorrect");
-            return "login";
+            System.out.println("Utilisateur non trouvé.");
+            return "redirect:/login";
         }
+
+        model.addAttribute("error", "Email ou mot de passe incorrect.");
+        return "login";
+    }
+
+
+    // Gérer la déconnexion
+    @GetMapping("/logout")
+    public String logout(SessionStatus sessionStatus) {
+        sessionStatus.setComplete();
+        return "redirect:/login?logout=true";
     }
 }
