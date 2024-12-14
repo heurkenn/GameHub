@@ -84,6 +84,14 @@ public class Tournament {
     @OneToMany(mappedBy = "tournament")
     private Set<Fight> combats; 
 
+    public void setCombats(Set<Fight> combats){
+        this.combats = combats;
+    }
+
+    public Set<Fight> getCombats(){
+        return this.combats;
+    }
+
     @ManyToMany
     @JoinTable(
         name = "tournament_user", // Nom de la table de jointure
@@ -91,5 +99,9 @@ public class Tournament {
         inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
     )
     private Set<User> participants = new HashSet<>();
+
+    public Set<User> getParticipants(){
+        return this.participants;
+    }
 }
 
