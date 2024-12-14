@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Profil - GameHub</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+    <div th:insert="~{fragments :: header}"></div>
+    <div class="container">
+        <div class="form-container">
+            <h3>Modifier mon profil</h3>
+            <form th:action="@{/profile/update}" method="POST">
+                <!-- Modifier le nom d'utilisateur -->
+                <div class="form-group">
+                    <label for="username">Nouveau nom d'utilisateur :</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <!-- Modifier le mot de passe -->
+                <div class="form-group">
+                    <label for="currentPassword">Mot de passe actuel :</label>
+                    <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Nouveau mot de passe :</label>
+                    <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmer le nouveau mot de passe :</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div th:insert="~{fragments :: footer}"></div>
+</body>
+</html>

@@ -22,7 +22,7 @@ public class IndexController {
     public String index(Model model) {
         // Ajouter trois jeux aléatoires au modèle
         model.addAttribute("randomGames", gameService.findRandomGames(4));
-        return "admin-dashboard"; // Retourne la vue 'index.html' située dans 'src/main/resources/templates'
+        return "index"; // Retourne la vue 'index.html' située dans 'src/main/resources/templates'
     }
 
     // Méthode pour afficher la liste des utilisateurs
