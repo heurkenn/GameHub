@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TournamentRepository extends JpaRepository<Tournament, Long>{
     Optional<Tournament> findByJeu(Game jeu); 
-    Optional<Tournament> findByCategory(Category category);    
+    Optional<Tournament> findByCategorie(Category categorie);    
 }
 
 
