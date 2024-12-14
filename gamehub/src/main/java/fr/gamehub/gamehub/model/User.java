@@ -20,6 +20,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Stratégie par défaut
@@ -28,7 +29,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,7 +54,7 @@ public class User {
     @NotBlank(message = "Le mot de passe ne peut pas être vide")
     @Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères")
     private String password;
-
+ 
     @ManyToMany
     @JoinTable(
             name = "user_games",
@@ -61,4 +62,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "game_id")
     )
     private Set<Game> games = new HashSet<>();
+    @ManyToMany(mappedBy = "participants")
+    private Set<Tournament> tournois = new HashSet<>();
+    // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
 }

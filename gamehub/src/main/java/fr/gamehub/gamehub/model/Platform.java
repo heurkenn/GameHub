@@ -29,7 +29,7 @@ public class Platform {
     private String name;
 
     @PastOrPresent(message = "La date de lancement ne peut pas être dans le futur")
-    private LocalDate launchDate;
+    private LocalDate launch_date;
 
     @NotBlank(message = "Le studio de développement ne peut pas être vide")
     private String developerStudio;
