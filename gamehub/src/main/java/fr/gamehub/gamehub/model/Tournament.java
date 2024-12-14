@@ -103,5 +103,14 @@ public class Tournament {
     public Set<User> getParticipants(){
         return this.participants;
     }
+
+    @ManyToMany
+    @JoinTable(
+        name = "classement",
+        joinColumns = @JoinColumn(name = "tournament_id"), // Clé étrangère vers Tournoi
+        inverseJoinColumns = @JoinColumn(name = "user_id") // Clé étrangère vers User
+    )
+    private Set<User> classment = new HashSet<>();
+
 }
 
