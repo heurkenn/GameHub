@@ -27,15 +27,15 @@
 		<div th:each="tournament : ${tournamentFilter}" class="col-md-4 mb-4">
 			<div class="tournament-card">
 				<div class="tournament-card-image">
-					
+					<!--
 					<img th:src="@{/image/} + ${tournamentFilter.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
-				
+				-->
 				</div>
 				<div class="tournament-card-content">
 					<h3 th:text="${tournament.name}">Nom du Tournoi</h3>
-					<!--
-					<p th:text="'Jeu: ' + ${tournament.gameName}">Jeu: Nom du Jeu</p>
-				-->
+					
+					<p th:text="'Jeu: ' + ${tournament.jeu.name}">Jeu: Nom du Jeu</p>
+				
 					<p th:text="'Date de fin: ' + ${tournament.dateEnd}">Date de fin:</p>
 					<!--
 					<a th:href="@{/tournament/} + ${tournament.id}" class="btn btn-primary btn-page">Voir Détails</a>
