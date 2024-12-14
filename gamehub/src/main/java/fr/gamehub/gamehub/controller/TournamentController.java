@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.gamehub.gamehub.model.Category;
+import fr.gamehub.gamehub.model.Classement;
 import fr.gamehub.gamehub.model.Fight;
 import fr.gamehub.gamehub.model.Tournament;
 import fr.gamehub.gamehub.model.User;
+import fr.gamehub.gamehub.repository.ClassementRepository;
 import fr.gamehub.gamehub.repository.TournamentRepository;
 import fr.gamehub.gamehub.repository.UserRepository;
 import fr.gamehub.gamehub.service.TournamentService;
@@ -43,6 +45,10 @@ public class TournamentController {
 
     @Autowired
     private TournamentService tournamentService;
+
+    @Autowired
+    private ClassementRepository classementRepository;
+
     
     
 
@@ -113,47 +119,64 @@ public class TournamentController {
         tournament.setCombats(fights);
     }
 
-    public static void nextRound(Tournament tournament){
+    public static void nextRound(Tournament tournament, ClassementRepository classementRepository) {
         Set<Fight> combats = tournament.getCombats();
         int nbJoueurRestant = combats.size();
         Set<User> joueurRestants = new HashSet<>();
-        for (Fight combat : combats){
-            if (nbJoueurRestant==1){ // S'il n'y avait qu'un combat en cour avant alors on a le gagnant ici
-                if (combat.getWinner() != null){ // regarde si le combat a pu être gagné par un des deux joueurs
-                    tournament.getClassment().setPremier(combat.getWinner());// dans le cas oui on prend le gagnant et l'autre joueur pour le top 2
-                    if (combat.getWinner().equals(combat.getJoueur1())){
-                        tournament.getClassment().setDeuxi(combat.getJoueur2());
-                    }else{
-                        tournament.getClassment().setDeuxi(combat.getJoueur1());
+
+        Classement classement = tournament.getClassement();
+        if (classement == null) {
+            classement = new Classement();
+            classement.setTournament(tournament);
+        }
+
+        for (Fight combat : combats) {
+            if (nbJoueurRestant == 1) { // Dernier combat, détermination des vainqueurs
+                if (combat.getWinner() != null) { // Si un gagnant est défini
+                    classement.setPremier(combat.getWinner());
+
+                    // Déterminer le deuxième joueur
+                    if (combat.getWinner().equals(combat.getJoueur1())) {
+                        classement.setDeuxieme(combat.getJoueur2());
+                    } else {
+                        classement.setDeuxieme(combat.getJoueur1());
                     }
-                }else{ // cas non alors on prends le joueur1 pour le top1 et le joueur 2 pour le top 2
-                    tournament.getClassment().setPremier(combat.getJoueur1());
-                    tournament.getClassment().setDeuxi(combat.getJoueur2());
+                } else { // Pas de gagnant, prendre les deux joueurs restants
+                    classement.setPremier(combat.getJoueur1());
+                    classement.setDeuxieme(combat.getJoueur2());
                 }
-            }else{
-                if (combat.getWinner() != null){//de même si il y a un gagnant
+            } else {
+                if (combat.getWinner() != null) { // Ajouter les gagnants à la liste des joueurs restants
                     joueurRestants.add(combat.getWinner());
-                    if (nbJoueurRestant==2){ // meme procédé et permet d'ajouter un top 3 et 4
-                        if (combat.getWinner().equals(combat.getJoueur1())){
-                            tournament.getClassment().setTroisi(combat.getJoueur2());
-                        }else{
-                            tournament.getClassment().setTroisi(combat.getJoueur1());
+
+                    // Déterminer le troisième joueur s'il reste deux combats
+                    if (nbJoueurRestant == 2) {
+                        if (combat.getWinner().equals(combat.getJoueur1())) {
+                            classement.setTroisieme(combat.getJoueur2());
+                        } else {
+                            classement.setTroisieme(combat.getJoueur1());
                         }
                     }
-                }else{ // si y'en a pas de gagnant
+                } else { // Si aucun gagnant, prendre joueur1
                     joueurRestants.add(combat.getJoueur1());
-                    if (nbJoueurRestant==2){
-                        tournament.getClassment().setTroisi(combat.getJoueur2()); // le perdant prend la troisième place
+
+                    // Déterminer le troisième joueur s'il reste deux combats
+                    if (nbJoueurRestant == 2) {
+                        classement.setTroisieme(combat.getJoueur2());
                     }
                 }
             }
         }
+
+        // Sauvegarder le classement mis à jour
+        classementRepository.save(classement);
+
         Set<Fight> fights = new HashSet<>();
-        // Création des combats du prochain round
-        if (nbJoueurRestant!=1){ // pas utile si on a deja un vainqueur
+        // Création des combats du prochain round si nécessaire
+        if (nbJoueurRestant != 1) { // Pas besoin de combats si le tournoi est terminé
             User player1 = null;
             for (User user : joueurRestants) {
-                if (player1 != null){
+                if (player1 != null) {
                     User player2 = user;
                     Fight fight = new Fight();
                     fight.setJoueur1(player1);
@@ -165,6 +188,7 @@ public class TournamentController {
             tournament.setCombats(fights);
         }
     }
+
 
     @Scheduled(fixedDelay = 60000)
     public void checkStartTournament(){
@@ -178,10 +202,15 @@ public class TournamentController {
     }
 
     @Scheduled(fixedDelay = 300000, initialDelay = 300000)
-    public void checkNextRound(){
-        List<Tournament> tournaments = tournamentService.getAllTournamentsInProgress();
-        for(Tournament tournament : tournaments){
-            nextRound(tournament);
-        }
+public void checkNextRound() {
+    List<Tournament> tournaments = tournamentService.getAllTournamentsInProgress();
+    for (Tournament tournament : tournaments) {
+        // Appeler nextRound en passant le repository pour gérer le classement
+        nextRound(tournament, classementRepository);
+
+        // Sauvegarder les changements du tournoi (combats mis à jour)
+        tournamentService.saveTournament(tournament);
     }
+}
+
 }
