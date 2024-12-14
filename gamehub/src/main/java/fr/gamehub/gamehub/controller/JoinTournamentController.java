@@ -2,20 +2,18 @@ package fr.gamehub.gamehub.controller;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import fr.gamehub.gamehub.repository.*;
 import fr.gamehub.gamehub.service.TournamentService;
-import jakarta.validation.Valid;
 import fr.gamehub.gamehub.model.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+
 
 @Controller
 @RequestMapping("/tournament")
@@ -23,13 +21,16 @@ public class JoinTournamentController {
 
 	@Autowired
 	private TournamentService service;
-	
+
 	public JoinTournamentController( TournamentService service){
 		this.service=service;
 	}
 
 	@GetMapping("/join")
 	public String Join(Model model){
+		List<List< Tournament>> l = new LinkedList<>();
+		l.add(service.searchTournamentNameStartBy(""));
+		model.addAttribute("tournamentFilter", intersectionTournaments(l));
 		return "JoinTournament";
 	}
 
@@ -42,10 +43,10 @@ public class JoinTournamentController {
 
     	List<Tournament> tournamentsPrivate = service.searchTournamentByPrivacy(isPrivate);
     	llTournament.add(tournamentsPrivate);
-		System.out.println(llTournament.size());
+		
   		List<Tournament> tournamentFiltered = intersectionTournaments(llTournament);
-    	model.addAttribute("tournament", tournamentFiltered);
-
+		model.addAttribute("tournamentFilter", tournamentFiltered);
+		
     	return "JoinTournament"; // Retourner la même page pour afficher le filtre appliqué
 }
 
@@ -53,12 +54,26 @@ public class JoinTournamentController {
 	// Fonction qui servira à prendre seulement les tournois qui valide toute les conditions posé dans les filtres
 	private static List<Tournament> intersectionTournaments(List<List <Tournament>> lTournament ){
 		List <Tournament> tournaments = lTournament.get(0);
+		LocalDateTime ldt = LocalDateTime.now();
+		System.out.println("idhzauhduizagfduiazhoiduzahofiazhoifhaziohfioazhfoiazhifhzaoihfaziohfioazh");
+		System.out.println(ldt.getHour());
+		System.out.println(ldt.toString());
+		List <Tournament> lTournamentsTmp = new LinkedList<>();
 		for (List<Tournament> lt : lTournament){
 			for (Tournament tournament : tournaments){
-				if (!lt.contains(tournament)) tournaments.remove(tournament);
+				if (!tournament.getDateStartInscription().isBefore(ldt) || !tournament.getDateEndInscription().isAfter(ldt) || !lt.contains(tournament)) {
+					System.out.println(tournament.getName()+ " :");
+					System.out.println(tournament.getDateStartInscription().isBefore(ldt));
+					System.out.println(tournament.getDateEndInscription().isAfter(ldt));
+					lTournamentsTmp.add(tournament);
+				}
 			}
+			for (Tournament t : lTournamentsTmp) tournaments.remove(t);
+			lTournamentsTmp.clear();
 		}
+		System.out.println(tournaments);
 		return tournaments;
 	}
+	
 
 }
