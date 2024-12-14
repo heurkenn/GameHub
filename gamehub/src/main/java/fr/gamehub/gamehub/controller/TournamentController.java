@@ -9,6 +9,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import fr.gamehub.gamehub.repository.*;
 import jakarta.validation.Valid;
 import fr.gamehub.gamehub.model.*;
@@ -23,6 +25,7 @@ import fr.gamehub.gamehub.service.TournamentService;
 import jakarta.transaction.Transactional;
 
 @Controller
+
 @RequestMapping("/tournament")
 public class TournamentController {
 
