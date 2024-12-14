@@ -13,19 +13,21 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import fr.gamehub.gamehub.repository.*;
-import jakarta.validation.Valid;
-import fr.gamehub.gamehub.model.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 
+import fr.gamehub.gamehub.model.Category;
+import fr.gamehub.gamehub.model.Fight;
+import fr.gamehub.gamehub.model.Tournament;
+import fr.gamehub.gamehub.model.User;
+import fr.gamehub.gamehub.repository.TournamentRepository;
+import fr.gamehub.gamehub.repository.UserRepository;
 import fr.gamehub.gamehub.service.TournamentService;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @Controller
 
