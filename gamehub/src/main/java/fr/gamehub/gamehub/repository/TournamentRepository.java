@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import java.util.List;
 
-import fr.gamehub.gamehub.model.*;
-
 public interface TournamentRepository extends JpaRepository<Tournament, Long>{
     Optional<Tournament> findByJeu(Game jeu); 
     Optional<Tournament> findByCategorie(Category categorie); 
