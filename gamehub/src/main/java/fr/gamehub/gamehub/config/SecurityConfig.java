@@ -1,5 +1,6 @@
 package fr.gamehub.gamehub.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -8,10 +9,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import fr.gamehub.gamehub.service.MyUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Autowired
+    private MyUserDetailsService myUserDetailsService;
     private final Environment env;
 
     public SecurityConfig(Environment env) {
@@ -29,11 +34,25 @@ public class SecurityConfig {
         System.out.println("Security configuration active: " + (isDev ? "dev" : "prod"));
 
         http
-        .authorizeHttpRequests((requests) -> requests
-            .requestMatchers("/", "/game/**", "/register", "/login", "/h2-console/**", "/css/**", "/js/**", "/image/**").permitAll()
-            .requestMatchers("/admin/**").hasRole("ADMIN")  // Exemples d'accès selon les rôles
-            .anyRequest().authenticated()
-        );
+            .userDetailsService(myUserDetailsService)  // Indique quel service utiliser
+            .authorizeHttpRequests((requests) -> requests
+                .requestMatchers("/", "/game/**", "/register", "/login", "/h2-console/**", "/css/**", "/js/**", "/image/**").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error=true")
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout=true")
+                .permitAll()
+            );
         
 
         if (isDev) {
