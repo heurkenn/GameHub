@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS fight;
 DROP TABLE IF EXISTS tournament_game;
 DROP TABLE IF EXISTS tournament_user;
 
-
 DROP TABLE IF EXISTS tournament;
 DROP TABLE IF EXISTS game;
 DROP TABLE IF EXISTS platform;

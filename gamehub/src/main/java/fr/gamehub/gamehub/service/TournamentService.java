@@ -30,4 +30,10 @@ public class TournamentService {
     public void deleteTournamentById(Long id) {
         tournamentRepository.deleteById(id);
     }
+    public List<Tournament> searchTournamentNameStartBy(String prefixName){
+        return tournamentRepository.findByPrefix(prefixName);
+    }
+    public List<Tournament> searchTournamentByPrivacy(boolean is_private){
+        return tournamentRepository.findByPrivacy(is_private);
+    }
 }

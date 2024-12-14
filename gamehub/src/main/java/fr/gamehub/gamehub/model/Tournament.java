@@ -68,7 +68,7 @@ public class Tournament {
     @NotBlank(message = "Le tournoi est soit privé, soit public")
     @NotEmpty
     @NotNull
-    private boolean isPrivate;
+    private boolean is_private;
 
     @NotBlank(message = "Le nombre de joueur limite ne doit pas être vide ")
     @NotEmpty
@@ -77,6 +77,14 @@ public class Tournament {
 
     
     private int nbJoueur =0;
+
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Tournament){
+            return ((Tournament)o).getId() ==this.getId();
+        }
+        return false;
+    }
 
     // 1VS1
     @OneToMany(mappedBy = "tournament")

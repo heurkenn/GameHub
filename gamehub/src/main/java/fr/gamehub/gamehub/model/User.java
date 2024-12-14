@@ -66,6 +66,3 @@ public class User implements Serializable {
     private Set<Tournament> tournois = new HashSet<>();
     // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
 }
-
-    // Lombok génère automatiquement les getters, setters, et le constructeur sans argument
-}
