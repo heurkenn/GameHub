@@ -30,9 +30,9 @@ public class SecurityConfig {
 
         http
         .authorizeHttpRequests((requests) -> requests
-            .requestMatchers("/", "/game/**", "/register", "/login", "/h2-console/**", "/css/**", "/js/**", "/images/**").permitAll()
+            .requestMatchers("/", "/game/**", "/register", "/login", "/h2-console/**", "/css/**", "/js/**", "/image/**").permitAll()
             .requestMatchers("/admin/**").hasRole("ADMIN")  // Exemples d'accès selon les rôles
-            .anyRequest().permitAll()
+            .anyRequest().authenticated()
         );
         
 
