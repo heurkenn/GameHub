@@ -36,5 +36,9 @@ build/
 /testdb.trace.db
 /testdb.mv.db
 
+/test/testdb.mv.db
+/test/testdb.trace.db
+
+
 
 gamehub\src\main\resources\application.properties
