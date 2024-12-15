@@ -85,7 +85,7 @@ public class TournamentController {
         return "creationTournament";
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/tournament/{id}")
     public ResponseEntity<Tournament> getById(@PathVariable long id) {
         Optional<Tournament> tournament = tournamentService.getTournamentById(id);
         return tournament.map(ResponseEntity::ok)
