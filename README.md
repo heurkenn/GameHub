@@ -5,8 +5,8 @@ GameHub est une plateforme permettant aux utilisateurs :
 
 - De créer un compte et de se connecter pour accéder aux fonctionnalités.
 - De participer à des tournois organisés pour différents jeux.
-- De rejoindre une communauté liée à chaque jeu et d’interagir via un système de chat dédié.
-  
+- De faire partie d'une communauté liée à chaque jeu et d’interagir via un système de chat dédié en lien sur la page du jeu.
+    
 Un super administrateur gère la plateforme en ajoutant des jeux et en attribuant un administrateur pour chaque communauté (et donc pour chaque jeu). Ces administrateurs de communauté sont responsables de la création, de la modification et de la suppression des tournois. Les utilisateurs peuvent ainsi s’inscrire aux tournois, rejoindre des communautés et discuter entre eux au sein de l’espace de chat.
 
 🎮 Bonus : Un easter egg caché se trouve sur la page d'erreur, lorsque vous accedez à une page qui n'existe pas 👀! 
