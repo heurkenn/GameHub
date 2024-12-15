@@ -33,7 +33,8 @@ build/
 .vscode/
 
 ### DataBase ###
-
+/test/testdb.trace.db
+/test/testdb.mv.db
 
 
 gamehub\src\main\resources\application.properties
