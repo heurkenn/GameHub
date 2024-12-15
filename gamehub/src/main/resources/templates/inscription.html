@@ -3,69 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>GameHub - Inscription</title>
-    <!-- Lien vers le fichier CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/form.css}">
-
-    <!-- Lien vers Bootstrap (CDN) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .is-invalid {
+            border-color: #dc3545;
+            box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+        }
+        .invalid-feedback, .error-message {
+            color: #dc3545;
+            font-size: 0.875em;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Header -->
     <div th:insert="~{fragments :: header}"></div>
+    <div class="container mt-5">
+        <div class="form-container">
+            <h3 class="text-center">Inscription à GameHub</h3>
+            <form id="registerForm" method="POST" novalidate>
+                <div class="form-group">
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="name" class="form-control" placeholder="Votre prénom" required>
+                    <div class="invalid-feedback">Veuillez entrer votre prénom.</div>
+                </div>
 
-    <!-- Conteneur d'inscription -->
-<div class="container">
-    <div class="form-container">
-        <h3>Inscription à GameHub</h3>
-        <form th:action="@{/register}" th:object="${user}" method="POST">
-            <!-- Message d'erreur général -->
-            <div th:if="${error}" class="text-danger">
-                <p th:text="${error}"></p>
-            </div>
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="surname" class="form-control" placeholder="Votre nom" required>
+                    <div class="invalid-feedback">Veuillez entrer votre nom.</div>
+                </div>
 
-            <div class="form-group">
-                <label for="prenom">Prénom :</label>
-                <input type="text" class="form-control" id="prenom" name="name" th:field="*{name}" required />
-                <div th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{name}"></div>
-            </div>
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur :</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Votre nom d'utilisateur" required>
+                    <div id="usernameError" class="invalid-feedback">Nom d'utilisateur déjà utilisé.</div>
+                </div>
 
-            <div class="form-group">
-                <label for="nom">Nom :</label>
-                <input type="text" class="form-control" id="nom" name="surname" th:field="*{surname}" required />
-                <div th:if="${#fields.hasErrors('surname')}" class="text-danger" th:errors="*{surname}"></div>
-            </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="exemple@domaine.com" required>
+                    <div id="emailError" class="invalid-feedback">Adresse email invalide ou déjà utilisée.</div>
+                </div>
 
-            <div class="form-group">
-                <label for="username">Nom d'utilisateur :</label>
-                <input type="text" class="form-control" id="username" name="username" th:field="*{username}" required />
-                <div th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></div>
-            </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Votre mot de passe" required>
+                    <div id="passwordError" class="invalid-feedback">Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre.</div>
+                </div>
 
-            <div class="form-group">
-                <label for="email">Email :</label>
-                <input type="email" class="form-control" id="email" name="email" th:field="*{email}" required />
-                <div th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></div>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Mot de passe :</label>
-                <input type="password" class="form-control" id="password" name="password" th:field="*{password}" required />
-                <div th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></div>
-            </div>
-
-            <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary">S'inscrire</button>
-            </div>
-        </form>
-        <div class="form-footer">
-            <p>Déjà inscrit ? <a th:href="@{/login}">Connectez-vous</a></p>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                </div>
+            </form>
         </div>
     </div>
-</div>
+    <div th:insert="~{fragments :: footer}"></div>
 
+    <!-- Validation AJAX -->
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêcher l'envoi par défaut
 
-   <!-- Footer fixe en bas -->
-   <div th:insert="~{fragments :: footer}"></div>
+            // Réinitialiser les erreurs
+            const fields = ['prenom', 'nom', 'username', 'email', 'password'];
+            fields.forEach(field => {
+                const input = document.getElementById(field);
+                input.classList.remove('is-invalid');
+                const error = document.getElementById(`${field}Error`);
+                if (error) error.style.display = 'none';
+            });
+
+            // Récupérer les données
+            const formData = new FormData(this);
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/register", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    window.location.href = "/login";
+                } else if (xhr.status === 400) {
+                    const errors = JSON.parse(xhr.responseText);
+                    Object.keys(errors).forEach(key => {
+                        const input = document.getElementById(key);
+                        const error = document.getElementById(`${key}Error`);
+                        if (input) input.classList.add('is-invalid');
+                        if (error) {
+                            error.textContent = errors[key];
+                            error.style.display = 'block';
+                        }
+                    });
+                } else {
+                    alert("Une erreur interne est survenue.");
+                }
+            };
+
+            // Formater les données
+            let urlEncodedData = "";
+            for (let pair of formData.entries()) {
+                if (urlEncodedData !== "") urlEncodedData += "&";
+                urlEncodedData += encodeURIComponent(pair[0]) + "=" + encodeURIComponent(pair[1]);
+            }
+
+            xhr.send(urlEncodedData);
+        });
+    </script>
 </body>
+</html>

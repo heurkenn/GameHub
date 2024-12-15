@@ -3,72 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <title>GameHub - Connexion</title>
-    <!-- Lien vers le fichier CSS -->
+    <!-- Lien vers les fichiers CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/form.css}">
-
-    <!-- Lien vers Bootstrap (CDN) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* Animation de secousse */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+        .shake {
+            animation: shake 0.3s ease;
+        }
+
+        /* Champs invalides */
+        .is-invalid {
+            border-color: #dc3545;
+            box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+        }
+
+        /* Message d'erreur */
+        .invalid-feedback, .error-message {
+            color: #dc3545;
+            font-size: 0.875em;
+            display: none;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
     <div th:insert="~{fragments :: header}"></div>
-    
-    <!-- Conteneur de connexion -->
-    <div class="container">
+
+    <div class="container mt-5">
         <div class="form-container">
-            <h3>Connexion à GameHub</h3>
-            <form th:action="@{/login}" method="POST" th:object="${user}" class="needs-validation" novalidate>
+            <h3 class="text-center">Connexion à GameHub</h3>
+
+            <!-- Formulaire de connexion -->
+            <form id="loginForm" method="POST" novalidate>
+                <!-- Nom d'utilisateur -->
                 <div class="form-group">
-                    <label for="username">Username :</label>
-                    <input type="text" class="form-control" id="username" name="username" th:field="*{username}" placeholder="Entrez votre username" required>
-                    <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
-                    <div th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></div>
+                    <label for="username">Nom d'utilisateur :</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Entrez votre username" required>
+                    <div id="usernameError" class="invalid-feedback">Veuillez entrer votre nom d'utilisateur.</div>
                 </div>
-            
+
+                <!-- Mot de passe -->
                 <div class="form-group">
                     <label for="password">Mot de passe :</label>
-                    <input type="password" class="form-control" id="password" name="password" th:field="*{password}" placeholder="Entrez votre mot de passe" required>
-                    <div class="invalid-feedback">Veuillez entrer votre mot de passe.</div>
-                    <div th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></div>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Entrez votre mot de passe" required>
+                    <div id="passwordError" class="invalid-feedback">Veuillez entrer votre mot de passe.</div>
                 </div>
-            
+
+                <!-- Message d'erreur global -->
+                <div id="globalError" class="error-message"></div>
+
+                <!-- Bouton de connexion -->
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary">Se connecter</button>
                 </div>
-            
-                <!-- Section pour afficher un message d'erreur global -->
-                <div class="form-group">
-                    <p th:if="${error}" class="text-danger" th:text="${error}"></p>
-                </div>
             </form>
-            
-            <div class="form-footer">
+
+            <div class="form-footer text-center">
                 <p>Pas encore inscrit ? <a th:href="@{/register}">Créer un compte</a></p>
             </div>
         </div>
     </div>
 
-    <!-- Footer fixe en bas -->
     <div th:insert="~{fragments :: footer}"></div>
-</body>
-<script>
-    // Validation Bootstrap pour afficher les messages d'erreur côté client
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            var forms = document.getElementsByClassName('needs-validation');
-            Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>
 
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Réinitialiser les erreurs
+            const username = document.getElementById("username");
+            const password = document.getElementById("password");
+            const usernameError = document.getElementById("usernameError");
+            const passwordError = document.getElementById("passwordError");
+            const globalError = document.getElementById("globalError");
+
+            username.classList.remove("is-invalid");
+            password.classList.remove("is-invalid");
+            usernameError.style.display = "none";
+            passwordError.style.display = "none";
+            globalError.style.display = "none";
+
+            // Validation côté client
+            let hasError = false;
+            if (!username.value.trim()) {
+                username.classList.add("is-invalid");
+                usernameError.style.display = "block";
+                username.focus();
+                hasError = true;
+            }
+            if (!password.value.trim()) {
+                password.classList.add("is-invalid");
+                passwordError.style.display = "block";
+                if (!hasError) password.focus();
+                hasError = true;
+            }
+            if (hasError) return;
+
+            // Récupérer les données
+            const formData = new FormData(this);
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/login", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            // Réponse du serveur
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    window.location.href = "/";
+                } else if (xhr.status === 401) {
+                    globalError.textContent = "Nom d'utilisateur ou mot de passe incorrect.";
+                    globalError.style.display = "block";
+
+                    username.classList.add("is-invalid", "shake");
+                    password.classList.add("is-invalid", "shake");
+
+                    setTimeout(() => {
+                        username.classList.remove("shake");
+                        password.classList.remove("shake");
+                    }, 500);
+                } else {
+                    globalError.textContent = "Une erreur interne est survenue. Veuillez réessayer.";
+                    globalError.style.display = "block";
+                }
+            };
+
+            // Formater les données pour l'envoi
+            let urlEncodedData = "";
+            for (let pair of formData.entries()) {
+                if (urlEncodedData !== "") urlEncodedData += "&";
+                urlEncodedData += encodeURIComponent(pair[0]) + "=" + encodeURIComponent(pair[1]);
+            }
+
+            xhr.send(urlEncodedData);
+        });
+    </script>
+</body>
 </html>

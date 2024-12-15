@@ -6,7 +6,10 @@ import java.util.HashSet;
 import java.util.Set;
 import fr.gamehub.gamehub.validator.ValidateDate;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -70,35 +73,36 @@ public class Tournament {
     private LocalDateTime dateStartInscription;
 
     @NotNull
-    @NotEmpty
-    @NotBlank(message = "La categorie ne peut être vide")
+    @Enumerated(EnumType.STRING)
     private Category categorie;
 
-    @NotBlank(message = "Le jeu ne peut pas être vide")
+    @NotNull(message = "Le jeu est obligatoire")
     @ManyToOne
-    @JoinColumn(name="game_id", nullable=false)
+    @JoinColumn(name = "game_id", nullable = false)
     private Game jeu;
 
     @NotBlank(message = "Le tournoi est soit privé, soit public")
-    @NotEmpty
-    @NotNull
     private boolean is_private;
 
-    @NotBlank(message = "Le nombre de joueur limite ne doit pas être vide ")
-    @NotEmpty
-    @NotNull
+    @NotNull(message = "Le nombre de joueur limite est obligatoire")
     private int nbJoueurLimite;
 
-    
+    @Column(nullable = false, columnDefinition = "integer default 0")
     private int nbJoueur =0;
 
     @Override
-    public boolean equals(Object o){
-        if (o instanceof Tournament){
-            return ((Tournament)o).getId() ==this.getId();
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tournament that = (Tournament) o;
+        return id != null && id.equals(that.id);
     }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+    
 
     // 1VS1
     @OneToMany(mappedBy = "tournament")

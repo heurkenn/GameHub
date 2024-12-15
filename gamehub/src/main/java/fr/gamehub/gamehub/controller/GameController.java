@@ -6,10 +6,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +26,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import fr.gamehub.gamehub.model.Category;
 import fr.gamehub.gamehub.model.Game;
+import fr.gamehub.gamehub.model.Platform;
 import fr.gamehub.gamehub.service.GameService;
+import fr.gamehub.gamehub.service.PlatformService;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.validation.Valid;
 
@@ -31,8 +39,14 @@ import jakarta.validation.Valid;
 @RequestMapping("/games")
 public class GameController {
 
+    private static final Logger logger = LoggerFactory.getLogger(GameController.class);
+
     @Autowired
     private GameService gameService;
+
+    @Autowired
+    private PlatformService platformService;
+
 
     // Affiche tous les jeux
     @GetMapping
@@ -54,14 +68,23 @@ public class GameController {
 
     @PostMapping("/create")
     public String createGame(@Valid Game game, BindingResult result,
-                            @RequestParam("imageUrl") MultipartFile imageUrl,
+                            @RequestParam("image_url") MultipartFile imageUrl,
+                            @RequestParam("platforms") List<String> platforms, // Plateformes sélectionnées
                             Model model) {
         if (result.hasErrors()) {
             model.addAttribute("errorMessage", "Erreur lors de l'ajout du jeu.");
             return "admin-dashboard";
         }
 
-        // Vérifier que le fichier n'est pas vide
+        // Vérifier si le genre est valide
+        try {
+            Category.valueOf(game.getGenre()); // Vérifie si le genre est dans l'enum
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("errorMessage", "Le genre sélectionné est invalide.");
+            return "admin-dashboard";
+        }
+
+        // Vérifier que le fichier image n'est pas vide
         if (imageUrl.isEmpty()) {
             model.addAttribute("errorMessage", "L'image est requise.");
             return "admin-dashboard";
@@ -116,11 +139,18 @@ public class GameController {
         // Mettre à jour l'attribut image_url du jeu avec le nom de fichier
         game.setImage_url(fileName);
 
+        // Récupérer les entités Platform correspondant aux noms sélectionnés
+        Set<Platform> selectedPlatforms = new HashSet<>(platformService.findPlatformsByName(platforms));
+        game.setPlatforms(selectedPlatforms); // Associer les plateformes au jeu
+
         // Enregistrer le jeu dans la base
         gameService.saveGame(game);
 
+        
+
         return "redirect:/admin-dashboard";
     }
+
 
 
 
@@ -129,34 +159,82 @@ public class GameController {
     public String updateGame(
             @PathVariable("id") Long id,
             @Valid Game updatedGame,
-            BindingResult result, // Récupération des plateformes sous forme de chaîne
-            @RequestParam("imageUrl") MultipartFile imageFile, // Gestion du fichier image
+            BindingResult result,
+            @RequestParam(value = "newImage", required = false) MultipartFile imageFile,
+            @RequestParam(value = "platforms", required = false) List<Long> platformIds,
             Model model) {
 
-        // Gestion des erreurs de validation
+        // Étape 1 : Vérifier les erreurs de validation
         if (result.hasErrors()) {
-            System.out.println("Erreurs de validation : " + result.getAllErrors());
+            System.out.println("Erreur de validation : " + result.getAllErrors());
+            model.addAttribute("platforms", platformService.findAll());
+            model.addAttribute("categories", Category.values());
             model.addAttribute("errorMessage", "Erreur lors de la modification du jeu.");
-            return "game_form"; // Retourner le formulaire en cas d'erreur
+            return "index";
         }
 
-        // Mettre à jour les champs de l'objet jeu
-        updatedGame.setId(id);
-
-        // Gestion de l'image (si une nouvelle image est uploadée)
-        if (!imageFile.isEmpty()) {
-            String fileName = imageFile.getOriginalFilename();
-            updatedGame.setImage_url(fileName);
-            System.out.println("Image uploadée : " + fileName);
-            // Vous pouvez ajouter ici la logique pour enregistrer le fichier sur le serveur
+        // Étape 2 : Vérifier si le jeu existe
+        Optional<Game> optionalGame = gameService.getGameById(id);
+        if (optionalGame.isEmpty()) {
+            System.out.println("Jeu introuvable avec l'ID : " + id);
+            model.addAttribute("errorMessage", "Le jeu avec l'ID " + id + " n'existe pas.");
+            return "redirect:/admin-dashboard";
         }
 
-        // Sauvegarde du jeu modifié
-        gameService.saveGame(updatedGame);
-        System.out.println("Jeu mis à jour : " + updatedGame.getName());
+        Game existingGame = optionalGame.get();
 
+        // Étape 3 : Mise à jour des champs du jeu
+        existingGame.setName(updatedGame.getName());
+        existingGame.setReleaseYear(updatedGame.getReleaseYear());
+        existingGame.setDeveloperStudio(updatedGame.getDeveloperStudio());
+        existingGame.setGenre(updatedGame.getGenre());
+        existingGame.setDescription(updatedGame.getDescription());
+        System.out.println("Champs mis à jour pour le jeu : " + existingGame);
+
+        // Étape 4 : Mise à jour des plateformes
+        if (platformIds != null) {
+            Set<Platform> platforms = platformService.findAllByIds(platformIds);
+            existingGame.setPlatforms(platforms);
+            System.out.println("Plateformes mises à jour : " + platforms);
+        } else {
+            existingGame.setPlatforms(new HashSet<>());
+            System.out.println("Aucune plateforme sélectionnée.");
+        }
+
+        // Étape 5 : Gestion de l'image
+        if (imageFile != null && !imageFile.isEmpty()) {
+            try {
+                String fileName = imageFile.getOriginalFilename();
+                Path uploadPath = Paths.get("src/main/resources/static/image");
+                if (!Files.exists(uploadPath)) {
+                    Files.createDirectories(uploadPath);
+                }
+                Path filePath = uploadPath.resolve(fileName);
+                Files.copy(imageFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+                existingGame.setImage_url(fileName);
+                System.out.println("Image mise à jour : " + fileName);
+            } catch (IOException e) {
+                System.out.println("Erreur lors de l'enregistrement de l'image : " + e.getMessage());
+                model.addAttribute("errorMessage", "Erreur lors de l'enregistrement de l'image.");
+                return "login";
+            }
+        }
+
+        // Étape 6 : Sauvegarde dans la base de données
+        gameService.saveGame(existingGame);
+        logger.info("Jeu enregistré avec succès : {}", existingGame);
+
+        logger.info("Genre envoyé depuis le formulaire : {}", updatedGame.getGenre());
+        logger.info("Genre avant mise à jour : {}", existingGame.getGenre());
+        existingGame.setGenre(updatedGame.getGenre());
+        logger.info("Genre après mise à jour : {}", existingGame.getGenre());
+
+
+        // Redirection vers le tableau de bord
         return "redirect:/admin-dashboard";
     }
+
+
 
 
     // Supprimer un jeu
