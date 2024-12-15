@@ -16,10 +16,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -30,17 +35,23 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Tournament") 
+@Table(name = "Tournament") 
 @Getter
 @Setter
 @NoArgsConstructor
 @ValidateDate
+@ValidateDate
 public class Tournament {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull(message = "Le nom est obligatoire")
+    @NotEmpty
+    @NotBlank(message = "Le nom du jeu ne peut pas être vide")
+    @Size(min = 3, max = 50, message = "Le nom du jeu doit être compris entre 3 et 50 caractères")
     @NotEmpty
     @NotBlank(message = "Le nom du jeu ne peut pas être vide")
     @Size(min = 3, max = 50, message = "Le nom du jeu doit être compris entre 3 et 50 caractères")

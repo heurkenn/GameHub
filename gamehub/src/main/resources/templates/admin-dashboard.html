@@ -30,6 +30,9 @@
                 <li class="sidebar-item">
                     <a th:href="@{/}" class="sidebar-link">Retour à l'accueil</a>
                 </li>
+                <li class="sidebar-item">
+                    <a th:href="@{/}" class="sidebar-link">Retour à l'accueil</a>
+                </li>
             </ul>
         </nav>
 
@@ -84,6 +87,7 @@
                     </form>
                 </div>
                 
+                
                 <table class="table table-dark mt-4">
                     <thead>
                         <tr>
@@ -105,10 +109,14 @@
                                 <button class="btn btn-danger" 
                                         th:attr="data-game-id=${game.id}" 
                                         onclick="deleteGame(this);">Supprimer</button>
+                                <button class="btn btn-danger" 
+                                        th:attr="data-game-id=${game.id}" 
+                                        onclick="deleteGame(this);">Supprimer</button>
                             </td>
                         </tr>
                         <tr th:attr="id='modifyGameForm-' + ${game.id}" class="form-section d-none">
                             <td colspan="3">
+                                <form th:action="@{/games/edit/{id}(id=${game.id})}" method="POST" enctype="multipart/form-data">
                                 <form th:action="@{/games/edit/{id}(id=${game.id})}" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" th:value="${game.id}" name="id">
                                     <!-- Champ : Nom -->
@@ -129,7 +137,7 @@
                                         <input type="text" th:attr="id='developerStudio-' + ${game.id}" name="developerStudio" 
                                                th:value="${game.developerStudio}" class="form-control" required>
                                     </div>
-                                    <!-- Champ : Genre -->
+                                   <!-- Champ : Genre -->
                                     <div class="form-group">
                                         <label for="genre">Genre</label>
                                         <select id="genre" name="genre" class="form-control" required>
@@ -183,6 +191,7 @@
             </div>
 
 
+
             <!-- Section Gestion des Tournois -->
             <div id="tournamentsSection" class="admin-section d-none">
                 <h3>Gestion des Tournois</h3>
@@ -233,8 +242,14 @@
             </div>
 
            <!-- Section Gestion des Admins -->
+           <!-- Section Gestion des Admins -->
             <div id="adminsSection" class="admin-section d-none">
                 <h3>Gestion des Admins</h3>
+
+                <!-- Barre de Recherche pour Promouvoir un Admin -->
+                <div class="form-group mb-4">
+                    <input type="text" id="searchUser" class="form-control" placeholder="Rechercher un utilisateur...">
+                    <div id="searchResults" class="mt-2"></div>
 
                 <!-- Barre de Recherche pour Promouvoir un Admin -->
                 <div class="form-group mb-4">
@@ -245,10 +260,16 @@
                 <!-- Liste des Admins Déjà Ajoutés -->
                 <h4>Liste des Administrateurs</h4>
                 <table class="table table-dark mt-3">
+
+                <!-- Liste des Admins Déjà Ajoutés -->
+                <h4>Liste des Administrateurs</h4>
+                <table class="table table-dark mt-3">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Nom</th>
+                            <th>Email</th>
+                            <th>Jeu</th>
                             <th>Email</th>
                             <th>Jeu</th>
                             <th>Actions</th>
@@ -256,8 +277,20 @@
                     </thead>
                     <tbody>
                         <tr th:each="admin : ${admins}">
+                    <tbody>
+                        <tr th:each="admin : ${admins}">
                             <td th:text="${admin.id}"></td>
                             <td th:text="${admin.name}"></td>
+                            <td th:text="${admin.email}"></td>
+                            <td th:text="${admin.gameName}"></td>
+                            <td>
+                                <!-- Modifier Admin -->
+                                <form th:action="@{/admins/modify}" method="POST" class="d-inline">
+                                    <input type="hidden" name="id" th:value="${admin.id}">
+                                    <select name="gameId" class="form-control d-inline w-auto" required>
+                                        <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
+                                    </select>
+                                    <button type="submit" class="btn btn-warning btn-sm">Modifier</button>
                             <td th:text="${admin.email}"></td>
                             <td th:text="${admin.gameName}"></td>
                             <td>
@@ -273,12 +306,17 @@
                                 <form th:action="@{/admins/demote}" method="POST" class="d-inline">
                                     <input type="hidden" name="id" th:value="${admin.id}">
                                     <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                                <!-- Supprimer Admin -->
+                                <form th:action="@{/admins/demote}" method="POST" class="d-inline">
+                                    <input type="hidden" name="id" th:value="${admin.id}">
+                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                                 </form>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
 
         </div>
     </div>
@@ -300,12 +338,15 @@
 }
 
 function showForm(button) {
+function showForm(button) {
     // Récupérer l'attribut data-form-id du bouton cliqué
     const formId = button.getAttribute('data-form-id');
     console.log(`ID du formulaire récupéré : ${formId}`); // Log pour vérifier l'ID
 
     // Trouver le formulaire correspondant
     const form = document.getElementById(formId);
+
+    if (!form) {
 
     if (!form) {
         console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
@@ -351,6 +392,73 @@ function showForm(button) {
             event.target.value = "";
         };
         img.src = URL.createObjectURL(file);
+    });
+
+    
+    function deleteGame(button) {
+        // Récupérer l'ID du jeu depuis l'attribut data-game-id
+        const gameId = button.getAttribute("data-game-id");
+
+        if (!gameId) {
+            console.error("Erreur : l'ID du jeu est introuvable.");
+            return;
+        }
+
+        if (confirm("Êtes-vous sûr de vouloir supprimer ce jeu ?")) {
+            fetch(`/games/delete/${gameId}`, {
+                method: 'DELETE', // Méthode HTTP DELETE
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Jeu supprimé avec succès !");
+                    window.location.reload(); // Recharge la page pour refléter les modifications
+                } else {
+                    alert("Erreur lors de la suppression du jeu.");
+                }
+            })
+            .catch(error => {
+                console.error("Erreur :", error);
+                alert("Une erreur est survenue. Veuillez réessayer.");
+            });
+        }
+    }
+    document.getElementById('searchUser').addEventListener('input', function () {
+    const query = this.value.trim();
+
+    if (query.length > 0) {
+        fetch(`/users/search?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                const searchResults = document.getElementById('searchResults');
+                searchResults.innerHTML = '';
+
+                if (data.length > 0) {
+                    data.forEach(user => {
+                        searchResults.innerHTML += `
+                            <div class="d-flex justify-content-between align-items-center p-2 bg-secondary text-white mb-1">
+                                <span>${user.name} (${user.email})</span>
+                                <form action="/admins/promote" method="POST">
+                                    <input type="hidden" name="id" value="${user.id}">
+                                    <select name="gameId" class="form-control d-inline w-auto" required>
+                                        <option value="">Sélectionnez un jeu</option>
+                                        ${user.games.map(game => `<option value="${game.id}">${game.name}</option>`).join('')}
+                                    </select>
+                                    <button type="submit" class="btn btn-primary btn-sm">Ajouter Admin</button>
+                                </form>
+                            </div>
+                        `;
+                    });
+                } else {
+                    searchResults.innerHTML = '<p class="text-white">Aucun utilisateur trouvé.</p>';
+                }
+            });
+    } else {
+        document.getElementById('searchResults').innerHTML = '';
+    }
+});
     });
 
     

@@ -12,14 +12,21 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import fr.gamehub.gamehub.model.Category;
+import fr.gamehub.gamehub.model.Classement;
+import fr.gamehub.gamehub.model.Fight;
 import fr.gamehub.gamehub.model.Category;
 import fr.gamehub.gamehub.model.Classement;
 import fr.gamehub.gamehub.model.Fight;
@@ -28,14 +35,28 @@ import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.repository.ClassementRepository;
 import fr.gamehub.gamehub.repository.TournamentRepository;
 import fr.gamehub.gamehub.repository.UserRepository;
+import fr.gamehub.gamehub.model.User;
+import fr.gamehub.gamehub.repository.ClassementRepository;
+import fr.gamehub.gamehub.repository.TournamentRepository;
+import fr.gamehub.gamehub.repository.UserRepository;
 import fr.gamehub.gamehub.service.TournamentService;
+import jakarta.transaction.Transactional;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @Controller
 
 
+
+
 public class TournamentController {
+    
+
+    @Autowired
+    private TournamentRepository tournamentRepository;
+
+    @Autowired
+    private UserRepository userRepository;
     
 
     @Autowired
@@ -284,6 +305,9 @@ public void checkNextRound() {
 
         // Sauvegarder les changements du tournoi (combats mis à jour)
         tournamentService.saveTournament(tournament);
+    }
+}
+
     }
 }
 

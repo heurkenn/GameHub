@@ -32,6 +32,7 @@ public class AdminController {
 
     /**
      * Affiche la page d'administration avec la liste des utilisateurs ayant un rôle spécifique.
+     * Affiche la page d'administration avec la liste des utilisateurs ayant un rôle spécifique.
      */
     @GetMapping
     public String adminDashboard(Model model) {
@@ -44,7 +45,18 @@ public class AdminController {
 
     /**
      * Attribuer le rôle ADMIN à un utilisateur existant.
+     * Attribuer le rôle ADMIN à un utilisateur existant.
      */
+    @PostMapping("/admins/assign")
+    public String assignAdminRole(@RequestParam Long userId, Model model) {
+        Optional<User> optionalUser = userService.getUserById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.getRoles().add("ROLE_ADMIN"); // Ajoute le rôle ADMIN
+            userService.saveUser(user); // Sauvegarde les modifications
+        } else {
+            model.addAttribute("errorMessage", "Utilisateur introuvable.");
+        }
     @PostMapping("/admins/assign")
     public String assignAdminRole(@RequestParam Long userId, Model model) {
         Optional<User> optionalUser = userService.getUserById(userId);
@@ -60,7 +72,17 @@ public class AdminController {
 
     /**
      * Révoquer le rôle ADMIN d'un utilisateur existant.
+     * Révoquer le rôle ADMIN d'un utilisateur existant.
      */
+    @PostMapping("/admins/revoke")
+    public String revokeAdminRole(@RequestParam Long userId, Model model) {
+        Optional<User> optionalUser = userService.getUserById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.getRoles().remove("ROLE_ADMIN"); // Retire le rôle ADMIN
+            userService.saveUser(user); // Sauvegarde les modifications
+        } else {
+            model.addAttribute("errorMessage", "Utilisateur introuvable.");
     @PostMapping("/admins/revoke")
     public String revokeAdminRole(@RequestParam Long userId, Model model) {
         Optional<User> optionalUser = userService.getUserById(userId);

@@ -245,6 +245,13 @@ public class GameController {
     }
 
     
+    @PostMapping("/delete/{id}")
+    public String deleteGame(@PathVariable("id") Long id) {
+        gameService.deleteGame(id);
+        return "redirect:/admin-dashboard";
+    }
+
+    
 
 
 }
