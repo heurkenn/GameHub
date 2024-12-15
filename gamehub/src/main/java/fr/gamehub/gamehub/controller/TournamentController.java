@@ -136,6 +136,21 @@ public class TournamentController {
     }
 
     
+    @GetMapping("/tournaments/{id}")
+    public String showTournamentDetails(@PathVariable Long id, Model model) {
+        // Récupérer le tournoi par son ID
+        Optional<Tournament> tournament = tournamentService.getTournamentById(id);
+        if (tournament.isEmpty()) {
+            return "error/404"; // Rediriger vers une page 404 si le tournoi n'existe pas
+        }
+
+        // Ajouter le tournoi au modèle
+        model.addAttribute("tournament", tournament.get());
+
+        // Retourner la vue tournament.html
+        return "tournament";
+    }
+    
 
     @PostMapping(value = "/tournaments/submitFormTournament")
     public String submitFormTournament(@Valid @ModelAttribute("tournament") Tournament tournament, BindingResult bindingResult) {
