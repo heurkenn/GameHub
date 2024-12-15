@@ -1,12 +1,9 @@
 package fr.gamehub.gamehub.model;
 
 
-
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-
 import fr.gamehub.gamehub.validator.ValidateDate;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -26,6 +23,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Entity
 @Table(name = "Tournament") 
