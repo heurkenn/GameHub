@@ -22,10 +22,6 @@ public class JoinTournamentController {
 	@Autowired
 	private TournamentService service;
 
-	public JoinTournamentController( TournamentService service){
-		this.service=service;
-	}
-
 	@GetMapping("/join")
 	public String Join(Model model){
 		List<List< Tournament>> l = new LinkedList<>();
