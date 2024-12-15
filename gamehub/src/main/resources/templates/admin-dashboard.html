@@ -27,6 +27,9 @@
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link" onclick="showSection('adminsSection'); return false;">Gestion des Admins</a>
                 </li>
+                <li class="sidebar-item">
+                    <a th:href="@{/}" class="sidebar-link">Retour à l'accueil</a>
+                </li>
             </ul>
         </nav>
 
@@ -52,11 +55,23 @@
                         </div>
                         <div class="form-group">
                             <label for="genre">Genre</label>
-                            <input type="text" id="genre" name="genre" class="form-control" required>
+                            <select id="genre" name="genre" class="form-control" required>
+                                <option value="">Sélectionnez un genre</option>
+                                <option value="Action">Action</option>
+                                <option value="Aventure">Aventure</option>
+                                <option value="RPG">RPG</option>
+                                <option value="Simulation">Simulation</option>
+                                <option value="Stratégie">Stratégie</option>
+                                <option value="Sport">Sport</option>
+                                <option value="Puzzle">Puzzle</option>
+                                <option value="Puzzle">Sandbox</option>
+                                <option value="Puzzle">FPS</option>
+                                <option value="Puzzle">Roguelike</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="genre">Descrption</label>
-                            <input type="textarea" id="descrption" name="descrption" class="form-control" required>
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="imageUrl">Image</label>
@@ -65,6 +80,7 @@
                         <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
                 </div>
+                
                 <table class="table table-dark mt-4">
                     <thead>
                         <tr>
@@ -110,12 +126,25 @@
                                         <input type="text" th:attr="id='developerStudio-' + ${game.id}" name="developerStudio" 
                                                th:value="${game.developerStudio}" class="form-control" required>
                                     </div>
-                                    <!-- Champ : Genre -->
+                                   <!-- Champ : Genre -->
                                     <div class="form-group">
                                         <label th:attr="for='genre-' + ${game.id}">Genre</label>
-                                        <input type="text" th:attr="id='genre-' + ${game.id}" name="genre" 
-                                               th:value="${game.genre}" class="form-control" required>
+                                        <select th:attr="id='genre-' + ${game.id}" name="genre" class="form-control" required>
+                                            <option value="" th:text="${game.genre}">Sélectionnez un genre</option>
+                                            <option value="Action" th:attr="selected=${game.genre == 'Action'}">Action</option>
+                                            <option value="Aventure" th:attr="selected=${game.genre == 'Aventure'}">Aventure</option>
+                                            <option value="RPG" th:attr="selected=${game.genre == 'RPG'}">RPG</option>
+                                            <option value="Simulation" th:attr="selected=${game.genre == 'Simulation'}">Simulation</option>
+                                            <option value="Stratégie" th:attr="selected=${game.genre == 'Stratégie'}">Stratégie</option>
+                                            <option value="Sport" th:attr="selected=${game.genre == 'Sport'}">Sport</option>
+                                            <option value="Puzzle" th:attr="selected=${game.genre == 'Puzzle'}">Puzzle</option>
+                                            <option value="Puzzle" th:attr="selected=${game.genre == 'Sandbox'}">Sandbox</option>
+                                            <option value="Puzzle" th:attr="selected=${game.genre == 'Roguelike'}">Roguelike</option>
+                                            <option value="Puzzle" th:attr="selected=${game.genre == 'Battle Royale'}">Battle Royale</option>
+                                            <option value="Puzzle" th:attr="selected=${game.genre == 'Fighting'}">Fighting</option>
+                                        </select>
                                     </div>
+
                                     <!-- Champ : Description -->
                                     <div class="form-group">
                                         <label th:attr="for='description-' + ${game.id}">Description</label>
@@ -198,54 +227,54 @@
                 </table>
             </div>
 
-            <!-- Section Gestion des Admins -->
+           <!-- Section Gestion des Admins -->
             <div id="adminsSection" class="admin-section d-none">
                 <h3>Gestion des Admins</h3>
-                <button class="btn btn-success mb-3" onclick="showForm('addAdminForm');">Ajouter un Admin</button>
-                <div id="addAdminForm" class="form-section d-none">
-                    <form th:action="@{/admins/add}" method="POST">
-                        <div class="form-group">
-                            <label for="adminName">Nom</label>
-                            <input type="text" id="adminName" name="name" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                    </form>
+
+                <!-- Barre de Recherche pour Promouvoir un Admin -->
+                <div class="form-group mb-4">
+                    <input type="text" id="searchUser" class="form-control" placeholder="Rechercher un utilisateur...">
+                    <div id="searchResults" class="mt-2"></div>
                 </div>
-                <table class="table table-dark mt-4">
+
+                <!-- Liste des Admins Déjà Ajoutés -->
+                <h4>Liste des Administrateurs</h4>
+                <table class="table table-dark mt-3">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Nom</th>
+                            <th>Email</th>
+                            <th>Jeu</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody th:each="admin : ${admins}">
-                        <tr>
+                    <tbody>
+                        <tr th:each="admin : ${admins}">
                             <td th:text="${admin.id}"></td>
                             <td th:text="${admin.name}"></td>
+                            <td th:text="${admin.email}"></td>
+                            <td th:text="${admin.gameName}"></td>
                             <td>
-                                <button class="btn btn-warning" onclick="showForm('modifyAdminForm-${admin.id}');">Modifier</button>
-                                <form th:action="@{/admins/delete}" method="POST" class="d-inline">
-                                    <input type="hidden" th:value="${admin.id}" name="id">
-                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                <!-- Modifier Admin -->
+                                <form th:action="@{/admins/modify}" method="POST" class="d-inline">
+                                    <input type="hidden" name="id" th:value="${admin.id}">
+                                    <select name="gameId" class="form-control d-inline w-auto" required>
+                                        <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
+                                    </select>
+                                    <button type="submit" class="btn btn-warning btn-sm">Modifier</button>
                                 </form>
-                            </td>
-                        </tr>
-                        <tr id="modifyAdminForm-${admin.id}" class="form-section d-none">
-                            <td colspan="3">
-                                <form th:action="@{/admins/update}" method="POST">
-                                    <input type="hidden" th:value="${admin.id}" name="id">
-                                    <div class="form-group">
-                                        <label for="adminName-${admin.id}">Nom</label>
-                                        <input type="text" id="adminName-${admin.id}" name="name" th:value="${admin.name}" class="form-control" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                <!-- Supprimer Admin -->
+                                <form th:action="@{/admins/demote}" method="POST" class="d-inline">
+                                    <input type="hidden" name="id" th:value="${admin.id}">
+                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                                 </form>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 
@@ -265,22 +294,32 @@
     }
 }
 
+function showForm(button) {
+    // Récupérer l'attribut data-form-id du bouton cliqué
+    const formId = button.getAttribute('data-form-id');
+    console.log(`ID du formulaire récupéré : ${formId}`); // Log pour vérifier l'ID
 
-        function showForm(button) {
-        // Récupérer l'attribut data-form-id du bouton cliqué
-        const formId = button.getAttribute('data-form-id');
-        console.log(`ID du formulaire récupéré : ${formId}`); // Log pour vérifier l'ID
+    // Trouver le formulaire correspondant
+    const form = document.getElementById(formId);
 
-        // Trouver le formulaire correspondant
-        const form = document.getElementById(formId);
-        if (form) {
-            // Basculer l'affichage (afficher/masquer)
-            form.classList.toggle('d-none');
-            console.log(`Formulaire ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
-        } else {
-            console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
-        }
+    if (!form) {
+        console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
+        return;
     }
+
+    // Fermer tous les formulaires sauf celui ciblé
+    document.querySelectorAll('.form-section:not(.d-none)').forEach(openForm => {
+        if (openForm !== form) {
+            openForm.classList.add('d-none');
+        }
+    });
+
+    // Basculer l'affichage du formulaire ciblé (ouvrir/fermer)
+    form.classList.toggle('d-none');
+    console.log(`Formulaire ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
+}
+
+
 
         document.getElementById('imageUrl').addEventListener('change', function(event) {
         const file = event.target.files[0];
@@ -340,6 +379,40 @@
             });
         }
     }
+    document.getElementById('searchUser').addEventListener('input', function () {
+    const query = this.value.trim();
+
+    if (query.length > 0) {
+        fetch(`/users/search?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                const searchResults = document.getElementById('searchResults');
+                searchResults.innerHTML = '';
+
+                if (data.length > 0) {
+                    data.forEach(user => {
+                        searchResults.innerHTML += `
+                            <div class="d-flex justify-content-between align-items-center p-2 bg-secondary text-white mb-1">
+                                <span>${user.name} (${user.email})</span>
+                                <form action="/admins/promote" method="POST">
+                                    <input type="hidden" name="id" value="${user.id}">
+                                    <select name="gameId" class="form-control d-inline w-auto" required>
+                                        <option value="">Sélectionnez un jeu</option>
+                                        ${user.games.map(game => `<option value="${game.id}">${game.name}</option>`).join('')}
+                                    </select>
+                                    <button type="submit" class="btn btn-primary btn-sm">Ajouter Admin</button>
+                                </form>
+                            </div>
+                        `;
+                    });
+                } else {
+                    searchResults.innerHTML = '<p class="text-white">Aucun utilisateur trouvé.</p>';
+                }
+            });
+    } else {
+        document.getElementById('searchResults').innerHTML = '';
+    }
+});
 
     </script>
 </body>
