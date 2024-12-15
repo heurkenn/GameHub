@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,7 @@ import javax.imageio.ImageIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,12 +27,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.security.core.Authentication;
 
 import fr.gamehub.gamehub.model.Category;
+import fr.gamehub.gamehub.model.Comment;
+import fr.gamehub.gamehub.model.Community;
 import fr.gamehub.gamehub.model.Game;
 import fr.gamehub.gamehub.model.Platform;
+import fr.gamehub.gamehub.model.User;
+import fr.gamehub.gamehub.service.CommentService;
+import fr.gamehub.gamehub.service.CommunityService;
 import fr.gamehub.gamehub.service.GameService;
 import fr.gamehub.gamehub.service.PlatformService;
+import fr.gamehub.gamehub.service.UserService;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.validation.Valid;
 
@@ -45,7 +54,16 @@ public class GameController {
     private GameService gameService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private PlatformService platformService;
+
+    @Autowired
+    private CommunityService communityService;
+
+    @Autowired
+    private CommentService commentService;
 
 
     // Affiche tous les jeux
@@ -65,6 +83,88 @@ public class GameController {
         model.addAttribute("game", game.get());
         return "game"; // Vue : game.html
     }
+
+    @GetMapping("/{name}/chat")
+    public String showChat(@PathVariable("name") String name, Model model) {
+        // Récupérer le jeu par son nom
+        Optional<Game> game = gameService.findByName(name);
+        if (game.isEmpty()) {
+            return "error/404"; // Affiche une page 404 si le jeu est introuvable
+        }
+
+        // Retrieve the community associated with the game
+        Optional<Community> communityOpt = communityService.findByName(name);
+        if (communityOpt.isEmpty()) {
+            model.addAttribute("errorMessage", "No community found for this game.");
+            return "error/404";
+        }
+
+        Community community = communityOpt.get(); // Extract the Community object
+
+        // Retrieve comments for the community
+        List<Comment> comments = commentService.getCommentsByCommunityId(community.getId());
+        // Récupérer l'utilisateur connecté
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName(); // Nom de l'utilisateur connecté
+        Optional<User> user = userService.findByUsername(username);
+
+        if (user.isPresent()) {
+            model.addAttribute("userId", user.get().getId());
+        } else {
+            model.addAttribute("userId", null); // Gestion de cas où aucun utilisateur n'est trouvé
+        }
+
+        // Ajouter les données au modèle
+        model.addAttribute("game", game.get());
+        model.addAttribute("community", community);
+        model.addAttribute("comments", comments);
+
+        // Retourner la vue chat.html
+        return "chat"; 
+    }
+
+    @PostMapping("/{name}/chat")
+    public String postComment(@PathVariable("name") String name,
+                            @RequestParam("content") String content,
+                            @RequestParam("userId") Long userId,
+                            Model model) {
+
+        // Récupérer le jeu par son nom
+        Optional<Game> game = gameService.findByName(name);
+        if (game.isEmpty()) {
+            return "error/404"; // Retourner une erreur si le jeu est introuvable
+        }
+
+        // Récupérer la communauté associée
+        Optional<Community> communityOpt = communityService.findByName(name);
+        if (communityOpt.isEmpty()) {
+            model.addAttribute("errorMessage", "No community found for this game.");
+            return "error/404";
+        }
+
+        Community community = communityOpt.get();
+
+        // Vérifier si l'utilisateur existe
+        Optional<User> userOpt = userService.getUserById(userId);
+        if (userOpt.isEmpty()) {
+            model.addAttribute("errorMessage", "User not found.");
+            return "error/404";
+        }
+
+        // Créer un nouveau commentaire
+        Comment comment = new Comment();
+        comment.setContent(content);
+        comment.setTimestamp(LocalDateTime.now());
+        comment.setCommunity(community);
+        comment.setUser(userOpt.get());
+
+        // Sauvegarder le commentaire
+        commentService.saveComment(comment);
+
+        // Redirection vers la page chat
+        return "redirect:/games/" + name + "/chat";
+    }
+
 
     @PostMapping("/create")
     public String createGame(@Valid Game game, BindingResult result,

@@ -50,6 +50,44 @@ VALUES
 ('Minecraft', 2011, 'Mojang', 'Sandbox', 'mincraft.jpg', 'Minecraft est un jeu bac à sable où les joueurs peuvent explorer, construire et survivre dans un monde généré de manière procédurale');
 
 
+-- Community
+INSERT INTO Community (name, game_id)
+VALUES
+    ('League of Legends', 1),
+    ('Dota 2', 2),
+    ('Counter-Strike: Global Offensive', 3),
+    ('Valorant', 4),
+    ('Fortnite', 5),
+    ('Call of Duty: Warzone', 6),
+    ('PUBG: Battlegrounds', 7),
+    ('Overwatch', 8),
+    ('Rocket League', 9),
+    ('Rainbow Six Siege', 10),
+    ('Apex Legends', 11),
+    ('Super Smash Bros. Ultimate', 12),
+    ('Street Fighter V', 13),
+    ('Tekken 7', 14),
+    ('Splatoon 3', 15),
+    ('Halo Infinite', 16),
+    ('Fall Guys: Ultimate Knockout', 17),
+    ('Battlefield 2042', 18),
+    ('FIFA 23', 19),
+    ('NBA 2K23', 20),
+    ('Mario Kart 8 Deluxe', 21),
+    ('Elden Ring: Colosseum', 22),
+    ('For Honor', 23),
+    ('Chivalry 2', 24),
+    ('Brawlhalla', 25),
+    ('Smite', 26),
+    ('StarCraft II', 27),
+    ('Hearthstone', 28),
+    ('Team Fortress 2', 29),
+    ('Among Us', 30);
+
+
+
+
+
 -- Associer des jeux aux plateformes dans la table game_platforms
 -- League of Legends
 INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 6); -- PC
