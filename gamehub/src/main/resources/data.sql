@@ -1,5 +1,3 @@
--- Insérer des utilisateurs dans la table app_user
-
 -- Insérer des plateformes dans la table platform
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo');
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation 4', '2013-11-15', 'Sony');
@@ -10,7 +8,6 @@ INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PC', '1981-0
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo 3DS', '2011-02-26', 'Nintendo');
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation Vita', '2011-12-17', 'Sony');
 
--- Insérer tournois dans la table tournament
 
 -- Insérer des jeux dans la table game
 
