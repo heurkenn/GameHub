@@ -126,14 +126,29 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 | Code de qualité              | Respect des bonnes pratiques, séparation des responsabilités, commentaires explicites. | ✅     |
 
 
+## Tests et Comptes de Démonstration
+
+Pour faciliter la correction et les tests, voici une liste de comptes déjà créés avec différents rôles. Vous pouvez vous connecter avec ces identifiants afin de voir le comportement de l’application en fonction du rôle de l’utilisateur.
+
+| Rôle          | Identifiant (Email)           | Mot de passe         | Capacités                                                      |
+|---------------|-------------------------------|----------------------|----------------------------------------------------------------|
+| Super-Admin   | superadmin@gamehub.com        | SuperAdminSecret     | Accès complet : gestion des jeux, tournois, communautés, et nomination d’administrateurs. Accès au tableau de bord super-admin. |
+| Admin (ex: d’un jeu) | admin@gamehub.com       | adminPass            | Gère les tournois du jeu dont il est responsable. Peut créer, modifier, et supprimer des tournois. Accès au tableau de bord admin. |
+| Utilisateur 1 | user1@gamehub.com             | userPass1            | Peut rejoindre un tournoi, accéder aux communautés et discuter via le chat du jeu. Peut rejoindre la communauté directement depuis la liste ou la page du jeu. |
+| Utilisateur 2 | user2@gamehub.com             | userPass2            | Même capacités que l’utilisateur 1. Peut s’inscrire à des tournois et participer aux chats communautaires. |
+| Utilisateur 3 | user3@gamehub.com             | userPass3            | Même capacités que l’utilisateur 1 et 2. Peut explorer les différents jeux, communautés et tournois. |
+
+**Note :** Les rôles sont attribués par le super-admin. Si vous modifiez les rôles, pensez à vous déconnecter puis à vous reconnecter pour que les changements soient pris en compte.
 
 ## Utilisation de l'application
 
-- Créer un compte utilisateur pour accéder aux fonctionnalités.
-- Participer à des tournois et rejoindre des communautés pour discuter via le chat.
-- Admins : Gérer les tournois depuis un tableau de bord.
-- Super-Admin : Gérer les jeux, les tournois et les admins "simples" dans un tableau de bord. Le mot de passe se trouve dans le fichier "application.properties" (SuperAdminSecret). Pour que le statut de super-admin soit mis-à-jour il faut redémarrer la session, donc se déconnecter puis se reconnecter. 
-- Base de donnée : Une base de donnée avec déjà des jeux, des plateformes, des games-plateform et des tournois est fournis, pour la récupérer il suffit dans application.properties mettre always au paramètre "spring.sql.init.mode". Attention, après l'avoir fait il faut impérativement remettre le paramètre sur never pour le bon fonctionnement de l'application.
+- **Créer un compte utilisateur** pour accéder aux fonctionnalités (ou utilisez les comptes de test ci-dessus).
+- **Participer à des tournois** : Une fois connecté, naviguez jusqu'à la page du jeu de votre choix. Vous pouvez rejoindre un tournoi existant ou en demander un nouveau (si vous êtes admin).
+- **Discuter via le chat** : Depuis la page du jeu ou depuis la liste des communautés, rejoignez le chat pour échanger avec les autres joueurs.
+- **Admin (par jeu)** : Gérer les tournois depuis le tableau de bord dédié. Créer, modifier et supprimer des tournois.
+- **Super-Admin** : Gérer les jeux, les tournois et les admins "simples" dans un tableau de bord dédié. Le mot de passe se trouve dans le fichier `application.properties` (SuperAdminSecret). Après avoir modifié le statut ou les rôles d'un utilisateur, déconnectez-vous puis reconnectez-vous pour appliquer les changements.
+- **Base de donnée préremplie** : Pour importer la base de données déjà fournie avec des jeux, plateformes et tournois, définissez `spring.sql.init.mode=always` dans le fichier `application.properties`. Après l'initialisation, remettez `spring.sql.init.mode=never` pour le fonctionnement normal de l'application.
+
 
 ## Compatibilité
 
