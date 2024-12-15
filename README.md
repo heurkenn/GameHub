@@ -8,7 +8,7 @@ GameHub est une plateforme permettant aux utilisateurs :
 - De communiquer dans une communauté dédiée pour chaque jeu via un système de chat.  
 Seuls les administrateurs ont le droit de créer, modifier et supprimer des tournois.
 
-🎮 Bonus : Un Easter Egg caché se trouve sur la page d'erreur, où il est possible de jouer au jeu Snake.
+🎮 Bonus : Un easter egg caché se trouve sur la page d'erreur, lorsque vous accedez à une page qui n'existe pas 👀! 
 
 ⚠️ Compatibilité : Le projet utilise Java 21. Des problèmes de compatibilité peuvent apparaître si vous utilisez une version antérieure de Java.
 
