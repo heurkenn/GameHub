@@ -33,20 +33,20 @@ Utilisez la commande suivante pour démarrer l'application :
 gamehub/  
 ├── src/  
 │   ├── main/  
-│   │   ├── java/                        # Code source Java  
+│   │   ├── java/                            # Code source Java  
 │   │   │   └── fr/gamehub/gamehub/  
-│   │   │       ├── controller/          # Contrôleurs (Spring MVC)  
-│   │   │       ├── model/               # Modèles (Entités JPA)  
-│   │   │       ├── repository/          # Interfaces pour accéder à la BDD  
-│   │   │       ├── service/             # Logique métier  
+│   │   │       ├── controller/              # Contrôleurs (Spring MVC)  
+│   │   │       ├── model/                   # Modèles (Entités JPA)  
+│   │   │       ├── repository/              # Interfaces pour accéder à la BDD  
+│   │   │       ├── service/                 # Logique métier  
 │   │   │       └── GameHubApplication.java  
-│   │   └── resources/                   # Ressources statiques et templates  
-│   │       ├── templates/               # Pages Thymeleaf  
-│   │       ├── static/                  # CSS, JS, Images  
-│   │       └── application.properties   # Configuration Spring Boot  
-│   └── test/                            # Tests unitaires  
-├── pom.xml                              # Configuration Maven  
-└── README.md                            # Documentation
+│   │   └── resources/                       # Ressources statiques et templates  
+│   │       ├── templates/                   # Pages Thymeleaf  
+│   │       ├── static/                      # CSS, JS, Images  
+│   │       └── application.properties       # Configuration Spring Boot  
+│   └── test/                                # Tests unitaires  
+├── pom.xml                                  # Configuration Maven  
+└── README.md                                # Documentation
 
 
 
