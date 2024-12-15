@@ -57,16 +57,6 @@ public class AdminController {
         } else {
             model.addAttribute("errorMessage", "Utilisateur introuvable.");
         }
-    @PostMapping("/admins/assign")
-    public String assignAdminRole(@RequestParam Long userId, Model model) {
-        Optional<User> optionalUser = userService.getUserById(userId);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            user.getRoles().add("ROLE_ADMIN"); // Ajoute le rôle ADMIN
-            userService.saveUser(user); // Sauvegarde les modifications
-        } else {
-            model.addAttribute("errorMessage", "Utilisateur introuvable.");
-        }
         return "redirect:/admin-dashboard";
     }
 
@@ -83,16 +73,7 @@ public class AdminController {
             userService.saveUser(user); // Sauvegarde les modifications
         } else {
             model.addAttribute("errorMessage", "Utilisateur introuvable.");
-    @PostMapping("/admins/revoke")
-    public String revokeAdminRole(@RequestParam Long userId, Model model) {
-        Optional<User> optionalUser = userService.getUserById(userId);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            user.getRoles().remove("ROLE_ADMIN"); // Retire le rôle ADMIN
-            userService.saveUser(user); // Sauvegarde les modifications
-        } else {
-            model.addAttribute("errorMessage", "Utilisateur introuvable.");
         }
-        return "redirect:/admin-dashboard";
+    return "redirect:/admin-dashboard";
     }
 }

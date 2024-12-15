@@ -14,7 +14,6 @@ INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Stadia', '20
 
 
 
-
 -- Insérer des jeux dans la table game
 INSERT INTO game (name, release_year, developer_studio, genre, image_url, description)
 VALUES

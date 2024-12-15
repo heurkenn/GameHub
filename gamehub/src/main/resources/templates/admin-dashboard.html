@@ -338,7 +338,6 @@
 }
 
 function showForm(button) {
-function showForm(button) {
     // Récupérer l'attribut data-form-id du bouton cliqué
     const formId = button.getAttribute('data-form-id');
     console.log(`ID du formulaire récupéré : ${formId}`); // Log pour vérifier l'ID
@@ -347,27 +346,13 @@ function showForm(button) {
     const form = document.getElementById(formId);
 
     if (!form) {
-
-    if (!form) {
         console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
-        return;
     }
-
-    // Fermer tous les formulaires sauf celui ciblé
-    document.querySelectorAll('.form-section:not(.d-none)').forEach(openForm => {
-        if (openForm !== form) {
-            openForm.classList.add('d-none');
-        }
-    });
-
-    // Basculer l'affichage du formulaire ciblé (ouvrir/fermer)
-    form.classList.toggle('d-none');
-    console.log(`Formulaire ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
 }
 
 
 
-        document.getElementById('newImage').addEventListener('change', function(event) {
+        document.getElementById('imageFile').addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (!file) return;
 
@@ -392,73 +377,6 @@ function showForm(button) {
             event.target.value = "";
         };
         img.src = URL.createObjectURL(file);
-    });
-
-    
-    function deleteGame(button) {
-        // Récupérer l'ID du jeu depuis l'attribut data-game-id
-        const gameId = button.getAttribute("data-game-id");
-
-        if (!gameId) {
-            console.error("Erreur : l'ID du jeu est introuvable.");
-            return;
-        }
-
-        if (confirm("Êtes-vous sûr de vouloir supprimer ce jeu ?")) {
-            fetch(`/games/delete/${gameId}`, {
-                method: 'DELETE', // Méthode HTTP DELETE
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert("Jeu supprimé avec succès !");
-                    window.location.reload(); // Recharge la page pour refléter les modifications
-                } else {
-                    alert("Erreur lors de la suppression du jeu.");
-                }
-            })
-            .catch(error => {
-                console.error("Erreur :", error);
-                alert("Une erreur est survenue. Veuillez réessayer.");
-            });
-        }
-    }
-    document.getElementById('searchUser').addEventListener('input', function () {
-    const query = this.value.trim();
-
-    if (query.length > 0) {
-        fetch(`/users/search?query=${query}`)
-            .then(response => response.json())
-            .then(data => {
-                const searchResults = document.getElementById('searchResults');
-                searchResults.innerHTML = '';
-
-                if (data.length > 0) {
-                    data.forEach(user => {
-                        searchResults.innerHTML += `
-                            <div class="d-flex justify-content-between align-items-center p-2 bg-secondary text-white mb-1">
-                                <span>${user.name} (${user.email})</span>
-                                <form action="/admins/promote" method="POST">
-                                    <input type="hidden" name="id" value="${user.id}">
-                                    <select name="gameId" class="form-control d-inline w-auto" required>
-                                        <option value="">Sélectionnez un jeu</option>
-                                        ${user.games.map(game => `<option value="${game.id}">${game.name}</option>`).join('')}
-                                    </select>
-                                    <button type="submit" class="btn btn-primary btn-sm">Ajouter Admin</button>
-                                </form>
-                            </div>
-                        `;
-                    });
-                } else {
-                    searchResults.innerHTML = '<p class="text-white">Aucun utilisateur trouvé.</p>';
-                }
-            });
-    } else {
-        document.getElementById('searchResults').innerHTML = '';
-    }
-});
     });
 
     

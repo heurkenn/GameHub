@@ -43,7 +43,10 @@
 
                 <p><strong>Nombre de joueurs max :</strong> <span th:text="${tournament.nbJoueurLimite}"></span></p>
 
-                <p><strong>Nombre de joueurs inscrits :</strong> <span th:text="${tournament.nbJoueur}"></span></p>
+                <p><strong>Nombre de joueurs inscrits :</strong> <span th:text="${participantsCount}"></span></p>
+
+                <!-- Affichage du temps restant avant le début du tournoi -->
+                <p><strong>Temps avant le début :</strong> <span th:text="${timeRemaining}"></span></p>
 
                 <!-- Si vous avez un lien avec un jeu -->
                 <p><strong>Jeu associé :</strong>
