@@ -97,12 +97,6 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 | Code de qualité       | Clean code, séparation des responsabilités, commentaires. | ✅ |
 
 
-## Sources et Références
-
-- Spring Boot Documentation : [https://spring.io](https://spring.io)  
-- Thymeleaf Templates : [https://www.thymeleaf.org/](https://www.thymeleaf.org/)  
-- Spring WebSocket : [WebSocket Documentation](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#websocket)
-
 ## Utilisation de l'application
 
 - Créer un compte utilisateur pour accéder aux fonctionnalités.
@@ -118,3 +112,9 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
   ```sh
      java -version
   ```
+
+## Sources et Références
+
+- Spring Boot Documentation : [https://spring.io](https://spring.io)  
+- Thymeleaf Templates : [https://www.thymeleaf.org/](https://www.thymeleaf.org/)  
+- Spring WebSocket : [WebSocket Documentation](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#websocket)
