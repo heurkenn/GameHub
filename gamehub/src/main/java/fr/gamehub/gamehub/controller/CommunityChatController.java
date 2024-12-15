@@ -2,6 +2,7 @@ package fr.gamehub.gamehub.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.gamehub.gamehub.model.Comment;
+import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.service.CommentService;
 import fr.gamehub.gamehub.service.CommunityService;
 import fr.gamehub.gamehub.service.UserService;
@@ -45,7 +47,12 @@ public class CommunityChatController {
     ) {
         comment.setTimestamp(LocalDateTime.now());
         comment.setCommunity(communityService.getCommunityById(communityId));
-        comment.setUser(userService.getUserById(userId));
+        Optional<User> optionalUser = userService.getUserById(userId);
+        if (optionalUser.isPresent()) {
+            comment.setUser(optionalUser.get());
+        } else {
+            throw new IllegalArgumentException("Utilisateur introuvable avec l'ID : " + userId);
+        }
         return commentService.saveComment(comment);
     }
 }
