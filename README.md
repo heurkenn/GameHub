@@ -93,22 +93,6 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 | Code source dans un repo Git | Organisation claire avec des commits réguliers. | ✅  |
 | Code de qualité       | Clean code, séparation des responsabilités, commentaires. | ✅ |
 
-## Fonctionnalités notables
-
-- Authentification sécurisée :  
-  Utilisation de Spring Security avec chiffrement des mots de passe (BCrypt).
-
-- CRUD complet :  
-  Gestion des utilisateurs, jeux, tournois et communautés.
-
-- Communautés avec chat en temps réel :  
-  Utilisation de WebSocket pour un chat interactif dans chaque communauté.
-
-- Easter Egg Snake :  
-  Mini-jeu Snake intégré sur la page d'erreur pour une touche d'humour.
-
-- Pages dynamiques :  
-  Affichage des jeux et tournois en utilisant des templates Thymeleaf.
 
 ## Sources et Références
 
