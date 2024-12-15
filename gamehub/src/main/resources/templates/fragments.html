@@ -31,7 +31,7 @@
                 </li>
 
                 <!-- Visible uniquement pour un Admin -->
-                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                <li class="nav-item" sec:authorize="hasRole('ROLE_SUPER_ADMIN')">
                     <a class="nav-link" th:href="@{/admin-dashboard}">Dashboard</a>
                 </li>
             </ul>
