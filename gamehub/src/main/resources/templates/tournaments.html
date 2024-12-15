@@ -27,13 +27,17 @@
             <div th:each="tournament : ${ongoingTournaments}" class="col-md-4 mb-4">
                 <div class="tournament-card">
                     <div class="tournament-card-image">
-                        <img th:src="@{/image/} + ${tournament.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
+                        <!-- Récupérer l'image du jeu associé -->
+                        <img th:src="@{/image/{image}(image=${tournament.jeu.image_url})}" 
+                             class="img-fluid rounded" 
+                             alt="Image du jeu" 
+                             style="max-width: 100%; height: auto;">
                     </div>
                     <div class="tournament-card-content">
                         <h3 th:text="${tournament.name}">Nom du Tournoi</h3>
-                        <p th:text="'Jeu: ' + ${tournament.gameName}">Jeu: Nom du Jeu</p>
+                        <p th:text="'Jeu: ' + ${tournament.jeu.name}">Jeu: Nom du Jeu</p>
                         <p th:text="'Date de fin: ' + ${tournament.endDate}">Date de fin: 01/01/2024</p>
-                        <a th:href="@{/tournament/} + ${tournament.id}" class="btn btn-primary btn-page">Voir Détails</a>
+                        <a th:href="@{/tournament/{id}(id=${tournament.id})}" class="btn btn-primary btn-page">Voir Détails</a>
                     </div>
                 </div>
             </div>
@@ -48,12 +52,12 @@
             <div th:each="tournament : ${upcomingTournaments}" class="col-md-4 mb-4">
                 <div class="tournament-card">
                     <div class="tournament-card-image">
-                        <img th:src="@{/image/} + ${tournament.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
+                        <img th:src="@{/image/} + ${tournament.jeu.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
                     </div>
                     <div class="tournament-card-content">
                         <h3 th:text="${tournament.name}">Nom du Tournoi</h3>
-                        <p th:text="'Jeu: ' + ${tournament.gameName}">Jeu: Nom du Jeu</p>
-                        <p th:text="'Date de début: ' + ${tournament.startDate}">Date de début: 01/02/2024</p>
+                        <p th:text="'Jeu: ' + ${tournament.jeu.name}">Jeu: Nom du Jeu</p>
+                        <p th:text="'Date de début: ' + ${tournament.dateStart}">Date de début: 01/02/2024</p>
                         <a th:href="@{/tournament/} + ${tournament.id}" class="btn btn-secondary btn-page">Voir Détails</a>
                     </div>
                 </div>
@@ -69,12 +73,12 @@
             <div th:each="tournament : ${pastTournaments}" class="col-md-4 mb-4">
                 <div class="tournament-card">
                     <div class="tournament-card-image">
-                        <img th:src="@{/image/} + ${tournament.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
+                        <img th:src="@{/image/} + ${tournament.jeu.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
                     </div>
                     <div class="tournament-card-content">
                         <h3 th:text="${tournament.name}">Nom du Tournoi</h3>
-                        <p th:text="'Jeu: ' + ${tournament.gameName}">Jeu: Nom du Jeu</p>
-                        <p th:text="'Date de fin: ' + ${tournament.endDate}">Date de fin: 01/12/2023</p>
+                        <p th:text="'Jeu: ' + ${tournament.jeu.name}">Jeu: Nom du Jeu</p>
+                        <p th:text="'Date de fin: ' + ${tournament.dateEnd}">Date de fin: 01/12/2023</p>
                         <a th:href="@{/tournament/} + ${tournament.id}" class="btn btn-secondary btn-page">Voir Résultats</a>
                     </div>
                 </div>

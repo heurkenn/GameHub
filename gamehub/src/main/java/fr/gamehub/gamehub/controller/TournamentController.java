@@ -1,7 +1,9 @@
 package fr.gamehub.gamehub.controller;
 
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -72,15 +74,63 @@ public class TournamentController {
         userRepository.save(user);
     }
 
+    //fonction horloge dynamique pour le début de tournoi
+    public String horlogeDynamique(long tournament_id){  
+        // Récupère l'heure actuelle
+    LocalDateTime crtTime = LocalDateTime.now();
+    
+    // Récupère le tournoi par son ID
+    Tournament trnt = tournamentService.getTournamentById(tournament_id)
+        .orElseThrow(() -> new RuntimeException("Tournoi introuvable avec ID: " + tournament_id));
+    
+    // Récupère la date de début du tournoi
+    LocalDateTime dtStart = trnt.getDateStart();
 
+    // Calculer la différence entre les deux dates
+    Duration duration = Duration.between(crtTime, dtStart);
     
+    // Extraire les composants de la durée
+    long days = duration.toDays();
+    long hours = duration.toHours() % 24; // Heure restante après avoir calculé les jours
+    long minutes = duration.toMinutes() % 60; // Minute restante après avoir calculé les heures
+    long seconds = duration.getSeconds() % 60; // Seconde restante après avoir calculé les minutes
     
+    // Retourne la différence sous forme d'une chaîne lisible
+    return String.format("%d jours, %d heures, %d minutes, %d secondes", days, hours, minutes, seconds);
+    }
+
+
+
     @GetMapping("/tournaments")
     public String showTournaments(Model model) { // à l'affichage de la page, renvoi une liste de tournoi en paramètre
-        List<Tournament> tournaments = tournamentRepository.findAll();
-        model.addAttribute("tournaments", tournaments);
-        return "tournaments";
+    List<Tournament> tournaments = tournamentRepository.findAll();
+    List<Tournament> ongoingTournaments = new ArrayList<>();
+    List<Tournament> upcommingTournaments = new ArrayList<>();
+    List<Tournament> pastTournaments = new ArrayList<>();
+    LocalDateTime crtTime = LocalDateTime.now();
+    for (Tournament t : tournamentService.getAllTournaments()){
+        if (t.getDateStart().isBefore(crtTime) && t.getDateEnd().isAfter(crtTime)){//regarde si la date actuelle est après la date du debut du tournoi et avant celle de la fin
+            ongoingTournaments.add(t);
+        }else if(t.getDateStart().isAfter(crtTime)){//regarde si la date actuelle est avant la date du debut du tournoi
+            upcommingTournaments.add(t);
+        }else{
+            pastTournaments.add(t);
+        }
     }
+
+    // Log des images associées
+    tournaments.forEach(t -> {
+        if (t.getJeu() != null) {
+            System.out.println("Tournoi: " + t.getName() + ", Image du jeu: " + t.getJeu().getImage_url());
+        }
+    });
+    model.addAttribute("pastTournaments", pastTournaments);//renvoie un parametre qui est la liste des tournois passé
+    model.addAttribute("ongoingTournaments", ongoingTournaments); //renvoie un parametre qui est la liste des tournois en cours
+    model.addAttribute("upcomingTournaments", upcommingTournaments);// renvoie la liste des tournois qui vont venir 
+    model.addAttribute("tournaments", tournaments);//renvoie la lsite de tout les tournois
+    return "tournaments";
+    }
+
 
     @GetMapping("/tournaments/creation")
     public String Tournament(Model model){
@@ -95,6 +145,8 @@ public class TournamentController {
         return tournament.map(ResponseEntity::ok)
             .orElseThrow();
     }
+
+    
 
     @PostMapping(value = "/tournaments/submitFormTournament")
     public String submitFormTournament(@Valid @ModelAttribute("tournament") Tournament tournament, BindingResult bindingResult) {
@@ -155,18 +207,15 @@ public class TournamentController {
         Set<Fight> combats = tournament.getCombats();
         int nbJoueurRestant = combats.size();
         Set<User> joueurRestants = new HashSet<>();
-
         Classement classement = tournament.getClassement();
         if (classement == null) {
             classement = new Classement();
             classement.setTournament(tournament);
         }
-
         for (Fight combat : combats) {
             if (nbJoueurRestant == 1) { // Dernier combat, détermination des vainqueurs
                 if (combat.getWinner() != null) { // Si un gagnant est défini
                     classement.setPremier(combat.getWinner());
-
                     // Déterminer le deuxième joueur
                     if (combat.getWinner().equals(combat.getJoueur1())) {
                         classement.setDeuxieme(combat.getJoueur2());
@@ -216,6 +265,13 @@ public class TournamentController {
                     fights.add(fight);
                 }
                 player1 = user;
+            }
+            if (nbJoueurRestant%2==1){ //si le nombre de joueur est impair il y a donc un nominé d'office pour le prochain round
+                Fight fight = new Fight();
+                fight.setJoueur1(player1);
+                fight.setJoueur2(player1);
+                fight.setWinner(player1);
+                fights.add(fight);
             }
             tournament.setCombats(fights);
         }

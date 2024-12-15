@@ -5,7 +5,7 @@
     <title th:text="${game.name} + ' - GameHub'">GameHub - Jeu</title>
     <!-- CSS global pour le style général -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" th:href="@{/static/css/game.css}">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -29,9 +29,9 @@
 
             <!-- Détails du jeu -->
             <div class="details">
-                <p><strong>Année de sortie :</strong> <span th:text="${game.releaseYear}"></span></p>
-                <p><strong>Développeur :</strong> <span th:text="${game.developerStudio}"></span></p>
-                <p><strong>Genre :</strong> <span th:text="${game.genre}"></span></p>
+                <p style="color: antiquewhite;"><strong>Année de sortie :</strong> <span th:text="${game.releaseYear}"></span></p>
+                <p style="color: antiquewhite;"><strong>Développeur :</strong> <span th:text="${game.developerStudio}"></span></p>
+                <p style="color: antiquewhite;"><strong>Genre :</strong> <span th:text="${game.genre}"></span></p>
                 <p style="color: antiquewhite;">
                     <strong>Plateformes :</strong>
                     <span th:each="platform : ${game.platforms}" th:text="${platform.name}" class="badge bg-secondary mx-1"></span>
