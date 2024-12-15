@@ -27,9 +27,6 @@
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link" onclick="showSection('adminsSection'); return false;">Gestion des Admins</a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" onclick="showSection('adminsSection'); return false;">Gestion des Admins</a>
-                </li>
             </ul>
         </nav>
 
@@ -93,7 +90,7 @@
                         </tr>
                         <tr th:attr="id='modifyGameForm-' + ${game.id}" class="form-section d-none">
                             <td colspan="3">
-                                <form th:action="@{/games/edit/{id}(id=${game.id})}" method="POST">
+                                <form th:action="@{/games/edit/{id}(id=${game.id})}" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" th:value="${game.id}" name="id">
                                     <!-- Champ : Nom -->
                                     <div class="form-group">
@@ -125,19 +122,20 @@
                                         <textarea th:attr="id='description-' + ${game.id}" name="description" 
                                                   th:text="${game.description}" class="form-control" rows="3" required></textarea>
                                     </div>
-                                    <!-- Champ : Plateformes (si applicable) -->
-                                    <div class="form-group">
-                                        <label th:attr="for='platforms-' + ${game.id}">Plateformes</label>
-                                        <input type="text" 
-                                               th:attr="id='platforms-' + ${game.id}" 
-                                               name="platforms" 
-                                               th:value="${#strings.arrayJoin(game.platforms.![name], ', ')}"
-                                               class="form-control">
-                                    </div>
                                     <!-- Champ : Image (facultatif) -->
                                     <div class="form-group">
                                         <label th:attr="for='image-' + ${game.id}">Changer l'image</label>
-                                        <input type="file" th:attr="id='image-' + ${game.id}" name="imageUrl" class="form-control">
+                                        
+                                        <!-- Affiche l'image actuelle si elle existe -->
+                                        <div th:if="${game.image_url != null and !game.image_url.isEmpty()}">
+                                            <img th:src="@{/image/{imageName}(imageName=${game.image_url})}" alt="Image du jeu" style="max-width: 200px; margin-bottom: 10px;">
+                                        </div>
+                                    
+                                        <!-- Champ pour l'upload d'une nouvelle image -->
+                                        <input type="file" th:attr="id='image-' + ${game.id}" name="newImage" class="form-control">
+                                    
+                                        <!-- Champ caché pour conserver l'URL de l'image existante -->
+                                        <input type="hidden" name="imageUrl" th:value="${game.image_url}">
                                     </div>
                                     <!-- Bouton Enregistrer -->
                                     <button type="submit" class="btn btn-primary">Enregistrer</button>
