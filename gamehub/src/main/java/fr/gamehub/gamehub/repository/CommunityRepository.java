@@ -14,4 +14,5 @@ public interface CommunityRepository extends JpaRepository<Community, Long> {
      * @return Un Optional contenant la communauté si elle existe, ou vide sinon.
      */
     Optional<Community> findByName(String name);
+    
 }

@@ -6,13 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import fr.gamehub.gamehub.service.GameService;
-import fr.gamehub.gamehub.service.UserService;
 
 @Controller
 public class PageController {
 
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private GameService gameService;
@@ -25,13 +22,6 @@ public class PageController {
         return "index"; // Retourne la vue 'index.html' située dans 'src/main/resources/templates'
     }
 
-    // Méthode pour afficher la liste des utilisateurs
-    @GetMapping("/users")
-    public String listUsers(Model model) {
-        // Ajouter la liste des utilisateurs au modèle
-        model.addAttribute("users", userService.findAllUsers());
-        return "users"; // Nom du fichier HTML pour afficher les utilisateurs
-    }
     
     
     

@@ -27,8 +27,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import fr.gamehub.gamehub.model.Category;
+import fr.gamehub.gamehub.model.Comment;
+import fr.gamehub.gamehub.model.Community;
 import fr.gamehub.gamehub.model.Game;
 import fr.gamehub.gamehub.model.Platform;
+import fr.gamehub.gamehub.service.CommentService;
+import fr.gamehub.gamehub.service.CommunityService;
 import fr.gamehub.gamehub.service.GameService;
 import fr.gamehub.gamehub.service.PlatformService;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -47,6 +51,12 @@ public class GameController {
     @Autowired
     private PlatformService platformService;
 
+    @Autowired
+    private CommunityService communityService;
+
+    @Autowired
+    private CommentService commentService;
+
 
     // Affiche tous les jeux
     @GetMapping
@@ -64,6 +74,35 @@ public class GameController {
         }
         model.addAttribute("game", game.get());
         return "game"; // Vue : game.html
+    }
+
+    @GetMapping("/{name}/chat")
+    public String showChat(@PathVariable("name") String name, Model model) {
+        // Récupérer le jeu par son nom
+        Optional<Game> game = gameService.findByName(name);
+        if (game.isEmpty()) {
+            return "error/404"; // Affiche une page 404 si le jeu est introuvable
+        }
+
+        // Retrieve the community associated with the game
+        Optional<Community> communityOpt = communityService.findByName(name);
+        if (communityOpt.isEmpty()) {
+            model.addAttribute("errorMessage", "No community found for this game.");
+            return "error/404";
+        }
+
+        Community community = communityOpt.get(); // Extract the Community object
+
+        // Retrieve comments for the community
+        List<Comment> comments = commentService.getCommentsByCommunityId(community.getId());
+
+        // Ajouter les données au modèle
+        model.addAttribute("game", game.get());
+        model.addAttribute("community", community);
+        model.addAttribute("comments", comments);
+
+        // Retourner la vue chat.html
+        return "chat"; 
     }
 
     @PostMapping("/create")

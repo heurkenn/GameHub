@@ -1,5 +1,7 @@
 package fr.gamehub.gamehub.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,13 @@ public class CommunityService {
 
     public Community getCommunityById(Long id) {
         return communityRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Communauté non trouvée"));
+    }
+
+    public Optional<Community> findByName(String name) {
+        return communityRepository.findByName(name);
+    }
+
+    public Optional<Community> findById(Long id) {
+        return communityRepository.findById(id);
     }
 }
