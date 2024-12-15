@@ -120,6 +120,31 @@ public class TournamentController {
     return "tournaments";
     }
 
+    
+    // Méthode pour afficher les informations d'un tournoi
+    @GetMapping("/tournaments/{id}")
+    public String showTournament(@PathVariable("id") long tournamentId, Model model) {
+
+        // Récupérer le tournoi à partir de l'ID
+        Optional<Tournament> tournament = tournamentService.getTournamentById(tournamentId);
+        if (tournament.isEmpty()) {
+            return "error/404"; // Affiche une page 404 si le tournoi est introuvable
+        }
+        // Calculer la différence de temps avant le début du tournoi avec la méthode horlogeDynamique
+        String timeRemaining = horlogeDynamique(tournamentId);
+
+        // Obtenir le nombre de participants
+        int participantsCount = tournament.get().getParticipants().size();
+
+        // Ajouter les informations au modèle
+        model.addAttribute("tournament", tournament);
+        model.addAttribute("timeRemaining", timeRemaining);
+        model.addAttribute("participantsCount", participantsCount);
+
+        return "tournament";  // Nom du template Thymeleaf où les informations seront affichées
+    }
+
+
 
     @GetMapping("/tournaments/creation")
     public String Tournament(Model model){
