@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.gamehub.gamehub.model.Category;
 import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.service.GameService;
+import fr.gamehub.gamehub.service.PlatformService;
 import fr.gamehub.gamehub.service.UserService;
 
 @Controller
@@ -24,12 +26,18 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PlatformService platformService;
+
+
     /**
      * Affiche la page d'administration avec la liste des utilisateurs ayant un rôle spécifique.
      */
     @GetMapping
     public String adminDashboard(Model model) {
         model.addAttribute("games", gameService.getAllGames());
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("platforms", platformService.findAllPlatforms()); // Ajoute les plateformes à la vue
         model.addAttribute("admins", userService.findAllUsersWithRole("ROLE_ADMIN")); // Liste des administrateurs
         return "admin-dashboard"; // Vue : admin-dashboard.html
     }
