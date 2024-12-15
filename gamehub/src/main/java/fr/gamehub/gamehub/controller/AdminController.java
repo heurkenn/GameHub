@@ -76,6 +76,8 @@ public class AdminController {
         }
         return "redirect:/admin-dashboard";
     }
+
+    
     /**
      * Révoquer le rôle ADMIN d'un utilisateur existant.
      */
