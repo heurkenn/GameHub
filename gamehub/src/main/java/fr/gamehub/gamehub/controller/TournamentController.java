@@ -113,13 +113,6 @@ public class TournamentController {
             pastTournaments.add(t);
         }
     }
-
-    // Log des images associées
-    tournaments.forEach(t -> {
-        if (t.getJeu() != null) {
-            System.out.println("Tournoi: " + t.getName() + ", Image du jeu: " + t.getJeu().getImage_url());
-        }
-    });
     model.addAttribute("pastTournaments", pastTournaments);//renvoie un parametre qui est la liste des tournois passé
     model.addAttribute("ongoingTournaments", ongoingTournaments); //renvoie un parametre qui est la liste des tournois en cours
     model.addAttribute("upcomingTournaments", upcommingTournaments);// renvoie la liste des tournois qui vont venir 
