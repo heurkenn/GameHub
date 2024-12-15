@@ -295,3 +295,25 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.custom-btn {
+    background-color: #00ff88; /* Couleur de fond verte */
+    color: #1e2333; /* Couleur de la flèche */
+    width: 50px; /* Taille du bouton */
+    height: 50px; /* Taille du bouton */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none; /* Supprimer les bordures par défaut */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : effet d'ombre */
+    transition: transform 0.2s ease; /* Animation légère */
+}
+
+.custom-btn:hover {
+    transform: scale(1.1); /* Effet zoom au survol */
+    background-color: #00e37a; /* Couleur légèrement plus sombre */
+}
+
+.custom-btn:active {
+    transform: scale(0.95); /* Réduction légère lors du clic */
+}

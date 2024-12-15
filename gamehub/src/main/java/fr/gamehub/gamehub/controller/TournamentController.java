@@ -125,7 +125,7 @@ public class TournamentController {
         return lt;
     }
     
-    public List<Tournament> showPastTournaments({
+    public List<Tournament> showPastTournaments(){
         List<Tournament> lt = new LinkedList<>();
         LocalDateTime dt = LocalDateTime.now();
         for (Tournament t : service.getAllTournaments()){
