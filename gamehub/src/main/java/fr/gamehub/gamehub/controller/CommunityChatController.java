@@ -50,12 +50,14 @@ public class CommunityChatController {
 
         comment.setTimestamp(LocalDateTime.now());
         comment.setCommunity(communityService.getCommunityById(communityId));
+
         Optional<User> optionalUser = userService.getUserById(userId);
         if (optionalUser.isPresent()) {
             comment.setUser(optionalUser.get());
         } else {
             throw new IllegalArgumentException("Utilisateur introuvable avec l'ID : " + userId);
         }
+
         return commentService.saveComment(comment);
     }
 
