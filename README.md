@@ -33,7 +33,7 @@ Utilisez la commande suivante pour démarrer l'application :
 gamehub/  
 ├── src/  
 │   ├── main/  
-│   │   ├── java/                            # Code source Java  
+│   │   ├── java/                            ## Code source Java  
 │   │   │   └── fr/gamehub/gamehub/  
 │   │   │       ├── controller/              # Contrôleurs (Spring MVC)  
 │   │   │       ├── model/                   # Modèles (Entités JPA)  
