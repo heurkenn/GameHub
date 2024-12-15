@@ -130,7 +130,7 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 
 Pour faciliter la correction et les tests, voici une liste de comptes déjà créés avec différents rôles. Vous pouvez vous connecter avec ces identifiants afin de voir le comportement de l’application en fonction du rôle de l’utilisateur.
 
-| Rôle          | Identifiant (Email)           | Mot de passe         | Capacités                                                      |
+| Rôle          | Username        | Mot de passe         | Capacités                                                      |
 |---------------|-------------------------------|----------------------|----------------------------------------------------------------|
 | Super-Admin   | superadmin        | SuperAdminSecret     | Accès complet : gestion des jeux, tournois, communautés, et nomination d’administrateurs. Accès au tableau de bord super-admin. |
 | Admin (ex: d’un jeu) | admin     | adminPass            | Gère les tournois du jeu dont il est responsable. Peut créer, modifier, et supprimer des tournois. Accès au tableau de bord admin. |
