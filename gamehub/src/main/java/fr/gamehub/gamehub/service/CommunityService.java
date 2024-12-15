@@ -15,4 +15,14 @@ public class CommunityService {
     public Community getCommunityById(Long id) {
         return communityRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Communauté non trouvée"));
     }
+
+    public boolean isMemberOfCommunity(Long userId, Long communityId) {
+        // Implémentation basique : Vérifiez si l'utilisateur fait partie des membres de la communauté
+        Community community = communityRepository.findById(communityId)
+                .orElseThrow(() -> new IllegalArgumentException("Communauté introuvable"));
+    
+        return community.getMembers().stream()
+                .anyMatch(member -> member.getId().equals(userId));
+    }
+    
 }

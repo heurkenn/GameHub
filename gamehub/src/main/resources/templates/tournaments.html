@@ -25,10 +25,7 @@
         <div class="row">
             <!-- Boucle Thymeleaf pour afficher les tournois en cours -->
             <div th:each="tournament : ${ongoingTournaments}" class="col-md-4 mb-4">
-                <div class="tournament-card">
-                    <div class="tournament-card-image">
-                        <img th:src="@{/image/} + ${tournament.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
-                    </div>
+                <div class="tournament-card">        
                     <div class="tournament-card-content">
                         <h3 th:text="${tournament.name}">Nom du Tournoi</h3>
                         <p th:text="'Jeu: ' + ${tournament.gameName}">Jeu: Nom du Jeu</p>
