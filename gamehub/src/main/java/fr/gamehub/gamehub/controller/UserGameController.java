@@ -14,7 +14,6 @@ import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.service.GameService;
 import fr.gamehub.gamehub.service.UserService;
 
-
 @Controller
 public class UserGameController {
 
@@ -26,23 +25,29 @@ public class UserGameController {
 
     @GetMapping("/user-games")
     public String getUserGames(@RequestParam Long userId, Model model) {
-        User user = userService.getUserById(userId);
-        if (user != null) {
+        Optional<User> userOptional = userService.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
             model.addAttribute("user", user);
             model.addAttribute("games", gameService.getAllGames());
+        } else {
+            model.addAttribute("errorMessage", "Utilisateur introuvable.");
         }
-        return "user_games";  // Assure-toi d'avoir un template "user_games.html" dans "templates"
+        return "user_games"; // Assure-toi d'avoir un template "user_games.html" dans "templates"
     }
 
     @PostMapping("/user-games/add")
     public String addGameToUser(@RequestParam Long userId, @RequestParam Long gameId) {
-        User user = userService.getUserById(userId);
+        Optional<User> userOptional = userService.findById(userId);
         Optional<Game> gameOptional = gameService.getGameById(gameId);
-        if (user != null && gameOptional.isPresent()) {
-            Game game = gameOptional.get(); // Extraire la valeur de l'Optional
-            user.getGames().add(game);  // Cette méthode devrait être disponible si l'entité User est correctement configurée
+
+        if (userOptional.isPresent() && gameOptional.isPresent()) {
+            User user = userOptional.get();
+            Game game = gameOptional.get();
+            user.getGames().add(game); // Ajoute le jeu à l'utilisateur
             userService.saveUser(user);
         }
+
         return "redirect:/user-games?userId=" + userId;
     }
 }

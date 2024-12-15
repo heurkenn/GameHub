@@ -60,6 +60,9 @@ public class RegisterController {
         // Chiffrer le mot de passe avec BCrypt
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
+        // Ajouter le rôle par défaut ROLE_USER
+        user.addRole("ROLE_USER");
+
         // Sauvegarder l'utilisateur
         userService.saveUser(user);
 
