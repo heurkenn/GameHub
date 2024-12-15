@@ -15,6 +15,9 @@
 
     <!-- Contenu principal -->
     <main class="container mt-5">
+        <div class ="form-goup text-right"> 
+            <button th:href="@{/games/{name}/chat/}">Rejoins la communauté</button>  <!-- Mettre le bon Mapping-->
+        </div>
         <div class="text-center">
             <!-- Nom du jeu -->
             <h1 class="mb-4" th:text="${game.name}">Nom du Jeu</h1>
