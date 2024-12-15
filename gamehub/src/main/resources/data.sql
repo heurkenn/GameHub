@@ -12,7 +12,7 @@ INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo 3DS
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation Vita', '2011-12-17', 'Sony');
 
 -- Insérer tournois dans la table tournament
-
+INSERT INTO TOURNAMENT (ID , CATEGORIE  ,DATE_END , DATE_END_INSCRIPTION, DATE_START,	DATE_START_INSCRIPTION, DATECREATION, IS_PRIVATE,NAME,NB_JOUEUR,NB_JOUEUR_LIMITE,GAME_ID ) VALUES (1,1GAME , '2024-12-01', '2024-11-12','2024-11-11', '2024-11-12' , '2024-11-01', 0, 'TEST TOURNAMENT', 0, 444,1);
 
 -- Insérer des jeux dans la table game
 
