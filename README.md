@@ -68,33 +68,63 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 
 
 
-
 ## Auto-Évaluation
 
 ### Fonctionnalités : 5/5
 
-| Critères                 | Détails de l'implémentation                              | Statut |
-|--------------------------|----------------------------------------------------------|--------|
-| Fonctionnalités demandées| Création de comptes, participation à des tournois, chat actif. | ✅   |
-| CRUD sur une entité      | Utilisation de Spring Data JPA pour gérer les entités.   | ✅     |
-| Lien entre deux entités  | Liaison entre User et Tournoi pour les inscriptions.     | ✅     |
-| Lien dynamique entre entités | Les admins peuvent associer des tournois à des jeux existants. | ✅ |
+| Critères                                   | Détails de l'implémentation                                                                                                                                          | Statut |
+|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Gestion d'au moins 5 entités               | Plusieurs entités : User, Game, Tournament, Classement, Community, etc.                                                                                               | ✅     |
+| Relations variées (1-1, 1-N, N-N)          | Relation 1-1 : Fight avec User, 1-N : Tournament - Classement, N-N : User - Game, User - Tournament.                                                                 | ✅     |
+| CRUD complet                                | Insertion, mise à jour, suppression, recherche d'entités en BDD via les méthodes HTTP (GET, POST, PUT, DELETE) et Spring Data JPA.                                    | ✅     |
+| Lien entre deux entités                     | Par exemple, liaison User - Tournament pour les inscriptions.                                                                                                         | ✅     |
+| Lien dynamique entre entités                | L’administrateur de communauté peut associer des tournois à des jeux existants. Les utilisateurs peuvent rejoindre une communauté ou un tournoi via une interface graphique. | ✅     |
 
 ### Technique : 5/5
 
-| Critères        | Détails de l'implémentation                                     | Statut |
-|-----------------|-----------------------------------------------------------------|--------|
-| Architecture MVC| Utilisation de Spring MVC pour une séparation propre.           | ✅     |
-| Méthodes HTTP   | GET, POST, PUT, DELETE implémentés dans les contrôleurs.        | ✅     |
-| Données dynamiques | Les pages Thymeleaf affichent les données transmises.        | ✅     |
+| Critères                                      | Détails de l'implémentation                                                                                                                                     | Statut |
+|-----------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Architecture MVC                              | Utilisation de Spring MVC pour une séparation propre entre la logique métier, les contrôleurs et la vue.                                                         | ✅     |
+| Méthodes HTTP                                 | GET, POST, PUT, DELETE implémentés dans les contrôleurs (GameController, TournamentController, etc.)                                                            | ✅     |
+| Données dynamiques                            | Les pages Thymeleaf affichent les données transmises par les contrôleurs (ex: listes de jeux, tournois, communautés).                                           | ✅     |
+| Utilisation de SpringBoot, SpringData, JPA    | SpringBoot pour le démarrage rapide, SpringData avec JPA pour la persistance, ainsi que des repositories (GameRepository, UserRepository, TournamentRepository). | ✅     |
+| SpringMVC et Thymeleaf                        | SpringMVC pour les contrôleurs, Thymeleaf pour la génération des vues HTML, affichage dynamique des données.                                                     | ✅     |
+
+### Association/Dissociation graphique des entités (relations 1-N et N-N)
+
+| Critères                           | Détails de l'implémentation                                                                                                                                     | Statut |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Association graphique d'entités    | Le super administrateur peut associer des plateformes à un jeu via des checkbox, un utilisateur peut rejoindre une communauté ou un tournoi via un bouton.       | ✅     |
+| Dissociation graphique d'entités   | L'utilisateur peut se retirer d'un tournoi, le super admin peut supprimer une relation entre un jeu et une plateforme.                                          | ✅     |
+
+### Fourniture d'une logique métier
+
+| Critères                           | Détails de l'implémentation                                                                                                                                      | Statut |
+|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Logique métier au-delà du CRUD     | Gestion dynamique des tournois (horloge pour l'heure de début, calcul du nombre de participants, classements), gestion des communautés et validations personnalisées. | ✅     |
+
+### Fonctionnalités demandées : Révision détaillée
+
+1. **Insérer, mettre à jour, supprimer, chercher une entité en BDD**  
+   - **Insérer** : `@PostMapping` pour ajouter de nouvelles entités (ex: créer un nouveau jeu).  
+   - **Mettre à jour** : `@PutMapping` pour modifier des entités existantes (ex: modifier un tournoi).  
+   - **Supprimer** : `@DeleteMapping` pour retirer une entité (ex: supprimer un jeu, un tournoi ou une communauté).  
+   - **Chercher** : `@GetMapping` pour récupérer les entités existantes (ex: afficher tous les jeux disponibles).
+
+2. **Lier deux entités en BDD**  
+   - Les relations sont gérées dans les contrôleurs et services (ex: ajouter un tournoi à un jeu existant, associer un utilisateur à un tournoi).
+
+3. **Créer un lien à une autre entité en BDD pour une entité donnée**  
+   - Formulaires Thymeleaf et vues HTML pour permettre à un administrateur de lier un tournoi à un jeu, ou à un utilisateur de rejoindre une communauté.
 
 ### Qualité : 5/5
 
-| Critères              | Détails de l'implémentation                       | Statut |
-|-----------------------|---------------------------------------------------|--------|
-| Design visuel         | Utilisation de Bootstrap 4.5 et CSS personnalisé. | ✅     |
-| Code source dans un repo Git | Organisation claire avec des commits réguliers. | ✅  |
-| Code de qualité       | Clean code, séparation des responsabilités, commentaires. | ✅ |
+| Critères                     | Détails de l'implémentation                                       | Statut |
+|------------------------------|---------------------------------------------------------------------|--------|
+| Design visuel                | Utilisation de Bootstrap 4.5 et CSS personnalisé pour un rendu esthétique. | ✅     |
+| Code source dans un repo Git | Organisation claire, commits réguliers, bonne gestion des branches. | ✅     |
+| Code de qualité              | Respect des bonnes pratiques, séparation des responsabilités, commentaires explicites. | ✅     |
+
 
 
 ## Utilisation de l'application
