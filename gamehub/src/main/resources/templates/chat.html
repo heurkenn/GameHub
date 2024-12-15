@@ -1,38 +1,60 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Chat de la Communauté</title>
+    <title th:text="${game.name} + ' - GameHub'">GameHub - Jeu</title>
+    <!-- CSS global pour le style général -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/chat.css}">
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Chat de la Communauté</h2>
+    <!-- Header -->
+    <div th:insert="~{fragments :: header}"></div>
+    <div class="container">
+        <!-- Titre -->
+        <h2 class="text-center mb-4" th:text="'Chat de la Communauté - ' + ${game.name}">Chat de la Communauté</h2>
 
         <!-- Liste des commentaires -->
-        <div id="comments" class="mb-4"></div>
+        <div id="comments" class="mb-4">
+            <div th:each="comment : ${comments}" class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${comment.user.username}">Nom utilisateur</h5>
+                    <p class="card-text" th:text="${comment.content}">Contenu</p>
+                    <p class="text-muted small" th:text="${#temporals.format(comment.timestamp, 'dd/MM/yyyy HH:mm')}">Horodatage</p>
+                </div>
+            </div>
+        </div>
 
         <!-- Formulaire pour ajouter un commentaire -->
-        <form id="commentForm">
+        <form id="commentForm" method="post" th:action="@{'/games/' + ${game.name} + '/chat'}">
             <div class="form-group">
-                <textarea class="form-control" id="commentContent" placeholder="Écrivez un commentaire..." rows="3" required></textarea>
+                <textarea class="form-control" id="commentContent" name="content" placeholder="Écrivez un commentaire..." rows="3" required></textarea>
             </div>
+            <input type="hidden" id="communityId" name="communityId" th:value="${community.id}" />
+            <input type="hidden" id="userId" name="userId" th:value="${userId}" /> 
             <button type="submit" class="btn btn-primary">Poster</button>
         </form>
     </div>
-
+    <!-- Footer -->
+    <div th:insert="~{fragments :: footer}"></div>
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/dist/stomp.min.js"></script>
+    <script src="https://unpkg.com/stompjs@2.3.3/lib/stomp.min.js"></script>
+
     <script>
         let stompClient = null;
 
         function connect() {
-            const socket = new SockJS('/ws'); // Connexion au serveur WebSocket
+            const communityId = document.getElementById("communityId").value;
+            const socket = new SockJS('/ws');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function (frame) {
                 console.log('Connecté : ' + frame);
 
-                // S'abonner aux commentaires d'une communauté
+                // S'abonner aux nouveaux commentaires
                 stompClient.subscribe('/topic/comments/' + communityId, function (message) {
                     const comment = JSON.parse(message.body);
                     displayComment(comment);
@@ -40,8 +62,13 @@
             });
         }
 
-        function sendComment() {
+        function sendComment(event) {
+            event.preventDefault();
             const content = document.getElementById("commentContent").value;
+            const userId = document.getElementById("userId").value;
+            const communityId = document.getElementById("communityId").value;
+            console.log(userId);
+
             if (content.trim() === "") {
                 alert("Le commentaire ne peut pas être vide.");
                 return;
@@ -49,8 +76,8 @@
 
             const comment = {
                 content: content,
-                user: { id: userId }, // Utilisateur connecté
-                community: { id: communityId } // Communauté active
+                user: { id: userId },
+                community: { id: communityId }
             };
 
             stompClient.send("/app/chat/" + communityId, {}, JSON.stringify(comment));
@@ -59,24 +86,25 @@
 
         function displayComment(comment) {
             const commentsDiv = document.getElementById("comments");
+            console.log(comment.username)
             const commentHTML = `
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">${comment.user.name}</h5>
+                        <h5 class="card-title">${comment.username || "Anonyme"}</h5>
                         <p class="card-text">${comment.content}</p>
                         <p class="text-muted small">${new Date(comment.timestamp).toLocaleString()}</p>
                     </div>
                 </div>`;
-            commentsDiv.innerHTML += commentHTML;
+            commentsDiv.insertAdjacentHTML("beforeend", commentHTML);
         }
 
-        document.getElementById("commentForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-            sendComment();
-        });
 
-        connect(); 
+        document.getElementById("commentForm").addEventListener("submit", sendComment);
 
+        // Connexion WebSocket
+        connect();
     </script>
+    
+
 </body>
 </html>

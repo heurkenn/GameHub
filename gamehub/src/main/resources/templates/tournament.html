@@ -2,15 +2,64 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>GameHub - Inscription</title>
-    <!-- Lien vers le fichier CSS -->
+    <title>GameHub - Détails du Tournoi</title>
+    <!-- Lien vers les fichiers CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <!-- Lien vers Bootstrap (CDN) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Header -->
+    <div th:insert="~{fragments :: header}"></div>
 
-	<div id="ResearchBar">
-		<span> <label for= </label></span>
-	</div>
+    <!-- Contenu principal -->
+    <div class="container mt-5">
+        <!-- Informations du tournoi -->
+        <div class="card mb-4 shadow-lg border-success">
+            <div class="card-header bg-dark text-light">
+                <h1 class="text-center" th:text="${tournament.name}">Tournament Name</h1>
+            </div>
+            <div class="card-body">
+                <p><strong>Date :</strong> <span th:text="${tournament.date}">Tournament Date</span></p>
+                <p><strong>Lieu :</strong> <span th:text="${tournament.location}">Tournament Location</span></p>
+                <p><strong>Description :</strong> <span th:text="${tournament.description}">Tournament Description</span></p>
+            </div>
+        </div>
+
+        <!-- Liste des participants -->
+        <div class="mb-4">
+            <h2>Participants</h2>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="participant : ${tournament.participants}" th:text="${participant.name}">
+                    Participant Name
+                </li>
+            </ul>
+        </div>
+
+        <!-- Liste des jeux associés -->
+        <div class="mb-4">
+            <h2>Jeux du Tournoi</h2>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="game : ${tournament.games}" th:text="${game.name}">
+                    Game Name
+                </li>
+            </ul>
+        </div>
+
+        <!-- Bouton pour rejoindre le tournoi -->
+        <div class="text-center mt-4">
+            <form th:action="@{'/tournaments/join/' + ${tournament.id}}" method="POST">
+                <button type="submit" class="btn btn-success btn-lg">
+                    Rejoindre le Tournoi
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:insert="~{fragments :: footer}"></div>
+
+    <!-- Scripts Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>

@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@400;700&family=Press+Start+2P&display=swap');
+
+/* Conteneur global du chat */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background-color: #242731;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    color: #d3d3d3;
+}
+
+/* Titre principal */
+h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #00ff88;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+}
+
+/* Cartes de commentaire */
+.card {
+    background-color: #2c303b;
+    border: 2px solid #ff3c7e;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(255, 60, 126, 0.6);
+}
+
+/* Titre utilisateur */
+.card-title {
+    font-family: 'Grandstander', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #00ff88;
+    margin-bottom: 0.5rem;
+}
+
+/* Texte du commentaire */
+.card-text {
+    font-family: 'Grandstander', sans-serif;
+    font-size: 1rem;
+    color: #f5f5f5;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+}
+
+/* Horodatage */
+.text-muted {
+    font-size: 0.8rem;
+    color: #a0a0a0;
+}
+
+/* Formulaire de commentaire */
+#commentForm {
+    background-color: #2c303b;
+    border: 2px solid #00ff88;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-top: 2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+#commentForm:hover {
+    box-shadow: 0 8px 16px rgba(0, 255, 136, 0.6);
+}
+
+/* Champ de texte */
+#commentContent {
+    background-color: #3a3f4b;
+    border: 2px solid #00ff88;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 0.8rem;
+    resize: none;
+    outline: none;
+}
+
+#commentContent::placeholder {
+    color: #a0a0a0;
+    font-family: 'Grandstander', sans-serif;
+}
+
+/* Bouton poster */
+button[type="submit"] {
+    background-color: #ff3c7e;
+    border: none;
+    color: #ffffff;
+    font-family: 'Grandstander', sans-serif;
+    font-weight: bold;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #e63670;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 60, 126, 0.5);
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.4rem;
+    }
+    .card {
+        font-size: 0.9rem;
+    }
+    #commentContent {
+        font-size: 0.9rem;
+    }
+    button[type="submit"] {
+        font-size: 0.9rem;
+    }
+}
