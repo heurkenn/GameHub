@@ -147,20 +147,6 @@ public class TournamentController {
 
 
 
-    // Log des images associées
-    tournaments.forEach(t -> {
-        if (t.getJeu() != null) {
-            System.out.println("Tournoi: " + t.getName() + ", Image du jeu: " + t.getJeu().getImage_url());
-        }
-    });
-    model.addAttribute("pastTournaments", pastTournaments);//renvoie un parametre qui est la liste des tournois passé
-    model.addAttribute("ongoingTournaments", ongoingTournaments); //renvoie un parametre qui est la liste des tournois en cours
-    model.addAttribute("upcomingTournaments", upcommingTournaments);// renvoie la liste des tournois qui vont venir 
-    model.addAttribute("tournaments", tournaments);//renvoie la lsite de tout les tournois
-    return "tournaments";
-    }
-
-
     @GetMapping("/tournaments/creation")
     public String Tournament(Model model){
         model.addAttribute("tournament", new Tournament());
