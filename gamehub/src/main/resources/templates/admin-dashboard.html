@@ -27,6 +27,9 @@
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link" onclick="showSection('adminsSection'); return false;">Gestion des Admins</a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" onclick="showSection('adminsSection'); return false;">Gestion des Admins</a>
+                </li>
             </ul>
         </nav>
 
@@ -125,8 +128,11 @@
                                     <!-- Champ : Plateformes (si applicable) -->
                                     <div class="form-group">
                                         <label th:attr="for='platforms-' + ${game.id}">Plateformes</label>
-                                        <input type="text" th:attr="id='platforms-' + ${game.id}" name="platforms" 
-                                               th:value="${game.platforms}" class="form-control">
+                                        <input type="text" 
+                                               th:attr="id='platforms-' + ${game.id}" 
+                                               name="platforms" 
+                                               th:value="${#strings.arrayJoin(game.platforms.![name], ', ')}"
+                                               class="form-control">
                                     </div>
                                     <!-- Champ : Image (facultatif) -->
                                     <div class="form-group">

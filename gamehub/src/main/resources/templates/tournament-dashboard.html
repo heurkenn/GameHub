@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Admin - Tournoi Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/tournaments.css}">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="admin-container d-flex">
+        <!-- Barre latérale -->
+        <nav class="sidebar">
+            <h2 class="sidebar-title">Game Admin</h2>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" onclick="showSection('tournamentsSection'); return false;">Gestion des Tournois</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Contenu principal -->
+        <div class="main-content p-4">
+            <!-- Section Gestion des Tournois -->
+            <div id="tournamentsSection" class="admin-section">
+                <h3>Gestion des Tournois</h3>
+                <button class="btn btn-success mb-3" onclick="toggleAddForm('addTournamentForm');">Ajouter un Tournoi</button>
+                <div id="addTournamentForm" class="form-section d-none">
+                    <form th:action="@{/tournaments/add}" method="POST">
+                        <div class="form-group">
+                            <label for="tournamentName">Nom du tournoi</label>
+                            <input type="text" id="tournamentName" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="game">Jeu</label>
+                            <input type="text" id="game" name="game" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="startDate">Date de début</label>
+                            <input type="date" id="startDate" name="startDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">Date de fin</label>
+                            <input type="date" id="endDate" name="endDate" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+                <table class="table table-dark mt-4">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Jeu</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="tournament : ${tournaments}">
+                        <tr>
+                            <td th:text="${tournament.id}"></td>
+                            <td th:text="${tournament.name}"></td>
+                            <td th:text="${tournament.gameName}"></td>
+                            <td>
+                                <button class="btn btn-warning" th:attr="data-form-id='modifyTournamentForm-' + ${tournament.id}" onclick="showForm(this);">Modifier</button>
+                                <form th:action="@{/tournaments/delete}" method="POST" class="d-inline">
+                                    <input type="hidden" th:value="${tournament.id}" name="id">
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr th:attr="id='modifyTournamentForm-' + ${tournament.id}" class="form-section d-none">
+                            <td colspan="4">
+                                <form th:action="@{/tournaments/update}" method="POST">
+                                    <input type="hidden" th:value="${tournament.id}" name="id">
+                                    <div class="form-group">
+                                        <label th:attr="for='tournamentName-' + ${tournament.id}">Nom</label>
+                                        <input type="text" th:attr="id='tournamentName-' + ${tournament.id}" name="name" th:value="${tournament.name}" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label th:attr="for='game-' + ${tournament.id}">Jeu</label>
+                                        <input type="text" th:attr="id='game-' + ${tournament.id}" name="game" th:value="${tournament.gameName}" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label th:attr="for='startDate-' + ${tournament.id}">Date de début</label>
+                                        <input type="date" th:attr="id='startDate-' + ${tournament.id}" name="startDate" th:value="${tournament.startDate}" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label th:attr="for='endDate-' + ${tournament.id}">Date de fin</label>
+                                        <input type="date" th:attr="id='endDate-' + ${tournament.id}" name="endDate" th:value="${tournament.endDate}" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.admin-section').forEach(section => section.classList.add('d-none'));
+            document.getElementById(sectionId).classList.remove('d-none');
+        }
+
+        function toggleAddForm(formId) {
+            const form = document.getElementById(formId);
+            form.classList.toggle('d-none');
+        }
+
+        function showForm(button) {
+            const formId = button.getAttribute('data-form-id');
+            const form = document.getElementById(formId);
+            form.classList.toggle('d-none');
+        }
+    </script>
+</body>
+
+</html>
