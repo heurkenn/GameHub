@@ -17,7 +17,7 @@ Un super administrateur gère la plateforme en ajoutant des jeux et en attribuan
 
 - GABIOT Victor
 - FONTAINE Nicolas
-- Beaussart Thomas
+- BEAUSSART Thomas
 - AURÉ Nolhan
 
 ## Lancement de l'application
