@@ -1,3 +1,0 @@
-2024-12-15 18:48:34.098586+01:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PLATFORM" not found (this database is empty); SQL statement:
-INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo') [42104-224]
