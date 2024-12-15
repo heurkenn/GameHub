@@ -35,7 +35,7 @@
             <!-- Section Gestion des Jeux -->
             <div id="gamesSection" class="admin-section d-none">
                 <h3>Gestion des Jeux</h3>
-                <button class="btn btn-success mb-3" onclick="showForm('addGameForm');">Ajouter un Jeu</button>
+                <button class="btn btn-success mb-3" onclick="toggleAddForm('addGameForm');">Ajouter un Jeu</button>
                 <div id="addGameForm" class="form-section d-none">
                     <form th:action="@{/games/create}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
@@ -78,26 +78,71 @@
                             <td th:text="${game.id}"></td>
                             <td th:text="${game.name}"></td>
                             <td>
-                                <button class="btn btn-warning" onclick="showForm('modifyGameForm-${game.id}');">Modifier</button>
+                                <!-- Bouton Modifier -->
+                                <button class="btn btn-warning" 
+                                        th:attr="data-form-id='modifyGameForm-' + ${game.id}" 
+                                        onclick="showForm(this);">Modifier</button>
+                                <!-- Bouton Supprimer -->
                                 <form th:action="@{/games/delete}" method="POST" class="d-inline">
-                                    <input type="hidden" th:value="${game.id}" name="id">
+                                    <input type="hidden" th:value="${game.id}" name="gameId">
                                     <button type="submit" class="btn btn-danger">Supprimer</button>
                                 </form>
                             </td>
                         </tr>
-                        <tr id="modifyGameForm-${game.id}" class="form-section d-none">
+                        <tr th:attr="id='modifyGameForm-' + ${game.id}" class="form-section d-none">
                             <td colspan="3">
-                                <form th:action="@{/games/update}" method="POST">
+                                <form th:action="@{/games/edit/{id}(id=${game.id})}" method="POST">
                                     <input type="hidden" th:value="${game.id}" name="id">
+                                    <!-- Champ : Nom -->
                                     <div class="form-group">
-                                        <label for="gameName-${game.id}">Nom</label>
-                                        <input type="text" id="gameName-${game.id}" name="name" th:value="${game.name}" class="form-control" required>
+                                        <label th:attr="for='gameName-' + ${game.id}">Nom</label>
+                                        <input type="text" th:attr="id='gameName-' + ${game.id}" name="name" 
+                                               th:value="${game.name}" class="form-control" required>
                                     </div>
+                                    <!-- Champ : Année de sortie -->
+                                    <div class="form-group">
+                                        <label th:attr="for='releaseYear-' + ${game.id}">Année de sortie</label>
+                                        <input type="number" th:attr="id='releaseYear-' + ${game.id}" name="releaseYear" 
+                                               th:value="${game.releaseYear}" class="form-control" required>
+                                    </div>
+                                    <!-- Champ : Studio de développement -->
+                                    <div class="form-group">
+                                        <label th:attr="for='developerStudio-' + ${game.id}">Studio de développement</label>
+                                        <input type="text" th:attr="id='developerStudio-' + ${game.id}" name="developerStudio" 
+                                               th:value="${game.developerStudio}" class="form-control" required>
+                                    </div>
+                                    <!-- Champ : Genre -->
+                                    <div class="form-group">
+                                        <label th:attr="for='genre-' + ${game.id}">Genre</label>
+                                        <input type="text" th:attr="id='genre-' + ${game.id}" name="genre" 
+                                               th:value="${game.genre}" class="form-control" required>
+                                    </div>
+                                    <!-- Champ : Description -->
+                                    <div class="form-group">
+                                        <label th:attr="for='description-' + ${game.id}">Description</label>
+                                        <textarea th:attr="id='description-' + ${game.id}" name="description" 
+                                                  th:text="${game.description}" class="form-control" rows="3" required></textarea>
+                                    </div>
+                                    <!-- Champ : Plateformes (si applicable) -->
+                                    <div class="form-group">
+                                        <label th:attr="for='platforms-' + ${game.id}">Plateformes</label>
+                                        <input type="text" th:attr="id='platforms-' + ${game.id}" name="platforms" 
+                                               th:value="${game.platforms}" class="form-control">
+                                    </div>
+                                    <!-- Champ : Image (facultatif) -->
+                                    <div class="form-group">
+                                        <label th:attr="for='image-' + ${game.id}">Changer l'image</label>
+                                        <input type="file" th:attr="id='image-' + ${game.id}" name="imageUrl" class="form-control">
+                                    </div>
+                                    <!-- Bouton Enregistrer -->
                                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                                 </form>
                             </td>
                         </tr>
                     </tbody>
+                    
+                    
+                    
                 </table>
             </div>
 
@@ -207,10 +252,35 @@
             document.getElementById(sectionId).classList.remove('d-none');
         }
 
-        function showForm(formId) {
-            document.getElementById(formId).classList.toggle('d-none');
-        }
-        
+        function toggleAddForm(formId) {
+    const form = document.getElementById(formId);
+    if (form) {
+        form.classList.toggle('d-none'); // Afficher/masquer le formulaire
+        console.log(`Formulaire d'ajout ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
+    } else {
+        console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
+    }
+}
+
+
+        function showForm(button) {
+    // Récupérer l'attribut data-form-id du bouton cliqué
+    const formId = button.getAttribute('data-form-id');
+    console.log(`ID du formulaire récupéré : ${formId}`); // Log pour vérifier l'ID
+
+    // Trouver le formulaire correspondant
+    const form = document.getElementById(formId);
+    if (form) {
+        // Basculer l'affichage (afficher/masquer)
+        form.classList.toggle('d-none');
+        console.log(`Formulaire ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
+    } else {
+        console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
+    }
+}
+
+
+
         document.getElementById('imageFile').addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (!file) return;

@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -152,4 +153,14 @@ public class GameController {
         gameService.deleteGame(gameId);
         return "redirect:/games";
     }
+
+    @GetMapping("/admin-dashboard")
+public String getAdminDashboard(Model model) {
+    List<Game> games = gameService.getAllGames();
+    games.forEach(game -> System.out.println("Game ID: " + game.getId() + ", Name: " + game.getName())); // Log pour vérifier
+    model.addAttribute("games", games);
+    return "admin-dashboard";
+}
+
+
 }
