@@ -19,6 +19,11 @@ public class CommentService {
     }
 
     public Comment saveComment(Comment comment) {
-        return commentRepository.save(comment);
+        // Sauvegarder le commentaire
+        Comment savedComment = commentRepository.save(comment);
+
+        // Charger le commentaire avec l'utilisateur pour forcer le lazy loading
+        Comment fullComment = commentRepository.findCommentWithUser(savedComment.getId());
+        return fullComment;
     }
 }

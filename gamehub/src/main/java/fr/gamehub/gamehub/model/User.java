@@ -66,6 +66,8 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "game_id")
     )
     private Set<Game> games = new HashSet<>();
+
+    
     @ManyToMany(mappedBy = "participants")
     private Set<Tournament> tournois = new HashSet<>();
     
