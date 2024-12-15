@@ -124,18 +124,15 @@ public class TournamentController {
         Set<Fight> combats = tournament.getCombats();
         int nbJoueurRestant = combats.size();
         Set<User> joueurRestants = new HashSet<>();
-
         Classement classement = tournament.getClassement();
         if (classement == null) {
             classement = new Classement();
             classement.setTournament(tournament);
         }
-
         for (Fight combat : combats) {
             if (nbJoueurRestant == 1) { // Dernier combat, détermination des vainqueurs
                 if (combat.getWinner() != null) { // Si un gagnant est défini
                     classement.setPremier(combat.getWinner());
-
                     // Déterminer le deuxième joueur
                     if (combat.getWinner().equals(combat.getJoueur1())) {
                         classement.setDeuxieme(combat.getJoueur2());
@@ -185,6 +182,13 @@ public class TournamentController {
                     fights.add(fight);
                 }
                 player1 = user;
+            }
+            if (nbJoueurRestant%2==1){ //si le nombre de joueur est impair il y a donc un nominé d'office pour le prochain round
+                Fight fight = new Fight();
+                fight.setJoueur1(player1);
+                fight.setJoueur2(player1);
+                fight.setWinner(player1);
+                fights.add(fight);
             }
             tournament.setCombats(fights);
         }
