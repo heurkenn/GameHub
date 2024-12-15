@@ -24,7 +24,9 @@ Exécutez la classe principale GameHubApplication.java :
 
 ### 3. Lancement via Maven
 Utilisez la commande suivante pour démarrer l'application :  
-
+  ```sh
+     ./mvnw spring-boot:run
+     ```
 
 ## Arborescence du projet
 
@@ -91,4 +93,6 @@ gamehub/ ├── src/ │ ├── main/ │ │ ├── java/ # Code sourc
 
 ⚠️ Le projet utilise Java 21. Assurez-vous que votre environnement de développement est configuré correctement :
 
-java -version
+  ```sh
+     java -version
+     ```
