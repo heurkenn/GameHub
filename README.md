@@ -103,7 +103,7 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 |------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
 | Logique métier au-delà du CRUD     | Gestion dynamique des tournois (horloge pour l'heure de début, calcul du nombre de participants, classements), gestion des communautés et validations personnalisées. | ✅     |
 
-### Fonctionnalités demandées : Révision détaillée
+### Fonctionnalités demandées : 
 
 1. **Insérer, mettre à jour, supprimer, chercher une entité en BDD**  
    - **Insérer** : `@PostMapping` pour ajouter de nouvelles entités (ex: créer un nouveau jeu).  
