@@ -101,7 +101,8 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 - Créer un compte utilisateur pour accéder aux fonctionnalités.
 - Participer à des tournois et rejoindre des communautés pour discuter via le chat.
 - Admins : Gérer les tournois depuis un tableau de bord.
-- Super-Admin : Gérer les jeux, les tournois et les admins "simples" dans un tableau de bord.
+- Super-Admin : Gérer les jeux, les tournois et les admins "simples" dans un tableau de bord. Le mot de passe se trouve dans le fichier "application.properties". Pour que le statut de super-admin soit mis-à-jour il faut redémarrer la session, donc se déconnecter puis se reconnecter.
+- Base de donnée : Une base de donnée avec déjà des jeux, des plateformes, des games-plateform et des tournois est fournis, pour la récupérer il suffit dans application.properties mettre always au paramètre "spring.sql.init.mode". Attention, après l'avoir fait il faut impérativement remettre le paramètre sur never pour le bon fonctionnement de l'application.
 
 ## Compatibilité
 
