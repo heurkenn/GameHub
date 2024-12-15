@@ -5,6 +5,9 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import fr.gamehub.gamehub.service.TournamentService;
 import fr.gamehub.gamehub.model.*;
@@ -48,7 +51,23 @@ public class JoinTournamentController {
 		model.addAttribute("tournamentFilter", tournamentFiltered);
 		
     	return "JoinTournament"; // Retourner la même page pour afficher le filtre appliqué
-}
+	}
+	
+	// Full fait à l'aveugle à tout moment rien ne fonctionne
+	/** 
+	@PostMapping(value = "/submitJoinTournament")
+	public String submitJoinTournament(Model mode ){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) principal;
+			
+		}
+
+		return "JoinTournament";
+	}
+		*/
 
 
 	// Fonction qui servira à prendre seulement les tournois qui valide toute les conditions posé dans les filtres

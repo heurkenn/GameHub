@@ -8,43 +8,71 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<!-- Objectif faire un filtre pour rechercher le tournoi qui nous correspond-->
-	<section id = "filter">
-		<!--  Mettre le bon truc mapping correspondant au bon controller-->
-		<form th:action="@{/tournament/submitFilter}"  method="POST">
-			<label for= "nameTournament"> Nom du tournois :</label>
-			<input type="text" name ="prefixName" />
-			
-			<label for="private"> Tournoi privé : </label>
-			<input type="checkbox" name="is_Private"  />
-			<button type="submit"> Filtrer </button>
+	<!-- Header -->
 
-		</form>
-		
-	</section>
+	<header th:insert="~{fragments :: header}"> </header>
 
-	<section id="tournament">
-		<div th:each="tournament : ${tournamentFilter}" class="col-md-4 mb-4">
-			<div class="tournament-card">
-				<div class="tournament-card-image">
-					<!--
-					<img th:src="@{/image/} + ${tournamentFilter.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
-				-->
-				</div>
-				<div class="tournament-card-content">
-					<h3 th:text="${tournament.name}">Nom du Tournoi</h3>
-					
-					<p th:text="'Jeu: ' + ${tournament.jeu.name}">Jeu: Nom du Jeu</p>
-				
-					<p th:text="'Date de fin: ' + ${tournament.dateEnd}">Date de fin:</p>
-					<!--
-					<a th:href="@{/tournament/} + ${tournament.id}" class="btn btn-primary btn-page">Voir Détails</a>
-				-->
-				</div>
-			</div>
+	<!-- Jumbotron -->
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Rejoignez les Tournois de GameHub</h1>
+            <p class="lead">Participez à des tournois épiques, défiez les meilleurs joueurs et remportez des récompenses inoubliables.</p>
+        </div>
+    </section>
+
+	<div class="container-fluid">
+		<div class="row">
+			<!-- Barre latérale gauche -->
+			<aside class="col-md-3 col-lg-2 vh-100 d-none d-md-block border-end">
+				<section id="filter" class="p-3">
+					<h4>Filtres</h4>
+					<form th:action="@{/tournament/submitFilter}" method="POST">
+						<div class="mb-3">
+							<label for="nameTournament" class="form-label" style=" font-family: 'Grandstander', sans-serif;  color: #e3e3e3;"  >Nom du tournoi :</label>
+							<input type="text" name="prefixName" class="form-control" />
+						</div>
+						
+						<div class="mb-3">
+							<label for="private" class="form-check-label" style=" font-family: 'Grandstander', sans-serif;  color: #e3e3e3;" >Tournoi privé :</label>
+							<input type="checkbox" name="is_Private" class="form-check-input custom-checkbox" style="margin-left: auto;"  />
+						</div>
+						
+						<button type="submit" class="btn btn-secondary">Filtrer</button>
+					</form>
+				</section>
+			</aside>
 		</div>
 
-	</section>
+	
+			<!-- Contenu principal -->
+			<main class="col-md-9 col-lg-10">
+				<section class="container my-5">
+					<div class="row">
+						<div th:each="tournament : ${tournamentFilter}" class="col-md-4 mb-4">
+							<div class="card">
+								<div class="tournament-card-image">
+									<!-- vérifier que c'est bien ça le bon path
+									<img th:src="@{/image/} + ${tournament.game.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
+									-->
+								</div>
+								<div class="card-body">
+									<h5 class="card-title" th:text="${tournament.name}">Nom du Tournoi</h5>
+									<p class="card-text" th:text="'Jeu: ' + ${tournament.jeu.name}">Jeu: Nom du Jeu</p>
+									<p class="card-text" th:text="'Date de fin: ' + ${tournament.dateEnd}">Date de fin:</p>
+									<form th:action="@{/tournament/JoinThisTournament}" method="post">
+										<button type="submit" class="btn-secondary">Rejoindre</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+	
+	
 
+
+	<footer th:insert="~{fragments :: footer}" ></footer>
 </body>
 </html>
