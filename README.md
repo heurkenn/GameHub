@@ -104,7 +104,8 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 
 - Créer un compte utilisateur pour accéder aux fonctionnalités.
 - Participer à des tournois et rejoindre des communautés pour discuter via le chat.
-- Admins : Gérer les jeux et les tournois depuis un tableau de bord sécurisé.
+- Admins : Gérer les tournois depuis un tableau de bord.
+- Super-Admin : Gérer les jeux, les tournois et les admins "simples" dans un tableau de bord.
 
 ## Compatibilité
 
