@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.gamehub.gamehub.model.Category;
 import fr.gamehub.gamehub.model.Classement;
@@ -35,9 +34,9 @@ import jakarta.validation.Valid;
 
 @Controller
 
-@RequestMapping("/tournament")
-public class TournamentController {
 
+public class TournamentController {
+    
 
     @Autowired
     private TournamentRepository tournamentRepository;
@@ -74,6 +73,8 @@ public class TournamentController {
     }
 
 
+    
+    
     @GetMapping("/tournaments")
     public String showTournaments(Model model) { // à l'affichage de la page, renvoi une liste de tournoi en paramètre
         List<Tournament> tournaments = tournamentRepository.findAll();
@@ -81,22 +82,21 @@ public class TournamentController {
         return "tournaments";
     }
 
-
-    @GetMapping("/creation")
+    @GetMapping("/tournaments/creation")
     public String Tournament(Model model){
         model.addAttribute("tournament", new Tournament());
         model.addAttribute("categorie", Category.values());
         return "creationTournament";
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/tournaments/users/{id}")
     public ResponseEntity<Tournament> getById(@PathVariable long id) {
         Optional<Tournament> tournament = tournamentService.getTournamentById(id);
         return tournament.map(ResponseEntity::ok)
             .orElseThrow();
     }
 
-    @PostMapping(value = "/submitFormTournament")
+    @PostMapping(value = "/tournaments/submitFormTournament")
     public String submitFormTournament(@Valid @ModelAttribute("tournament") Tournament tournament, BindingResult bindingResult) {
         
         if (bindingResult.hasErrors()){

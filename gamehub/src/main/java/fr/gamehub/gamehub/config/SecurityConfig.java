@@ -39,8 +39,9 @@ public class SecurityConfig {
 
             .userDetailsService(myUserDetailsService)  // Indique quel service utiliser
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/", "/game/**", "/register", "/login", "/h2-console/**", "/css/**", "/js/**", "/image/**").permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
+                
+                .requestMatchers("/",  "/register", "/login", "/h2-console/**", "/css/**", "/js/**", "/image/**").permitAll()
+                .requestMatchers("/admin-dashboard/**").hasRole("SUPER_ADMIN")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

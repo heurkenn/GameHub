@@ -83,15 +83,14 @@
                                         th:attr="data-form-id='modifyGameForm-' + ${game.id}" 
                                         onclick="showForm(this);">Modifier</button>
                                 <!-- Bouton Supprimer -->
-                                <form th:action="@{/games/delete}" method="POST" class="d-inline">
-                                    <input type="hidden" th:value="${game.id}" name="gameId">
-                                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                                </form>
+                                <button class="btn btn-danger" 
+                                        th:attr="data-game-id=${game.id}" 
+                                        onclick="deleteGame(this);">Supprimer</button>
                             </td>
                         </tr>
                         <tr th:attr="id='modifyGameForm-' + ${game.id}" class="form-section d-none">
                             <td colspan="3">
-                                <form th:action="@{/games/edit/{id}(id=${game.id})}" method="POST">
+                                <form th:action="@{/games/edit/{id}(id=${game.id})}" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" th:value="${game.id}" name="id">
                                     <!-- Champ : Nom -->
                                     <div class="form-group">
@@ -123,16 +122,20 @@
                                         <textarea th:attr="id='description-' + ${game.id}" name="description" 
                                                   th:text="${game.description}" class="form-control" rows="3" required></textarea>
                                     </div>
-                                    <!-- Champ : Plateformes (si applicable) -->
-                                    <div class="form-group">
-                                        <label th:attr="for='platforms-' + ${game.id}">Plateformes</label>
-                                        <input type="text" th:attr="id='platforms-' + ${game.id}" name="platforms" 
-                                               th:value="${game.platforms}" class="form-control">
-                                    </div>
                                     <!-- Champ : Image (facultatif) -->
                                     <div class="form-group">
                                         <label th:attr="for='image-' + ${game.id}">Changer l'image</label>
-                                        <input type="file" th:attr="id='image-' + ${game.id}" name="imageUrl" class="form-control">
+                                        
+                                        <!-- Affiche l'image actuelle si elle existe -->
+                                        <div th:if="${game.image_url != null and !game.image_url.isEmpty()}">
+                                            <img th:src="@{/image/{imageName}(imageName=${game.image_url})}" alt="Image du jeu" style="max-width: 200px; margin-bottom: 10px;">
+                                        </div>
+                                    
+                                        <!-- Champ pour l'upload d'une nouvelle image -->
+                                        <input type="file" th:attr="id='image-' + ${game.id}" name="newImage" class="form-control">
+                                    
+                                        <!-- Champ caché pour conserver l'URL de l'image existante -->
+                                        <input type="hidden" name="imageUrl" th:value="${game.image_url}">
                                     </div>
                                     <!-- Bouton Enregistrer -->
                                     <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -264,24 +267,22 @@
 
 
         function showForm(button) {
-    // Récupérer l'attribut data-form-id du bouton cliqué
-    const formId = button.getAttribute('data-form-id');
-    console.log(`ID du formulaire récupéré : ${formId}`); // Log pour vérifier l'ID
+        // Récupérer l'attribut data-form-id du bouton cliqué
+        const formId = button.getAttribute('data-form-id');
+        console.log(`ID du formulaire récupéré : ${formId}`); // Log pour vérifier l'ID
 
-    // Trouver le formulaire correspondant
-    const form = document.getElementById(formId);
-    if (form) {
-        // Basculer l'affichage (afficher/masquer)
-        form.classList.toggle('d-none');
-        console.log(`Formulaire ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
-    } else {
-        console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
+        // Trouver le formulaire correspondant
+        const form = document.getElementById(formId);
+        if (form) {
+            // Basculer l'affichage (afficher/masquer)
+            form.classList.toggle('d-none');
+            console.log(`Formulaire ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
+        } else {
+            console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
+        }
     }
-}
 
-
-
-        document.getElementById('imageFile').addEventListener('change', function(event) {
+        document.getElementById('imageUrl').addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (!file) return;
 
@@ -307,6 +308,38 @@
         };
         img.src = URL.createObjectURL(file);
     });
+
+    
+    function deleteGame(button) {
+        // Récupérer l'ID du jeu depuis l'attribut data-game-id
+        const gameId = button.getAttribute("data-game-id");
+
+        if (!gameId) {
+            console.error("Erreur : l'ID du jeu est introuvable.");
+            return;
+        }
+
+        if (confirm("Êtes-vous sûr de vouloir supprimer ce jeu ?")) {
+            fetch(`/games/delete/${gameId}`, {
+                method: 'DELETE', // Méthode HTTP DELETE
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Jeu supprimé avec succès !");
+                    window.location.reload(); // Recharge la page pour refléter les modifications
+                } else {
+                    alert("Erreur lors de la suppression du jeu.");
+                }
+            })
+            .catch(error => {
+                console.error("Erreur :", error);
+                alert("Une erreur est survenue. Veuillez réessayer.");
+            });
+        }
+    }
 
     </script>
 </body>

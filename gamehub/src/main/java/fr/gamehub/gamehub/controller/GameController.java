@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -124,43 +123,50 @@ public class GameController {
     }
 
 
-    // Afficher le formulaire d'édition pour un jeu existant
-    @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model) {
-        Optional<Game> game = gameService.getGameById(id);
-        if (game.isEmpty()) {
-            return "error/404"; // Affiche une page 404 si le jeu est introuvable
-        }
-        model.addAttribute("game", game.get());
-        return "game_form"; // Réutiliser la même vue que pour la création
-    }
 
     // Soumettre le formulaire pour modifier un jeu existant
     @PostMapping("/edit/{id}")
-    public String updateGame(@PathVariable("id") Long id, @Valid Game updatedGame, BindingResult result, Model model) {
+    public String updateGame(
+            @PathVariable("id") Long id,
+            @Valid Game updatedGame,
+            BindingResult result, // Récupération des plateformes sous forme de chaîne
+            @RequestParam("imageUrl") MultipartFile imageFile, // Gestion du fichier image
+            Model model) {
+
+        // Gestion des erreurs de validation
         if (result.hasErrors()) {
+            System.out.println("Erreurs de validation : " + result.getAllErrors());
             model.addAttribute("errorMessage", "Erreur lors de la modification du jeu.");
-            return "game_form";
+            return "game_form"; // Retourner le formulaire en cas d'erreur
         }
-        updatedGame.setId(id); // Met à jour l'ID pour modifier l'existant
+
+        // Mettre à jour les champs de l'objet jeu
+        updatedGame.setId(id);
+
+        // Gestion de l'image (si une nouvelle image est uploadée)
+        if (!imageFile.isEmpty()) {
+            String fileName = imageFile.getOriginalFilename();
+            updatedGame.setImage_url(fileName);
+            System.out.println("Image uploadée : " + fileName);
+            // Vous pouvez ajouter ici la logique pour enregistrer le fichier sur le serveur
+        }
+
+        // Sauvegarde du jeu modifié
         gameService.saveGame(updatedGame);
-        return "redirect:/games";
+        System.out.println("Jeu mis à jour : " + updatedGame.getName());
+
+        return "redirect:/admin-dashboard";
     }
+
 
     // Supprimer un jeu
-    @PostMapping("/delete")
-    public String deleteGame(@RequestParam Long gameId) {
-        gameService.deleteGame(gameId);
-        return "redirect:/games";
+    @PostMapping("/delete/{id}")
+    public String deleteGame(@PathVariable("id") Long id) {
+        gameService.deleteGame(id);
+        return "redirect:/admin-dashboard";
     }
 
-    @GetMapping("/admin-dashboard")
-public String getAdminDashboard(Model model) {
-    List<Game> games = gameService.getAllGames();
-    games.forEach(game -> System.out.println("Game ID: " + game.getId() + ", Name: " + game.getName())); // Log pour vérifier
-    model.addAttribute("games", games);
-    return "admin-dashboard";
-}
+    
 
 
 }
