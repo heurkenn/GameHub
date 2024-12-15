@@ -30,23 +30,37 @@ Utilisez la commande suivante pour démarrer l'application :
 
 ## Arborescence du projet
 
-gamehub/  
-├── src/  
-│   ├── main/  
-│   │   ├── java/                            **# Code source Java** 
-│   │   │   └── fr/gamehub/gamehub/  
-│   │   │       ├── controller/              **# Contrôleurs (Spring MVC)** 
-│   │   │       ├── model/                   **# Modèles (Entités JPA)**  
-│   │   │       ├── repository/              **# Interfaces pour accéder à la BDD**  
-│   │   │       ├── service/                 **# Logique métier**  
-│   │   │       └── GameHubApplication.java  
-│   │   └── resources/                       **# Ressources statiques et templates**  
-│   │       ├── templates/                   **# Pages Thymeleaf**  
-│   │       ├── static/                      **# CSS, JS, Images**  
-│   │       └── application.properties       **# Configuration Spring Boot**  
-│   └── test/                                **# Tests unitaires**  
-├── pom.xml                                  **# Configuration Maven**  
-└── README.md                                **# Documentation**
+Voici une description de l'arborescence du projet, en expliquant le rôle de chaque répertoire et fichier important :
+
+- `src/main/java/fr/gamehub/gamehub/` :
+  - `config/` : Contient les classes de configuration Spring.
+  - `controller/` : Contient les contrôleurs Spring MVC gérant les requêtes HTTP.
+  - `model/` : Contient les entités JPA représentant les données manipulées par l'application.
+  - `repository/` : Contient les interfaces pour accéder aux données dans la base (Spring Data JPA).
+  - `service/` : Contient la logique métier, séparant le code des contrôleurs et des dépôts.
+  - `validator/` : Contient les classes de validation personnalisées.
+  - `GamehubApplication.java` : Classe principale Spring Boot permettant de lancer l'application.
+
+- `src/main/resources/` :
+  - `static/` : Contient les ressources statiques (CSS, JS, images).
+  - `templates/` : Contient les pages Thymeleaf pour afficher les données dynamiques.
+  - `application.properties` : Fichier de configuration pour l'application Spring Boot.
+  - `data.sql` : Script SQL pour insérer des données initiales dans la base.
+
+- `src/test/java/fr/gamehub/gamehub/` : Contient les tests unitaires et d'intégration de l'application.
+
+- `target/` : Contient les fichiers compilés et les artefacts générés par Maven.
+
+- `.gitignore` : Fichier spécifiant les fichiers à ignorer par Git.
+
+- `pom.xml` : Fichier de configuration Maven gérant les dépendances et les plugins.
+
+- `mvnw` et `mvnw.cmd` : Scripts pour utiliser Maven sans qu'il soit installé globalement sur la machine.
+
+- `testdb.mv.db` : Base de données de test générée par H2 (optionnelle selon la configuration).
+
+Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que les dépendances nécessaires pour exécuter le projet correctement.
+
 
 
 
