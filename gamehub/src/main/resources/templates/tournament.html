@@ -2,15 +2,73 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>GameHub - Inscription</title>
-    <!-- Lien vers le fichier CSS -->
+    <title th:text="${tournament.name} + ' - GameHub Tournament'">GameHub - Tournoi</title>
+    <!-- CSS global -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <!-- Lien vers Bootstrap (CDN) -->
+    <link rel="stylesheet" th:href="@{/static/css/game.css}">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Header -->
+    <div th:insert="~{fragments :: header}"></div>
 
-	<div id="ResearchBar">
-		<span> <label for= </label></span>
-	</div>
+    <!-- Contenu principal -->
+    <main class="container mt-5">
+        <div class="text-center">
+            <!-- Nom du tournoi -->
+            <h1 class="mb-4" th:text="${tournament.name}">Nom du Tournoi</h1>
+
+            <!-- Informations du tournoi -->
+            <div class="details text-left mx-auto" style="max-width: 600px;">
+
+                <p><strong>ID du Tournoi :</strong> <span th:text="${tournament.id}"></span></p>
+                
+                <p><strong>Catégorie :</strong> <span th:text="${tournament.categorie}"></span></p>
+                
+                <p><strong>Tournoi Privé :</strong>
+                    <span th:if="${tournament.isPrivate}">Oui</span>
+                    <span th:if="${!tournament.isPrivate}">Non</span>
+                </p>
+
+                <p><strong>Date de création :</strong> <span th:text="${tournament.dateCreation}"></span></p>
+
+                <p><strong>Date de début :</strong> <span th:text="${tournament.dateStart}"></span></p>
+
+                <p><strong>Date de fin :</strong> <span th:text="${tournament.dateEnd}"></span></p>
+
+                <p><strong>Début des inscriptions :</strong> <span th:text="${tournament.dateStartInscription}"></span></p>
+
+                <p><strong>Fin des inscriptions :</strong> <span th:text="${tournament.dateEndInscription}"></span></p>
+
+                <p><strong>Nombre de joueurs max :</strong> <span th:text="${tournament.nbJoueurLimite}"></span></p>
+
+                <p><strong>Nombre de joueurs inscrits :</strong> <span th:text="${tournament.nbJoueur}"></span></p>
+
+                <!-- Si vous avez un lien avec un jeu -->
+                <p><strong>Jeu associé :</strong>
+                    <span th:if="${tournament.game != null}" th:text="${tournament.game.name}">Nom du jeu</span>
+                    <span th:if="${tournament.game == null}">Aucun jeu associé</span>
+                </p>
+            </div>
+
+            <!-- Bouton d'inscription (si pertinent) -->
+            <div class="mt-4">
+                <a th:href="@{'/tournament/register/' + ${tournament.id}}" class="btn btn-primary"
+                   th:if="${not tournament.isPrivate and tournament.nbJoueur < tournament.nbJoueurLimite}">
+                    S'inscrire
+                </a>
+                <span th:if="${tournament.nbJoueur >= tournament.nbJoueurLimite}">Tournoi complet</span>
+                <span th:if="${tournament.isPrivate}">Tournoi privé, lien d'accès requis</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div th:insert="~{fragments :: footer}"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>
