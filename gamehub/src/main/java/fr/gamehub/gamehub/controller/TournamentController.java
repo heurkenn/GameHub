@@ -3,9 +3,11 @@ package fr.gamehub.gamehub.controller;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,6 +51,8 @@ public class TournamentController {
     @Autowired
     private ClassementRepository classementRepository;
 
+    @Autowired
+	private TournamentService service;
     
     
 
@@ -101,7 +105,35 @@ public class TournamentController {
         tournamentRepository.save(tournament);
         return "redirect:/";
     }
-
+    /* 
+    @GetMapping(value = "ongoingTournaments" )
+    public  void showOnGoingTournaments(Model model){
+        List<Tournament> lt = new LinkedList<>();
+        LocalDateTime dt = LocalDateTime.now();
+        for (Tournament t : service.getAllTournaments()){
+            if (t.getDateStart().isBefore(dt) && t.getDateEnd().isAfter(dt)) lt.add(t);
+        }
+        model.addAttribute("ongoingTournaments", lt);
+    }
+    @GetMapping(value = "upcomingTournaments")
+    public  void showUpcomingTournaments(Model model){
+        List<Tournament> lt = new LinkedList<>();
+        LocalDateTime dt = LocalDateTime.now();
+        for (Tournament t : service.getAllTournaments()){
+            if (t.getDateStart().isAfter(dt) ) lt.add(t);
+        }
+        model.addAttribute("upcomingTournaments", lt);
+    }
+    @GetMapping(value = "pastTournaments")
+    public  void showPastTournaments(Model model){
+        List<Tournament> lt = new LinkedList<>();
+        LocalDateTime dt = LocalDateTime.now();
+        for (Tournament t : service.getAllTournaments()){
+            if (t.getDateEnd().isBefore(dt) ) lt.add(t);
+        }
+        model.addAttribute("pastTournaments", lt);
+    }
+    */
     public static void startTournament(Tournament tournament) {
         Set<Fight> fights = new HashSet<>();
         // Création des combats

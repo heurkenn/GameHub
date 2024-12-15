@@ -54,7 +54,7 @@ public class JoinTournamentController {
 	}
 	
 	// Full fait à l'aveugle à tout moment rien ne fonctionne
-	/** 
+	/**
 	@PostMapping(value = "/submitJoinTournament")
 	public String submitJoinTournament(Model mode ){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -67,7 +67,7 @@ public class JoinTournamentController {
 
 		return "JoinTournament";
 	}
-		*/
+	*/
 
 
 	// Fonction qui servira à prendre seulement les tournois qui valide toute les conditions posé dans les filtres
