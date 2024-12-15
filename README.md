@@ -1,12 +1,13 @@
 # GameHub - Plateforme de Tournois de Jeux Vidéo
 
 ## Présentation du projet
+GameHub est une plateforme permettant aux utilisateurs :
 
-GameHub est une plateforme permettant aux utilisateurs :  
-- D'avoir un compte utilisateur pour se connecter ou se déconnecter.  
-- De participer à des tournois pour différents jeux disponibles sur la plateforme.  
-- De communiquer dans une communauté dédiée pour chaque jeu via un système de chat.  
-Seuls les administrateurs ont le droit de créer, modifier et supprimer des tournois.
+- De créer un compte et de se connecter pour accéder aux fonctionnalités.
+- De participer à des tournois organisés pour différents jeux.
+- De rejoindre une communauté liée à chaque jeu et d’interagir via un système de chat dédié.
+  
+Un super administrateur gère la plateforme en ajoutant des jeux et en attribuant un administrateur pour chaque communauté (et donc pour chaque jeu). Ces administrateurs de communauté sont responsables de la création, de la modification et de la suppression des tournois. Les utilisateurs peuvent ainsi s’inscrire aux tournois, rejoindre des communautés et discuter entre eux au sein de l’espace de chat.
 
 🎮 Bonus : Un easter egg caché se trouve sur la page d'erreur, lorsque vous accedez à une page qui n'existe pas 👀! 
 
