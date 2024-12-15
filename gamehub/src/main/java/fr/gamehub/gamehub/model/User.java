@@ -16,8 +16,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -59,13 +59,11 @@ public class User implements Serializable {
     @Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères")
     private String password;
  
-    @ManyToMany
-    @JoinTable(
-            name = "user_games",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "game_id")
-    )
-    private Set<Game> games = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name="game_id", nullable=false)
+    private Game game;
+
+
     @ManyToMany(mappedBy = "participants")
     private Set<Tournament> tournois = new HashSet<>();
     

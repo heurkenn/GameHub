@@ -189,9 +189,6 @@
                     
                 </table>
             </div>
-
-
-
             <!-- Section Gestion des Tournois -->
             <div id="tournamentsSection" class="admin-section d-none">
                 <h3>Gestion des Tournois</h3>
@@ -240,9 +237,7 @@
                     </tbody>
                 </table>
             </div>
-
-           <!-- Section Gestion des Admins -->
-           <!-- Section Gestion des Admins -->
+            <!-- Section Gestion des Admins -->
             <div id="adminsSection" class="admin-section d-none">
                 <h3>Gestion des Admins</h3>
 
@@ -250,16 +245,6 @@
                 <div class="form-group mb-4">
                     <input type="text" id="searchUser" class="form-control" placeholder="Rechercher un utilisateur...">
                     <div id="searchResults" class="mt-2"></div>
-
-                <!-- Barre de Recherche pour Promouvoir un Admin -->
-                <div class="form-group mb-4">
-                    <input type="text" id="searchUser" class="form-control" placeholder="Rechercher un utilisateur...">
-                    <div id="searchResults" class="mt-2"></div>
-                </div>
-
-                <!-- Liste des Admins Déjà Ajoutés -->
-                <h4>Liste des Administrateurs</h4>
-                <table class="table table-dark mt-3">
 
                 <!-- Liste des Admins Déjà Ajoutés -->
                 <h4>Liste des Administrateurs</h4>
@@ -277,8 +262,6 @@
                     </thead>
                     <tbody>
                         <tr th:each="admin : ${admins}">
-                    <tbody>
-                        <tr th:each="admin : ${admins}">
                             <td th:text="${admin.id}"></td>
                             <td th:text="${admin.name}"></td>
                             <td th:text="${admin.email}"></td>
@@ -291,21 +274,7 @@
                                         <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
                                     </select>
                                     <button type="submit" class="btn btn-warning btn-sm">Modifier</button>
-                            <td th:text="${admin.email}"></td>
-                            <td th:text="${admin.gameName}"></td>
-                            <td>
-                                <!-- Modifier Admin -->
-                                <form th:action="@{/admins/modify}" method="POST" class="d-inline">
-                                    <input type="hidden" name="id" th:value="${admin.id}">
-                                    <select name="gameId" class="form-control d-inline w-auto" required>
-                                        <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
-                                    </select>
-                                    <button type="submit" class="btn btn-warning btn-sm">Modifier</button>
                                 </form>
-                                <!-- Supprimer Admin -->
-                                <form th:action="@{/admins/demote}" method="POST" class="d-inline">
-                                    <input type="hidden" name="id" th:value="${admin.id}">
-                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                                 <!-- Supprimer Admin -->
                                 <form th:action="@{/admins/demote}" method="POST" class="d-inline">
                                     <input type="hidden" name="id" th:value="${admin.id}">
@@ -316,8 +285,19 @@
                     </tbody>
                 </table>
             </div>
-
-
+            <div>
+                <!-- Formulaire pour assigner le rôle ADMIN -->
+                <form action="/admins/assign" method="POST">
+                    <label for="userId">ID de l'utilisateur :</label>
+                    <input type="number" id="userId" name="userId" required min="1" placeholder="Entrez l'ID de l'utilisateur" />
+                    <select name="gameId" class="form-control d-inline w-auto" required>
+                        <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
+                    </select>
+                    <button type="submit">Assigner ADMIN</button>
+                </form>
+                <!-- Afficher un message d'erreur, si applicable -->
+                <p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
+            </div>
         </div>
     </div>
 

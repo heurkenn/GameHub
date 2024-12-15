@@ -1741,3 +1741,1091 @@ INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 6) [42102-224]
 2024-12-15T20:26:21.162+01:00  INFO 300143 --- [gamehub] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
 2024-12-15T20:56:21.163+01:00  INFO 300143 --- [gamehub] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
 2024-12-15T21:26:21.165+01:00  INFO 300143 --- [gamehub] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 3]
+2024-12-15T22:59:42.956+01:00  INFO 353916 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : Starting GamehubApplication using Java 21.0.5 with PID 353916 (/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes started by cytech in /home/cytech/Desktop/Gamehub/GameHub)
+2024-12-15T22:59:42.958+01:00  INFO 353916 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : The following 1 profile is active: "dev"
+2024-12-15T22:59:43.773+01:00  INFO 353916 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-15T22:59:43.838+01:00  INFO 353916 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 10 JPA repository interfaces.
+2024-12-15T22:59:44.385+01:00  INFO 353916 --- [gamehub] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-15T22:59:44.405+01:00  INFO 353916 --- [gamehub] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-15T22:59:44.406+01:00  INFO 353916 --- [gamehub] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-15T22:59:44.439+01:00  INFO 353916 --- [gamehub] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-15T22:59:44.440+01:00  INFO 353916 --- [gamehub] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1435 ms
+2024-12-15T22:59:44.466+01:00  INFO 353916 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-15T22:59:44.651+01:00  INFO 353916 --- [gamehub] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:C:/Gamehub/gamehub/test/testdb user=SA
+2024-12-15T22:59:44.653+01:00  INFO 353916 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-15T22:59:44.663+01:00  INFO 353916 --- [gamehub] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:/Gamehub/gamehub/test/testdb'
+2024-12-15T22:59:44.732+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]
+2024-12-15T22:59:44.745+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo')
+2024-12-15T22:59:44.746+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation 4', '2013-11-15', 'Sony')
+2024-12-15T22:59:44.746+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation 5', '2020-11-12', 'Sony')
+2024-12-15T22:59:44.747+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Xbox One', '2013-11-22', 'Microsoft')
+2024-12-15T22:59:44.747+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Xbox Series X', '2020-11-10', 'Microsoft')
+2024-12-15T22:59:44.747+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PC', '1981-08-12', 'IBM')
+2024-12-15T22:59:44.747+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo 3DS', '2011-02-26', 'Nintendo')
+2024-12-15T22:59:44.748+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation Vita', '2011-12-17', 'Sony')
+2024-12-15T22:59:44.748+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Mobile', '2007-01-09', 'Various')
+2024-12-15T22:59:44.748+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Mac', '1984-01-24', 'Apple')
+2024-12-15T22:59:44.749+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Linux', '1991-08-25', 'Community')
+2024-12-15T22:59:44.749+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Stadia', '2019-11-19', 'Google')
+2024-12-15T22:59:44.752+01:00 DEBUG 353916 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : 31 returned as update count for SQL: INSERT INTO game (name, release_year, developer_studio, genre, image_url, description) VALUES ('League of Legends', 2009, 'Riot Games', 'Multiplayer', 'league_of_legends.jpg', 'Un jeu de stratégie multijoueur en ligne où deux équipes s’affrontent pour détruire la base ennemie.'), ('Dota 2', 2013, 'Valve', 'Multiplayer', 'dota2.jpg', 'Un jeu MOBA compétitif où deux équipes de 5 joueurs s’affrontent dans des batailles stratégiques.'), ('Counter-Strike: Global Offensive', 2012, 'Valve', 'Multiplayer', 'csgo.jpg', 'Un jeu de tir tactique multijoueur avec des équipes terroristes et antiterroristes.'), ('Valorant', 2020, 'Riot Games', 'Multiplayer', 'valorant.jpg', 'Un jeu de tir tactique multijoueur avec des agents ayant des capacités uniques.'), ('Fortnite', 2017, 'Epic Games', 'Multiplayer', 'fortnite.jpg', 'Un Battle Royale multijoueur où 100 joueurs s’affrontent pour être le dernier survivant.'), ('Call of Duty: Warzone', 2020, 'Infinity Ward', 'Multiplayer', 'warzone.jpg', 'Un Battle Royale multijoueur où les joueurs s’affrontent sur des cartes gigantesques.'), ('PUBG: Battlegrounds', 2017, 'Krafton', 'Multiplayer', 'pubg.jpg', 'Un jeu Battle Royale où jusqu’à 100 joueurs se battent pour survivre sur une île.'), ('Overwatch', 2016, 'Blizzard Entertainment', 'Multiplayer', 'overwatch.jpg', 'Un jeu de tir multijoueur basé sur des héros avec des capacités uniques.'), ('Rocket League', 2015, 'Psyonix', 'Multiplayer', 'rocket_league.jpg', 'Un jeu multijoueur où le football est joué avec des voitures équipées de fusées.'), ('Rainbow Six Siege', 2015, 'Ubisoft', 'Multiplayer', 'rainbow_six.jpg', 'Un jeu de tir tactique multijoueur mettant l’accent sur la stratégie et le travail d’équipe.'), ('Apex Legends', 2019, 'Respawn Entertainment', 'Multiplayer', 'apex_legends.jpg', 'Un Battle Royale multijoueur avec des légendes ayant des compétences spécifiques.'), ('Super Smash Bros. Ultimate', 2018, 'Nintendo', 'Multiplayer', 'ssbu.jpg', 'Un jeu de combat multijoueur rassemblant des personnages emblématiques.'), ('Street Fighter V', 2016, 'Capcom', 'Multiplayer', 'street_fighter_v.jpg', 'Un jeu de combat compétitif parfait pour les tournois multijoueurs.'), ('Tekken 7', 2015, 'Bandai Namco', 'Multiplayer', 'tekken7.jpg', 'Un jeu de combat multijoueur où chaque personnage possède son propre style.'), ('Splatoon 3', 2022, 'Nintendo', 'Multiplayer', 'splatoon3.jpg', 'Un jeu multijoueur compétitif où des équipes s’affrontent pour couvrir le terrain de peinture.'), ('Halo Infinite', 2021, '343 Industries', 'Multiplayer', 'halo_infinite.jpg', 'Un jeu de tir multijoueur dans l’univers emblématique de Halo.'), ('Fall Guys: Ultimate Knockout', 2020, 'Mediatonic', 'Multiplayer', 'fall_guys.jpg', 'Un jeu multijoueur amusant où des joueurs s’affrontent dans des mini-jeux chaotiques.'), ('Battlefield 2042', 2021, 'DICE', 'Multiplayer', 'battlefield_2042.jpg', 'Un jeu de tir multijoueur avec des combats massifs et des cartes gigantesques.'), ('FIFA 23', 2022, 'EA Sports', 'Multiplayer', 'fifa23.jpg', 'Un jeu de football multijoueur parfait pour des compétitions en ligne.'), ('NBA 2K23', 2022, 'Visual Concepts', 'Multiplayer', 'nba2k23.jpg', 'Un jeu de basket multijoueur idéal pour les tournois compétitifs.'), ('Mario Kart 8 Deluxe', 2017, 'Nintendo', 'Multiplayer', 'mario_kart8.jpg', 'Un jeu de course multijoueur où des personnages Nintendo s’affrontent sur des circuits variés.'), ('Elden Ring: Colosseum', 2022, 'FromSoftware', 'Multiplayer', 'elden_ring_colosseum.jpg', 'Un mode multijoueur compétitif ajouté à Elden Ring pour les combats PvP.'), ('For Honor', 2017, 'Ubisoft', 'Multiplayer', 'for_honor.jpg', 'Un jeu de combat multijoueur mettant en scène des chevaliers, des samouraïs et des vikings.'), ('Chivalry 2', 2021, 'Torn Banner Studios', 'Multiplayer', 'chivalry2.jpg', 'Un jeu multijoueur de combat médiéval immersif.'), ('Brawlhalla', 2017, 'Blue Mammoth Games', 'Multiplayer', 'brawlhalla.jpg', 'Un jeu de combat multijoueur gratuit dans un style cartoon.'), ('Smite', 2014, 'Hi-Rez Studios', 'Multiplayer', 'smite.jpg', 'Un MOBA où des dieux mythologiques s’affrontent dans des batailles compétitives.'), ('StarCraft II', 2010, 'Blizzard Entertainment', 'Multiplayer', 'starcraft2.jpg', 'Un jeu de stratégie multijoueur en temps réel avec des combats intenses.'), ('Hearthstone', 2014, 'Blizzard Entertainment', 'Multiplayer', 'hearthstone.jpg', 'Un jeu de cartes multijoueur basé sur l’univers de Warcraft.'), ('Team Fortress 2', 2007, 'Valve', 'Multiplayer', 'tf2.jpg', 'Un jeu de tir multijoueur où des équipes s’affrontent dans des modes variés.'), ('Among Us', 2018, 'InnerSloth', 'Multiplayer', 'among_us.jpg', 'Un jeu multijoueur de déduction sociale où des imposteurs sabotent l’équipage.'), ('Minecraft', 2011, 'Mojang', 'Sandbox', 'mincraft.jpg', 'Minecraft est un jeu bac à sable où les joueurs peuvent explorer, construire et survivre dans un monde généré de manière procédurale')
+2024-12-15T22:59:44.766+01:00  WARN 353916 --- [gamehub] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #14 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 6)
+2024-12-15T22:59:44.766+01:00  INFO 353916 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-15T22:59:44.824+01:00  INFO 353916 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-15T22:59:44.829+01:00  INFO 353916 --- [gamehub] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-12-15T22:59:44.842+01:00  INFO 353916 --- [gamehub] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-12-15T22:59:44.860+01:00 ERROR 353916 --- [gamehub] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #14 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 6)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at fr.gamehub.gamehub.GamehubApplication.main(GamehubApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #14 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 6)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 10 common frames omitted
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #14 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 6)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 17 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Unique index or primary key violation: "PUBLIC.PRIMARY_KEY_7B ON PUBLIC.GAME_PLATFORMS(GAME_ID, PLATFORM_ID) VALUES ( /* key:1 */ CAST(1 AS BIGINT), CAST(6 AS BIGINT))"; SQL statement:
+INSERT INTO game_platforms (game_id, platform_id) VALUES (1, 6) [23505-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:520) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.index.Index.getDuplicateKeyException(Index.java:527) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.mvstore.db.MVSecondaryIndex.checkUnique(MVSecondaryIndex.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.mvstore.db.MVSecondaryIndex.add(MVSecondaryIndex.java:184) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.mvstore.db.MVTable.addRow(MVTable.java:519) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.insertRows(Insert.java:174) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.update(Insert.java:135) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Command.executeUpdate(Command.java:256) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	... 27 common frames omitted
+
+2024-12-15T23:00:14.212+01:00  INFO 354214 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : Starting GamehubApplication using Java 21.0.5 with PID 354214 (/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes started by cytech in /home/cytech/Desktop/Gamehub/GameHub)
+2024-12-15T23:00:14.214+01:00  INFO 354214 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : The following 1 profile is active: "dev"
+2024-12-15T23:00:14.906+01:00  INFO 354214 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-15T23:00:14.979+01:00  INFO 354214 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 10 JPA repository interfaces.
+2024-12-15T23:00:15.533+01:00  INFO 354214 --- [gamehub] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-15T23:00:15.552+01:00  INFO 354214 --- [gamehub] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-15T23:00:15.552+01:00  INFO 354214 --- [gamehub] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-15T23:00:15.617+01:00  INFO 354214 --- [gamehub] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-15T23:00:15.617+01:00  INFO 354214 --- [gamehub] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1372 ms
+2024-12-15T23:00:15.669+01:00  INFO 354214 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-15T23:00:15.916+01:00  INFO 354214 --- [gamehub] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:C:/Gamehub/gamehub/test/testdb user=SA
+2024-12-15T23:00:15.917+01:00  INFO 354214 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-15T23:00:15.925+01:00  INFO 354214 --- [gamehub] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:/Gamehub/gamehub/test/testdb'
+2024-12-15T23:00:16.044+01:00  INFO 354214 --- [gamehub] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-15T23:00:16.078+01:00  INFO 354214 --- [gamehub] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-15T23:00:16.099+01:00  INFO 354214 --- [gamehub] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-15T23:00:16.319+01:00  INFO 354214 --- [gamehub] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-15T23:00:16.362+01:00  WARN 354214 --- [gamehub] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-15T23:00:17.245+01:00  INFO 354214 --- [gamehub] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-15T23:00:17.279+01:00  WARN 354214 --- [gamehub] [main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists app_user add column game_id bigint not null" via JDBC [NULL not allowed for column "GAME_ID";]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists app_user add column game_id bigint not null" via JDBC [NULL not allowed for column "GAME_ID";]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:583) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:523) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:341) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:240) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:119) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at fr.gamehub.gamehub.GamehubApplication.main(GamehubApplication.java:10) ~[classes/:na]
+Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: NULL not allowed for column "GAME_ID"; SQL statement:
+INSERT INTO "PUBLIC"."APP_USER_COPY_3_0"("ID", "DTYPE", "NAME", "SURNAME", "USERNAME", "EMAIL", "PASSWORD") OVERRIDING SYSTEM VALUE SELECT "ID", "DTYPE", "NAME", "SURNAME", "USERNAME", "EMAIL", "PASSWORD" FROM "PUBLIC"."APP_USER" [23502-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:520) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:365) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Table.convertInsertRow(Table.java:936) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.addRow(Insert.java:229) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.insertRows(Insert.java:203) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.update(Insert.java:135) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Command.executeUpdate(Command.java:256) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.execute(AlterTableAlterColumn.java:649) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.cloneTableStructure(AlterTableAlterColumn.java:561) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.copyData(AlterTableAlterColumn.java:343) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:244) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Command.executeUpdate(Command.java:256) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	... 37 common frames omitted
+
+2024-12-15T23:00:17.285+01:00  WARN 354214 --- [gamehub] [main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists app_user add constraint FKk1vxk5b126m90r7em7a8x30tn foreign key (game_id) references game" via JDBC [Column "GAME_ID" not found;]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists app_user add constraint FKk1vxk5b126m90r7em7a8x30tn foreign key (game_id) references game" via JDBC [Column "GAME_ID" not found;]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:583) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:523) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:455) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:276) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:119) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at fr.gamehub.gamehub.GamehubApplication.main(GamehubApplication.java:10) ~[classes/:na]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "GAME_ID" not found; SQL statement:
+alter table if exists app_user add constraint FKk1vxk5b126m90r7em7a8x30tn foreign key (game_id) references game [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Table.getColumn(Table.java:759) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:184) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:215) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Command.executeUpdate(Command.java:256) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	... 36 common frames omitted
+
+2024-12-15T23:00:17.300+01:00  INFO 354214 --- [gamehub] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-15T23:00:17.509+01:00  INFO 354214 --- [gamehub] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-15T23:00:17.902+01:00  WARN 354214 --- [gamehub] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-15T23:00:17.915+01:00  INFO 354214 --- [gamehub] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailsService
+2024-12-15T23:00:18.027+01:00  INFO 354214 --- [gamehub] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-12-15T23:00:18.135+01:00 DEBUG 354214 --- [gamehub] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-12-15T23:00:18.408+01:00  INFO 354214 --- [gamehub] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-15T23:00:18.411+01:00  INFO 354214 --- [gamehub] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2024-12-15T23:00:18.412+01:00  INFO 354214 --- [gamehub] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1fe275d8]]
+2024-12-15T23:00:18.412+01:00  INFO 354214 --- [gamehub] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2024-12-15T23:00:18.423+01:00  INFO 354214 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : Started GamehubApplication in 4.57 seconds (process running for 5.03)
+2024-12-15T23:00:24.631+01:00  INFO 354214 --- [gamehub] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-15T23:00:24.632+01:00  INFO 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-15T23:00:24.633+01:00  INFO 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-15T23:00:24.643+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /
+2024-12-15T23:00:24.649+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /
+2024-12-15T23:00:24.881+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:24.960+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /image/apex_legends.jpg
+2024-12-15T23:00:24.960+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /css/style.css
+2024-12-15T23:00:24.960+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /image/fortnite.jpg
+2024-12-15T23:00:24.960+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /css/game.css
+2024-12-15T23:00:24.960+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /image/battlefield_2042.jpg
+2024-12-15T23:00:24.962+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /css/game.css
+2024-12-15T23:00:24.962+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /css/style.css
+2024-12-15T23:00:24.962+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /image/fortnite.jpg
+2024-12-15T23:00:24.962+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /image/battlefield_2042.jpg
+2024-12-15T23:00:24.962+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /image/apex_legends.jpg
+2024-12-15T23:00:24.965+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /image/nba2k23.jpg
+2024-12-15T23:00:24.965+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /image/nba2k23.jpg
+2024-12-15T23:00:24.977+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:24.977+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:24.978+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:24.982+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:24.983+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:24.983+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:25.089+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /image/fortnite.jpg
+2024-12-15T23:00:25.089+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /image/apex_legends.jpg
+2024-12-15T23:00:25.089+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /image/nba2k23.jpg
+2024-12-15T23:00:25.089+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /image/battlefield_2042.jpg
+2024-12-15T23:00:25.091+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /image/nba2k23.jpg
+2024-12-15T23:00:25.091+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /image/battlefield_2042.jpg
+2024-12-15T23:00:25.091+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /image/fortnite.jpg
+2024-12-15T23:00:25.091+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /image/apex_legends.jpg
+2024-12-15T23:00:25.095+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:25.097+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:25.101+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:25.103+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:33.654+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /register
+2024-12-15T23:00:33.654+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /register
+2024-12-15T23:00:33.675+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:33.722+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /css/style.css
+2024-12-15T23:00:33.723+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /css/style.css
+2024-12-15T23:00:33.726+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /css/form.css
+2024-12-15T23:00:33.727+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /css/form.css
+2024-12-15T23:00:33.729+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:00:33.733+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:06.224+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /login
+2024-12-15T23:01:06.226+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-12-15T23:01:06.247+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:06.309+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /css/style.css
+2024-12-15T23:01:06.311+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /css/form.css
+2024-12-15T23:01:06.311+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /css/style.css
+2024-12-15T23:01:06.312+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /css/form.css
+2024-12-15T23:01:06.315+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:06.318+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:12.384+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /login
+2024-12-15T23:01:12.545+01:00  WARN 354214 --- [gamehub] [http-nio-8080-exec-9] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
+2024-12-15T23:01:12.546+01:00 ERROR 354214 --- [gamehub] [http-nio-8080-exec-9] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]
+2024-12-15T23:01:12.555+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] .s.a.DefaultAuthenticationEventPublisher : No event was found for the exception org.springframework.security.authentication.InternalAuthenticationServiceException
+2024-12-15T23:01:12.556+01:00 ERROR 354214 --- [gamehub] [http-nio-8080-exec-9] w.a.UsernamePasswordAuthenticationFilter : An internal error occurred while trying to authenticate the user.
+
+org.springframework.security.authentication.InternalAuthenticationServiceException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]; SQL [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:122) ~[spring-security-core-6.3.4.jar:6.3.4]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:133) ~[spring-security-core-6.3.4.jar:6.3.4]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182) ~[spring-security-core-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:85) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:231) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.springframework.dao.InvalidDataAccessResourceUsageException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]; SQL [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:277) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.14.jar:6.1.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy145.findByUsername(Unknown Source) ~[na:na]
+	at fr.gamehub.gamehub.service.MyUserDetailsService.loadUserByUsername(MyUserDetailsService.java:26) ~[classes/:na]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:107) ~[spring-security-core-6.3.4.jar:6.3.4]
+	... 61 common frames omitted
+Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:66) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:194) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:155) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.lambda$list$0(JdbcSelectExecutor.java:85) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:231) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:167) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.advanceNext(JdbcValuesResultSetImpl.java:265) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.processNext(JdbcValuesResultSetImpl.java:145) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.AbstractJdbcValues.next(AbstractJdbcValues.java:19) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.internal.RowProcessingStateStandardImpl.next(RowProcessingStateStandardImpl.java:67) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:204) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:211) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:139) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:382) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:302) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:526) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:555) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:418) ~[spring-orm-6.1.14.jar:6.1.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy174.getSingleResult(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:223) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:169) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:148) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.14.jar:6.1.14]
+	... 70 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.query.Query.prepare(Query.java:218) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.prepareCommand(Parser.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:316) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:328) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:153) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:183) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	... 109 common frames omitted
+
+2024-12-15T23:01:18.391+01:00  INFO 354214 --- [gamehub] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2024-12-15T23:01:21.037+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /register
+2024-12-15T23:01:21.038+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /register
+2024-12-15T23:01:21.050+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:21.092+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /css/style.css
+2024-12-15T23:01:21.093+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /css/form.css
+2024-12-15T23:01:21.093+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /css/style.css
+2024-12-15T23:01:21.095+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /css/form.css
+2024-12-15T23:01:21.097+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:21.102+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:34.096+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /register
+2024-12-15T23:01:34.097+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /register
+2024-12-15T23:01:34.151+01:00  WARN 354214 --- [gamehub] [http-nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
+2024-12-15T23:01:34.151+01:00 ERROR 354214 --- [gamehub] [http-nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.email=? [42122-224]
+2024-12-15T23:01:34.152+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:34.153+01:00 ERROR 354214 --- [gamehub] [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.InvalidDataAccessResourceUsageException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.email=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.email=?]; SQL [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.email=?]] with root cause
+
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.email=? [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.query.Query.prepare(Query.java:218) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.prepareCommand(Parser.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:316) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:328) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:153) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:183) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:155) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.lambda$list$0(JdbcSelectExecutor.java:85) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:231) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:167) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.advanceNext(JdbcValuesResultSetImpl.java:265) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.processNext(JdbcValuesResultSetImpl.java:145) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.AbstractJdbcValues.next(AbstractJdbcValues.java:19) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.internal.RowProcessingStateStandardImpl.next(RowProcessingStateStandardImpl.java:67) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:204) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:211) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:139) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:382) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:302) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:526) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:555) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:223) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:169) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:148) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.14.jar:6.1.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy145.findByEmail(Unknown Source) ~[na:na]
+	at fr.gamehub.gamehub.service.UserService.findByEmail(UserService.java:50) ~[classes/:na]
+	at fr.gamehub.gamehub.controller.RegisterController.register(RegisterController.java:53) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-12-15T23:01:34.159+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /error
+2024-12-15T23:01:34.160+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:34.168+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.s.w.s.HttpSessionRequestCache        : Saved request http://localhost:8080/error?continue to session
+2024-12-15T23:01:34.169+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-12-15T23:01:34.173+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /login
+2024-12-15T23:01:34.173+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-12-15T23:01:34.179+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:34.194+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /login
+2024-12-15T23:01:34.194+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-12-15T23:01:34.197+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:34.218+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /css/style.css
+2024-12-15T23:01:34.218+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /css/form.css
+2024-12-15T23:01:34.218+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /css/style.css
+2024-12-15T23:01:34.219+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /css/form.css
+2024-12-15T23:01:34.221+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:34.224+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:01:40.030+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /login
+2024-12-15T23:01:40.037+01:00  WARN 354214 --- [gamehub] [http-nio-8080-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
+2024-12-15T23:01:40.038+01:00 ERROR 354214 --- [gamehub] [http-nio-8080-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]
+2024-12-15T23:01:40.038+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] .s.a.DefaultAuthenticationEventPublisher : No event was found for the exception org.springframework.security.authentication.InternalAuthenticationServiceException
+2024-12-15T23:01:40.039+01:00 ERROR 354214 --- [gamehub] [http-nio-8080-exec-8] w.a.UsernamePasswordAuthenticationFilter : An internal error occurred while trying to authenticate the user.
+
+org.springframework.security.authentication.InternalAuthenticationServiceException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]; SQL [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:122) ~[spring-security-core-6.3.4.jar:6.3.4]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:133) ~[spring-security-core-6.3.4.jar:6.3.4]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182) ~[spring-security-core-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:85) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:231) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.springframework.dao.InvalidDataAccessResourceUsageException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]; SQL [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:277) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.14.jar:6.1.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy145.findByUsername(Unknown Source) ~[na:na]
+	at fr.gamehub.gamehub.service.MyUserDetailsService.loadUserByUsername(MyUserDetailsService.java:26) ~[classes/:na]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:107) ~[spring-security-core-6.3.4.jar:6.3.4]
+	... 61 common frames omitted
+Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:66) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:194) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:155) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.lambda$list$0(JdbcSelectExecutor.java:85) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:231) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:167) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.advanceNext(JdbcValuesResultSetImpl.java:265) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.processNext(JdbcValuesResultSetImpl.java:145) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.AbstractJdbcValues.next(AbstractJdbcValues.java:19) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.internal.RowProcessingStateStandardImpl.next(RowProcessingStateStandardImpl.java:67) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:204) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:211) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:139) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:382) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:302) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:526) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:555) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:418) ~[spring-orm-6.1.14.jar:6.1.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy174.getSingleResult(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:223) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:169) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:148) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.14.jar:6.1.14]
+	... 70 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.query.Query.prepare(Query.java:218) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.prepareCommand(Parser.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:316) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:328) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:153) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:183) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	... 109 common frames omitted
+
+2024-12-15T23:01:45.960+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /login
+2024-12-15T23:01:45.967+01:00  WARN 354214 --- [gamehub] [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
+2024-12-15T23:01:45.967+01:00 ERROR 354214 --- [gamehub] [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]
+2024-12-15T23:01:45.968+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] .s.a.DefaultAuthenticationEventPublisher : No event was found for the exception org.springframework.security.authentication.InternalAuthenticationServiceException
+2024-12-15T23:01:45.969+01:00 ERROR 354214 --- [gamehub] [http-nio-8080-exec-2] w.a.UsernamePasswordAuthenticationFilter : An internal error occurred while trying to authenticate the user.
+
+org.springframework.security.authentication.InternalAuthenticationServiceException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]; SQL [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:122) ~[spring-security-core-6.3.4.jar:6.3.4]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:133) ~[spring-security-core-6.3.4.jar:6.3.4]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182) ~[spring-security-core-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:85) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:231) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.springframework.dao.InvalidDataAccessResourceUsageException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]; SQL [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:277) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.14.jar:6.1.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy145.findByUsername(Unknown Source) ~[na:na]
+	at fr.gamehub.gamehub.service.MyUserDetailsService.loadUserByUsername(MyUserDetailsService.java:26) ~[classes/:na]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:107) ~[spring-security-core-6.3.4.jar:6.3.4]
+	... 61 common frames omitted
+Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement [Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]] [select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=?]
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:66) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:194) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:155) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.lambda$list$0(JdbcSelectExecutor.java:85) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:231) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:167) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.advanceNext(JdbcValuesResultSetImpl.java:265) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.processNext(JdbcValuesResultSetImpl.java:145) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.jdbc.internal.AbstractJdbcValues.next(AbstractJdbcValues.java:19) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.internal.RowProcessingStateStandardImpl.next(RowProcessingStateStandardImpl.java:67) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:204) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:211) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:139) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:382) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:302) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:526) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:555) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:418) ~[spring-orm-6.1.14.jar:6.1.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy174.getSingleResult(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:223) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140) ~[spring-data-jpa-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:169) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:148) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.5.jar:3.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.14.jar:6.1.14]
+	... 70 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "U1_0.GAME_ID" not found; SQL statement:
+select u1_0.id,u1_0.email,u1_0.game_id,u1_0.name,u1_0.password,u1_0.surname,u1_0.username from app_user u1_0 where u1_0.username=? [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.query.Query.prepare(Query.java:218) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.prepareCommand(Parser.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:316) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:328) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:153) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:183) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	... 109 common frames omitted
+
+2024-12-15T23:02:00.411+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /h2-console
+2024-12-15T23:02:00.411+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /h2-console
+2024-12-15T23:02:00.417+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/
+2024-12-15T23:02:00.418+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/
+2024-12-15T23:02:00.486+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/stylesheet.css
+2024-12-15T23:02:00.488+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/stylesheet.css
+2024-12-15T23:02:00.519+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/login.jsp?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:00.525+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/login.jsp?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:00.555+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/background.gif
+2024-12-15T23:02:00.556+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/background.gif
+2024-12-15T23:02:01.890+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/login.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.891+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/login.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.944+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/header.jsp?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.944+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/header.jsp?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.951+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tables.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.952+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tables.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.956+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/query.jsp?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.957+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/query.jsp?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.960+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/help.jsp?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.961+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/help.jsp?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:01.967+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_disconnect.gif
+2024-12-15T23:02:01.967+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_disconnect.gif
+2024-12-15T23:02:01.968+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_line.gif
+2024-12-15T23:02:01.969+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_line.gif
+2024-12-15T23:02:01.974+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_refresh.gif
+2024-12-15T23:02:01.975+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_refresh.gif
+2024-12-15T23:02:01.977+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_rollback.gif
+2024-12-15T23:02:01.978+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_commit.gif
+2024-12-15T23:02:01.978+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_rollback.gif
+2024-12-15T23:02:01.978+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_commit.gif
+2024-12-15T23:02:01.981+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_run_selected.gif
+2024-12-15T23:02:01.981+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_stop.gif
+2024-12-15T23:02:01.981+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_run_selected.gif
+2024-12-15T23:02:01.982+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_stop.gif
+2024-12-15T23:02:01.984+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_run.gif
+2024-12-15T23:02:01.985+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_run.gif
+2024-12-15T23:02:01.989+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_help.gif
+2024-12-15T23:02:01.989+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/icon_history.gif
+2024-12-15T23:02:01.989+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_help.gif
+2024-12-15T23:02:01.990+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/icon_history.gif
+2024-12-15T23:02:02.037+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree.js
+2024-12-15T23:02:02.037+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree.js
+2024-12-15T23:02:02.054+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_column.gif
+2024-12-15T23:02:02.055+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_column.gif
+2024-12-15T23:02:02.055+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_empty.gif
+2024-12-15T23:02:02.055+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_table.gif
+2024-12-15T23:02:02.055+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_database.gif
+2024-12-15T23:02:02.055+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_database.gif
+2024-12-15T23:02:02.055+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_table.gif
+2024-12-15T23:02:02.055+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_minus.gif
+2024-12-15T23:02:02.055+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_plus.gif
+2024-12-15T23:02:02.055+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_empty.gif
+2024-12-15T23:02:02.056+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_minus.gif
+2024-12-15T23:02:02.056+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_plus.gif
+2024-12-15T23:02:02.063+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_type.gif
+2024-12-15T23:02:02.063+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_index.gif
+2024-12-15T23:02:02.063+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_index_az.gif
+2024-12-15T23:02:02.063+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_index.gif
+2024-12-15T23:02:02.063+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_type.gif
+2024-12-15T23:02:02.063+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_index_az.gif
+2024-12-15T23:02:02.070+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_folder.gif
+2024-12-15T23:02:02.070+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_users.gif
+2024-12-15T23:02:02.070+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_info.gif
+2024-12-15T23:02:02.070+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_user.gif
+2024-12-15T23:02:02.070+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/tree_view.gif
+2024-12-15T23:02:02.071+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_view.gif
+2024-12-15T23:02:02.071+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_users.gif
+2024-12-15T23:02:02.071+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_info.gif
+2024-12-15T23:02:02.071+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_folder.gif
+2024-12-15T23:02:02.071+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/tree_user.gif
+2024-12-15T23:02:17.189+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:17.191+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:02:17.223+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/table.js
+2024-12-15T23:02:17.224+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/stylesheet.css
+2024-12-15T23:02:17.224+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/table.js
+2024-12-15T23:02:17.225+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/stylesheet.css
+2024-12-15T23:04:04.043+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:04:04.043+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:04:04.074+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/stylesheet.css
+2024-12-15T23:04:04.075+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/table.js
+2024-12-15T23:04:04.076+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/table.js
+2024-12-15T23:04:04.076+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/stylesheet.css
+2024-12-15T23:05:04.202+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:05:04.204+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:05:04.232+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/table.js
+2024-12-15T23:05:04.232+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/stylesheet.css
+2024-12-15T23:05:04.234+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/stylesheet.css
+2024-12-15T23:05:04.234+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/table.js
+2024-12-15T23:05:04.989+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:05:04.989+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:05:05.168+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:05:05.169+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:05:37.899+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:05:37.900+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:05:37.928+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/stylesheet.css
+2024-12-15T23:05:37.929+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/stylesheet.css
+2024-12-15T23:05:37.930+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/table.js
+2024-12-15T23:05:37.934+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/table.js
+2024-12-15T23:05:38.855+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=drop%20database%0A%0A
+2024-12-15T23:05:38.856+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=drop%20database%0A%0A
+2024-12-15T23:05:43.095+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=dr
+2024-12-15T23:05:43.096+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=dr
+2024-12-15T23:05:44.012+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=dr
+2024-12-15T23:05:44.013+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=dr
+2024-12-15T23:05:44.192+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=dr
+2024-12-15T23:05:44.193+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=dr
+2024-12-15T23:05:50.986+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=drop%20
+2024-12-15T23:05:50.987+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/autoCompleteList.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1&query=drop%20
+2024-12-15T23:06:11.937+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:06:11.939+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:06:11.967+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/stylesheet.css
+2024-12-15T23:06:11.969+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/stylesheet.css
+2024-12-15T23:06:11.974+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/table.js
+2024-12-15T23:06:11.976+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/table.js
+2024-12-15T23:06:12.911+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1
+2024-12-15T23:06:12.912+01:00 DEBUG 354214 --- [gamehub] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/query.do?jsessionid=5d74cb08903bbdf7628d7b34590e11b1

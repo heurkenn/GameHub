@@ -22,6 +22,7 @@ public class ProfileController {
     private String superAdminPassword; // Mot de passe défini dans application.properties
 
     private final UserService userService;
+    @SuppressWarnings("unused")
     private final PasswordEncoder passwordEncoder;
 
     public ProfileController(UserService userService, PasswordEncoder passwordEncoder) {
