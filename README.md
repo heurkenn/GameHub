@@ -1,9 +1,9 @@
 ## Présentation du projet
 	-Notre projet est une plateforme de jeu, dans celle-ci on peut avoir un compte, se connecter/déconnecter participer à des tournois et communiquer sur une plateforme "communauté" pour chaque jeu. 
-	Seule les admins ont le droit de créer des tournois et les modifiers.
-	Le projet contient un petit Easter Egg sur la page d'erreur où le personne arrivant dessus peut jouer au snake
+	Seuls les admins ont le droit de créer des tournois et les modifiers.
+	Le projet contient un petit Easter Egg sur la page d'erreur où la personne arrivant dessus peut jouer au snake
 
-	-L'application à été codé en Java 21, donc des problèmes de compatibilité peuvent avoir lieu en utilisant des versions antérieur.
+	-L'application à été codée en Java 21, donc des problèmes de compatibilité peuvent avoir lieu en utilisant des versions antérieures.
 
 
 ## Lancement de l'application
