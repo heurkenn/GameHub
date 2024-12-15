@@ -1,7 +1,9 @@
 package fr.gamehub.gamehub.controller;
 
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -69,15 +71,55 @@ public class TournamentController {
     }
 
     //fonction horloge dynamique pour le début de tournoi
+    public String horlogeDynamique(long tournament_id){  
+        // Récupère l'heure actuelle
+    LocalDateTime crtTime = LocalDateTime.now();
+    
+    // Récupère le tournoi par son ID
+    Tournament trnt = tournamentService.getTournamentById(tournament_id)
+        .orElseThrow(() -> new RuntimeException("Tournoi introuvable avec ID: " + tournament_id));
+    
+    // Récupère la date de début du tournoi
+    LocalDateTime dtStart = trnt.getDateStart();
 
+    // Calculer la différence entre les deux dates
+    Duration duration = Duration.between(crtTime, dtStart);
     
+    // Extraire les composants de la durée
+    long days = duration.toDays();
+    long hours = duration.toHours() % 24; // Heure restante après avoir calculé les jours
+    long minutes = duration.toMinutes() % 60; // Minute restante après avoir calculé les heures
+    long seconds = duration.getSeconds() % 60; // Seconde restante après avoir calculé les minutes
     
+    // Retourne la différence sous forme d'une chaîne lisible
+    return String.format("%d jours, %d heures, %d minutes, %d secondes", days, hours, minutes, seconds);
+    }
+
+
+
     @GetMapping("/tournaments")
     public String showTournaments(Model model) { // à l'affichage de la page, renvoi une liste de tournoi en paramètre
-        List<Tournament> tournaments = tournamentRepository.findAll();
-        model.addAttribute("tournaments", tournaments);
-        return "tournaments";
+    List<Tournament> tournaments = tournamentRepository.findAll();
+    List<Tournament> ongoingTournaments = new ArrayList<>();
+    List<Tournament> upcommingTournaments = new ArrayList<>();
+    List<Tournament> pastTournaments = new ArrayList<>();
+    LocalDateTime crtTime = LocalDateTime.now();
+    for (Tournament t : tournamentService.getAllTournaments()){
+        if (t.getDateStart().isBefore(crtTime) && t.getDateEnd().isAfter(crtTime)){//regarde si la date actuelle est après la date du debut du tournoi et avant celle de la fin
+            ongoingTournaments.add(t);
+        }else if(t.getDateStart().isAfter(crtTime)){//regarde si la date actuelle est avant la date du debut du tournoi
+            upcommingTournaments.add(t);
+        }else{
+            pastTournaments.add(t);
+        }
     }
+    model.addAttribute("pastTournaments", pastTournaments);//renvoie un parametre qui est la liste des tournois passé
+    model.addAttribute("ongoingTournaments", ongoingTournaments); //renvoie un parametre qui est la liste des tournois en cours
+    model.addAttribute("upcomingTournaments", upcommingTournaments);// renvoie la liste des tournois qui vont venir 
+    model.addAttribute("tournaments", tournaments);//renvoie la lsite de tout les tournois
+    return "tournaments";
+    }
+
 
     @GetMapping("/tournaments/creation")
     public String Tournament(Model model){
@@ -92,6 +134,8 @@ public class TournamentController {
         return tournament.map(ResponseEntity::ok)
             .orElseThrow();
     }
+
+    
 
     @PostMapping(value = "/tournaments/submitFormTournament")
     public String submitFormTournament(@Valid @ModelAttribute("tournament") Tournament tournament, BindingResult bindingResult) {
