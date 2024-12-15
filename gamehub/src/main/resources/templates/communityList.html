@@ -23,7 +23,7 @@
 		<h2 class="text-center mt-4 mb-5"> Toutes les communautés de GameHub :</h2>
 		<div class="row">
 			<div th:each ="community : ${allCommunity}" class="col-md-4 mb-4">
-                <a th:href=" " style="text-decoration: none;"> <!-- Mettre la bonne route vers la community -->
+                <a th:href="/game/{name}/chat" style="text-decoration: none;"> <!-- Mettre la bonne route vers la community -->
 				    <div class="tournament-card"> <!-- Prend tournament-card prcq esthétique ok pour les communautées-->
                         <div class="tournament-card-image">
                             <img th:src="@{/image/} + ${community.game.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
