@@ -6,8 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
@@ -148,10 +148,10 @@ public class GameController {
     }
 
     // Supprimer un jeu
-    @PostMapping("/delete")
-    public String deleteGame(@RequestParam Long gameId) {
-        gameService.deleteGame(gameId);
-        return "redirect:/games";
+    @PostMapping("/delete/{id}")
+    public String deleteGame(@PathVariable("id") Long id) {
+        gameService.deleteGame(id);
+        return "redirect:/admin-dashboard";
     }
 
     @GetMapping("/admin-dashboard")

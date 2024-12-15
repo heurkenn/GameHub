@@ -1,6 +1,3 @@
--- Insérer des utilisateurs dans la table app_user
-INSERT INTO app_user (name,surname,birthdate, email, password,username) VALUES ('John','Doe','1990-05-29','johndoe@example.com', 'password123', 'JohnDoe');
-INSERT INTO app_user (name,surname,birthdate, email, password,username) VALUES ('Jane','Smith','2005-11-07','janesmith@example.com','password456', 'JaneSmith');
 -- Insérer des plateformes dans la table platform
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo');
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation 4', '2013-11-15', 'Sony');
@@ -11,8 +8,6 @@ INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PC', '1981-0
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo 3DS', '2011-02-26', 'Nintendo');
 INSERT INTO platform (name, launch_date, developer_studio) VALUES ('PlayStation Vita', '2011-12-17', 'Sony');
 
--- Insérer tournois dans la table tournament
-INSERT INTO TOURNAMENT (ID , CATEGORIE  ,DATE_END , DATE_END_INSCRIPTION, DATE_START,	DATE_START_INSCRIPTION, DATECREATION, IS_PRIVATE,NAME,NB_JOUEUR,NB_JOUEUR_LIMITE,GAME_ID ) VALUES (1,1GAME , '2024-12-01', '2024-11-12','2024-11-11', '2024-11-12' , '2024-11-01', 0, 'TEST TOURNAMENT', 0, 444,1);
 
 -- Insérer des jeux dans la table game
 
