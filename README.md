@@ -26,7 +26,7 @@ Exécutez la classe principale GameHubApplication.java :
 Utilisez la commande suivante pour démarrer l'application :  
   ```sh
      ./mvnw spring-boot:run
-     ```
+  ```
 
 ## Arborescence du projet
 
