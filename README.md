@@ -13,7 +13,7 @@ Un super administrateur gère la plateforme en ajoutant des jeux et en attribuan
 
 ⚠️ Compatibilité : Le projet utilise Java 21. Des problèmes de compatibilité peuvent apparaître si vous utilisez une version antérieure de Java.
 
-## Authors
+## Auteurs
 
 - GABIOT Victor
 - FONTAINE Nicolas
