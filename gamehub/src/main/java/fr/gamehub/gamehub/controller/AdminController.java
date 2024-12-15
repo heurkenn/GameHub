@@ -13,6 +13,7 @@ import fr.gamehub.gamehub.model.Game;
 import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.service.GameService;
 import fr.gamehub.gamehub.service.PlatformService;
+import fr.gamehub.gamehub.service.TournamentService;
 import fr.gamehub.gamehub.service.UserService;
 
 @Controller
@@ -28,6 +29,8 @@ public class AdminController {
     @Autowired
     private PlatformService platformService;
 
+    @Autowired
+    private TournamentService tournamentService;
 
     /**
      * Affiche la page d'administration avec la liste des utilisateurs ayant un rôle spécifique.
@@ -38,6 +41,8 @@ public class AdminController {
         model.addAttribute("categories", Category.values());
         model.addAttribute("platforms", platformService.findAllPlatforms()); // Ajoute les plateformes à la vue
         model.addAttribute("admins", userService.findAllUsersWithRole("ROLE_ADMIN")); // Liste des administrateurs
+        model.addAttribute("users", userService.findAllUsers());
+        model.addAttribute("tournaments", tournamentService.getAllTournaments());
         return "admin-dashboard"; // Vue : admin-dashboard.html
     }
 

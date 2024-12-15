@@ -1605,3 +1605,241 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /home/cytech/Des
 	at org.h2.mvstore.db.Store.<init>(Store.java:133) ~[h2-2.2.224.jar:2.2.224]
 	... 43 common frames omitted
 
+2024-12-15T22:48:31.236+01:00  WARN 17198 --- [gamehub] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m5s807ms977µs189ns).
+2024-12-15T22:48:31.245+01:00  INFO 17198 --- [gamehub] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2024-12-15T22:48:31.245+01:00  INFO 17198 --- [gamehub] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4817bd3]]
+2024-12-15T22:48:31.246+01:00  INFO 17198 --- [gamehub] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2024-12-15T22:48:31.264+01:00  INFO 17198 --- [gamehub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-15T22:48:31.267+01:00  INFO 17198 --- [gamehub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-15T22:48:31.270+01:00  INFO 17198 --- [gamehub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-15T22:49:06.417+01:00  INFO 20111 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : Starting GamehubApplication using Java 21.0.5 with PID 20111 (/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes started by cytech in /home/cytech/Desktop/Gamehub/GameHub/gamehub)
+2024-12-15T22:49:06.420+01:00  INFO 20111 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : The following 1 profile is active: "dev"
+2024-12-15T22:49:06.771+01:00  INFO 20111 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-15T22:49:06.818+01:00  INFO 20111 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 10 JPA repository interfaces.
+2024-12-15T22:49:07.126+01:00  INFO 20111 --- [gamehub] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-15T22:49:07.135+01:00  INFO 20111 --- [gamehub] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-15T22:49:07.135+01:00  INFO 20111 --- [gamehub] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-15T22:49:07.168+01:00  INFO 20111 --- [gamehub] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-15T22:49:07.168+01:00  INFO 20111 --- [gamehub] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 716 ms
+2024-12-15T22:49:07.214+01:00  INFO 20111 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-15T22:49:07.353+01:00  INFO 20111 --- [gamehub] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:C:/Gamehub/gamehub/test/testdb user=SA
+2024-12-15T22:49:07.355+01:00  INFO 20111 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-15T22:49:07.366+01:00  INFO 20111 --- [gamehub] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:/Gamehub/gamehub/test/testdb'
+2024-12-15T22:49:07.420+01:00 DEBUG 20111 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]
+2024-12-15T22:49:07.428+01:00  WARN 20111 --- [gamehub] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo')
+2024-12-15T22:49:07.428+01:00  INFO 20111 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-15T22:49:07.436+01:00  INFO 20111 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-15T22:49:07.439+01:00  INFO 20111 --- [gamehub] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-12-15T22:49:07.446+01:00  INFO 20111 --- [gamehub] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-12-15T22:49:07.455+01:00 ERROR 20111 --- [gamehub] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo')
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at fr.gamehub.gamehub.GamehubApplication.main(GamehubApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo')
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 10 common frames omitted
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo')
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 17 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PLATFORM" not found (this database is empty); SQL statement:
+INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo') [42104-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8051) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8035) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.readTableOrView(Parser.java:8024) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.readTableOrView(Parser.java:7990) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseInsert(Parser.java:1540) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parsePrepared(Parser.java:719) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:592) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:564) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.prepareCommand(Parser.java:483) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	... 27 common frames omitted
+
+2024-12-15T22:50:10.981+01:00  INFO 20646 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : Starting GamehubApplication using Java 21.0.5 with PID 20646 (/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes started by cytech in /home/cytech/Desktop/Gamehub/GameHub/gamehub)
+2024-12-15T22:50:10.983+01:00  INFO 20646 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : The following 1 profile is active: "dev"
+2024-12-15T22:50:11.449+01:00  INFO 20646 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-15T22:50:11.492+01:00  INFO 20646 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 10 JPA repository interfaces.
+2024-12-15T22:50:11.799+01:00  INFO 20646 --- [gamehub] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-15T22:50:11.807+01:00  INFO 20646 --- [gamehub] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-15T22:50:11.807+01:00  INFO 20646 --- [gamehub] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-15T22:50:11.844+01:00  INFO 20646 --- [gamehub] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-15T22:50:11.845+01:00  INFO 20646 --- [gamehub] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 842 ms
+2024-12-15T22:50:11.888+01:00  INFO 20646 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-15T22:50:12.033+01:00  INFO 20646 --- [gamehub] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:C:/Gamehub/gamehub/test/testdb user=SA
+2024-12-15T22:50:12.035+01:00  INFO 20646 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-15T22:50:12.041+01:00  INFO 20646 --- [gamehub] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:/Gamehub/gamehub/test/testdb'
+2024-12-15T22:50:12.083+01:00 DEBUG 20646 --- [gamehub] [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]
+2024-12-15T22:50:12.091+01:00  WARN 20646 --- [gamehub] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo')
+2024-12-15T22:50:12.092+01:00  INFO 20646 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-15T22:50:12.099+01:00  INFO 20646 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-15T22:50:12.102+01:00  INFO 20646 --- [gamehub] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-12-15T22:50:12.110+01:00  INFO 20646 --- [gamehub] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-12-15T22:50:12.118+01:00 ERROR 20646 --- [gamehub] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo')
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at fr.gamehub.gamehub.GamehubApplication.main(GamehubApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo')
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 10 common frames omitted
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of file [/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes/data.sql]: INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo')
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 17 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PLATFORM" not found (this database is empty); SQL statement:
+INSERT INTO platform (name, launch_date, developer_studio) VALUES ('Nintendo Switch', '2017-03-03', 'Nintendo') [42104-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8051) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8035) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.readTableOrView(Parser.java:8024) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.readTableOrView(Parser.java:7990) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseInsert(Parser.java:1540) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parsePrepared(Parser.java:719) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:592) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:564) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.prepareCommand(Parser.java:483) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	... 27 common frames omitted
+
+2024-12-15T22:54:41.646+01:00  INFO 22746 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : Starting GamehubApplication using Java 21.0.5 with PID 22746 (/home/cytech/Desktop/Gamehub/GameHub/gamehub/target/classes started by cytech in /home/cytech/Desktop/Gamehub/GameHub/gamehub)
+2024-12-15T22:54:41.647+01:00  INFO 22746 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : The following 1 profile is active: "dev"
+2024-12-15T22:54:41.992+01:00  INFO 22746 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-15T22:54:42.041+01:00  INFO 22746 --- [gamehub] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 10 JPA repository interfaces.
+2024-12-15T22:54:42.330+01:00  INFO 22746 --- [gamehub] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-15T22:54:42.339+01:00  INFO 22746 --- [gamehub] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-15T22:54:42.339+01:00  INFO 22746 --- [gamehub] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-15T22:54:42.366+01:00  INFO 22746 --- [gamehub] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-15T22:54:42.366+01:00  INFO 22746 --- [gamehub] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 697 ms
+2024-12-15T22:54:42.385+01:00  INFO 22746 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-15T22:54:42.521+01:00  INFO 22746 --- [gamehub] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:C:/Gamehub/gamehub/test/testdb user=SA
+2024-12-15T22:54:42.522+01:00  INFO 22746 --- [gamehub] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-15T22:54:42.529+01:00  INFO 22746 --- [gamehub] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:/Gamehub/gamehub/test/testdb'
+2024-12-15T22:54:42.608+01:00  INFO 22746 --- [gamehub] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-15T22:54:42.633+01:00  INFO 22746 --- [gamehub] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-15T22:54:42.649+01:00  INFO 22746 --- [gamehub] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-15T22:54:42.777+01:00  INFO 22746 --- [gamehub] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-15T22:54:42.799+01:00  WARN 22746 --- [gamehub] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-15T22:54:43.386+01:00  INFO 22746 --- [gamehub] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-15T22:54:43.454+01:00  INFO 22746 --- [gamehub] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-15T22:54:43.634+01:00  INFO 22746 --- [gamehub] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-15T22:54:44.000+01:00  WARN 22746 --- [gamehub] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-15T22:54:44.012+01:00  INFO 22746 --- [gamehub] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailsService
+2024-12-15T22:54:44.115+01:00  INFO 22746 --- [gamehub] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-12-15T22:54:44.219+01:00 DEBUG 22746 --- [gamehub] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-12-15T22:54:44.389+01:00  INFO 22746 --- [gamehub] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-15T22:54:44.390+01:00  INFO 22746 --- [gamehub] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2024-12-15T22:54:44.391+01:00  INFO 22746 --- [gamehub] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@70798698]]
+2024-12-15T22:54:44.391+01:00  INFO 22746 --- [gamehub] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2024-12-15T22:54:44.395+01:00  INFO 22746 --- [gamehub] [main] fr.gamehub.gamehub.GamehubApplication    : Started GamehubApplication in 2.952 seconds (process running for 3.137)
+2024-12-15T22:54:54.452+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/login.do?jsessionid=53ea03e8a7b162d137382c7a68cc34d1
+2024-12-15T22:54:54.465+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/login.do?jsessionid=53ea03e8a7b162d137382c7a68cc34d1
+2024-12-15T22:54:54.513+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/stylesheet.css
+2024-12-15T22:54:54.514+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/stylesheet.css
+2024-12-15T22:54:54.529+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/login.jsp?jsessionid=8930b22a0785514e79cb4323e98e6148
+2024-12-15T22:54:54.530+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/login.jsp?jsessionid=8930b22a0785514e79cb4323e98e6148
+2024-12-15T22:54:54.545+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/background.gif
+2024-12-15T22:54:54.546+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/background.gif
+2024-12-15T22:54:54.574+01:00  INFO 22746 --- [gamehub] [http-nio-8080-exec-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-15T22:54:54.575+01:00  INFO 22746 --- [gamehub] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-15T22:54:54.576+01:00  INFO 22746 --- [gamehub] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-15T22:54:54.577+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /favicon.ico
+2024-12-15T22:54:54.581+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T22:54:54.584+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-5] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-12-15T22:54:54.594+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /login
+2024-12-15T22:54:54.595+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-12-15T22:54:54.753+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T22:55:44.387+01:00  INFO 22746 --- [gamehub] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[unknown], outboundChannel[unknown], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2024-12-15T22:56:35.714+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /h2-console/login.do?jsessionid=8930b22a0785514e79cb4323e98e6148
+2024-12-15T22:56:35.716+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /h2-console/login.do?jsessionid=8930b22a0785514e79cb4323e98e6148
+2024-12-15T22:56:35.760+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /h2-console/stylesheet.css
+2024-12-15T22:56:35.761+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /h2-console/stylesheet.css
+2024-12-15T22:56:35.792+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /favicon.ico
+2024-12-15T22:56:35.792+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T22:56:35.793+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-1] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-12-15T22:56:35.796+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /login
+2024-12-15T22:56:35.797+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-12-15T22:56:35.803+01:00 DEBUG 22746 --- [gamehub] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-15T23:25:44.387+01:00  INFO 22746 --- [gamehub] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[unknown], outboundChannel[unknown], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2024-12-15T23:50:49.676+01:00  INFO 22746 --- [gamehub] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2024-12-15T23:50:49.677+01:00  INFO 22746 --- [gamehub] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@70798698]]
+2024-12-15T23:50:49.677+01:00  INFO 22746 --- [gamehub] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2024-12-15T23:50:49.701+01:00  INFO 22746 --- [gamehub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-15T23:50:49.707+01:00  INFO 22746 --- [gamehub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-15T23:50:49.711+01:00  INFO 22746 --- [gamehub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

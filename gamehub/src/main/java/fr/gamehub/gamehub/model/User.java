@@ -60,7 +60,7 @@ public class User implements Serializable {
     private String password;
  
     @ManyToOne
-    @JoinColumn(name="game_id", nullable=false)
+    @JoinColumn(name="game_id")
     private Game game;
 
 
