@@ -105,35 +105,35 @@ public class TournamentController {
         tournamentRepository.save(tournament);
         return "redirect:/";
     }
-    /* 
-    @GetMapping(value = "ongoingTournaments" )
-    public  void showOnGoingTournaments(Model model){
+    
+    
+    public  List<Tournament> showOnGoingTournaments(){
         List<Tournament> lt = new LinkedList<>();
         LocalDateTime dt = LocalDateTime.now();
         for (Tournament t : service.getAllTournaments()){
             if (t.getDateStart().isBefore(dt) && t.getDateEnd().isAfter(dt)) lt.add(t);
         }
-        model.addAttribute("ongoingTournaments", lt);
+        return lt;
     }
-    @GetMapping(value = "upcomingTournaments")
-    public  void showUpcomingTournaments(Model model){
+   
+    public  List<Tournament> showUpcomingTournaments(){
         List<Tournament> lt = new LinkedList<>();
         LocalDateTime dt = LocalDateTime.now();
         for (Tournament t : service.getAllTournaments()){
             if (t.getDateStart().isAfter(dt) ) lt.add(t);
         }
-        model.addAttribute("upcomingTournaments", lt);
+        return lt;
     }
-    @GetMapping(value = "pastTournaments")
-    public  void showPastTournaments(Model model){
+    
+    public List<Tournament> showPastTournaments({
         List<Tournament> lt = new LinkedList<>();
         LocalDateTime dt = LocalDateTime.now();
         for (Tournament t : service.getAllTournaments()){
             if (t.getDateEnd().isBefore(dt) ) lt.add(t);
         }
-        model.addAttribute("pastTournaments", lt);
+        return lt;
     }
-    */
+    
     public static void startTournament(Tournament tournament) {
         Set<Fight> fights = new HashSet<>();
         // Création des combats
