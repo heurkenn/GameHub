@@ -19,11 +19,7 @@ Un super administrateur gère la plateforme en ajoutant des jeux et en attribuan
 - Java 21 (OpenJDK recommandé).  
 - Maven installé et configuré sur votre machine.
 
-### 2. Lancement via l'IDE
-Exécutez la classe principale GameHubApplication.java :  
-`GameHub/gamehub/src/main/java/fr/gamehub/gamehub/GameHubApplication.java`
-
-### 3. Lancement via Maven
+### 2. Lancement via Maven
 Utilisez la commande suivante pour démarrer l'application :  
   ```sh
      ./mvnw spring-boot:run
