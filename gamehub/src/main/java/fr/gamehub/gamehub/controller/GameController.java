@@ -13,6 +13,8 @@ import java.util.Set;
 
 import javax.imageio.ImageIO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +38,8 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/games")
 public class GameController {
+
+    private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 
     @Autowired
     private GameService gameService;
@@ -156,42 +160,49 @@ public class GameController {
             @PathVariable("id") Long id,
             @Valid Game updatedGame,
             BindingResult result,
-            @RequestParam("newImage") MultipartFile imageFile,
+            @RequestParam(value = "newImage", required = false) MultipartFile imageFile,
             @RequestParam(value = "platforms", required = false) List<Long> platformIds,
             Model model) {
 
+        // Étape 1 : Vérifier les erreurs de validation
         if (result.hasErrors()) {
+            System.out.println("Erreur de validation : " + result.getAllErrors());
+            model.addAttribute("platforms", platformService.findAll());
+            model.addAttribute("categories", Category.values());
             model.addAttribute("errorMessage", "Erreur lors de la modification du jeu.");
-            return "admin-dashboard"; // Page à afficher en cas d'erreurs
+            return "index";
         }
 
-        // Récupération du jeu existant
+        // Étape 2 : Vérifier si le jeu existe
         Optional<Game> optionalGame = gameService.getGameById(id);
         if (optionalGame.isEmpty()) {
+            System.out.println("Jeu introuvable avec l'ID : " + id);
             model.addAttribute("errorMessage", "Le jeu avec l'ID " + id + " n'existe pas.");
-            return "redirect:/admin-dashboard"; // Ou une autre vue appropriée
+            return "redirect:/admin-dashboard";
         }
 
         Game existingGame = optionalGame.get();
 
-
-        // Mise à jour des champs de l'objet
+        // Étape 3 : Mise à jour des champs du jeu
         existingGame.setName(updatedGame.getName());
         existingGame.setReleaseYear(updatedGame.getReleaseYear());
         existingGame.setDeveloperStudio(updatedGame.getDeveloperStudio());
         existingGame.setGenre(updatedGame.getGenre());
         existingGame.setDescription(updatedGame.getDescription());
+        System.out.println("Champs mis à jour pour le jeu : " + existingGame);
 
-        // Gestion des plateformes
+        // Étape 4 : Mise à jour des plateformes
         if (platformIds != null) {
             Set<Platform> platforms = platformService.findAllByIds(platformIds);
             existingGame.setPlatforms(platforms);
+            System.out.println("Plateformes mises à jour : " + platforms);
         } else {
-            existingGame.setPlatforms(new HashSet<>()); // Réinitialiser si aucune sélection
+            existingGame.setPlatforms(new HashSet<>());
+            System.out.println("Aucune plateforme sélectionnée.");
         }
 
-        // Gestion de l'image
-        if (!imageFile.isEmpty()) {
+        // Étape 5 : Gestion de l'image
+        if (imageFile != null && !imageFile.isEmpty()) {
             try {
                 String fileName = imageFile.getOriginalFilename();
                 Path uploadPath = Paths.get("src/main/resources/static/image");
@@ -201,16 +212,28 @@ public class GameController {
                 Path filePath = uploadPath.resolve(fileName);
                 Files.copy(imageFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
                 existingGame.setImage_url(fileName);
+                System.out.println("Image mise à jour : " + fileName);
             } catch (IOException e) {
+                System.out.println("Erreur lors de l'enregistrement de l'image : " + e.getMessage());
                 model.addAttribute("errorMessage", "Erreur lors de l'enregistrement de l'image.");
-                return "admin-dashboard";
+                return "login";
             }
         }
 
-        // Sauvegarde du jeu
+        // Étape 6 : Sauvegarde dans la base de données
         gameService.saveGame(existingGame);
+        logger.info("Jeu enregistré avec succès : {}", existingGame);
+
+        logger.info("Genre envoyé depuis le formulaire : {}", updatedGame.getGenre());
+        logger.info("Genre avant mise à jour : {}", existingGame.getGenre());
+        existingGame.setGenre(updatedGame.getGenre());
+        logger.info("Genre après mise à jour : {}", existingGame.getGenre());
+
+
+        // Redirection vers le tableau de bord
         return "redirect:/admin-dashboard";
     }
+
 
 
 

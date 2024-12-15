@@ -31,6 +31,12 @@ public class PlatformService {
     
     public Set<Platform> findAllByIds(List<Long> ids) {
     return new HashSet<>(platformRepository.findAllById(ids));
-}
+    }
+
+    
+
+    public List<Platform> findAll() {
+        return platformRepository.findAll();
+    }
 
 }
