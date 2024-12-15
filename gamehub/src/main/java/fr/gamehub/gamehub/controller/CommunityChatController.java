@@ -45,14 +45,21 @@ public class CommunityChatController {
             @RequestBody Comment comment,
             @RequestParam Long userId
     ) {
+        if (comment.getContent() == null || comment.getContent().trim().isEmpty()) {
+            throw new IllegalArgumentException("Le contenu du commentaire ne peut pas être vide.");
+        }
+
         comment.setTimestamp(LocalDateTime.now());
         comment.setCommunity(communityService.getCommunityById(communityId));
+
         Optional<User> optionalUser = userService.getUserById(userId);
         if (optionalUser.isPresent()) {
             comment.setUser(optionalUser.get());
         } else {
             throw new IllegalArgumentException("Utilisateur introuvable avec l'ID : " + userId);
         }
+
         return commentService.saveComment(comment);
     }
+
 }
