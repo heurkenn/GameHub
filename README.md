@@ -1,4 +1,4 @@
-3# GameHub - Plateforme de Jeux Vidéo
+# GameHub - Plateforme de Jeux Vidéo
 
 ## Présentation du projet
 GameHub est une plateforme permettant aux utilisateurs :
