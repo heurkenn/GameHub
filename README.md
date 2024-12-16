@@ -146,11 +146,21 @@ Pour faciliter la correction et les tests, voici une liste de comptes déjà cr�
 
 ## Utilisation de l'application
 
-- **Créer un compte utilisateur** pour accéder aux fonctionnalités (ou utilisez les comptes de test ci-dessus).
-- **Participer à des tournois** : Une fois connecté, naviguez jusqu'à la page du jeu de votre choix. Vous pouvez rejoindre un tournoi existant ou en demander un nouveau (si vous êtes admin).
-- **Discuter via le chat** : Depuis la page du jeu ou depuis la liste des communautés, rejoignez le chat pour échanger avec les autres joueurs.
-- **Admin (par jeu)** : Gérer les tournois depuis le tableau de bord dédié. Créer, modifier et supprimer des tournois.
-- **Super-Admin** : Gérer les jeux, les tournois et les admins "simples" dans un tableau de bord dédié. Le mot de passe se trouve dans le fichier `application.properties` (SuperAdminSecret). Après avoir modifié le statut ou les rôles d'un utilisateur, déconnectez-vous puis reconnectez-vous pour appliquer les changements.
+- **Créer un compte utilisateur** : Inscrivez-vous ou utilisez les comptes de test fournis. Une fois connecté, vous aurez accès à l’ensemble des fonctionnalités.
+- **Participer à des tournois** : Depuis la page d’un jeu, vous pouvez consulter les tournois disponibles, leurs dates, et un compte à rebours dynamique indiquant le temps restant avant la fin des inscriptions. Les utilisateurs peuvent facilement rejoindre un tournoi en cliquant sur le bouton dédié.
+- **Discuter via le chat en temps réel** : Rejoignez la communauté d’un jeu depuis la page du jeu lui-même ou depuis la liste des communautés. Le chat en temps réel vous permet d’échanger instantanément avec les autres membres, favorisant ainsi l’interaction entre joueurs.
+- **Admins (par jeu)** : Les administrateurs de communauté ont accès à un tableau de bord leur permettant de créer, modifier et supprimer des tournois. Ils peuvent ainsi gérer l’offre de tournois afin de maintenir l’activité et l’intérêt autour d’un jeu.
+- **Super-Admin** : Le super-administrateur dispose d’un tableau de bord étendu lui permettant de gérer les jeux, d’ajouter des administrateurs, de superviser les tournois et d’accéder à l’ensemble des fonctionnalités de la plateforme. Le mot de passe du super-admin est indiqué dans le fichier `application.properties`. Après toute modification de rôle, il est nécessaire de se déconnecter puis de se reconnecter pour appliquer les changements.
+
+## Technologies Utilisées
+
+- **Spring Boot & Spring Data JPA** : Pour la logique métier, la gestion des entités, la persistance des données et la sécurité.
+- **Spring MVC & Thymeleaf** : Pour la gestion des contrôleurs, le routage des requêtes, et l’affichage dynamique du contenu dans les vues HTML.
+- **WebSocket** : Pour la mise en place du chat en temps réel, assurant une communication instantanée entre les utilisateurs.
+- **AJAX** : Pour charger et mettre à jour certaines parties de la page sans nécessiter un rechargement complet, améliorant ainsi l’expérience utilisateur (notamment pour l’affichage dynamique du compte à rebours et la mise à jour des chats).
+- **Bootstrap & CSS Personnalisé** : Pour un design cohérent, responsive et agréable, permettant une navigation fluide.
+- **H2 (Base de données en mémoire)** : Pour un stockage et un chargement rapides des données de test (testdb.mv.db).
+
 
 
 ## Compatibilité
