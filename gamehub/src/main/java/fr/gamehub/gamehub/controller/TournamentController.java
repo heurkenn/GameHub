@@ -3,6 +3,7 @@ package fr.gamehub.gamehub.controller;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
@@ -19,15 +21,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.gamehub.gamehub.model.Category;
 import fr.gamehub.gamehub.model.Classement;
 import fr.gamehub.gamehub.model.Fight;
+import fr.gamehub.gamehub.model.Game;
 import fr.gamehub.gamehub.model.Tournament;
 import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.repository.ClassementRepository;
+import fr.gamehub.gamehub.repository.GameRepository;
 import fr.gamehub.gamehub.repository.TournamentRepository;
 import fr.gamehub.gamehub.repository.UserRepository;
+import fr.gamehub.gamehub.service.GameService;
 import fr.gamehub.gamehub.service.TournamentService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -49,6 +55,9 @@ public class TournamentController {
 
     @Autowired
     private ClassementRepository classementRepository;
+
+    @Autowired
+    private GameService gameService;
 
     
     
@@ -151,6 +160,49 @@ public class TournamentController {
         return "tournament";
     }
     
+    @PostMapping("/tournaments/edit/{id}")
+    public String editTournament(@PathVariable("id") Long id,
+                                @RequestParam String name,
+                                @RequestParam Long gameId,
+                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateStart,
+                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateEnd,
+                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateStartInscription,
+                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateEndInscription,
+                                Model model) {
+        Optional<Tournament> optionalTournament = tournamentService.getTournamentById(id);
+        Optional<Game> optionalGame = gameService.getGameById(gameId);
+
+        if (optionalTournament.isPresent() && optionalGame.isPresent()) {
+            Tournament tournament = optionalTournament.get();
+
+            tournament.setName(name);
+            tournament.setJeu(optionalGame.get());
+            tournament.setDateStart(dateStart);
+            tournament.setDateEnd(dateEnd);
+            tournament.setDateStartInscription(dateStartInscription);
+            tournament.setDateEndInscription(dateEndInscription);
+
+            tournamentService.saveTournament(tournament);
+            return "redirect:/admin-dashboard";
+        } else {
+            model.addAttribute("errorMessage", "Erreur lors de la mise à jour du tournoi !");
+            return "admin-dashboard";
+        }
+    }
+
+
+    @PostMapping("/tournaments/delete")
+    public String deleteTournament(@RequestParam Long id, Model model) {
+        if (tournamentService.getTournamentById(id).isPresent()) {
+            tournamentService.deleteTournamentById(id);
+            return "redirect:/admin-dashboard"; // Redirection vers le tableau de bord
+        } else {
+            model.addAttribute("errorMessage", "Tournoi introuvable ou déjà supprimé !");
+            return "redirect:/admin-dashboard"; // Retour à la vue en cas d'erreur
+        }
+    }
+
+
 
     @PostMapping(value = "/tournaments/submitFormTournament")
     public String submitFormTournament(@Valid @ModelAttribute("tournament") Tournament tournament, BindingResult bindingResult) {

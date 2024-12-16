@@ -18,8 +18,17 @@ public class TournamentService {
     private TournamentRepository tournamentRepository;
 
     public List<Tournament> getAllTournaments() {
-        return tournamentRepository.findAll();
+        List<Tournament> tournaments = tournamentRepository.findAll();
+        if (tournaments == null || tournaments.isEmpty()) {
+            System.out.println("La liste des tournois est vide ou nulle !");
+        } else {
+            for (Tournament t : tournaments) {
+                System.out.println("Tournament: " + (t != null ? t.getId() + " - " + t.getName() : "NULL Tournament"));
+            }
+        }
+        return tournaments;
     }
+    
 
     public List<Tournament> getAllTournamentsInProgress() {
         List<Tournament> tournaments = tournamentRepository.findAll();

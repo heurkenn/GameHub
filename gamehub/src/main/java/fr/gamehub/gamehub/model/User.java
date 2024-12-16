@@ -18,6 +18,7 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -67,7 +68,10 @@ public class User implements Serializable {
     )
     private Set<Game> games = new HashSet<>();
 
-    
+    @ManyToOne
+    @JoinColumn(name="game_id", nullable=true)
+    private Game game;
+
     @ManyToMany(mappedBy = "participants")
     private Set<Tournament> tournois = new HashSet<>();
     

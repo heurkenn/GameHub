@@ -33,11 +33,7 @@ build/
 .vscode/
 
 ### DataBase ###
-/testdb.trace.db
-/testdb.mv.db
 
-/test/testdb.mv.db
-/test/testdb.trace.db
 
 
 

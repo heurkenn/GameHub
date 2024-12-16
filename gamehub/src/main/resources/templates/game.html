@@ -15,6 +15,12 @@
 
     <!-- Contenu principal -->
     <main class="container mt-5">
+        <div class="form-group text-right"> 
+            <a th:href="@{'/games/' + ${game.name} + '/chat'}" class="btn btn-secondary">
+                Rejoins la communauté
+            </a>
+        </div>
+        
         <div class="text-center">
             <!-- Nom du jeu -->
             <h1 class="mb-4" th:text="${game.name}">Nom du Jeu</h1>

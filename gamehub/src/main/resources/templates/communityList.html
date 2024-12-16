@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>GameHub - Communauté</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" th:href="@{/css/tournaments.css}">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -22,14 +22,15 @@
 	<main> 
 		<h2 class="text-center mt-4 mb-5"> Toutes les communautées de GameHub :</h2>
 		<div class="row">
-			<div th:each ="community : ${allCommunity}" class="col-md-4 mb-4">
-				<div class="tournament-card"> <!-- Prend tournament-card prcq esthétique ok pour les communautées-->
-                    <div class="tournament-card-image">
-                        <img th:src="@{/image/} + ${community.game.image_url}" class="img-fluid rounded" alt="Image du tournoi" style="max-width: 100%; height: auto;">
+			<div th:each ="community : ${allComunities}" class="col-md-4 mb-4">
+				<div class="game-card"> <!-- Prend tournament-card prcq esthétique ok pour les communautées-->
+                    
+                    <div class="game-card-image">
+                        <img th:src="@{/image/} + ${community.game.image_url}" class="img-fluid rounded" alt="Image du tournois" style="max-width: 100%; height: auto;">
                     </div>
-                    <div class="tournament-card-content">
-                        <h3 th:text="$'Nom : '+${community.game.gameName}">Nom de la communauté</h3>
-                        <p th:text="'Nombre de gens ayant rejoint la communauté'+${community.numberMember}">Jeu: Nom du Jeu</p>
+                    <div class="game-card-content">
+                        <h3 th:text="'Nom : '+${community.game.name}">Nom de la communauté</h3>
+                        <a th:href="@{'/games/' + ${community.game.name} + '/chat'}" class="btn btn-primary btn-page">Page du Jeu</a>
                     </div>
                 </div>
 			</div>

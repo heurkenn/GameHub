@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import fr.gamehub.gamehub.validator.ValidateDate;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,6 +21,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -35,7 +35,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@ValidateDate
 public class Tournament {
 
     @Id
@@ -49,30 +48,26 @@ public class Tournament {
     private String name;
 
     @NotNull
-    @NotEmpty
-    @NotBlank(message = "La date de création ne doit pas être vide")
     private LocalDateTime datecreation = LocalDateTime.now();
 
     @NotNull
-    @NotEmpty
-    @NotBlank(message = "La date de debut ne doit pas être vide")
     private LocalDateTime dateStart;
 
     @NotNull
-    @NotEmpty
-    @NotBlank(message = "La date de fin ne doit pas être vide")
     private LocalDateTime dateEnd;
 
     
     @NotNull
-    @NotEmpty
-    @NotBlank(message = "La date de fin des inscriptions ne doit pas être vide")
     private LocalDateTime dateEndInscription;
 
     @NotNull
-    @NotEmpty
-    @NotBlank(message = "La date de début des inscriptions ne doit pas être vide")
     private LocalDateTime dateStartInscription;
+
+    @Transient
+    private String formattedDateStart;
+
+    @Transient
+    private String formattedDateEnd;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -83,7 +78,6 @@ public class Tournament {
     @JoinColumn(name = "game_id", nullable = false)
     private Game jeu;
 
-    @NotBlank(message = "Le tournoi est soit privé, soit public")
     private boolean is_private;
 
     @NotNull(message = "Le nombre de joueur limite est obligatoire")
@@ -140,6 +134,22 @@ public class Tournament {
 
     public Classement getClassement() {
         return classements.isEmpty() ? null : classements.iterator().next();
+    }
+
+    public String getFormattedDateStart() {
+        return formattedDateStart;
+    }
+
+    public void setFormattedDateStart(String formattedDateStart) {
+        this.formattedDateStart = formattedDateStart;
+    }
+
+    public String getFormattedDateEnd() {
+        return formattedDateEnd;
+    }
+
+    public void setFormattedDateEnd(String formattedDateEnd) {
+        this.formattedDateEnd = formattedDateEnd;
     }
 
 }

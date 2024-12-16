@@ -27,7 +27,7 @@
             </p>
         </div>
     </section>
-
+    <!-- Section des jeux à découvrir -->
     <!-- Section des jeux à découvrir -->
     <section class="games-section container">
         <h2 class="text-center mt-4 mb-5">Jeux à Découvrir</h2>
@@ -43,11 +43,9 @@
                         <!-- Genre du jeu -->
                         <p th:text="'Genre: ' + ${game.genre}">Genre: Action</p>
                         <!-- Bouton pour voir plus de détails -->
-                        <div class="game-card-buttons">
-                            <button class="btn btn-primary btn-details" onclick="toggleDetails(this)">Voir Détails</button>
-                            <!-- Bouton pour aller à la page du jeu -->
-                            <a th:href="@{/games/} + ${game.name}" class="btn btn-primary btn-page">Page du Jeu</a>
-                        </div>
+                        <button class="btn btn-primary btn-details" onclick="toggleDetails(this)">Voir Détails</button>
+                        <!-- Bouton pour aller à la page du jeu -->
+                        <a th:href="@{/games/} + ${game.name}" class="btn btn-primary btn-page">Page du Jeu</a>
                     </div>
                     <!-- Détails du jeu, à développer avec l'animation -->
                     <div class="game-card-details">
@@ -71,22 +69,30 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="card">
-                    <h2>Jeux Populaires</h2>
-                    <p>Découvrez les jeux les plus joués et créez votre communauté.</p>
-                </div>
+                <a th:href="@{games}" style="text-decoration: none;">
+                    <div class="card">
+                        <h2>Jeux Populaires</h2>
+                        <p>Découvrez les jeux les plus joués et créez votre communauté.</p>
+                    </div>
+                </a>
             </div>
+            
             <div class="col-md-4">
-                <div class="card">
-                    <h2>Tournois Actuels</h2>
-                    <p>Inscrivez-vous aux tournois en cours et rejoignez la compétition.</p>
-                </div>
+                <a th:href="@{tournaments}" style="text-decoration: none;">
+                    <div class="card">
+                        <h2>Tournois Actuels</h2>
+                        <p>Inscrivez-vous aux tournois en cours et rejoignez la compétition.</p>
+                    </div>
+                </a>
             </div>
+            
             <div class="col-md-4">
-                <div class="card">
-                    <h2>Communautés</h2>
-                    <p>Rejoignez des groupes de joueurs partageant les mêmes passions.</p>
-                </div>
+                <a th:href="@{communityList}" style="text-decoration: none;">
+                    <div class="card">
+                        <h2>Communautés</h2>
+                        <p>Rejoignez des groupes de joueurs partageant les mêmes passions.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

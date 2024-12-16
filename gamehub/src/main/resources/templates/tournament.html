@@ -2,15 +2,98 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>GameHub - Inscription</title>
-    <!-- Lien vers le fichier CSS -->
+    <title>GameHub - Détails du Tournoi</title>
+    <!-- Lien vers les fichiers CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <!-- Lien vers Bootstrap (CDN) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Header -->
+    <div th:insert="~{fragments :: header}"></div>
 
-	<div id="ResearchBar">
-		<span> <label for= </label></span>
-	</div>
+    <!-- Contenu principal -->
+    <div class="container mt-5">
+        <!-- Informations du tournoi -->
+        <div class="card mb-4 shadow-lg border-success">
+            <div class="card-header bg-dark text-light">
+                <h1 class="text-center" th:text="${tournament.name}">Nom du Tournoi</h1>
+            </div>
+            <div class="card-body">
+                <p>
+                    <strong>Date de création :</strong>
+                    <span th:text="${#temporals.format(tournament.datecreation, 'dd/MM/yyyy HH:mm')}">Date Création</span>
+                </p>
+                <p>
+                    <strong>Date de début :</strong>
+                    <span th:text="${#temporals.format(tournament.dateStart, 'dd/MM/yyyy HH:mm')}">Date Début</span>
+                </p>
+                <p>
+                    <strong>Date de fin :</strong>
+                    <span th:text="${#temporals.format(tournament.dateEnd, 'dd/MM/yyyy HH:mm')}">Date Fin</span>
+                </p>
+                <p>
+                    <strong>Inscriptions :</strong>
+                    du <span th:text="${#temporals.format(tournament.dateStartInscription, 'dd/MM/yyyy')}">Date Début Inscription</span>
+                    au <span th:text="${#temporals.format(tournament.dateEndInscription, 'dd/MM/yyyy')}">Date Fin Inscription</span>
+                </p>
+                <p>
+                    <strong>Catégorie :</strong>
+                    <span th:text="${tournament.categorie}">Catégorie</span>
+                </p>
+                <p>
+                    <strong>Jeu :</strong>
+                    <span th:text="${tournament.jeu.name}">Nom du Jeu</span>
+                </p>
+                <p>
+                    <strong>Type :</strong>
+                    <span th:text="${tournament.is_private ? 'Privé' : 'Public'}">Type</span>
+                </p>
+                <p>
+                    <strong>Nombre de joueurs :</strong>
+                    <span th:text="${tournament.nbJoueur}"></span> / <span th:text="${tournament.nbJoueurLimite}"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Liste des participants -->
+        <div class="mb-4">
+            <h2>Participants</h2>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="participant : ${tournament.participants}" th:text="${participant.username}">
+                    Nom du Participant
+                </li>
+            </ul>
+        </div>
+
+        <!-- Liste des combats (si disponibles) -->
+        <div class="mb-4" th:if="${tournament.combats != null && !tournament.combats.isEmpty()}">
+            <h2>Combats</h2>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="fight : ${tournament.combats}">
+                    <span th:text="'Combat entre ' + fight.joueur1.username + ' et ' + fight.joueur2.username"></span>
+                    <span th:if="${fight.winner != null}" th:text="' - Gagnant : ' + fight.winner.username"></span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Bouton pour rejoindre le tournoi -->
+        <div class="text-center mt-4">
+            <form th:action="@{'/tournaments/join/' + ${tournament.id}}" method="POST">
+                <button type="submit" class="btn btn-success btn-lg" th:if="${tournament.nbJoueur < tournament.nbJoueurLimite}">
+                    Rejoindre le Tournoi
+                </button>
+                <p th:if="${tournament.nbJoueur >= tournament.nbJoueurLimite}" class="text-danger">
+                    Le tournoi est complet !
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:insert="~{fragments :: footer}"></div>
+
+    <!-- Scripts Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>

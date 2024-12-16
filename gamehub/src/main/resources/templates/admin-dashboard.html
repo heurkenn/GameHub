@@ -183,64 +183,126 @@
             </div>
 
 
+            
             <!-- Section Gestion des Tournois -->
-            <div id="tournamentsSection" class="admin-section d-none">
-                <h3>Gestion des Tournois</h3>
-                <button class="btn btn-success mb-3" onclick="showForm('addTournamentForm');">Ajouter un Tournoi</button>
-                <div id="addTournamentForm" class="form-section d-none">
-                    <form th:action="@{/tournaments/add}" method="POST">
+<div id="tournamentsSection" class="admin-section d-none">
+    <h3>Gestion des Tournois</h3>
+
+    <!-- Bouton pour afficher le formulaire d'ajout -->
+    <button class="btn btn-success mb-3" onclick="toggleAddForm('addTournamentForm');">Ajouter un Tournoi</button>
+
+    <!-- Formulaire pour ajouter un nouveau tournoi -->
+    <div id="addTournamentForm" class="form-section d-none">
+        <form th:action="@{/tournaments/create}" method="POST">
+            <div class="form-group">
+                <label for="tournamentName">Nom du tournoi</label>
+                <input type="text" id="tournamentName" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="tournamentDate">Date du tournoi</label>
+                <input type="date" id="tournamentDate" name="date" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="gameId">Jeu</label>
+                <select id="gameId" name="gameId" class="form-control" required>
+                    <option value="" disabled selected>Sélectionnez un jeu</option>
+                    <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+    </div>
+
+    <!-- Tableau des tournois -->
+    <table class="table table-dark mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>Jeu</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody th:each="tournament : ${tournaments}">
+            <tr >
+                <td th:text="${tournament.id}"></td>
+                <td th:text="${tournament.name}"></td>
+                <td th:text="${tournament.dateStart}"></td>
+                <td th:text="${tournament.dateEnd}"></td>
+                <td th:text="${tournament.jeu != null ? tournament.jeu.name : 'Aucun jeu'}"></td>
+                <td>
+                    <!-- Bouton Modifier -->
+                    <button class="btn btn-warning" 
+                            th:attr="data-form-id='modifyTournamentForm-' + ${tournament.id}" 
+                            onclick="showForm(this);">Modifier</button>
+                    
+                    <!-- Bouton Supprimer -->
+                    <form th:action="@{/tournaments/delete}" method="POST" class="d-inline">
+                        <input type="hidden" name="id" th:value="${tournament.id}">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+
+            <!-- Formulaire de modification pour chaque tournoi -->
+            <tr th:attr="id='modifyTournamentForm-' + ${tournament.id}" class="form-section d-none">
+                <td colspan="5">
+                    <form th:action="@{/tournaments/edit/{id}(id=${tournament.id})}" method="POST">
+                        <input type="hidden" name="id" th:value="${tournament.id}">
+                    
                         <div class="form-group">
                             <label for="tournamentName">Nom du tournoi</label>
-                            <input type="text" id="tournamentName" name="name" class="form-control" required>
+                            <input type="text" name="name" th:value="${tournament.name}" class="form-control" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                    </form>
-                </div>
-                <table class="table table-dark mt-4">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nom</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody th:each="tournament : ${tournaments}">
-                        <tr>
-                            <td th:text="${tournament.id}"></td>
-                            <td th:text="${tournament.name}"></td>
-                            <td>
-                                <button class="btn btn-warning" onclick="showForm('modifyTournamentForm-${tournament.id}');">Modifier</button>
-                                <form th:action="@{/tournaments/delete}" method="POST" class="d-inline">
-                                    <input type="hidden" th:value="${tournament.id}" name="id">
-                                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr id="modifyTournamentForm-${tournament.id}" class="form-section d-none">
-                            <td colspan="3">
-                                <form th:action="@{/tournaments/update}" method="POST">
-                                    <input type="hidden" th:value="${tournament.id}" name="id">
-                                    <div class="form-group">
-                                        <label for="tournamentName-${tournament.id}">Nom</label>
-                                        <input type="text" id="tournamentName-${tournament.id}" name="name" th:value="${tournament.name}" class="form-control" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    
+                        <div class="form-group">
+                            <label for="gameId">Jeu</label>
+                            <select name="gameId" class="form-control" required>
+                                <option th:each="game : ${games}" 
+                                        th:value="${game.id}" 
+                                        th:text="${game.name}"
+                                        th:selected="${tournament.jeu != null and game.id == tournament.jeu.id}"></option>
+                            </select>
+                        </div>
+                    
+                        <!-- Add date fields -->
+                        <div class="form-group">
+                            <label for="dateStart">Date de début</label>
+                            <input type="datetime-local" name="dateStart" th:value="${#temporals.format(tournament.dateStart, 'yyyy-MM-dd''T''HH:mm')}" class="form-control" required>
 
-           <!-- Section Gestion des Admins -->
+                        </div>
+                        <div class="form-group">
+                            <label for="dateEnd">Date de fin</label>
+                            <input type="datetime-local" name="dateEnd" th:value="${#temporals.format(tournament.dateEnd, 'yyyy-MM-dd''T''HH:mm')}" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateStartInscription">Début des inscriptions</label>
+                            <input type="datetime-local" name="dateStartInscription" th:value="${#temporals.format(tournament.dateStartInscription, 'yyyy-MM-dd''T''HH:mm')}" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateEndInscription">Fin des inscriptions</label>
+                            <input type="datetime-local" name="dateEndInscription" th:value="${#temporals.format(tournament.dateEndInscription, 'yyyy-MM-dd''T''HH:mm')}" class="form-control" required>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </form>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+            <!-- Section Gestion des Admins -->
             <div id="adminsSection" class="admin-section d-none">
                 <h3>Gestion des Admins</h3>
 
                 <!-- Barre de Recherche pour Promouvoir un Admin -->
                 <div class="form-group mb-4">
-                    <input type="text" id="searchUser" class="form-control" placeholder="Rechercher un utilisateur...">
-                    <div id="searchResults" class="mt-2"></div>
-                </div>
+                    
 
                 <!-- Liste des Admins Déjà Ajoutés -->
                 <h4>Liste des Administrateurs</h4>
@@ -257,72 +319,95 @@
                     <tbody>
                         <tr th:each="admin : ${admins}">
                             <td th:text="${admin.id}"></td>
-                            <td th:text="${admin.name}"></td>
+                            <td th:text="${admin.username}"></td>
                             <td th:text="${admin.email}"></td>
-                            <td th:text="${admin.gameName}"></td>
                             <td>
-                                <!-- Modifier Admin -->
-                                <form th:action="@{/admins/modify}" method="POST" class="d-inline">
-                                    <input type="hidden" name="id" th:value="${admin.id}">
+                                <span th:text="${admin.game != null ? admin.game.name : 'Aucun jeu'}"></span>
+                            </td>
+                            <td> <!-- Modifier Admin -->
+                                <form th:action="@{/admin-dashboard/admins/modify}" method="POST" class="d-inline">
+                                    <!-- Changer le nom de l'input en userId pour correspondre au contrôleur -->
+                                    <input type="hidden" name="userId" th:value="${admin.id}">
+                                
+                                    <!-- Sélecteur pour choisir un jeu -->
                                     <select name="gameId" class="form-control d-inline w-auto" required>
                                         <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
                                     </select>
+                                
+                                    <!-- Bouton pour soumettre -->
                                     <button type="submit" class="btn btn-warning btn-sm">Modifier</button>
                                 </form>
+                                
                                 <!-- Supprimer Admin -->
-                                <form th:action="@{/admins/demote}" method="POST" class="d-inline">
-                                    <input type="hidden" name="id" th:value="${admin.id}">
+                                <form th:action="@{/admin-dashboard/admins/revoke}" method="POST" class="d-inline">
+                                    <input type="hidden" name="userId" th:value="${admin.id}">
                                     <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                                </form>
-                            </td>
+                                </form></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <div>
+                <!-- Formulaire pour assigner le rôle ADMIN -->
+                <form th:action="@{/admin-dashboard/admins/assign}" method="POST">
+                    <label for="userId">ID de l'utilisateur :</label>
+                    <input type="number" id="userId" name="userId" required min="1" placeholder="Entrez l'ID de l'utilisateur" />
+                    <select name="gameId" class="form-control d-inline w-auto" required>
+                        <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
+                    </select>
+                    <button type="submit">Assigner ADMIN</button>
+                </form>
+                <!-- Afficher un message d'erreur, si applicable -->
+                <p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
+            </div>
+        </div>
+</div>
+
 
         </div>
     </div>
 
     <script>
         function showSection(sectionId) {
-            document.querySelectorAll('.admin-section').forEach(section => section.classList.add('d-none'));
-            document.getElementById(sectionId).classList.remove('d-none');
-        }
-
-        function toggleAddForm(formId) {
-    const form = document.getElementById(formId);
-    if (form) {
-        form.classList.toggle('d-none'); // Afficher/masquer le formulaire
-        console.log(`Formulaire d'ajout ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
-    } else {
-        console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
-    }
-}
-
-function showForm(button) {
-    // Récupérer l'attribut data-form-id du bouton cliqué
-    const formId = button.getAttribute('data-form-id');
-    console.log(`ID du formulaire récupéré : ${formId}`); // Log pour vérifier l'ID
-
-    // Trouver le formulaire correspondant
-    const form = document.getElementById(formId);
-
-    if (!form) {
-        console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
-        return;
+        document.querySelectorAll('.admin-section').forEach(section => section.classList.add('d-none'));
+        document.getElementById(sectionId).classList.remove('d-none');
     }
 
-    // Fermer tous les formulaires sauf celui ciblé
-    document.querySelectorAll('.form-section:not(.d-none)').forEach(openForm => {
-        if (openForm !== form) {
-            openForm.classList.add('d-none');
+    function toggleAddForm(formId) {
+        const form = document.getElementById(formId);
+        if (form) {
+            form.classList.toggle('d-none');
+            console.log(`Formulaire ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
+        } else {
+            console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
         }
-    });
+    }
+    
 
-    // Basculer l'affichage du formulaire ciblé (ouvrir/fermer)
-    form.classList.toggle('d-none');
-    console.log(`Formulaire ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
-}
+    function showForm(button) {
+        // Récupérer l'attribut data-form-id du bouton cliqué
+        const formId = button.getAttribute('data-form-id');
+        console.log(`ID du formulaire récupéré : ${formId}`); // Log pour vérifier l'ID
+
+        // Trouver le formulaire correspondant
+        const form = document.getElementById(formId);
+
+        if (!form) {
+            console.error(`Aucun formulaire trouvé pour l'ID : ${formId}`);
+            return;
+        }
+
+        // Fermer tous les formulaires sauf celui ciblé
+        document.querySelectorAll('.form-section:not(.d-none)').forEach(openForm => {
+            if (openForm !== form) {
+                openForm.classList.add('d-none');
+            }
+        });
+
+        // Basculer l'affichage du formulaire ciblé (ouvrir/fermer)
+        form.classList.toggle('d-none');
+        console.log(`Formulaire ciblé : ${formId}, état actuel : ${form.classList.contains('d-none') ? 'Masqué' : 'Visible'}`);
+    }
 
 
 
