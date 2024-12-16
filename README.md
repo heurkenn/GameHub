@@ -99,7 +99,7 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 
 | Critères                           | Détails de l'implémentation                                                                                                                                     | Statut |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
-| Association graphique d'entités    | Le super administrateur peut associer des plateformes à un jeu via des checkbox, un utilisateur peut rejoindre une communauté ou un tournoi via un bouton.       | ✅     |
+| Association graphique d'entités    | Le super administrateur peut associer des plateformes à un jeu via des checkbox, un utilisateur un tournoi via un bouton.                                       | ✅     |
 | Dissociation graphique d'entités   | L'utilisateur peut se retirer d'un tournoi, le super admin peut supprimer une relation entre un jeu et une plateforme.                                          | ✅     |
 
 ### Fourniture d'une logique métier
