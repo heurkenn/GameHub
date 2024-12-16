@@ -9,6 +9,7 @@
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     color: #d3d3d3;
+    flex:1;
 }
 
 /* Titre principal */
