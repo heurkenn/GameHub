@@ -13,7 +13,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
-    public void configureMessageBroker(MessageBrokerRegistry config) {
+    public void configureMessageBroker(@SuppressWarnings("null") MessageBrokerRegistry config) {
         // Active un broker simple pour les topics et configure les préfixes des messages
         config.enableSimpleBroker("/topic", "/queue")
               .setHeartbeatValue(new long[]{10000, 10000}) // Heartbeat chaque 10 secondes
@@ -22,7 +22,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     }
 
     @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
+    public void registerStompEndpoints(@SuppressWarnings("null") StompEndpointRegistry registry) {
         // Déclaration du point d'entrée WebSocket avec SockJS
         registry.addEndpoint("/ws")
                 .setAllowedOrigins("http://localhost:8080", "http://gamehub.com") // Remplace "*" par vos domaines

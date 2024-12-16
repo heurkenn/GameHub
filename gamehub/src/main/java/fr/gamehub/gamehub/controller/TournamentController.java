@@ -3,7 +3,6 @@ package fr.gamehub.gamehub.controller;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +31,6 @@ import fr.gamehub.gamehub.model.Game;
 import fr.gamehub.gamehub.model.Tournament;
 import fr.gamehub.gamehub.model.User;
 import fr.gamehub.gamehub.repository.ClassementRepository;
-import fr.gamehub.gamehub.repository.GameRepository;
 import fr.gamehub.gamehub.repository.TournamentRepository;
 import fr.gamehub.gamehub.repository.UserRepository;
 import fr.gamehub.gamehub.service.GameService;
