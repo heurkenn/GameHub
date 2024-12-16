@@ -30,7 +30,8 @@ Un super administrateur gère la plateforme en ajoutant des jeux et en attribuan
 Placez vous dans `gamehub/` puis
 Utilisez la commande suivante pour démarrer l'application :  
   ```sh
-     ./mvnw spring-boot:run
+    ./mvnw clean install
+    ./mvnw spring-boot:run
   ```
 
 ### 3. Ouverture dans le navigateur
