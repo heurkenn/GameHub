@@ -23,7 +23,7 @@
             <p class="lead">Rejoignez des communautés, formez des équipes, et participez à des tournois passionnants.</p>
             <p>
                 <a th:href="@{/games}" class="btn btn-primary">Découvrir les Jeux</a>
-                <a th:href="@{/tournament}" class="btn btn-secondary">Participer à un Tournoi</a>
+                <a th:href="@{/tournaments}" class="btn btn-secondary">Participer à un Tournoi</a>
             </p>
         </div>
     </section>
@@ -69,22 +69,30 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="card">
-                    <h2>Jeux Populaires</h2>
-                    <p>Découvrez les jeux les plus joués et créez votre communauté.</p>
-                </div>
+                <a th:href="@{games}" style="text-decoration: none;">
+                    <div class="card">
+                        <h2>Jeux Populaires</h2>
+                        <p>Découvrez les jeux les plus joués et créez votre communauté.</p>
+                    </div>
+                </a>
             </div>
+            
             <div class="col-md-4">
-                <div class="card">
-                    <h2>Tournois Actuels</h2>
-                    <p>Inscrivez-vous aux tournois en cours et rejoignez la compétition.</p>
-                </div>
+                <a th:href="@{tournaments}" style="text-decoration: none;">
+                    <div class="card">
+                        <h2>Tournois Actuels</h2>
+                        <p>Inscrivez-vous aux tournois en cours et rejoignez la compétition.</p>
+                    </div>
+                </a>
             </div>
+            
             <div class="col-md-4">
-                <div class="card">
-                    <h2>Communautés</h2>
-                    <p>Rejoignez des groupes de joueurs partageant les mêmes passions.</p>
-                </div>
+                <a th:href="@{communityList}" style="text-decoration: none;">
+                    <div class="card">
+                        <h2>Communautés</h2>
+                        <p>Rejoignez des groupes de joueurs partageant les mêmes passions.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

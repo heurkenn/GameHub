@@ -39,5 +39,9 @@ public class Community {
     private Set<User> members = new HashSet<>(); // Liste des membres de la communauté
 
     // Getters, Setters, Constructors
+
+    public Long getId(){
+        return this.id;
+    }
 }
 

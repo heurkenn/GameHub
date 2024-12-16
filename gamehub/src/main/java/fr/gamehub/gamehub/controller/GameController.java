@@ -6,12 +6,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,9 +27,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.security.core.Authentication;
 
+import fr.gamehub.gamehub.model.Category;
+import fr.gamehub.gamehub.model.Comment;
+import fr.gamehub.gamehub.model.Community;
 import fr.gamehub.gamehub.model.Game;
+import fr.gamehub.gamehub.model.Platform;
+import fr.gamehub.gamehub.model.User;
+import fr.gamehub.gamehub.service.CommentService;
+import fr.gamehub.gamehub.service.CommunityService;
 import fr.gamehub.gamehub.service.GameService;
+import fr.gamehub.gamehub.service.PlatformService;
+import fr.gamehub.gamehub.service.UserService;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.validation.Valid;
 
@@ -32,8 +48,23 @@ import jakarta.validation.Valid;
 @RequestMapping("/games")
 public class GameController {
 
+    private static final Logger logger = LoggerFactory.getLogger(GameController.class);
+
     @Autowired
     private GameService gameService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private PlatformService platformService;
+
+    @Autowired
+    private CommunityService communityService;
+
+    @Autowired
+    private CommentService commentService;
+
 
     // Affiche tous les jeux
     @GetMapping
@@ -53,16 +84,107 @@ public class GameController {
         return "game"; // Vue : game.html
     }
 
+    @GetMapping("/{name}/chat")
+    public String showChat(@PathVariable("name") String name, Model model) {
+        // Récupérer le jeu par son nom
+        Optional<Game> game = gameService.findByName(name);
+        if (game.isEmpty()) {
+            return "error/404"; // Affiche une page 404 si le jeu est introuvable
+        }
+
+        // Retrieve the community associated with the game
+        Optional<Community> communityOpt = communityService.findByName(name);
+        if (communityOpt.isEmpty()) {
+            model.addAttribute("errorMessage", "No community found for this game.");
+            return "error/404";
+        }
+
+        Community community = communityOpt.get(); // Extract the Community object
+
+        // Retrieve comments for the community
+        List<Comment> comments = commentService.getCommentsByCommunityId(community.getId());
+        // Récupérer l'utilisateur connecté
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName(); // Nom de l'utilisateur connecté
+        Optional<User> user = userService.findByUsername(username);
+
+        if (user.isPresent()) {
+            model.addAttribute("userId", user.get().getId());
+        } else {
+            model.addAttribute("userId", null); // Gestion de cas où aucun utilisateur n'est trouvé
+        }
+
+        // Ajouter les données au modèle
+        model.addAttribute("game", game.get());
+        model.addAttribute("community", community);
+        model.addAttribute("comments", comments);
+
+        // Retourner la vue chat.html
+        return "chat"; 
+    }
+
+    @PostMapping("/{name}/chat")
+    public String postComment(@PathVariable("name") String name,
+                            @RequestParam("content") String content,
+                            @RequestParam("userId") Long userId,
+                            Model model) {
+
+        // Récupérer le jeu par son nom
+        Optional<Game> game = gameService.findByName(name);
+        if (game.isEmpty()) {
+            return "error/404"; // Retourner une erreur si le jeu est introuvable
+        }
+
+        // Récupérer la communauté associée
+        Optional<Community> communityOpt = communityService.findByName(name);
+        if (communityOpt.isEmpty()) {
+            model.addAttribute("errorMessage", "No community found for this game.");
+            return "error/404";
+        }
+
+        Community community = communityOpt.get();
+
+        // Vérifier si l'utilisateur existe
+        Optional<User> userOpt = userService.getUserById(userId);
+        if (userOpt.isEmpty()) {
+            model.addAttribute("errorMessage", "User not found.");
+            return "error/404";
+        }
+
+        // Créer un nouveau commentaire
+        Comment comment = new Comment();
+        comment.setContent(content);
+        comment.setTimestamp(LocalDateTime.now());
+        comment.setCommunity(community);
+        comment.setUser(userOpt.get());
+
+        // Sauvegarder le commentaire
+        commentService.saveComment(comment);
+
+        // Redirection vers la page chat
+        return "redirect:/games/" + name + "/chat";
+    }
+
+
     @PostMapping("/create")
     public String createGame(@Valid Game game, BindingResult result,
-                            @RequestParam("imageUrl") MultipartFile imageUrl,
+                            @RequestParam("image_url") MultipartFile imageUrl,
+                            @RequestParam("platforms") List<String> platforms, // Plateformes sélectionnées
                             Model model) {
         if (result.hasErrors()) {
             model.addAttribute("errorMessage", "Erreur lors de l'ajout du jeu.");
             return "admin-dashboard";
         }
 
-        // Vérifier que le fichier n'est pas vide
+        // Vérifier si le genre est valide
+        try {
+            Category.valueOf(game.getGenre()); // Vérifie si le genre est dans l'enum
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("errorMessage", "Le genre sélectionné est invalide.");
+            return "admin-dashboard";
+        }
+
+        // Vérifier que le fichier image n'est pas vide
         if (imageUrl.isEmpty()) {
             model.addAttribute("errorMessage", "L'image est requise.");
             return "admin-dashboard";
@@ -117,50 +239,112 @@ public class GameController {
         // Mettre à jour l'attribut image_url du jeu avec le nom de fichier
         game.setImage_url(fileName);
 
+        // Récupérer les entités Platform correspondant aux noms sélectionnés
+        Set<Platform> selectedPlatforms = new HashSet<>(platformService.findPlatformsByName(platforms));
+        game.setPlatforms(selectedPlatforms); // Associer les plateformes au jeu
+
         // Enregistrer le jeu dans la base
         gameService.saveGame(game);
+
+        
 
         return "redirect:/admin-dashboard";
     }
 
 
-    // Afficher le formulaire d'édition pour un jeu existant
-    @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model) {
-        Optional<Game> game = gameService.getGameById(id);
-        if (game.isEmpty()) {
-            return "error/404"; // Affiche une page 404 si le jeu est introuvable
-        }
-        model.addAttribute("game", game.get());
-        return "game_form"; // Réutiliser la même vue que pour la création
-    }
+
 
     // Soumettre le formulaire pour modifier un jeu existant
     @PostMapping("/edit/{id}")
-    public String updateGame(@PathVariable("id") Long id, @Valid Game updatedGame, BindingResult result, Model model) {
+    public String updateGame(
+            @PathVariable("id") Long id,
+            @Valid Game updatedGame,
+            BindingResult result,
+            @RequestParam(value = "newImage", required = false) MultipartFile imageFile,
+            @RequestParam(value = "platforms", required = false) List<Long> platformIds,
+            Model model) {
+
+        // Étape 1 : Vérifier les erreurs de validation
         if (result.hasErrors()) {
+            System.out.println("Erreur de validation : " + result.getAllErrors());
+            model.addAttribute("platforms", platformService.findAll());
+            model.addAttribute("categories", Category.values());
             model.addAttribute("errorMessage", "Erreur lors de la modification du jeu.");
-            return "game_form";
+            return "index";
         }
-        updatedGame.setId(id); // Met à jour l'ID pour modifier l'existant
-        gameService.saveGame(updatedGame);
-        return "redirect:/games";
+
+        // Étape 2 : Vérifier si le jeu existe
+        Optional<Game> optionalGame = gameService.getGameById(id);
+        if (optionalGame.isEmpty()) {
+            System.out.println("Jeu introuvable avec l'ID : " + id);
+            model.addAttribute("errorMessage", "Le jeu avec l'ID " + id + " n'existe pas.");
+            return "redirect:/admin-dashboard";
+        }
+
+        Game existingGame = optionalGame.get();
+
+        // Étape 3 : Mise à jour des champs du jeu
+        existingGame.setName(updatedGame.getName());
+        existingGame.setReleaseYear(updatedGame.getReleaseYear());
+        existingGame.setDeveloperStudio(updatedGame.getDeveloperStudio());
+        existingGame.setGenre(updatedGame.getGenre());
+        existingGame.setDescription(updatedGame.getDescription());
+        System.out.println("Champs mis à jour pour le jeu : " + existingGame);
+
+        // Étape 4 : Mise à jour des plateformes
+        if (platformIds != null) {
+            Set<Platform> platforms = platformService.findAllByIds(platformIds);
+            existingGame.setPlatforms(platforms);
+            System.out.println("Plateformes mises à jour : " + platforms);
+        } else {
+            existingGame.setPlatforms(new HashSet<>());
+            System.out.println("Aucune plateforme sélectionnée.");
+        }
+
+        // Étape 5 : Gestion de l'image
+        if (imageFile != null && !imageFile.isEmpty()) {
+            try {
+                String fileName = imageFile.getOriginalFilename();
+                Path uploadPath = Paths.get("src/main/resources/static/image");
+                if (!Files.exists(uploadPath)) {
+                    Files.createDirectories(uploadPath);
+                }
+                Path filePath = uploadPath.resolve(fileName);
+                Files.copy(imageFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+                existingGame.setImage_url(fileName);
+                System.out.println("Image mise à jour : " + fileName);
+            } catch (IOException e) {
+                System.out.println("Erreur lors de l'enregistrement de l'image : " + e.getMessage());
+                model.addAttribute("errorMessage", "Erreur lors de l'enregistrement de l'image.");
+                return "login";
+            }
+        }
+
+        // Étape 6 : Sauvegarde dans la base de données
+        gameService.saveGame(existingGame);
+        logger.info("Jeu enregistré avec succès : {}", existingGame);
+
+        logger.info("Genre envoyé depuis le formulaire : {}", updatedGame.getGenre());
+        logger.info("Genre avant mise à jour : {}", existingGame.getGenre());
+        existingGame.setGenre(updatedGame.getGenre());
+        logger.info("Genre après mise à jour : {}", existingGame.getGenre());
+
+
+        // Redirection vers le tableau de bord
+        return "redirect:/admin-dashboard";
     }
+
+
+
 
     // Supprimer un jeu
-    @PostMapping("/delete")
-    public String deleteGame(@RequestParam Long gameId) {
-        gameService.deleteGame(gameId);
-        return "redirect:/games";
+    @PostMapping("/delete/{id}")
+    public String deleteGame(@PathVariable("id") Long id) {
+        gameService.deleteGame(id);
+        return "redirect:/admin-dashboard";
     }
 
-    @GetMapping("/admin-dashboard")
-public String getAdminDashboard(Model model) {
-    List<Game> games = gameService.getAllGames();
-    games.forEach(game -> System.out.println("Game ID: " + game.getId() + ", Name: " + game.getName())); // Log pour vérifier
-    model.addAttribute("games", games);
-    return "admin-dashboard";
-}
+    
 
 
 }

@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,7 +18,7 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -64,7 +67,30 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "game_id")
     )
     private Set<Game> games = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name="game_id", nullable=true)
+    private Game game;
+
     @ManyToMany(mappedBy = "participants")
     private Set<Tournament> tournois = new HashSet<>();
     
+    // Ajout des rôles pour Spring Security
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role")
+    private Set<String> roles = new HashSet<>();
+
+    // Méthodes utilitaires pour gérer les rôles
+    public void addRole(String role) {
+        this.roles.add(role);
+    }
+
+    public void removeRole(String role) {
+        this.roles.remove(role);
+    }
+
+    public boolean hasRole(String role) {
+        return this.roles.contains(role);
+    }
 }

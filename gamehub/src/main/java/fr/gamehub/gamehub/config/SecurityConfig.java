@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import fr.gamehub.gamehub.service.MyUserDetailsService;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
@@ -39,18 +40,24 @@ public class SecurityConfig {
 
             .userDetailsService(myUserDetailsService)  // Indique quel service utiliser
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/", "/game/**", "/register", "/login", "/h2-console/**", "/css/**", "/js/**", "/image/**").permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
+                
+                .requestMatchers("/",  "/register", "/login", "/h2-console/**", "/css/**", "/js/**", "/image/**").permitAll()
+                .requestMatchers("/admin-dashboard/**").hasRole("SUPER_ADMIN")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
-                .loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/")
-                .failureUrl("/login?error=true")
-                .permitAll()
+            .loginPage("/login")
+            .usernameParameter("username")
+            .passwordParameter("password")
+            .defaultSuccessUrl("/")
+            .failureHandler((request, response, exception) -> {
+                // Retourner un statut HTTP 401 (Unauthorized) pour un login échoué
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("Nom d'utilisateur ou mot de passe incorrect.");
+            })
+            .permitAll()
             )
+
             .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout=true")
