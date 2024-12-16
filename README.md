@@ -138,7 +138,6 @@ Pour faciliter la correction et les tests, voici une liste de comptes déjà cr�
 | Rôle          | Username        | Mot de passe         | Capacités                                                      |
 |---------------|-------------------------------|----------------------|----------------------------------------------------------------|
 | Super-Admin   | superadmin        | SuperAdminSecret1     | Accès complet : gestion des jeux, tournois, communautés, et nomination d’administrateurs. Accès au tableau de bord super-admin. |
-| Admin (ex: d’un jeu) | admin     | adminPass1            | Gère les tournois du jeu dont il est responsable. Peut créer, modifier, et supprimer des tournois. Accès au tableau de bord admin. |
 | Utilisateur 1 | user1           | userPass1            | Peut rejoindre un tournoi, accéder aux communautés et discuter via le chat du jeu. Peut rejoindre la communauté directement depuis la liste ou la page du jeu. |
 | Utilisateur 2 | user2          | userPass2            | Même capacités que l’utilisateur 1. Peut s’inscrire à des tournois et participer aux chats communautaires. |
 | Utilisateur 3 | user3           | userPass3            | Même capacités que l’utilisateur 1 et 2. Peut explorer les différents jeux, communautés et tournois. |
