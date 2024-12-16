@@ -193,24 +193,62 @@
 
     <!-- Formulaire pour ajouter un nouveau tournoi -->
     <div id="addTournamentForm" class="form-section d-none">
-        <form th:action="@{/tournaments/create}" method="POST">
+        <form th:action="@{/tournaments/create}" th:object="${tournament}" method="POST">
             <div class="form-group">
-                <label for="tournamentName">Nom du tournoi</label>
-                <input type="text" id="tournamentName" name="name" class="form-control" required>
+                <label for="name">Nom du tournoi</label>
+                <input type="text" id="name" th:field="*{name}" class="form-control" required>
             </div>
+            
             <div class="form-group">
-                <label for="tournamentDate">Date du tournoi</label>
-                <input type="date" id="tournamentDate" name="date" class="form-control" required>
+                <label for="dateStart">Date de début</label>
+                <input type="datetime-local" id="dateStart" th:field="*{dateStart}" class="form-control" required>
             </div>
+            
             <div class="form-group">
-                <label for="gameId">Jeu</label>
-                <select id="gameId" name="gameId" class="form-control" required>
-                    <option value="" disabled selected>Sélectionnez un jeu</option>
-                    <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
+                <label for="dateEnd">Date de fin</label>
+                <input type="datetime-local" id="dateEnd" th:field="*{dateEnd}" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="dateStartInscription">Début des inscriptions</label>
+                <input type="datetime-local" id="dateStartInscription" th:field="*{dateStartInscription}" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="dateEndInscription">Fin des inscriptions</label>
+                <input type="datetime-local" id="dateEndInscription" th:field="*{dateEndInscription}" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="categorie">Catégorie</label>
+                <select id="categorie" th:field="*{categorie}" class="form-control" required>
+                    <option value="" disabled selected>Sélectionnez une catégorie</option>
+                    <option th:each="cat : ${categories}" th:value="${cat}" th:text="${cat}"></option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            
+            <div class="form-group">
+                <label for="jeu">Jeu</label>
+                <select id="jeu" th:field="*{jeu}" class="form-control" required>
+                    <option value="" disabled selected>Sélectionnez un jeu</option>
+                    <option th:each="game : ${games}" th:value="${game}" th:text="${game.name}"></option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="nbJoueurLimite">Nombre de joueurs limite</label>
+                <input type="number" id="nbJoueurLimite" th:field="*{nbJoueurLimite}" class="form-control" min="2" required>
+            </div>
+            
+    
+            <!-- Afficher les messages d'erreur de validation si présents -->
+            <div th:if="${#fields.hasErrors('*')}">
+                <div class="alert alert-danger" th:each="err : ${#fields.errors('*')}" th:text="${err}"></div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Créer</button>
         </form>
+        
     </div>
 
     <!-- Tableau des tournois -->

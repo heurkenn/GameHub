@@ -14,9 +14,6 @@ public interface TournamentRepository extends JpaRepository<Tournament, Long>{
     @Query("SELECT e FROM Tournament e WHERE e.name LIKE :prefixName%")
     List<Tournament> findByPrefix(@Param("prefixName") String prefixName);
 
-    @Query("SELECT e FROM Tournament e WHERE e.is_private = :is_private")
-    List<Tournament> findByPrivacy(@Param("is_private") boolean is_private);
-
     
 }
 

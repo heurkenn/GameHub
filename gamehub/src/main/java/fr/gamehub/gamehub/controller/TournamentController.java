@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -63,20 +65,39 @@ public class TournamentController {
     
 
     @Transactional
-    public void joinTournament(Long tournamentId, Long userId) {
-        // Récupérer le tournoi et l'utilisateur
-        Tournament tournament = tournamentRepository.findById(tournamentId)
-                .orElseThrow(() -> new RuntimeException("Tournoi introuvable avec ID: " + tournamentId));
+    @PostMapping("/tournaments/join/{id}")
+    public String joinTournament(@PathVariable Long id) {
+        // Récupérer l'utilisateur connecté
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+        User currentUser = userRepository.findByUsername(currentUsername)
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
 
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable avec ID: " + userId));
+        // Récupérer le tournoi
+        Tournament tournament = tournamentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tournoi introuvable avec ID: " + id));
 
-        // Ajouter l'utilisateur au tournoi (bidirectionnel)
-        TournamentService.addParticipant(tournament, user);
+        // Vérifier si le tournoi n'est pas déjà complet
+        if (tournament.getNbJoueur() >= tournament.getNbJoueurLimite()) {
+            // Rediriger avec un message d'erreur, par exemple
+            return "redirect:/tournaments/" + id + "?error=full";
+        }
 
-        // Sauvegarder les entités mises à jour
+        // Vérifier si l'utilisateur n'est pas déjà participant
+        if (tournament.getParticipants().contains(currentUser)) {
+            // Rediriger avec un message indiquant que l'utilisateur est déjà inscrit
+            return "redirect:/tournaments/" + id + "?info=already_joined";
+        }
+
+        // Ajouter l'utilisateur au tournoi
+        tournament.getParticipants().add(currentUser);
+        tournament.setNbJoueur(tournament.getNbJoueur() + 1);
+
+        // Sauvegarder le tournoi
         tournamentRepository.save(tournament);
-        userRepository.save(user);
+
+        // Rediriger vers la page du tournoi avec un message de succès
+        return "redirect:/tournaments/" + id + "?success=joined";
     }
 
     //fonction horloge dynamique pour le début de tournoi
@@ -130,11 +151,24 @@ public class TournamentController {
     }
 
 
-    @GetMapping("/tournaments/creation")
-    public String Tournament(Model model){
-        model.addAttribute("tournament", new Tournament());
-        model.addAttribute("categorie", Category.values());
-        return "creationTournament";
+    @PostMapping("/tournaments/create")
+    public String createTournament(@ModelAttribute("tournament") @Valid Tournament tournament,
+                                   BindingResult bindingResult,
+                                   Model model) {
+        if (bindingResult.hasErrors()) {
+            // En cas d'erreur de validation, renvoyer le formulaire avec les listes
+            model.addAttribute("categorie", Category.values());
+            model.addAttribute("games", gameService.getAllGames());
+            return "admin-dashboard";
+        }
+
+        // A ce stade, tous les champs obligatoires sont déjà définis dans l'objet 'tournament'
+        // (y compris dateStart, dateEnd, dateStartInscription, dateEndInscription, categorie, jeu, etc.)
+        
+        // Sauvegarder le tournoi
+        tournamentService.saveTournament(tournament);
+
+        return "redirect:/admin-dashboard";
     }
 
     @GetMapping("/tournaments/users/{id}")
@@ -156,9 +190,21 @@ public class TournamentController {
         // Ajouter le tournoi au modèle
         model.addAttribute("tournament", tournament.get());
 
+        // Appeler la méthode horlogeDynamique pour obtenir la durée avant le début du tournoi
+        String countdown = horlogeDynamique(id);
+        model.addAttribute("countdown", countdown);
+
         // Retourner la vue tournament.html
         return "tournament";
     }
+
+    @GetMapping("/tournaments/{id}/countdown")
+    public ResponseEntity<String> getCountdown(@PathVariable Long id) {
+        // Appeler la méthode horlogeDynamique
+        String countdown = horlogeDynamique(id);
+        return ResponseEntity.ok(countdown);
+    }
+
     
     @PostMapping("/tournaments/edit/{id}")
     public String editTournament(@PathVariable("id") Long id,

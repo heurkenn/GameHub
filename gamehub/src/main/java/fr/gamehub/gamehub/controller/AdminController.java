@@ -61,6 +61,7 @@ public class AdminController {
         });
 
         model.addAttribute("tournaments", tournaments);
+        model.addAttribute("tournament", new Tournament());
         return "admin-dashboard"; // Vue : admin-dashboard.html
     }
 

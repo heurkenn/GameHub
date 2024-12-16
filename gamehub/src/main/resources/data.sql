@@ -261,128 +261,128 @@ INSERT INTO game_platforms (game_id, platform_id) VALUES (31, 2); -- PlayStation
 INSERT INTO game_platforms (game_id, platform_id) VALUES (31, 3); -- PlayStation 5
 
 -- Insérer des jeux dans la table game
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Minecraft Championship', '2024-12-20 10:00:00', '2024-12-21 18:00:00', '2024-12-19 23:59:59', '2024-12-15 00:00:00', 'Adventure', 31, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Minecraft Championship', '2024-12-20 10:00:00', '2024-12-21 18:00:00', '2024-12-19 23:59:59', '2024-12-15 00:00:00', 'Adventure', 31, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Fortnite Battle Royale Tournament', '2024-12-22 15:00:00', '2024-12-22 22:00:00', '2024-12-21 23:59:59', '2024-12-18 00:00:00', 'Multiplayer', 5, false, 100, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Fortnite Battle Royale Tournament', '2024-12-22 15:00:00', '2024-12-22 22:00:00', '2024-12-21 23:59:59', '2024-12-18 00:00:00', 'Multiplayer', 5, 100, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Overwatch League', '2024-12-25 14:00:00', '2024-12-25 20:00:00', '2024-12-24 23:59:59', '2024-12-20 00:00:00', 'Fighting', 8, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Overwatch League', '2024-12-25 14:00:00', '2024-12-25 20:00:00', '2024-12-24 23:59:59', '2024-12-20 00:00:00', 'Fighting', 8, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Super Smash Bros Ultimate Tournament', '2024-12-26 12:00:00', '2024-12-26 19:00:00', '2024-12-25 23:59:59', '2024-12-21 00:00:00', 'Fighting', 12, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Super Smash Bros Ultimate Tournament', '2024-12-26 12:00:00', '2024-12-26 19:00:00', '2024-12-25 23:59:59', '2024-12-21 00:00:00', 'Fighting', 12, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Minecraft Adventure Challenge', '2024-12-27 10:00:00', '2024-12-27 18:00:00', '2024-12-26 23:59:59', '2024-12-22 00:00:00', 'Adventure', 31, false, 50, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Minecraft Adventure Challenge', '2024-12-27 10:00:00', '2024-12-27 18:00:00', '2024-12-26 23:59:59', '2024-12-22 00:00:00', 'Adventure', 31, 50, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Fortnite Multiplayer Battle', '2024-12-28 14:00:00', '2024-12-28 22:00:00', '2024-12-27 23:59:59', '2024-12-23 00:00:00', 'Multiplayer', 12, false, 200, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Fortnite Multiplayer Battle', '2024-12-28 14:00:00', '2024-12-28 22:00:00', '2024-12-27 23:59:59', '2024-12-23 00:00:00', 'Multiplayer', 12, 200, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Overwatch 1v1 Fight Club', '2024-12-29 15:00:00', '2024-12-29 21:00:00', '2024-12-28 23:59:59', '2024-12-24 00:00:00', 'Fighting', 8, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Overwatch 1v1 Fight Club', '2024-12-29 15:00:00', '2024-12-29 21:00:00', '2024-12-28 23:59:59', '2024-12-24 00:00:00', 'Fighting', 8, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Super Smash Bros Ultimate Knockout', '2024-12-31 12:00:00', '2024-12-31 18:00:00', '2024-12-30 23:59:59', '2024-12-25 00:00:00', 'Fighting', 12, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Super Smash Bros Ultimate Knockout', '2024-12-31 12:00:00', '2024-12-31 18:00:00', '2024-12-30 23:59:59', '2024-12-25 00:00:00', 'Fighting', 12, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Minecraft Adventure World Tournament', '2025-01-02 09:00:00', '2025-01-02 17:00:00', '2025-01-01 23:59:59', '2024-12-27 00:00:00', 'Adventure', 31, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Minecraft Adventure World Tournament', '2025-01-02 09:00:00', '2025-01-02 17:00:00', '2025-01-01 23:59:59', '2024-12-27 00:00:00', 'Adventure', 31, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Fortnite Grand Multiplayer Showdown', '2025-01-05 16:00:00', '2025-01-05 23:00:00', '2025-01-04 23:59:59', '2024-12-30 00:00:00', 'Multiplayer', 5, true, 100, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Fortnite Grand Multiplayer Showdown', '2025-01-05 16:00:00', '2025-01-05 23:00:00', '2025-01-04 23:59:59', '2024-12-30 00:00:00', 'Multiplayer', 5, 100, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Overwatch Hero Brawl', '2025-01-10 18:00:00', '2025-01-10 23:00:00', '2025-01-09 23:59:59', '2025-01-05 00:00:00', 'Fighting', 8, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Overwatch Hero Brawl', '2025-01-10 18:00:00', '2025-01-10 23:00:00', '2025-01-09 23:59:59', '2025-01-05 00:00:00', 'Fighting', 8, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Super Smash Bros Team Tournament', '2025-01-15 13:00:00', '2025-01-15 20:00:00', '2025-01-14 23:59:59', '2025-01-10 00:00:00', 'Fighting', 12, true, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Super Smash Bros Team Tournament', '2025-01-15 13:00:00', '2025-01-15 20:00:00', '2025-01-14 23:59:59', '2025-01-10 00:00:00', 'Fighting', 12, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('League of Legends Championship', '2025-01-25 14:00:00', '2025-01-25 22:00:00', '2025-01-24 23:59:59', '2025-01-20 00:00:00', 'Multiplayer', 1, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('League of Legends Championship', '2025-01-25 14:00:00', '2025-01-25 22:00:00', '2025-01-24 23:59:59', '2025-01-20 00:00:00', 'Multiplayer', 1, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Dota 2 Tournament', '2025-01-30 15:00:00', '2025-01-30 23:00:00', '2025-01-29 23:59:59', '2025-01-25 00:00:00', 'Multiplayer', 2, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Dota 2 Tournament', '2025-01-30 15:00:00', '2025-01-30 23:00:00', '2025-01-29 23:59:59', '2025-01-25 00:00:00', 'Multiplayer', 2, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('CS:GO Battle Royale', '2025-02-05 18:00:00', '2025-02-05 23:00:00', '2025-02-04 23:59:59', '2025-01-30 00:00:00', 'Fighting', 3, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('CS:GO Battle Royale', '2025-02-05 18:00:00', '2025-02-05 23:00:00', '2025-02-04 23:59:59', '2025-01-30 00:00:00', 'Fighting', 3, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Valorant Competitive Cup', '2025-02-10 16:00:00', '2025-02-10 22:00:00', '2025-02-09 23:59:59', '2025-02-05 00:00:00', 'Fighting', 4, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Valorant Competitive Cup', '2025-02-10 16:00:00', '2025-02-10 22:00:00', '2025-02-09 23:59:59', '2025-02-05 00:00:00', 'Fighting', 4, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Fortnite Battle Royale Tournament', '2025-02-12 17:00:00', '2025-02-12 23:00:00', '2025-02-11 23:59:59', '2025-02-07 00:00:00', 'Multiplayer', 5, false, 100, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Fortnite Battle Royale Tournament', '2025-02-12 17:00:00', '2025-02-12 23:00:00', '2025-02-11 23:59:59', '2025-02-07 00:00:00', 'Multiplayer', 5, 100, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Call of Duty: Warzone Showdown', '2025-02-15 14:00:00', '2025-02-15 20:00:00', '2025-02-14 23:59:59', '2025-02-10 00:00:00', 'Multiplayer', 6, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Call of Duty: Warzone Showdown', '2025-02-15 14:00:00', '2025-02-15 20:00:00', '2025-02-14 23:59:59', '2025-02-10 00:00:00', 'Multiplayer', 6, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('PUBG: Battlegrounds Championship', '2025-02-20 15:00:00', '2025-02-20 23:00:00', '2025-02-19 23:59:59', '2025-02-14 00:00:00', 'Multiplayer', 7, false, 100, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('PUBG: Battlegrounds Championship', '2025-02-20 15:00:00', '2025-02-20 23:00:00', '2025-02-19 23:59:59', '2025-02-14 00:00:00', 'Multiplayer', 7, 100, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Overwatch Arena', '2025-02-25 18:00:00', '2025-02-25 23:00:00', '2025-02-24 23:59:59', '2025-02-20 00:00:00', 'Fighting', 8, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Overwatch Arena', '2025-02-25 18:00:00', '2025-02-25 23:00:00', '2025-02-24 23:59:59', '2025-02-20 00:00:00', 'Fighting', 8, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Rocket League World Cup', '2025-03-01 14:00:00', '2025-03-01 20:00:00', '2025-02-28 23:59:59', '2025-02-23 00:00:00', 'Sports', 9, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Rocket League World Cup', '2025-03-01 14:00:00', '2025-03-01 20:00:00', '2025-02-28 23:59:59', '2025-02-23 00:00:00', 'Sports', 9, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Rainbow Six Siege Tactical Showdown', '2025-03-05 16:00:00', '2025-03-05 23:00:00', '2025-03-04 23:59:59', '2025-02-28 00:00:00', 'Multiplayer', 10, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Rainbow Six Siege Tactical Showdown', '2025-03-05 16:00:00', '2025-03-05 23:00:00', '2025-03-04 23:59:59', '2025-02-28 00:00:00', 'Multiplayer', 10, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Apex Legends Arena', '2025-03-10 15:00:00', '2025-03-10 22:00:00', '2025-03-09 23:59:59', '2025-03-05 00:00:00', 'Multiplayer', 11, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Apex Legends Arena', '2025-03-10 15:00:00', '2025-03-10 22:00:00', '2025-03-09 23:59:59', '2025-03-05 00:00:00', 'Multiplayer', 11, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Super Smash Bros. Ultimate Knockout', '2025-03-12 14:00:00', '2025-03-12 20:00:00', '2025-03-11 23:59:59', '2025-03-07 00:00:00', 'Fighting', 12, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Super Smash Bros. Ultimate Knockout', '2025-03-12 14:00:00', '2025-03-12 20:00:00', '2025-03-11 23:59:59', '2025-03-07 00:00:00', 'Fighting', 12, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Street Fighter V Championship', '2025-03-15 16:00:00', '2025-03-15 22:00:00', '2025-03-14 23:59:59', '2025-03-10 00:00:00', 'Fighting', 13, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Street Fighter V Championship', '2025-03-15 16:00:00', '2025-03-15 22:00:00', '2025-03-14 23:59:59', '2025-03-10 00:00:00', 'Fighting', 13, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Tekken 7 Showdown', '2025-03-20 17:00:00', '2025-03-20 23:00:00', '2025-03-19 23:59:59', '2025-03-15 00:00:00', 'Fighting', 14, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Tekken 7 Showdown', '2025-03-20 17:00:00', '2025-03-20 23:00:00', '2025-03-19 23:59:59', '2025-03-15 00:00:00', 'Fighting', 14, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Splatoon 3 Turf War', '2025-03-25 14:00:00', '2025-03-25 20:00:00', '2025-03-24 23:59:59', '2025-03-20 00:00:00', 'Multiplayer', 15, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Splatoon 3 Turf War', '2025-03-25 14:00:00', '2025-03-25 20:00:00', '2025-03-24 23:59:59', '2025-03-20 00:00:00', 'Multiplayer', 15, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('League of Legends Championship', '2025-02-10 14:00:00', '2025-02-10 22:00:00', '2025-02-09 23:59:59', '2025-02-01 00:00:00', 'Multiplayer', 1, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('League of Legends Championship', '2025-02-10 14:00:00', '2025-02-10 22:00:00', '2025-02-09 23:59:59', '2025-02-01 00:00:00', 'Multiplayer', 1, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Dota 2 Tournament', '2025-03-15 15:00:00', '2025-03-15 23:00:00', '2025-03-14 23:59:59', '2025-03-10 00:00:00', 'Multiplayer', 2, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Dota 2 Tournament', '2025-03-15 15:00:00', '2025-03-15 23:00:00', '2025-03-14 23:59:59', '2025-03-10 00:00:00', 'Multiplayer', 2, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('CS:GO Battle Royale', '2025-04-05 18:00:00', '2025-04-05 23:00:00', '2025-04-04 23:59:59', '2025-03-30 00:00:00', 'Fighting', 3, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('CS:GO Battle Royale', '2025-04-05 18:00:00', '2025-04-05 23:00:00', '2025-04-04 23:59:59', '2025-03-30 00:00:00', 'Fighting', 3, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Valorant Competitive Cup', '2025-04-12 16:00:00', '2025-04-12 22:00:00', '2025-04-11 23:59:59', '2025-04-06 00:00:00', 'Fighting', 4, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Valorant Competitive Cup', '2025-04-12 16:00:00', '2025-04-12 22:00:00', '2025-04-11 23:59:59', '2025-04-06 00:00:00', 'Fighting', 4, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Fortnite Battle Royale Tournament', '2025-05-01 17:00:00', '2025-05-01 23:00:00', '2025-04-30 23:59:59', '2025-04-25 00:00:00', 'Multiplayer', 5, false, 100, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Fortnite Battle Royale Tournament', '2025-05-01 17:00:00', '2025-05-01 23:00:00', '2025-04-30 23:59:59', '2025-04-25 00:00:00', 'Multiplayer', 5, 100, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Call of Duty: Warzone Showdown', '2025-05-10 14:00:00', '2025-05-10 20:00:00', '2025-05-09 23:59:59', '2025-05-05 00:00:00', 'Multiplayer', 6, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Call of Duty: Warzone Showdown', '2025-05-10 14:00:00', '2025-05-10 20:00:00', '2025-05-09 23:59:59', '2025-05-05 00:00:00', 'Multiplayer', 6, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('PUBG: Battlegrounds Championship', '2025-06-01 15:00:00', '2025-06-01 23:00:00', '2025-05-31 23:59:59', '2025-05-25 00:00:00', 'Multiplayer', 7, false, 100, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('PUBG: Battlegrounds Championship', '2025-06-01 15:00:00', '2025-06-01 23:00:00', '2025-05-31 23:59:59', '2025-05-25 00:00:00', 'Multiplayer', 7, 100, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Overwatch Arena', '2025-06-10 18:00:00', '2025-06-10 23:00:00', '2025-06-09 23:59:59', '2025-06-05 00:00:00', 'Fighting', 8, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Overwatch Arena', '2025-06-10 18:00:00', '2025-06-10 23:00:00', '2025-06-09 23:59:59', '2025-06-05 00:00:00', 'Fighting', 8, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Rocket League World Cup', '2025-07-15 14:00:00', '2025-07-15 20:00:00', '2025-07-14 23:59:59', '2025-07-10 00:00:00', 'Sports', 9, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Rocket League World Cup', '2025-07-15 14:00:00', '2025-07-15 20:00:00', '2025-07-14 23:59:59', '2025-07-10 00:00:00', 'Sports', 9, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Rainbow Six Siege Tactical Showdown', '2025-07-20 16:00:00', '2025-07-20 23:00:00', '2025-07-19 23:59:59', '2025-07-15 00:00:00', 'Multiplayer', 10, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Rainbow Six Siege Tactical Showdown', '2025-07-20 16:00:00', '2025-07-20 23:00:00', '2025-07-19 23:59:59', '2025-07-15 00:00:00', 'Multiplayer', 10, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Apex Legends Arena', '2025-08-01 15:00:00', '2025-08-01 22:00:00', '2025-07-31 23:59:59', '2025-07-25 00:00:00', 'Multiplayer', 11, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Apex Legends Arena', '2025-08-01 15:00:00', '2025-08-01 22:00:00', '2025-07-31 23:59:59', '2025-07-25 00:00:00', 'Multiplayer', 11, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Super Smash Bros. Ultimate Knockout', '2025-08-15 14:00:00', '2025-08-15 20:00:00', '2025-08-14 23:59:59', '2025-08-10 00:00:00', 'Fighting', 12, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Super Smash Bros. Ultimate Knockout', '2025-08-15 14:00:00', '2025-08-15 20:00:00', '2025-08-14 23:59:59', '2025-08-10 00:00:00', 'Fighting', 12, 64, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Street Fighter V Championship', '2025-09-05 16:00:00', '2025-09-05 22:00:00', '2025-09-04 23:59:59', '2025-08-30 00:00:00', 'Fighting', 13, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Street Fighter V Championship', '2025-09-05 16:00:00', '2025-09-05 22:00:00', '2025-09-04 23:59:59', '2025-08-30 00:00:00', 'Fighting', 13, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Tekken 7 Showdown', '2025-09-10 17:00:00', '2025-09-10 23:00:00', '2025-09-09 23:59:59', '2025-09-04 00:00:00', 'Fighting', 14, false, 32, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Tekken 7 Showdown', '2025-09-10 17:00:00', '2025-09-10 23:00:00', '2025-09-09 23:59:59', '2025-09-04 00:00:00', 'Fighting', 14, 32, 0, '2024-12-15 00:00:00');
 
-INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, is_private, nb_joueur_limite, nb_joueur, datecreation)
-VALUES ('Splatoon 3 Turf War', '2025-09-20 14:00:00', '2025-09-20 20:00:00', '2025-09-19 23:59:59', '2025-09-15 00:00:00', 'Multiplayer', 15, false, 64, 0, '2024-12-15 00:00:00');
+INSERT INTO tournament (name, date_start, date_end, date_end_inscription, date_start_inscription, categorie, game_id, nb_joueur_limite, nb_joueur, datecreation)
+VALUES ('Splatoon 3 Turf War', '2025-09-20 14:00:00', '2025-09-20 20:00:00', '2025-09-19 23:59:59', '2025-09-15 00:00:00', 'Multiplayer', 15, 64, 0, '2024-12-15 00:00:00');

@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -51,16 +53,20 @@ public class Tournament {
     private LocalDateTime datecreation = LocalDateTime.now();
 
     @NotNull
+    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateStart;
 
     @NotNull
+    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateEnd;
 
     
     @NotNull
+    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateEndInscription;
 
     @NotNull
+    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateStartInscription;
 
     @Transient
@@ -77,8 +83,6 @@ public class Tournament {
     @ManyToOne
     @JoinColumn(name = "game_id", nullable = false)
     private Game jeu;
-
-    private boolean is_private;
 
     @NotNull(message = "Le nombre de joueur limite est obligatoire")
     private int nbJoueurLimite;
