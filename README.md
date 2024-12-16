@@ -27,8 +27,7 @@ Un super administrateur gère la plateforme en ajoutant des jeux et en attribuan
 - Maven installé et configuré sur votre machine.
 
 ### 2. Lancement via Maven
-Placez vous dans `gamehub/` puis
-Utilisez les commandes suivante pour démarrer l'application :  
+Placez vous dans `gamehub/` puis utilisez les commandes suivante pour démarrer l'application :  
   ```sh
     ./mvnw clean install
     ./mvnw spring-boot:run
