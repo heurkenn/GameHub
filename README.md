@@ -1,4 +1,4 @@
-# GameHub - Plateforme de Jeux Vidéo
+3# GameHub - Plateforme de Jeux Vidéo
 
 ## Présentation du projet
 GameHub est une plateforme permettant aux utilisateurs :
@@ -30,6 +30,12 @@ Un super administrateur gère la plateforme en ajoutant des jeux et en attribuan
 Utilisez la commande suivante pour démarrer l'application :  
   ```sh
      ./mvnw spring-boot:run
+  ```
+
+### 3. Ouverture dans le navigateur
+Utilisez l'URL suivant dans votre navigateur:  
+  ```sh
+     localhost:8080
   ```
 
 ## Arborescence du projet
