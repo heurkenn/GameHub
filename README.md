@@ -58,8 +58,6 @@ Voici une description de l'arborescence du projet, en expliquant le rôle de cha
   - `application.properties` : Fichier de configuration pour l'application Spring Boot.
   - `data.sql` : Script SQL pour insérer des données initiales dans la base.
 
-- `src/test/java/fr/gamehub/gamehub/` : Contient les tests unitaires et d'intégration de l'application.
-
 - `target/` : Contient les fichiers compilés et les artefacts générés par Maven.
 
 - `.gitignore` : Fichier spécifiant les fichiers à ignorer par Git.
