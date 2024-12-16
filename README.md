@@ -27,10 +27,10 @@ Un super administrateur gère la plateforme en ajoutant des jeux et en attribuan
 - Maven installé et configuré sur votre machine.
 
 ### 2. Lancement via Maven
-Placez vous dans `gamehub/` puis
-Utilisez la commande suivante pour démarrer l'application :  
+Placez vous dans `gamehub/` puis utilisez les commandes suivante pour démarrer l'application :  
   ```sh
-     ./mvnw spring-boot:run
+    ./mvnw clean install
+    ./mvnw spring-boot:run
   ```
 
 ### 3. Ouverture dans le navigateur
@@ -83,7 +83,7 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 | Relations variées (1-1, 1-N, N-N)          | Relation 1-1 : Fight avec User, 1-N : Tournament - Classement, N-N : User - Game, User - Tournament.                                                                 | ✅     |
 | CRUD complet                                | Insertion, mise à jour, suppression, recherche d'entités en BDD via les méthodes HTTP (GET, POST, PUT, DELETE) et Spring Data JPA.                                    | ✅     |
 | Lien entre deux entités                     | Par exemple, liaison User - Tournament pour les inscriptions.                                                                                                         | ✅     |
-| Lien dynamique entre entités                | L’administrateur de communauté peut associer des tournois à des jeux existants. Les utilisateurs peuvent rejoindre une communauté ou un tournoi via une interface graphique. | ✅     |
+| Lien dynamique entre entités                | L’administrateur peut associer des tournois à des jeux existants. Les utilisateurs peuvent rejoindre un tournoi via une interface graphique. | ✅     |
 
 ### Technique : 5/5
 
@@ -99,7 +99,7 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 
 | Critères                           | Détails de l'implémentation                                                                                                                                     | Statut |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
-| Association graphique d'entités    | Le super administrateur peut associer des plateformes à un jeu via des checkbox, un utilisateur peut rejoindre une communauté ou un tournoi via un bouton.       | ✅     |
+| Association graphique d'entités    | Le super administrateur peut associer des plateformes à un jeu via des checkbox, un utilisateur un tournoi via un bouton.                                       | ✅     |
 | Dissociation graphique d'entités   | L'utilisateur peut se retirer d'un tournoi, le super admin peut supprimer une relation entre un jeu et une plateforme.                                          | ✅     |
 
 ### Fourniture d'une logique métier
@@ -138,7 +138,6 @@ Pour faciliter la correction et les tests, voici une liste de comptes déjà cr�
 | Rôle          | Username        | Mot de passe         | Capacités                                                      |
 |---------------|-------------------------------|----------------------|----------------------------------------------------------------|
 | Super-Admin   | superadmin        | SuperAdminSecret1     | Accès complet : gestion des jeux, tournois, communautés, et nomination d’administrateurs. Accès au tableau de bord super-admin. |
-| Admin (ex: d’un jeu) | admin     | adminPass1            | Gère les tournois du jeu dont il est responsable. Peut créer, modifier, et supprimer des tournois. Accès au tableau de bord admin. |
 | Utilisateur 1 | user1           | userPass1            | Peut rejoindre un tournoi, accéder aux communautés et discuter via le chat du jeu. Peut rejoindre la communauté directement depuis la liste ou la page du jeu. |
 | Utilisateur 2 | user2          | userPass2            | Même capacités que l’utilisateur 1. Peut s’inscrire à des tournois et participer aux chats communautaires. |
 | Utilisateur 3 | user3           | userPass3            | Même capacités que l’utilisateur 1 et 2. Peut explorer les différents jeux, communautés et tournois. |
@@ -147,11 +146,21 @@ Pour faciliter la correction et les tests, voici une liste de comptes déjà cr�
 
 ## Utilisation de l'application
 
-- **Créer un compte utilisateur** pour accéder aux fonctionnalités (ou utilisez les comptes de test ci-dessus).
-- **Participer à des tournois** : Une fois connecté, naviguez jusqu'à la page du jeu de votre choix. Vous pouvez rejoindre un tournoi existant ou en demander un nouveau (si vous êtes admin).
-- **Discuter via le chat** : Depuis la page du jeu ou depuis la liste des communautés, rejoignez le chat pour échanger avec les autres joueurs.
-- **Admin (par jeu)** : Gérer les tournois depuis le tableau de bord dédié. Créer, modifier et supprimer des tournois.
-- **Super-Admin** : Gérer les jeux, les tournois et les admins "simples" dans un tableau de bord dédié. Le mot de passe se trouve dans le fichier `application.properties` (SuperAdminSecret). Après avoir modifié le statut ou les rôles d'un utilisateur, déconnectez-vous puis reconnectez-vous pour appliquer les changements.
+- **Créer un compte utilisateur** : Inscrivez-vous ou utilisez les comptes de test fournis. Une fois connecté, vous aurez accès à l’ensemble des fonctionnalités.
+- **Participer à des tournois** : Depuis la page de tout les tournois, vous pouvez consulter les tournois disponibles, leurs dates, le nombre de joueurs inscrits et un compte à rebours dynamique indiquant le temps restant avant la fin des inscriptions. Les utilisateurs peuvent facilement rejoindre un tournoi en cliquant sur le bouton dédié.
+- **Discuter via le chat en temps réel** : Rejoignez la communauté d’un jeu depuis la page du jeu lui-même ou depuis la liste des communautés. Le chat en temps réel vous permet d’échanger instantanément avec les autres membres, favorisant ainsi l’interaction entre joueurs.
+- **Admins (par jeu)** : Les administrateurs de communauté ont accès à un tableau de bord leur permettant de créer, modifier et supprimer des tournois. Ils peuvent ainsi gérer l’offre de tournois afin de maintenir l’activité et l’intérêt autour d’un jeu.
+- **Super-Admin** : Le super-administrateur dispose d’un tableau de bord étendu lui permettant de gérer les jeux, d’ajouter des administrateurs, de superviser les tournois et d’accéder à l’ensemble des fonctionnalités de la plateforme. Le mot de passe du super-admin est indiqué dans le fichier `application.properties`. Après toute modification de rôle, il est nécessaire de se déconnecter puis de se reconnecter pour appliquer les changements.
+
+## Technologies Utilisées
+
+- **Spring Boot & Spring Data JPA** : Pour la logique métier, la gestion des entités, la persistance des données et la sécurité.
+- **Spring MVC & Thymeleaf** : Pour la gestion des contrôleurs, le routage des requêtes, et l’affichage dynamique du contenu dans les vues HTML.
+- **WebSocket** : Pour la mise en place du chat en temps réel, assurant une communication instantanée entre les utilisateurs.
+- **AJAX** : Pour charger et mettre à jour certaines parties de la page sans nécessiter un rechargement complet, améliorant ainsi l’expérience utilisateur (notamment pour l’affichage dynamique du compte à rebours et la mise à jour des chats).
+- **Bootstrap & CSS Personnalisé** : Pour un design cohérent, responsive et agréable, permettant une navigation fluide.
+- **H2 (Base de données en mémoire)** : Pour un stockage et un chargement rapides des données de test (testdb.mv.db).
+
 
 
 ## Compatibilité
