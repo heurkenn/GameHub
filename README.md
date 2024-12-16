@@ -147,7 +147,6 @@ Pour faciliter la correction et les tests, voici une liste de comptes déjà cr�
 - **Discuter via le chat** : Depuis la page du jeu ou depuis la liste des communautés, rejoignez le chat pour échanger avec les autres joueurs.
 - **Admin (par jeu)** : Gérer les tournois depuis le tableau de bord dédié. Créer, modifier et supprimer des tournois.
 - **Super-Admin** : Gérer les jeux, les tournois et les admins "simples" dans un tableau de bord dédié. Le mot de passe se trouve dans le fichier `application.properties` (SuperAdminSecret). Après avoir modifié le statut ou les rôles d'un utilisateur, déconnectez-vous puis reconnectez-vous pour appliquer les changements.
-- **Base de donnée préremplie** : Pour importer la base de données déjà fournie avec des jeux, plateformes et tournois, définissez `spring.sql.init.mode=always` dans le fichier `application.properties`. Après l'initialisation, remettez `spring.sql.init.mode=never` pour le fonctionnement normal de l'application.
 
 
 ## Compatibilité
