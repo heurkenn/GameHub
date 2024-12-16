@@ -83,7 +83,7 @@ Assurez-vous de bien configurer votre environnement (Java 21, Maven) ainsi que l
 | Relations variées (1-1, 1-N, N-N)          | Relation 1-1 : Fight avec User, 1-N : Tournament - Classement, N-N : User - Game, User - Tournament.                                                                 | ✅     |
 | CRUD complet                                | Insertion, mise à jour, suppression, recherche d'entités en BDD via les méthodes HTTP (GET, POST, PUT, DELETE) et Spring Data JPA.                                    | ✅     |
 | Lien entre deux entités                     | Par exemple, liaison User - Tournament pour les inscriptions.                                                                                                         | ✅     |
-| Lien dynamique entre entités                | L’administrateur de communauté peut associer des tournois à des jeux existants. Les utilisateurs peuvent rejoindre une communauté ou un tournoi via une interface graphique. | ✅     |
+| Lien dynamique entre entités                | L’administrateur peut associer des tournois à des jeux existants. Les utilisateurs peuvent rejoindre un tournoi via une interface graphique. | ✅     |
 
 ### Technique : 5/5
 
